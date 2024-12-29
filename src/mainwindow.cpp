@@ -225,7 +225,7 @@ void MainWindow::checkForUpdates() {
 
     // Replace with actual owner and repo
     QString owner = "Gonzalooo";
-    QString repo = "Scarlet-and-Violet-Randomizer";
+    QString repo = "Pokemon-Randomizer";
 
     QString apiUrl = QString("https://api.github.com/repos/%1/%2/releases/latest").arg(owner).arg(repo);
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
