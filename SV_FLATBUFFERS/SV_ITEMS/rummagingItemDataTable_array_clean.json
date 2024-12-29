@@ -1,0 +1,76 @@
+{
+  "values": [
+    {
+      "Category": "BUSH",
+      "Pattern": "NORMAL",
+      "Item00": "ITEMID_OBONNOMI",
+      "Item01": "ITEMID_NONE",
+      "Item02": "ITEMID_NONE",
+      "Item03": "ITEMID_NONE",
+      "Item04": "ITEMID_NONE"
+    },
+    {
+      "Category": "BUSH",
+      "Pattern": "RARE",
+      "Item00": "ITEMID_SUGOIKIZUGUSURI",
+      "Item01": "ITEMID_NONE",
+      "Item02": "ITEMID_NONE",
+      "Item03": "ITEMID_NONE",
+      "Item04": "ITEMID_NONE"
+    },
+    {
+      "Category": "ROCK",
+      "Pattern": "NORMAL",
+      "Item00": "ITEMID_SAIKOSOODA",
+      "Item01": "ITEMID_NONE",
+      "Item02": "ITEMID_NONE",
+      "Item03": "ITEMID_NONE",
+      "Item04": "ITEMID_NONE"
+    },
+    {
+      "Category": "ROCK",
+      "Pattern": "RARE",
+      "Item00": "ITEMID_MIKKUSUORE",
+      "Item01": "ITEMID_NONE",
+      "Item02": "ITEMID_NONE",
+      "Item03": "ITEMID_NONE",
+      "Item04": "ITEMID_NONE"
+    },
+    {
+      "Category": "UNDER_WATER",
+      "Pattern": "NORMAL",
+      "Item00": "ITEMID_OISIIMIZU",
+      "Item01": "ITEMID_NONE",
+      "Item02": "ITEMID_NONE",
+      "Item03": "ITEMID_NONE",
+      "Item04": "ITEMID_NONE"
+    },
+    {
+      "Category": "UNDER_WATER",
+      "Pattern": "RARE",
+      "Item00": "ITEMID_HAIPAABOORU",
+      "Item01": "ITEMID_NONE",
+      "Item02": "ITEMID_NONE",
+      "Item03": "ITEMID_NONE",
+      "Item04": "ITEMID_NONE"
+    },
+    {
+      "Category": "IN_THE_GROUND",
+      "Pattern": "NORMAL",
+      "Item00": "ITEMID_MONSUTAABOORU",
+      "Item01": "ITEMID_NONE",
+      "Item02": "ITEMID_NONE",
+      "Item03": "ITEMID_NONE",
+      "Item04": "ITEMID_NONE"
+    },
+    {
+      "Category": "HIGH_ALTITUDE",
+      "Pattern": "NORMAL",
+      "Item00": "ITEMID_IIKIZUGUSURI",
+      "Item01": "ITEMID_NONE",
+      "Item02": "ITEMID_NONE",
+      "Item03": "ITEMID_NONE",
+      "Item04": "ITEMID_NONE"
+    }
+  ]
+}

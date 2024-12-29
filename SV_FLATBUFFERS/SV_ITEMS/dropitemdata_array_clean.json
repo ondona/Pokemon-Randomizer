@@ -1,0 +1,4644 @@
+{
+  "values": [
+    {
+      "devid": "DEV_AABO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI240",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_AABOKKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI240",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PIKATYUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI20",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RAITYUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI20",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_SANDO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI241",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SANDOPAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI241",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PIPPI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI242",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PIKUSII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI242",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_ROKON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI243",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KYUUKON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI243",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PURIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI21",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PUKURIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI21",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_NAZONOKUSA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI281",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KUSAIHANA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI281",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RAHURESIA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI281",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KONPAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI01",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MORUFON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI01",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DHIGUDA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI02",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DAGUTORIO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI02",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NYAASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI03",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_PERUSIAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI03",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KODAKKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI04",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GORUDAKKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI04",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MANKII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI05",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_OKORIZARU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI05",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GAADHI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI06",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_UINDHI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI06",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NYOROMO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI244",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NYOROZO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI244",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NYOROBON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI244",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MADATUBOMI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI245",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_UTUDON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI245",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_UTUBOTTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI245",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MENOKURAGE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI282",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DOKUKURAGE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI282",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ISITUBUTE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI246",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GOROON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI246",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GOROONYA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI246",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_YADON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI07",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_YADORAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI07",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI08",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_REAKOIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI08",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DOODOO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI283",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DOODORIO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI283",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PAUWAU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI284",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ZYUGON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI284",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BETOBETAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI09",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BETOBETON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI09",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SHERUDAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI10",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_PARUSHEN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI10",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GOOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI11",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GOOSUTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI11",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GENGAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI11",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_SURIIPU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI12",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SURIIPAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI12",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BIRIRIDAMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI13",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MARUMAIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI13",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TAMATAMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI285",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NASSII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI285",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SAWAMURAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI286",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_EBIWARAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI286",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DOGAASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI247",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MATADOGASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI247",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SAIHOON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI287",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SAIDON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI287",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RAKKII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI73",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TATTUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI288",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SIIDORA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI288",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SUTORAIKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI14",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_EREBUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI289",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BUUBAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI290",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KENTAROSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI15",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KOIKINGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI16",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GYARADOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI16",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RAPURASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI291",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_METAMON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI17",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_IIBUI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI18",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SYAWAAZU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI18",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_SANDAASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI18",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_BUUSUTAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI18",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_PORIGON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI292",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KABIGON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI248",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MINIRYUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI19",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HAKURYUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI19",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KAIRYUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI19",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_OTATI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI249",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_OOTATI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI249",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HOOHOO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI250",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_YORUNOZUKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI250",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ITOMARU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI251",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ARIADOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI251",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TYONTII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI293",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_RANTAAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI293",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PITYUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI20",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_PHI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI242",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_PUPURIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI21",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MERIIPU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI22",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MOKOKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI22",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DENRYUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI22",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KIREIHANA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI281",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MARIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI45",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MARIRURI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI45",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_USOKKII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI72",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NYOROTONO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI244",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_HANEKKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI23",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_POPOKKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI23",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_WATAKKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI23",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_EIPAMU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI252",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HIMANATTU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI24",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KIMAWARI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI24",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_YANYANMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI253",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_UPAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI204",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NUOO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI204",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_EEFI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI18",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_BURAKKII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI18",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_YAMIKARASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI25",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_YADOKINGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI07",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MUUMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI26",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KIRINRIKI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI27",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KUNUGIDAMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI28",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_FORETOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI28",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NOKOTTI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI29",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GURAIGAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI254",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BURUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI294",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GURANBURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI294",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HARIISEN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI30",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HASSAMU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI14",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_HERAKUROSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI31",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NYUURA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI32",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HIMEGUMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI33",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_RINGUMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI33",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MAGUMAGGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI255",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MAGUKARUGO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI255",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_URIMUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI256",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_INOMUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI256",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DERIBAADO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI34",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_EAAMUDO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI295",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DERUBIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI35",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HERUGAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI35",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KINGUDORA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI288",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_GOMAZOU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI36",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DONFAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI36",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PORIGON2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI292",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ODOSISI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI37",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DOOBURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI296",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BARUKII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI286",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KAPOERAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI286",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_EREKIDDO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI289",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BUBHI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI290",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HAPINASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI73",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_YOOGIRASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI38",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SANAGIRASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI38",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BANGIRASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI38",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_POTIENA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI257",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GURAENA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI257",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HASUBOO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI258",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HASUBURERO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI258",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RUNPAPPA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI258",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_TANEBOO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI259",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KONOHANA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI259",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DAATENGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI259",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KYAMOME",
+      "item1": {
+        "itemid": "ITEMID_SOZAI39",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_PERIPPAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI39",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RARUTOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI40",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KIRURIA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI40",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SAANAITO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI40",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_AMETAMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI41",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_AMEMOOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI41",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KINOKOKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI42",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KINOGASSA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI42",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NAMAKERO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI43",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_YARUKIMONO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI43",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KEKKINGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI43",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MAKUNOSITA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI44",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HARITEYAMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI44",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RURIRI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI45",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NOZUPASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI260",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_YAMIRAMI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI46",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ASANAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI47",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_TYAAREMU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI47",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PURASURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI297",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MAINAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI298",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BARUBIITO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI261",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_IRUMIIZE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI262",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GOKURIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI48",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MARUNOOMU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI48",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DONMERU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI49",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BAKUUDA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI49",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOOTASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI50",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BANEBUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI51",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BUUPIGGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI51",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NAKKURAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI299",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BIBURAABA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI299",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HURAIGON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI299",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_SABONEA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI52",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NOKUTASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI52",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TIRUTTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI53",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_TIRUTARISU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI53",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ZANGUUSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI54",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HABUNEEKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI55",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DOZYOTTI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI56",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NAMAZUN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI56",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HEIGANI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI263",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SIZARIGAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI263",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HINBASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI264",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MIROKAROSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI264",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KAGEBOUZU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI57",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ZYUPETTA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI57",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_YOMAWARU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI265",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SAMAYOORU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI265",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TOROPIUSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI58",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_TIRIIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI266",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_YUKIWARASI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI59",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ONIGOORI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI59",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RABUKASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI60",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TATUBEI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI61",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KOMORUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI61",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BOOMANDA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI61",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_DANBARU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI300",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_METANGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI300",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_METAGUROSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI300",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MUKKURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI62",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MUKUBAADO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI62",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MUKUHOOKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI62",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KOROBOOSI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI63",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KOROTOKKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI63",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KORINKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI64",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_RUKUSIO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI64",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RENTORAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI64",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_ZUGAIDOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI301",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_RAMUPARUDO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI301",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TATETOPUSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI302",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_TORIDEPUSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI302",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MITUHANII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI65",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BIIKUIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI65",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PATIRISU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI66",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BUIZERU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI67",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HUROOZERU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI67",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KARANAKUSI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI68",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_TORITODON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI68",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ETEBOOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI252",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HUWANTE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI69",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HUWARAIDO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI69",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MUUMAAZI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI26",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_DONKARASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI25",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_RIISYAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI266",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SUKANPUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI70",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SUKATANKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI70",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DOOMIRAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI71",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DOOTAKUN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI71",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_USOHATI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI72",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_PINPUKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI73",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MIKARUGE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI74",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_HUKAMARU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI75",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GABAITO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI75",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GABURIASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI75",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_GONBE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI248",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_RIORU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI76",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_RUKARIO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI76",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HIPOPOTASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI77",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KABARUDON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI77",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GUREGGURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI78",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DOKUROGGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI78",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KEIKOUO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI79",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NEORANTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI79",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_YUKIKABURI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI80",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_YUKINOOO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI80",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MANYUURA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI32",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_ZIBAKOIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI08",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_DOSAIDON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI287",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_EREKIBURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI289",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_BUUBAAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI290",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MEGAYANMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI253",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_RIIFIA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI18",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_GUREISIA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI18",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_GURAION",
+      "item1": {
+        "itemid": "ITEMID_SOZAI254",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MANMUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI256",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_PORIGONz",
+      "item1": {
+        "itemid": "ITEMID_SOZAI292",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_ERUREIDO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI40",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_DAINOOZU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI260",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_YONOWAARU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI265",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_YUKIMENOKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI59",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_ROTOMU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI81",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SIMAMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI303",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ZEBURAIKA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI303",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MOGURYUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI304",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DORYUUZU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI304",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DOKKORAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI267",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DOTEKKOTU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI267",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ROOBUSIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI267",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KURUMIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI268",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KURUMAYU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI268",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HAHAKOMORI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI268",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MONMEN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI305",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ERUHUUN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI305",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TYURINE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI82",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DOREDHIA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI82",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BASURAO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI83",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MEGUROKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI84",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_WARUBIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI84",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_WARUBIARU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI84",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_ZURUGGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI306",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ZURUZUKIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI306",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ZOROA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI85",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ZOROAAKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI85",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_TIRAAMHI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI307",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_TIRATIINO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI307",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GOTIMU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI86",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GOTIMIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI86",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GOTIRUZERU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI86",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_YUNIRAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI308",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DABURAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI308",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_RANKURUSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI308",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KOARUHII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI269",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SUWANNA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI269",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SIKIZIKA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI87",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MEBUKIZIKA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI87",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TAMAGETAKE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI88",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MOROBARERU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI88",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MAMANBOU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI89",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BATYURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI309",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DENTYURA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI309",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SIBISIRASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI90",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SIBIBIIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI90",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SIBIRUDON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI90",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_HITOMOSI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI270",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_RANPURAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI270",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SYANDERA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI270",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KIBAGO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI91",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ONONDO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI91",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ONONOKUSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI91",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KUMASYUN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI92",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_TUNBEAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI92",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HURIIZIO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI93",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOZYOHUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI271",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KOZYONDO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI271",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GOBITTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI310",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GORUUGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI310",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOMATANA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI94",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KIRIKIZAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI94",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_WASIBON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI95",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_WHOOGURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI95",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BARUTYAI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI272",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BARUZIINA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI272",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MONOZU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI96",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ZIHEDDO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI96",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SAZANDORA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI96",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MERARUBA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI97",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_URUGAMOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI97",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_YAYAKOMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI98",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HINOYAKOMA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI98",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_FAIAROO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI98",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KOHUKIMUSI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI99",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KOHUURAI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI99",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BIBIYON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI99",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_SISIKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI100",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KAENZISI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI100",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HURABEBE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI101",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HURAETTE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI101",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HURAAJESU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI101",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MHEEKURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI102",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GOOGOOTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI102",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NYASUPAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI311",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NYAONIKUSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI311",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MAAIIKA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI312",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KARAMANERO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI312",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KUZUMOO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI103",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DORAMIDORO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI103",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_UDEPPOU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI104",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BUROSUTAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI104",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NINFIA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI18",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_RUTYABURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI105",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DEDENNE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI106",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MERESII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI273",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NUMERA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI107",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NUMEIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI107",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NUMERUGON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI107",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KUREHFI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI108",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BOKUREE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI274",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_OOROTTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI274",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KATIKOORU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI109",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KUREBEESU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI109",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ONBATTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI110",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ONBAAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI110",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_TUTUKERA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI313",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KERARAPPA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI313",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DODEKABASI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI313",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_YANGUUSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI111",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DEKAGUUSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI111",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_AGOZIMUSI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI275",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DENDIMUSI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI275",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KUWAGANON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI275",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MAKENKANI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI112",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KEKENKANI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI112",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ODORIDORI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI113",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ABURII",
+      "item1": {
+        "itemid": "ITEMID_SOZAI276",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ABURIBON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI276",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_IWANKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI114",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_RUGARUGAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI114",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HIDOIDE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI115",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DOHIDOIDE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI115",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DOROBANKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI116",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BANBADORO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI116",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SIZUKUMO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI314",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ONISIZUKUMO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI314",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KARIKIRI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI117",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_RARANTESU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI117",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_YATOUMORI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI118",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ENNYUUTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI118",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_AMAKAZI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI119",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_AMAMAIKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI119",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_AMAAZYO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI119",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KYUWAWAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI315",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_YAREYUUTAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI120",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NAGETUKESARU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI121",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SUNABHA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI122",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SIRODESUNA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI122",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_METENO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI316",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NEKKOARA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI123",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MIMIKKYU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI124",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HAGIGISIRI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI125",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ZYARAKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI277",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ZYARANGO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI277",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ZYARARANGA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI277",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_HOSIGARISU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI127",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_YOKUBARISU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI127",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOKOGARA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI129",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_AOGARASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI129",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_AAMAAGAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI129",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KAMUKAME",
+      "item1": {
+        "itemid": "ITEMID_SOZAI126",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KAZIRIGAME",
+      "item1": {
+        "itemid": "ITEMID_SOZAI126",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TANDON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI133",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_TOROGGON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI133",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SEKITANZAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI133",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KAZITTYU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI139",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_APPURYUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI139",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TARUPPURU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI139",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SUNAHEBI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI134",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SADAIZYA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI134",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_UUU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI278",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SASIKAMASU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI128",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KAMASUZYOO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI128",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_EREZUN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI130",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SUTORINDAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI130",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_YABATYA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI140",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_POTTODESU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI140",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MIBURIMU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI141",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_TEBURIMU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI141",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BURIMUON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI141",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_BEROBAA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI138",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GIMOO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI138",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_OORONGE",
+      "item1": {
+        "itemid": "ITEMID_SOZAI138",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MAHOMIRU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI317",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MAHOIPPU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI317",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TAIREETU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI131",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BATINUNI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI136",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_YUKIHAMI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI137",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MOSUNOU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI137",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ISIHENZIN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI142",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOORIPPO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI143",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_IESSAN",
+      "item1": {
+        "itemid": "ITEMID_SOZAI135",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MORUPEKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI279",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ZOUDOU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI132",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DAIOUDOU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI132",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ZYURARUDON",
+      "item1": {
+        "itemid": "ITEMID_SOZAI318",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DORAMESIYA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI144",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DORONTI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI144",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DORAPARUTO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI144",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_SUTORAIKU2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI14",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_HIMEGUMA3",
+      "item1": {
+        "itemid": "ITEMID_SOZAI33",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_rBASURAO2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI83",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_rHARISEN2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI30",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_NEKO1",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_NEKO2",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_NEKO3",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_WANI1",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_WANI2",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_WANI3",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_KAMO1",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_KAMO2",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_KAMO3",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_BUTA1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI148",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BUTA2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI148",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NOKOTTI2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI29",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KUMO1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI149",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KUMO2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI149",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BATTA1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI150",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_BATTA2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI150",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_SUKARABE1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI151",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_SUKARABE2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI151",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_OBAKEINU1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI152",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_OBAKEINU2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI152",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_DATYOU1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI153",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_DATYOU2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI153",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KIRINRIKI2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI27",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_UMIDHIGUDA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI154",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_UMITORIO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI154",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_OYAKATA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI155",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MERURUUSA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI156",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_IRUKA1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI157",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_IRUKA2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI157",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_ORIIBU1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI158",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ORIIBU2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI158",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ORIIBU3",
+      "item1": {
+        "itemid": "ITEMID_SOZAI158",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_HABANERO1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI159",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HABANERO2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI159",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KAERU1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI160",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KAERU2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI160",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_ENZIN1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI161",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_ENZIN2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI161",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MIMIZU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI162",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_NEZUMI1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI163",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_NEZUMI2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI163",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_OKAKUZIRA1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI164",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_OKAKUZIRA2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI164",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOORIDORA1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI165",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KOORIDORA2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI165",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOORIDORA3",
+      "item1": {
+        "itemid": "ITEMID_SOZAI165",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_SUSIDORA",
+      "item1": {
+        "itemid": "ITEMID_SOZAI166",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_BAIKU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI167",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MAAMOTTO1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI168",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MAAMOTTO2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI168",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MAAMOTTO3",
+      "item1": {
+        "itemid": "ITEMID_SOZAI168",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MIZUDORI1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI171",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MIZUDORI2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI171",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOUNOTORI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI172",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_INKO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI173",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_HURAMINGO",
+      "item1": {
+        "itemid": "ITEMID_SOZAI174",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KEGANI",
+      "item1": {
+        "itemid": "ITEMID_SOZAI175",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GANEN1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI176",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_GANEN2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI176",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_GANEN3",
+      "item1": {
+        "itemid": "ITEMID_SOZAI176",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KARUKAN1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI177",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_KARUKAN2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI177",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_AIAI1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI178",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_AIAI2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI178",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_PANINU1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI179",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_PANINU2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI179",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MASUTHIHU1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI180",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MASUTHIHU2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI180",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_TANBURU1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI181",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_TANBURU2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI181",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOIN1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI182",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_KOIN2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI182",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_ADONFAN",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_AMOROBARERU",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_AREAKOIRU",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_APURIN",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_AMUUMA",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_AURUGAMOSU",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_AAAAA",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_BDONFAN",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_BURUGAMOSU",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_BHARITEYAMA",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_BSAZANDORA",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_BBANGIRASU",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_BKOORI",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_BBBBB",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_ZYUNDEN1",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_ZYUNDEN2",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_ZYUNDEN3",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_ZYUNDEN4",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_AIGUANA",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_BIGUANA",
+      "item1": {
+        "itemid": "ITEMID_NONE",
+        "rate": 100,
+        "num": 0
+      }
+    },
+    {
+      "devid": "DEV_FEARII1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI201",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_FEARII2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI201",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_FEARII3",
+      "item1": {
+        "itemid": "ITEMID_SOZAI201",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_HINOKO1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI202",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_HINOKO2A",
+      "item1": {
+        "itemid": "ITEMID_SOZAI202",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_HINOKO2B",
+      "item1": {
+        "itemid": "ITEMID_SOZAI202",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_OKAKINGU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI203",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_OKAGYARADOSU",
+      "item1": {
+        "itemid": "ITEMID_SOZAI203",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KOMATANA3",
+      "item1": {
+        "itemid": "ITEMID_SOZAI94",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_rUPAA2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI204",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_MANKII3",
+      "item1": {
+        "itemid": "ITEMID_SOZAI05",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_KAZITTYU2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI139",
+        "rate": 100,
+        "num": 2
+      }
+    },
+    {
+      "devid": "DEV_KAZITTYU3",
+      "item1": {
+        "itemid": "ITEMID_SOZAI139",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_ZYURARUDO2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI318",
+        "rate": 100,
+        "num": 3
+      }
+    },
+    {
+      "devid": "DEV_MATCHA1",
+      "item1": {
+        "itemid": "ITEMID_SOZAI280",
+        "rate": 100,
+        "num": 1
+      }
+    },
+    {
+      "devid": "DEV_MATCHA2",
+      "item1": {
+        "itemid": "ITEMID_SOZAI280",
+        "rate": 100,
+        "num": 2
+      }
+    }
+  ]
+}

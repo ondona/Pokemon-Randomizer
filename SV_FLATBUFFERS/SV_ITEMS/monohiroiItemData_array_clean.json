@@ -1,0 +1,1224 @@
+{
+  "values": [
+    {
+      "item_01": {
+        "itemId": "ITEMID_KIZUGUSURI",
+        "rate": 35
+      },
+      "item_02": {
+        "itemId": "ITEMID_IIKIZUGUSURI",
+        "rate": 15
+      },
+      "item_03": {
+        "itemId": "ITEMID_PIPPININGYOU",
+        "rate": 10
+      },
+      "item_04": {
+        "itemId": "ITEMID_NANDEMONAOSI",
+        "rate": 10
+      },
+      "item_05": {
+        "itemId": "ITEMID_GENKINOKAKERA",
+        "rate": 3
+      },
+      "item_06": {
+        "itemId": "ITEMID_SUGOIKIZUGUSURI",
+        "rate": 3
+      },
+      "item_07": {
+        "itemId": "ITEMID_PIIPIIEIDO",
+        "rate": 1
+      },
+      "item_08": {
+        "itemId": "ITEMID_TIISANAKINOKO",
+        "rate": 20
+      },
+      "item_09": {
+        "itemId": "ITEMID_OOKINAKINOKO",
+        "rate": 3
+      },
+      "item_10": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_11": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_12": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_13": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_14": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_15": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_16": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_17": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_18": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_19": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_20": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_21": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_22": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    },
+    {
+      "item_01": {
+        "itemId": "ITEMID_KIZUGUSURI",
+        "rate": 10
+      },
+      "item_02": {
+        "itemId": "ITEMID_IIKIZUGUSURI",
+        "rate": 15
+      },
+      "item_03": {
+        "itemId": "ITEMID_PIPPININGYOU",
+        "rate": 10
+      },
+      "item_04": {
+        "itemId": "ITEMID_NANDEMONAOSI",
+        "rate": 20
+      },
+      "item_05": {
+        "itemId": "ITEMID_GENKINOKAKERA",
+        "rate": 5
+      },
+      "item_06": {
+        "itemId": "ITEMID_SUGOIKIZUGUSURI",
+        "rate": 3
+      },
+      "item_07": {
+        "itemId": "ITEMID_MANTANNOKUSURI",
+        "rate": 3
+      },
+      "item_08": {
+        "itemId": "ITEMID_PIIPIIEIDO",
+        "rate": 2
+      },
+      "item_09": {
+        "itemId": "ITEMID_HUSIGINAAME",
+        "rate": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_TIISANAKINOKO",
+        "rate": 10
+      },
+      "item_11": {
+        "itemId": "ITEMID_OOKINAKINOKO",
+        "rate": 15
+      },
+      "item_12": {
+        "itemId": "ITEMID_TAIYOUNOISI",
+        "rate": 3
+      },
+      "item_13": {
+        "itemId": "ITEMID_TUKINOISI",
+        "rate": 3
+      },
+      "item_14": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_15": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_16": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_17": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_18": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_19": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_20": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_21": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_22": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    },
+    {
+      "item_01": {
+        "itemId": "ITEMID_IIKIZUGUSURI",
+        "rate": 15
+      },
+      "item_02": {
+        "itemId": "ITEMID_PIPPININGYOU",
+        "rate": 10
+      },
+      "item_03": {
+        "itemId": "ITEMID_NANDEMONAOSI",
+        "rate": 20
+      },
+      "item_04": {
+        "itemId": "ITEMID_GENKINOKAKERA",
+        "rate": 10
+      },
+      "item_05": {
+        "itemId": "ITEMID_SUGOIKIZUGUSURI",
+        "rate": 5
+      },
+      "item_06": {
+        "itemId": "ITEMID_MANTANNOKUSURI",
+        "rate": 3
+      },
+      "item_07": {
+        "itemId": "ITEMID_GENKINOKATAMARI",
+        "rate": 3
+      },
+      "item_08": {
+        "itemId": "ITEMID_PIIPIIEIDO",
+        "rate": 3
+      },
+      "item_09": {
+        "itemId": "ITEMID_PIIPIIRIKABAA",
+        "rate": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_HUSIGINAAME",
+        "rate": 1
+      },
+      "item_11": {
+        "itemId": "ITEMID_POINTOAPPU",
+        "rate": 1
+      },
+      "item_12": {
+        "itemId": "ITEMID_OOKINAKINOKO",
+        "rate": 10
+      },
+      "item_13": {
+        "itemId": "ITEMID_KINNOTAMA",
+        "rate": 5
+      },
+      "item_14": {
+        "itemId": "ITEMID_KAORUKINOKO",
+        "rate": 1
+      },
+      "item_15": {
+        "itemId": "ITEMID_DEKAIKINNOTAMA",
+        "rate": 1
+      },
+      "item_16": {
+        "itemId": "ITEMID_SIROIHAABU",
+        "rate": 1
+      },
+      "item_17": {
+        "itemId": "ITEMID_PAWAHURUHAABU",
+        "rate": 1
+      },
+      "item_18": {
+        "itemId": "ITEMID_MENTARUHAABU",
+        "rate": 1
+      },
+      "item_19": {
+        "itemId": "ITEMID_AKAIITO",
+        "rate": 1
+      },
+      "item_20": {
+        "itemId": "ITEMID_TABENOKOSI",
+        "rate": 1
+      },
+      "item_21": {
+        "itemId": "ITEMID_TAIYOUNOISI",
+        "rate": 3
+      },
+      "item_22": {
+        "itemId": "ITEMID_TUKINOISI",
+        "rate": 3
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    },
+    {
+      "item_01": {
+        "itemId": "ITEMID_IIKIZUGUSURI",
+        "rate": 10
+      },
+      "item_02": {
+        "itemId": "ITEMID_PIPPININGYOU",
+        "rate": 10
+      },
+      "item_03": {
+        "itemId": "ITEMID_NANDEMONAOSI",
+        "rate": 20
+      },
+      "item_04": {
+        "itemId": "ITEMID_GENKINOKAKERA",
+        "rate": 10
+      },
+      "item_05": {
+        "itemId": "ITEMID_SUGOIKIZUGUSURI",
+        "rate": 10
+      },
+      "item_06": {
+        "itemId": "ITEMID_MANTANNOKUSURI",
+        "rate": 3
+      },
+      "item_07": {
+        "itemId": "ITEMID_GENKINOKATAMARI",
+        "rate": 3
+      },
+      "item_08": {
+        "itemId": "ITEMID_PIIPIIEIDO",
+        "rate": 4
+      },
+      "item_09": {
+        "itemId": "ITEMID_PIIPIIRIKABAA",
+        "rate": 2
+      },
+      "item_10": {
+        "itemId": "ITEMID_HUSIGINAAME",
+        "rate": 2
+      },
+      "item_11": {
+        "itemId": "ITEMID_POINTOAPPU",
+        "rate": 2
+      },
+      "item_12": {
+        "itemId": "ITEMID_KINNOTAMA",
+        "rate": 5
+      },
+      "item_13": {
+        "itemId": "ITEMID_KAORUKINOKO",
+        "rate": 3
+      },
+      "item_14": {
+        "itemId": "ITEMID_DEKAIKINNOTAMA",
+        "rate": 1
+      },
+      "item_15": {
+        "itemId": "ITEMID_SIROIHAABU",
+        "rate": 1
+      },
+      "item_16": {
+        "itemId": "ITEMID_PAWAHURUHAABU",
+        "rate": 1
+      },
+      "item_17": {
+        "itemId": "ITEMID_MENTARUHAABU",
+        "rate": 1
+      },
+      "item_18": {
+        "itemId": "ITEMID_AKAIITO",
+        "rate": 1
+      },
+      "item_19": {
+        "itemId": "ITEMID_TABENOKOSI",
+        "rate": 1
+      },
+      "item_20": {
+        "itemId": "ITEMID_TAIYOUNOISI",
+        "rate": 5
+      },
+      "item_21": {
+        "itemId": "ITEMID_TUKINOISI",
+        "rate": 5
+      },
+      "item_22": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    },
+    {
+      "item_01": {
+        "itemId": "ITEMID_NANDEMONAOSI",
+        "rate": 20
+      },
+      "item_02": {
+        "itemId": "ITEMID_GENKINOKAKERA",
+        "rate": 10
+      },
+      "item_03": {
+        "itemId": "ITEMID_SUGOIKIZUGUSURI",
+        "rate": 20
+      },
+      "item_04": {
+        "itemId": "ITEMID_MANTANNOKUSURI",
+        "rate": 10
+      },
+      "item_05": {
+        "itemId": "ITEMID_GENKINOKATAMARI",
+        "rate": 3
+      },
+      "item_06": {
+        "itemId": "ITEMID_PIIPIIEIDO",
+        "rate": 5
+      },
+      "item_07": {
+        "itemId": "ITEMID_PIIPIIRIKABAA",
+        "rate": 3
+      },
+      "item_08": {
+        "itemId": "ITEMID_PIIPIIEIDAA",
+        "rate": 1
+      },
+      "item_09": {
+        "itemId": "ITEMID_HUSIGINAAME",
+        "rate": 2
+      },
+      "item_10": {
+        "itemId": "ITEMID_POINTOAPPU",
+        "rate": 2
+      },
+      "item_11": {
+        "itemId": "ITEMID_KINNOTAMA",
+        "rate": 5
+      },
+      "item_12": {
+        "itemId": "ITEMID_KAORUKINOKO",
+        "rate": 3
+      },
+      "item_13": {
+        "itemId": "ITEMID_DEKAIKINNOTAMA",
+        "rate": 1
+      },
+      "item_14": {
+        "itemId": "ITEMID_SIROIHAABU",
+        "rate": 1
+      },
+      "item_15": {
+        "itemId": "ITEMID_PAWAHURUHAABU",
+        "rate": 1
+      },
+      "item_16": {
+        "itemId": "ITEMID_MENTARUHAABU",
+        "rate": 1
+      },
+      "item_17": {
+        "itemId": "ITEMID_AKAIITO",
+        "rate": 1
+      },
+      "item_18": {
+        "itemId": "ITEMID_TABENOKOSI",
+        "rate": 1
+      },
+      "item_19": {
+        "itemId": "ITEMID_TAIYOUNOISI",
+        "rate": 5
+      },
+      "item_20": {
+        "itemId": "ITEMID_TUKINOISI",
+        "rate": 5
+      },
+      "item_21": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_22": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    },
+    {
+      "item_01": {
+        "itemId": "ITEMID_NANDEMONAOSI",
+        "rate": 10
+      },
+      "item_02": {
+        "itemId": "ITEMID_GENKINOKAKERA",
+        "rate": 10
+      },
+      "item_03": {
+        "itemId": "ITEMID_SUGOIKIZUGUSURI",
+        "rate": 20
+      },
+      "item_04": {
+        "itemId": "ITEMID_MANTANNOKUSURI",
+        "rate": 10
+      },
+      "item_05": {
+        "itemId": "ITEMID_GENKINOKATAMARI",
+        "rate": 10
+      },
+      "item_06": {
+        "itemId": "ITEMID_PIIPIIRIKABAA",
+        "rate": 4
+      },
+      "item_07": {
+        "itemId": "ITEMID_PIIPIIEIDAA",
+        "rate": 2
+      },
+      "item_08": {
+        "itemId": "ITEMID_HUSIGINAAME",
+        "rate": 3
+      },
+      "item_09": {
+        "itemId": "ITEMID_POINTOAPPU",
+        "rate": 3
+      },
+      "item_10": {
+        "itemId": "ITEMID_KINNOTAMA",
+        "rate": 5
+      },
+      "item_11": {
+        "itemId": "ITEMID_KAORUKINOKO",
+        "rate": 3
+      },
+      "item_12": {
+        "itemId": "ITEMID_DEKAIKINNOTAMA",
+        "rate": 1
+      },
+      "item_13": {
+        "itemId": "ITEMID_SIROIHAABU",
+        "rate": 1
+      },
+      "item_14": {
+        "itemId": "ITEMID_PAWAHURUHAABU",
+        "rate": 1
+      },
+      "item_15": {
+        "itemId": "ITEMID_MENTARUHAABU",
+        "rate": 1
+      },
+      "item_16": {
+        "itemId": "ITEMID_AKAIITO",
+        "rate": 1
+      },
+      "item_17": {
+        "itemId": "ITEMID_TABENOKOSI",
+        "rate": 1
+      },
+      "item_18": {
+        "itemId": "ITEMID_TAIYOUNOISI",
+        "rate": 7
+      },
+      "item_19": {
+        "itemId": "ITEMID_TUKINOISI",
+        "rate": 7
+      },
+      "item_20": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_21": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_22": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    },
+    {
+      "item_01": {
+        "itemId": "ITEMID_GENKINOKAKERA",
+        "rate": 15
+      },
+      "item_02": {
+        "itemId": "ITEMID_SUGOIKIZUGUSURI",
+        "rate": 20
+      },
+      "item_03": {
+        "itemId": "ITEMID_MANTANNOKUSURI",
+        "rate": 10
+      },
+      "item_04": {
+        "itemId": "ITEMID_GENKINOKATAMARI",
+        "rate": 10
+      },
+      "item_05": {
+        "itemId": "ITEMID_PIIPIIRIKABAA",
+        "rate": 5
+      },
+      "item_06": {
+        "itemId": "ITEMID_PIIPIIEIDAA",
+        "rate": 3
+      },
+      "item_07": {
+        "itemId": "ITEMID_PIIPIIMAKKUSU",
+        "rate": 1
+      },
+      "item_08": {
+        "itemId": "ITEMID_HUSIGINAAME",
+        "rate": 3
+      },
+      "item_09": {
+        "itemId": "ITEMID_POINTOAPPU",
+        "rate": 3
+      },
+      "item_10": {
+        "itemId": "ITEMID_KINNOTAMA",
+        "rate": 5
+      },
+      "item_11": {
+        "itemId": "ITEMID_KAORUKINOKO",
+        "rate": 3
+      },
+      "item_12": {
+        "itemId": "ITEMID_DEKAIKINNOTAMA",
+        "rate": 3
+      },
+      "item_13": {
+        "itemId": "ITEMID_SIROIHAABU",
+        "rate": 1
+      },
+      "item_14": {
+        "itemId": "ITEMID_PAWAHURUHAABU",
+        "rate": 1
+      },
+      "item_15": {
+        "itemId": "ITEMID_MENTARUHAABU",
+        "rate": 1
+      },
+      "item_16": {
+        "itemId": "ITEMID_AKAIITO",
+        "rate": 1
+      },
+      "item_17": {
+        "itemId": "ITEMID_TABENOKOSI",
+        "rate": 1
+      },
+      "item_18": {
+        "itemId": "ITEMID_TAIYOUNOISI",
+        "rate": 7
+      },
+      "item_19": {
+        "itemId": "ITEMID_TUKINOISI",
+        "rate": 7
+      },
+      "item_20": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_21": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_22": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    },
+    {
+      "item_01": {
+        "itemId": "ITEMID_SUGOIKIZUGUSURI",
+        "rate": 20
+      },
+      "item_02": {
+        "itemId": "ITEMID_MANTANNOKUSURI",
+        "rate": 20
+      },
+      "item_03": {
+        "itemId": "ITEMID_GENKINOKATAMARI",
+        "rate": 10
+      },
+      "item_04": {
+        "itemId": "ITEMID_PIIPIIEIDAA",
+        "rate": 4
+      },
+      "item_05": {
+        "itemId": "ITEMID_PIIPIIMAKKUSU",
+        "rate": 2
+      },
+      "item_06": {
+        "itemId": "ITEMID_HUSIGINAAME",
+        "rate": 4
+      },
+      "item_07": {
+        "itemId": "ITEMID_POINTOAPPU",
+        "rate": 4
+      },
+      "item_08": {
+        "itemId": "ITEMID_KINNOTAMA",
+        "rate": 5
+      },
+      "item_09": {
+        "itemId": "ITEMID_KAORUKINOKO",
+        "rate": 5
+      },
+      "item_10": {
+        "itemId": "ITEMID_DEKAIKINNOTAMA",
+        "rate": 6
+      },
+      "item_11": {
+        "itemId": "ITEMID_SIROIHAABU",
+        "rate": 1
+      },
+      "item_12": {
+        "itemId": "ITEMID_PAWAHURUHAABU",
+        "rate": 1
+      },
+      "item_13": {
+        "itemId": "ITEMID_MENTARUHAABU",
+        "rate": 1
+      },
+      "item_14": {
+        "itemId": "ITEMID_AKAIITO",
+        "rate": 1
+      },
+      "item_15": {
+        "itemId": "ITEMID_TABENOKOSI",
+        "rate": 1
+      },
+      "item_16": {
+        "itemId": "ITEMID_TAIYOUNOISI",
+        "rate": 7
+      },
+      "item_17": {
+        "itemId": "ITEMID_TUKINOISI",
+        "rate": 7
+      },
+      "item_18": {
+        "itemId": "ITEMID_GINNOOUKAN",
+        "rate": 1
+      },
+      "item_19": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_20": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_21": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_22": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    },
+    {
+      "item_01": {
+        "itemId": "ITEMID_SUGOIKIZUGUSURI",
+        "rate": 10
+      },
+      "item_02": {
+        "itemId": "ITEMID_MANTANNOKUSURI",
+        "rate": 20
+      },
+      "item_03": {
+        "itemId": "ITEMID_GENKINOKATAMARI",
+        "rate": 10
+      },
+      "item_04": {
+        "itemId": "ITEMID_PIIPIIEIDAA",
+        "rate": 5
+      },
+      "item_05": {
+        "itemId": "ITEMID_PIIPIIMAKKUSU",
+        "rate": 3
+      },
+      "item_06": {
+        "itemId": "ITEMID_HUSIGINAAME",
+        "rate": 4
+      },
+      "item_07": {
+        "itemId": "ITEMID_POINTOAPPU",
+        "rate": 4
+      },
+      "item_08": {
+        "itemId": "ITEMID_KINNOTAMA",
+        "rate": 5
+      },
+      "item_09": {
+        "itemId": "ITEMID_KAORUKINOKO",
+        "rate": 5
+      },
+      "item_10": {
+        "itemId": "ITEMID_DEKAIKINNOTAMA",
+        "rate": 8
+      },
+      "item_11": {
+        "itemId": "ITEMID_SIROIHAABU",
+        "rate": 1
+      },
+      "item_12": {
+        "itemId": "ITEMID_PAWAHURUHAABU",
+        "rate": 1
+      },
+      "item_13": {
+        "itemId": "ITEMID_MENTARUHAABU",
+        "rate": 1
+      },
+      "item_14": {
+        "itemId": "ITEMID_AKAIITO",
+        "rate": 1
+      },
+      "item_15": {
+        "itemId": "ITEMID_TABENOKOSI",
+        "rate": 1
+      },
+      "item_16": {
+        "itemId": "ITEMID_TAIYOUNOISI",
+        "rate": 10
+      },
+      "item_17": {
+        "itemId": "ITEMID_TUKINOISI",
+        "rate": 10
+      },
+      "item_18": {
+        "itemId": "ITEMID_GINNOOUKAN",
+        "rate": 1
+      },
+      "item_19": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_20": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_21": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_22": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    },
+    {
+      "item_01": {
+        "itemId": "ITEMID_MANTANNOKUSURI",
+        "rate": 20
+      },
+      "item_02": {
+        "itemId": "ITEMID_GENKINOKATAMARI",
+        "rate": 10
+      },
+      "item_03": {
+        "itemId": "ITEMID_PIIPIIEIDAA",
+        "rate": 5
+      },
+      "item_04": {
+        "itemId": "ITEMID_PIIPIIMAKKUSU",
+        "rate": 5
+      },
+      "item_05": {
+        "itemId": "ITEMID_HUSIGINAAME",
+        "rate": 5
+      },
+      "item_06": {
+        "itemId": "ITEMID_POINTOAPPU",
+        "rate": 5
+      },
+      "item_07": {
+        "itemId": "ITEMID_KINNOTAMA",
+        "rate": 5
+      },
+      "item_08": {
+        "itemId": "ITEMID_KAORUKINOKO",
+        "rate": 5
+      },
+      "item_09": {
+        "itemId": "ITEMID_DEKAIKINNOTAMA",
+        "rate": 10
+      },
+      "item_10": {
+        "itemId": "ITEMID_SIROIHAABU",
+        "rate": 1
+      },
+      "item_11": {
+        "itemId": "ITEMID_PAWAHURUHAABU",
+        "rate": 1
+      },
+      "item_12": {
+        "itemId": "ITEMID_MENTARUHAABU",
+        "rate": 1
+      },
+      "item_13": {
+        "itemId": "ITEMID_AKAIITO",
+        "rate": 1
+      },
+      "item_14": {
+        "itemId": "ITEMID_TABENOKOSI",
+        "rate": 1
+      },
+      "item_15": {
+        "itemId": "ITEMID_TAIYOUNOISI",
+        "rate": 12
+      },
+      "item_16": {
+        "itemId": "ITEMID_TUKINOISI",
+        "rate": 12
+      },
+      "item_17": {
+        "itemId": "ITEMID_GINNOOUKAN",
+        "rate": 1
+      },
+      "item_18": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_19": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_20": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_21": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_22": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_23": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_24": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_25": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_26": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_27": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_28": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_29": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      },
+      "item_30": {
+        "itemId": "ITEMID_NONE",
+        "rate": 0
+      }
+    }
+  ]
+}

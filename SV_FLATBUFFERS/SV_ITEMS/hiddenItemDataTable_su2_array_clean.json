@@ -1,0 +1,746 @@
+{
+  "values": [
+    {
+      "table_Id": "20001",
+      "item_1": {
+        "itemId": "ITEMID_TAIRYOKUNOHANE",
+        "emergePercent": 130,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_KINRYOKUNOHANE",
+        "emergePercent": 130,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_TEIKOUNOHANE",
+        "emergePercent": 130,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_TIRYOKUNOHANE",
+        "emergePercent": 130,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_SEISINNOHANE",
+        "emergePercent": 130,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_SYUNPATUNOHANE",
+        "emergePercent": 130,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_HOSINOSUNA",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_KAWARAZUNOISI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI314",
+        "emergePercent": 70,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      }
+    },
+    {
+      "table_Id": "20002",
+      "item_1": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_KURABONOMI",
+        "emergePercent": 110,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_KAGONOMI",
+        "emergePercent": 110,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_MOMONNOMI",
+        "emergePercent": 110,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_TIIGONOMI",
+        "emergePercent": 110,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_NANASINOMI",
+        "emergePercent": 110,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_KIINOMI",
+        "emergePercent": 110,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 90,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI283",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_SOZAI285",
+        "emergePercent": 50,
+        "dropCount": 1
+      }
+    },
+    {
+      "table_Id": "20003",
+      "item_1": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_HOSINOSUNA",
+        "emergePercent": 80,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 200,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_OBONNOMI",
+        "emergePercent": 180,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_KATAIISI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_KARUISI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_KAWARAZUNOISI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_KITYOUNAHONE",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI287",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_SOZAI290",
+        "emergePercent": 50,
+        "dropCount": 1
+      }
+    },
+    {
+      "table_Id": "20014",
+      "item_1": {
+        "itemId": "ITEMID_GARANATUNOEDA",
+        "emergePercent": 800,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_GARANATUNOEDA",
+        "emergePercent": 150,
+        "dropCount": 2
+      },
+      "item_3": {
+        "itemId": "ITEMID_GARANATUNOEDA",
+        "emergePercent": 50,
+        "dropCount": 3
+      },
+      "item_4": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_5": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_6": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_7": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_8": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_9": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_10": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      }
+    },
+    {
+      "table_Id": "20004",
+      "item_1": {
+        "itemId": "ITEMID_TIISANAKINOKO",
+        "emergePercent": 200,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_HOSINOSUNA",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_YAWARAKAISUNA",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_KARUISI",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_KAWARAZUNOISI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_MIZUNOISI",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI312",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_SOZAI313",
+        "emergePercent": 50,
+        "dropCount": 1
+      }
+    },
+    {
+      "table_Id": "20005",
+      "item_1": {
+        "itemId": "ITEMID_TAIRYOKUNOHANE",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_KINRYOKUNOHANE",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_TEIKOUNOHANE",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_TIRYOKUNOHANE",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_SEISINNOHANE",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_SYUNPATUNOHANE",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_SOZAI282",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_SOZAI312",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_10": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      }
+    },
+    {
+      "table_Id": "20006",
+      "item_1": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_OBONNOMI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_FIRANOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_UINOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_MAGONOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_BANZINOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_IANOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI281",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_SOZAI285",
+        "emergePercent": 50,
+        "dropCount": 1
+      }
+    },
+    {
+      "table_Id": "20007",
+      "item_1": {
+        "itemId": "ITEMID_TIISANAKINOKO",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_HOSINOSUNA",
+        "emergePercent": 75,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_ORENNOMI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_OBONNOMI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_KITYOUNAHONE",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_SOZAI288",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI314",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      }
+    },
+    {
+      "table_Id": "20008",
+      "item_1": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_HOSINOSUNA",
+        "emergePercent": 75,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_OBONNOMI",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_ORENNOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_OBONNOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_RAMUNOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_KITYOUNAHONE",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_KATAIISI",
+        "emergePercent": 50,
+        "dropCount": 1
+      }
+    },
+    {
+      "table_Id": "20009",
+      "item_1": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 200,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_ZAROKUNOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_NEKOBUNOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_TAPORUNOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_ROMENOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_UBUNOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_MATOMANOMI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI296",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_SOZAI286",
+        "emergePercent": 50,
+        "dropCount": 1
+      }
+    },
+    {
+      "table_Id": "20010",
+      "item_1": {
+        "itemId": "ITEMID_TIISANAKINOKO",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_HOSINOSUNA",
+        "emergePercent": 75,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_ORENNOMI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_OBONNOMI",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_KITYOUNAHONE",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_SOZAI293",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI288",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      }
+    },
+    {
+      "table_Id": "20011",
+      "item_1": {
+        "itemId": "ITEMID_KATAIISI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_KARUISI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_KAWARAZUNOISI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_MEZAMEISI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_HOSINOSUNA",
+        "emergePercent": 75,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_HOSINOKAKERA",
+        "emergePercent": 25,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_KITYOUNAHONE",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI304",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      }
+    },
+    {
+      "table_Id": "20012",
+      "item_1": {
+        "itemId": "ITEMID_TAIRYOKUNOHANE",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_KINRYOKUNOHANE",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_TEIKOUNOHANE",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_TIRYOKUNOHANE",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_SEISINNOHANE",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_SYUNPATUNOHANE",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_MIZUNOISI",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_SOZAI284",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_SOZAI291",
+        "emergePercent": 50,
+        "dropCount": 1
+      }
+    },
+    {
+      "table_Id": "20013",
+      "item_1": {
+        "itemId": "ITEMID_TIISANAKINOKO",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_KIREINAHANE",
+        "emergePercent": 75,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_HOSINOSUNA",
+        "emergePercent": 50,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_ORENNOMI",
+        "emergePercent": 175,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_HIMERINOMI",
+        "emergePercent": 150,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_OBONNOMI",
+        "emergePercent": 125,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_TUMETAIIWA",
+        "emergePercent": 75,
+        "dropCount": 1
+      },
+      "item_8": {
+        "itemId": "ITEMID_YUKIDAMA",
+        "emergePercent": 75,
+        "dropCount": 1
+      },
+      "item_9": {
+        "itemId": "ITEMID_TOKENAIKOORI",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_10": {
+        "itemId": "ITEMID_KOORINOISI",
+        "emergePercent": 50,
+        "dropCount": 1
+      }
+    }
+  ]
+}

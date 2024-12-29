@@ -1,0 +1,57 @@
+{
+  "values": [
+    {
+      "table_Id": "100001",
+      "item_1": {
+        "itemId": "ITEMID_HOSINOSUNA",
+        "emergePercent": 225,
+        "dropCount": 1
+      },
+      "item_2": {
+        "itemId": "ITEMID_HOSINOKAKERA",
+        "emergePercent": 100,
+        "dropCount": 1
+      },
+      "item_3": {
+        "itemId": "ITEMID_GENKINOKAKERA",
+        "emergePercent": 225,
+        "dropCount": 1
+      },
+      "item_4": {
+        "itemId": "ITEMID_GENKINOKATAMARI",
+        "emergePercent": 10,
+        "dropCount": 1
+      },
+      "item_5": {
+        "itemId": "ITEMID_KATAIISI",
+        "emergePercent": 350,
+        "dropCount": 1
+      },
+      "item_6": {
+        "itemId": "ITEMID_SOZAI177",
+        "emergePercent": 90,
+        "dropCount": 1
+      },
+      "item_7": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_8": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_9": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      },
+      "item_10": {
+        "itemId": "ITEMID_NONE",
+        "emergePercent": 0,
+        "dropCount": 0
+      }
+    }
+  ]
+}

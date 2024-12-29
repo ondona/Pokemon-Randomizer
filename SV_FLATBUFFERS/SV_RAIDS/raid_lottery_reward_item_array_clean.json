@@ -1,0 +1,7885 @@
+{
+  "values": [
+    {
+      "table_name": 12665484173717205406,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1,
+        "rate": 50,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 50,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MONSUTAABOORU",
+        "num": 100,
+        "rate": 500,
+        "rare_item_flag": true
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 12768795081099901129,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1,
+        "rate": 2200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ORENNOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MOMONNOMI",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIIGONOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SINZYU",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 668479594417095103,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1,
+        "rate": 2200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KURABONOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MOMONNOMI",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIIGONOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOSUNA",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 679833151487731189,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1,
+        "rate": 2200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MOMONNOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIIGONOMI",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NANASINOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIISANAKINOKO",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 17668059097480846072,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1,
+        "rate": 2200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIIGONOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NANASINOMI",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAGONOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SINZYU",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 16164448039046184704,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1,
+        "rate": 2200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NANASINOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAGONOMI",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KIINOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOSUNA",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 15162778972308788368,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1,
+        "rate": 2200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 1,
+        "rate": 850,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KIINOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAGONOMI",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NANASINOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIISANAKINOKO",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 6127935918080434284,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ORENNOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MOMONNOMI",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIIGONOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SINZYU",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 875344009101998740,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KURABONOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MOMONNOMI",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIIGONOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOSUNA",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 863845316496438802,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MOMONNOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIIGONOMI",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NANASINOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIISANAKINOKO",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 15677658920486028021,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIIGONOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NANASINOMI",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAGONOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SINZYU",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 18349317780833198619,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NANASINOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAGONOMI",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KIINOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOSUNA",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 18274910994316513853,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KIINOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAGONOMI",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NANASINOMI",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIISANAKINOKO",
+        "num": 1,
+        "rate": 3000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8835428215795829081,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1400,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_FIRANOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOKAKERA",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOSUNA",
+        "num": 1,
+        "rate": 2500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8835424917260944448,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1400,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_IANOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SINZYU",
+        "num": 1,
+        "rate": 2500,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINASINZYU",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8835426016772572659,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1400,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OBONNOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINAKINOKO",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIISANAKINOKO",
+        "num": 1,
+        "rate": 2500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8835431514330713714,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1400,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_BANZINOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOKAKERA",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOSUNA",
+        "num": 1,
+        "rate": 2500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8835432613842341925,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1400,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_UINOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SINZYU",
+        "num": 1,
+        "rate": 2500,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINASINZYU",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8835429315307457292,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1400,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MAGONOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIISANAKINOKO",
+        "num": 1,
+        "rate": 2500,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINAKINOKO",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 6567691901553146942,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_FIRANOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NEKOBUNOMI",
+        "num": 3,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOKAKERA",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 900,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 6567690802041518731,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_IANOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAPORUNOMI",
+        "num": 3,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINASINZYU",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 900,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 6567689702529890520,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OBONNOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ZAROKUNOMI",
+        "num": 3,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINAKINOKO",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 900,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 6567697399111287997,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_UINOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ROMENOMI",
+        "num": 3,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOKAKERA",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 900,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 6567696299599659786,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_BANZINOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_UBUNOMI",
+        "num": 3,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINASINZYU",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 900,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 6567695200088031575,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MAGONOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_RAMUNOMI",
+        "num": 1,
+        "rate": 700,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MATOMANOMI",
+        "num": 3,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINAKINOKO",
+        "num": 1,
+        "rate": 1500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_09": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 900,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_15": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 11960178471819505075,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 1100,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NEKOBUNOMI",
+        "num": 3,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOKAKERA",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SUISEINOKAKERA",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU5",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_IZIPPARIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SAMISIGARIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_YANTYAMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_YUKANMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 550,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 11960179571331133286,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 1100,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAPORUNOMI",
+        "num": 3,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINASINZYU",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ODANGOSINZYU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU2",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ZUBUTOIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_WANPAKUMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NOUTENKIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONKIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 550,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 11960180670842761497,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 1100,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ZAROKUNOMI",
+        "num": 3,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINAKINOKO",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAORUKINOKO",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU5",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU1",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU2",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU4",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU3",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 550,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 11960181770354389708,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 1100,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ROMENOMI",
+        "num": 3,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOKAKERA",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SUISEINOKAKERA",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU4",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HIKAEMEMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OTTORIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_UKKARIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_REISEIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 550,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 11960182869866017919,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 1100,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_UBUNOMI",
+        "num": 3,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINASINZYU",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ODANGOSINZYU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU3",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ODAYAKAMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OTONASIIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SINTYOUMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NAMAIKIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 550,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 11960183969377646130,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 2300,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 1100,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_UBUNOMI",
+        "num": 3,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINAKINOKO",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAORUKINOKO",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU1",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_YOUKIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MUJYAKIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SEKKTIMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OKUBYOUMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 550,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8092679411244492160,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOKAKERA",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SUISEINOKAKERA",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU5",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_IZIPPARIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SAMISIGARIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_YANTYAMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_YUKANMINTO",
+        "num": 1,
+        "rate": 250,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIPATTI",
+        "num": 1,
+        "rate": 100,
+        "rare_item_flag": true
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8092682709779376793,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINASINZYU",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ODANGOSINZYU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU2",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ZUBUTOIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_WANPAKUMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NOUTENKIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONKIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIPATTI",
+        "num": 1,
+        "rate": 100,
+        "rare_item_flag": true
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8092681610267748582,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINAKINOKO",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAORUKINOKO",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU5",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU1",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU2",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU4",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU3",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIPATTI",
+        "num": 1,
+        "rate": 100,
+        "rare_item_flag": true
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8092684908802633215,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HOSINOKAKERA",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SUISEINOKAKERA",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU4",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HIKAEMEMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OTTORIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_UKKARIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_REISEIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIPATTI",
+        "num": 1,
+        "rate": 100,
+        "rare_item_flag": true
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8092683809291005004,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINASINZYU",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ODANGOSINZYU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU3",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_ODAYAKAMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OTONASIIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SINTYOUMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NAMAIKIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIPATTI",
+        "num": 1,
+        "rate": 100,
+        "rare_item_flag": true
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    },
+    {
+      "table_name": 8092687107825889637,
+      "reward_item_00": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1,
+        "rate": 1200,
+        "rare_item_flag": false
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 2,
+        "rate": 800,
+        "rare_item_flag": false
+      },
+      "reward_item_02": {
+        "category": "ITEM",
+        "itemID": "ITEMID_HUSIGINAAME",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OOKINAKINOKO",
+        "num": 1,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KAORUKINOKO",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": false
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "itemID": "ITEMID_KINNOTAMA",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TAKARASUPAISU1",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": true
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "itemID": "ITEMID_YOUKIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "itemID": "ITEMID_MUJYAKIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "itemID": "ITEMID_SEKKTIMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "itemID": "ITEMID_OKUBYOUMINTO",
+        "num": 1,
+        "rate": 300,
+        "rare_item_flag": false
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "itemID": "ITEMID_POINTOAPPU",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "itemID": "ITEMID_GINNOOUKAN",
+        "num": 1,
+        "rate": 400,
+        "rare_item_flag": true
+      },
+      "reward_item_15": {
+        "category": "GEM",
+        "itemID": "ITEMID_NONE",
+        "num": 1,
+        "rate": 500,
+        "rare_item_flag": false
+      },
+      "reward_item_16": {
+        "category": "POKE",
+        "itemID": "ITEMID_NONE",
+        "num": 2,
+        "rate": 1000,
+        "rare_item_flag": false
+      },
+      "reward_item_17": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIKAPUSERU",
+        "num": 1,
+        "rate": 200,
+        "rare_item_flag": true
+      },
+      "reward_item_18": {
+        "category": "ITEM",
+        "itemID": "ITEMID_TOKUSEIPATTI",
+        "num": 1,
+        "rate": 100,
+        "rare_item_flag": true
+      },
+      "reward_item_19": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_20": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_21": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_22": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_23": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_24": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_25": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_26": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_27": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_28": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      },
+      "reward_item_29": {
+        "category": "ITEM",
+        "itemID": "ITEMID_NONE",
+        "num": 0,
+        "rate": 0,
+        "rare_item_flag": false
+      }
+    }
+  ]
+}

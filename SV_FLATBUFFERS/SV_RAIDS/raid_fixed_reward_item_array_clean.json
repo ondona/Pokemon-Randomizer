@@ -1,0 +1,3445 @@
+{
+  "values": [
+    {
+      "table_name": 12665484173717205406,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_MONSUTAABOORU",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "POKE",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_03": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 971768233462174768,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 13967968057318937848,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 13964306683597752118,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 4079204644669103737,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 4461632780080010991,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 1453407049952680673,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_1",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 13962751043364178541,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 3
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 7425207459411916467,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 3
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 7413752747271484969,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 3
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 18330603432922962524,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 3
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 4252614494071568324,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 3
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 2509815283604296356,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 3
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 1
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_05": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_06": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8835428215795829081,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8835424917260944448,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8835426016772572659,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8835431514330713714,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8835432613842341925,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8835429315307457292,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_2",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 6567691901553146942,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 4
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 6567690802041518731,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 4
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 6567689702529890520,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 4
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 6567697399111287997,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 4
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 6567696299599659786,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 4
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 6567695200088031575,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_3",
+        "num": 2
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 4
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 2
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 1
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 11960178471819505075,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 11960179571331133286,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 11960180670842761497,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 11960181770354389708,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 11960182869866017919,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 11960183969377646130,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 1
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 2
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8092679411244492160,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 4
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KINRYOKUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8092682709779376793,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 4
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TEIKOUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8092681610267748582,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 4
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TAIRYOKUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8092684908802633215,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 4
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_TIRYOKUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8092683809291005004,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 4
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SEISINNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    },
+    {
+      "table_name": 8092687107825889637,
+      "reward_item_00": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_4",
+        "num": 4
+      },
+      "reward_item_01": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_KEIKENTIAME_5",
+        "num": 1
+      },
+      "reward_item_02": {
+        "category": "POKE",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 5
+      },
+      "reward_item_03": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_SYUNPATUNOHANE",
+        "num": 3
+      },
+      "reward_item_04": {
+        "category": "POKE",
+        "subject_type": "CLIENT",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_05": {
+        "category": "GEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_06": {
+        "category": "GEM",
+        "subject_type": "HOST",
+        "itemID": "ITEMID_NONE",
+        "num": 3
+      },
+      "reward_item_07": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_08": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_09": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_10": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_11": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_12": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_13": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      },
+      "reward_item_14": {
+        "category": "ITEM",
+        "subject_type": "ALL",
+        "itemID": "ITEMID_NONE",
+        "num": 0
+      }
+    }
+  ]
+}

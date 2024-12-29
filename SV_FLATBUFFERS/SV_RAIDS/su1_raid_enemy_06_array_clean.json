@@ -1,0 +1,3644 @@
+{
+  "values": [
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16001,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092683809291005004,
+        "dropTableRandom": 8092683809291005004,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_PIKUSII",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_MUUNFOOSU",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_SAIKOKINESISU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_KOMETTOPANTI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_ANKOORU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 65,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 35,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 95,
+            "wazano": "WAZA_ANKOORU"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 40,
+            "wazano": "WAZA_MAZIKARUSYAIN"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 41,
+            "wazano": "WAZA_MAZIKARUSYAIN"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 60,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 20,
+            "wazano": "WAZA_MEISOU"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16002,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092683809291005004,
+        "dropTableRandom": 8092683809291005004,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_KYUUKON",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_KAENHOUSYA",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_ZINTUURIKI",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_ONIBI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_SITTONOHONOO",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 50,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 30,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 90,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 75,
+            "wazano": "WAZA_NEPPUU"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 25,
+            "wazano": "WAZA_NIHONBARE"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 10,
+            "wazano": "WAZA_NEPPUU"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16003,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092681610267748582,
+        "dropTableRandom": 8092681610267748582,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_NYOROBON",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_KAWARAWARI",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_AKUABUREIKU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_KIAIDAMA",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_KUROIKIRI",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 65,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 35,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 95,
+            "wazano": "WAZA_AMAGOI"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 70,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 45,
+            "wazano": "WAZA_BIRUDOAPPU"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 20,
+            "wazano": "WAZA_BIRUDOAPPU"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16004,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092684908802633215,
+        "dropTableRandom": 8092684908802633215,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_NYOROTONO",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_HIYAMIZU",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_NAMINORI",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_REITOUBIIMU",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_ANKOORU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 60,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 30,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 85,
+            "wazano": "WAZA_HIYAMIZU"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 70,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 30,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 29,
+            "wazano": "WAZA_DOWASURE"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16005,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092682709779376793,
+        "dropTableRandom": 8092682709779376793,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_GOROONYA",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_ZISIN",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_IWANADARE",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_ZITABATA",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_UTIOTOSU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 80,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 40,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 95,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 85,
+            "wazano": "WAZA_SUTOONEZZI"
+          },
+          "extraAction3": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 45,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 30,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 29,
+            "wazano": "WAZA_TEPPEKI"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16006,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092681610267748582,
+        "dropTableRandom": 8092681610267748582,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_KABIGON",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_KARAGENKI",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_KAMIKUDAKU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_AKUBI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_HEBIIBONBAA",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 75,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 40,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 95,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 70,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 20,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "TYPE_B",
+        "no": 16007,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092687107825889637,
+        "dropTableRandom": 8092687107825889637,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_ETEBOOSU",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_DABURUATAKKU",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_REITOUPANTI",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_HONOONOPANTI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_KAMINARIPANTI",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 50,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 90,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 89,
+            "wazano": "WAZA_IYANAOTO"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 20,
+            "wazano": "WAZA_DABURUATAKKU"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16008,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092684908802633215,
+        "dropTableRandom": 8092684908802633215,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_MEGAYANMA",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_MUSINOSAZAMEKI",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_EASURASSYU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_DENKOUSEKKA",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_GENSINOTIKARA",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 50,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 95,
+            "wazano": "WAZA_GENSINOTIKARA"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 85,
+            "wazano": "WAZA_GENSINOTIKARA"
+          },
+          "extraAction3": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 35,
+            "wazano": "WAZA_GENSINOTIKARA"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "TYPE_A",
+        "no": 16009,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092682709779376793,
+        "dropTableRandom": 8092682709779376793,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_GURAION",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_AKUROBATTO",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_HATAKIOTOSU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_DENKOUSEKKA",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_ZISIN",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 65,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 35,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 100,
+            "wazano": "WAZA_SUNAARASI"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 75,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 40,
+            "wazano": "WAZA_TURUGINOMAI"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 15,
+            "wazano": "WAZA_SUNAARASI"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 5,
+            "wazano": "WAZA_ZISIN"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16010,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092679411244492160,
+        "dropTableRandom": 8092679411244492160,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_MANMUU",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_TURARAOTOSI",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_KOORINOTUBUTE",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_ZINARASI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_HURIIZUDORAI",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 70,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 40,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 100,
+            "wazano": "WAZA_YUKIGESIKI"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 75,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 50,
+            "wazano": "WAZA_DOWASURE"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 10,
+            "wazano": "WAZA_ZISIN"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 45,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16011,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092683809291005004,
+        "dropTableRandom": 8092683809291005004,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_RUNPAPPA",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_ENAZIIBOORU",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_HAIDOROPONPU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_NEKODAMASI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_HIYAMIZU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 45,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 100,
+            "wazano": "WAZA_AMAGOI"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 90,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 70,
+            "wazano": "WAZA_HIYAMIZU"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 20,
+            "wazano": "WAZA_HURAHURADANSU"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16012,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092687107825889637,
+        "dropTableRandom": 8092687107825889637,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_DAATENGU",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_RIIHUBUREEDO",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_HUIUTI",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_NEKODAMASI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_ZINTUURIKI",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 45,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 100,
+            "wazano": "WAZA_NIHONBARE"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 90,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 70,
+            "wazano": "WAZA_KUSAWAKE"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 30,
+            "wazano": "WAZA_TURUGINOMAI"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16013,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092679411244492160,
+        "dropTableRandom": 8092679411244492160,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_SIZARIGAA",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_AKUAJETTO",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_KURABUHANMAA",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_KAMIKUDAKU",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_GIGAINPAKUTO",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 50,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 90,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 65,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 60,
+            "wazano": "WAZA_NIRAMITUKERU"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 30,
+            "wazano": "WAZA_TURUGINOMAI"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16014,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092683809291005004,
+        "dropTableRandom": 8092683809291005004,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_MIROKAROSU",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_RYUUNOHADOU",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_MIZUNOHADOU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_SINPINOMAMORI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_AKUATEERU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 60,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 30,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 99,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 75,
+            "wazano": "WAZA_TOGUROWOMAKU"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 70,
+            "wazano": "WAZA_SAIMINZYUTU"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 60,
+            "wazano": "WAZA_AMAGOI"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 10,
+            "wazano": "WAZA_SAIMINZYUTU"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16015,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092682709779376793,
+        "dropTableRandom": 8092682709779376793,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_YONOWAARU",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_PORUTAAGAISUTO",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_AKUNOHADOU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_ONIBI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_REITOUPANTI",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 50,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 95,
+            "wazano": "WAZA_ZYUURYOKU"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 70,
+            "wazano": "WAZA_URAMI"
+          },
+          "extraAction3": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 30,
+            "wazano": "WAZA_URAMI"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 10,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16016,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092679411244492160,
+        "dropTableRandom": 8092679411244492160,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_ROOBUSIN",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_IWANADARE",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_INFAITO",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_MAHHAPANTI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_TATAKITUKERU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 65,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 35,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 90,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 89,
+            "wazano": "WAZA_BIRUDOAPPU"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 49,
+            "wazano": "WAZA_BIRUDOAPPU"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 30,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16017,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092679411244492160,
+        "dropTableRandom": 8092679411244492160,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_HAHAKOMORI",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_RIIHUBUREEDO",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_SIZAAKUROSU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_GURASUSURAIDAA",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_NEBANEBANETTO",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 45,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 20,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 95,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 90,
+            "wazano": "WAZA_GURASUFIIRUDO"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 30,
+            "wazano": "WAZA_TURUGINOMAI"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16018,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092684908802633215,
+        "dropTableRandom": 8092684908802633215,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_SYANDERA",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_KAENHOUSYA",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_SYADOOBOORU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_ONIBI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_PORUTAAGAISUTO",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 40,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 20,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 90,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 75,
+            "wazano": "WAZA_NEPPUU"
+          },
+          "extraAction3": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 40,
+            "wazano": "WAZA_NIHONBARE"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 35,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16019,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092687107825889637,
+        "dropTableRandom": 8092687107825889637,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_KOZYONDO",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_TUBAMEGAESI",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_KAWARAWARI",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_HADOUDAN",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_KISIKAISEI",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 50,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 90,
+            "wazano": "WAZA_MEISOU"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 65,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 40,
+            "wazano": "WAZA_MEISOU"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 20,
+            "wazano": "WAZA_HADOUDAN"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16020,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092683809291005004,
+        "dropTableRandom": 8092683809291005004,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_BARUZIINA",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_DABURUUINGU",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_AKUNOHADOU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_DOKUDOKU",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_BOONRASSYU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 60,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 30,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 95,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 90,
+            "wazano": "WAZA_BAAKUAUTO"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 75,
+            "wazano": "WAZA_BAAKUAUTO"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 40,
+            "wazano": "WAZA_BAAKUAUTO"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16021,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092679411244492160,
+        "dropTableRandom": 8092679411244492160,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_OOROTTO",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_UDDOHANMAA",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_SYADOOKUROO",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_MORINONOROI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_ONIBI",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 55,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 35,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 100,
+            "wazano": "WAZA_GURASUFIIRUDO"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 75,
+            "wazano": "WAZA_KANASIBARI"
+          },
+          "extraAction3": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 50,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 20,
+            "wazano": "WAZA_UDDOHANMAA"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16022,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092682709779376793,
+        "dropTableRandom": 8092682709779376793,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_ZYARARANGA",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_KIAIDAMA",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_DORAGONKUROO",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_AIANHEDDO",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_KOWAIKAO",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 60,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 35,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 75,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 60,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 45,
+            "wazano": "WAZA_SOURUBIITO"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 30,
+            "wazano": "WAZA_SOURUBIITO"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 10,
+            "wazano": "WAZA_KISIKAISEI"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "TYPE_B",
+        "no": 16023,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092679411244492160,
+        "dropTableRandom": 8092679411244492160,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_MORUPEKO",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_OORAGURUMA",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_UPPUNBARASI",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_DENZIHA",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_ITYAMON",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 40,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 20,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 100,
+            "wazano": "WAZA_TYOUHATU"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 75,
+            "wazano": "WAZA_TYOUHATU"
+          },
+          "extraAction3": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 30,
+            "wazano": "WAZA_EREKIFIIRUDO"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 25,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16024,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092682709779376793,
+        "dropTableRandom": 8092682709779376793,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_NUOO",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_ZISIN",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_AKUABUREIKU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_AKUBI",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_DOKUDOKU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 60,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 90,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 75,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 70,
+            "wazano": "WAZA_NOROI"
+          },
+          "extraAction4": {
+            "timming": "TIME",
+            "action": "GEM_COUNT",
+            "value": 40,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 30,
+            "wazano": "WAZA_AMAGOI"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "TYPE_A",
+        "no": 16025,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092681610267748582,
+        "dropTableRandom": 8092681610267748582,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_rBASURAO2",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_WHEEBUTAKKURU",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_AKUAJETTO",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_KAMIKUDAKU",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_KOWAIKAO",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 60,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 35,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 95,
+            "wazano": "WAZA_KOGOERUKAZE"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 80,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 60,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 50,
+            "wazano": "WAZA_AMAGOI"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 25,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "TYPE_B",
+        "no": 16026,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092681610267748582,
+        "dropTableRandom": 8092681610267748582,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_rBASURAO2",
+          "formId": 1,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_NAMINORI",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_AKUAJETTO",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_SYADOOBOORU",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_KOWAIKAO",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 60,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 35,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 95,
+            "wazano": "WAZA_KOGOERUKAZE"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 80,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 60,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 50,
+            "wazano": "WAZA_AMAGOI"
+          },
+          "extraAction5": {
+            "timming": "HP",
+            "action": "PLAYER_STATUS_RESET",
+            "value": 25,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16027,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092684908802633215,
+        "dropTableRandom": 8092684908802633215,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_MATCHA2",
+          "formId": 0,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_ENAZIIBOORU",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_SYADOOBOORU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_SIBIREGONA",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_NETTOU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 55,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 85,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 75,
+            "wazano": "WAZA_GURASUFIIRUDO"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 40,
+            "wazano": "WAZA_GURASUFIIRUDO"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 15,
+            "wazano": "WAZA_SHAKASHAKAHO"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 10,
+            "wazano": "WAZA_SHAKASHAKAHO"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    },
+    {
+      "raidEnemyInfo": {
+        "romVer": "BOTH",
+        "no": 16028,
+        "deliveryGroupID": 0,
+        "difficulty": 0,
+        "rate": 99,
+        "dropTableFix": 8092684908802633215,
+        "dropTableRandom": 8092684908802633215,
+        "captureRate": 1,
+        "captureLv": 75,
+        "bossPokePara": {
+          "devId": "DEV_MATCHA2",
+          "formId": 1,
+          "sex": "DEFAULT",
+          "item": "ITEMID_NONE",
+          "level": 90,
+          "ballId": "NONE",
+          "wazaType": "MANUAL",
+          "waza1": {
+            "wazaId": "WAZA_ENAZIIBOORU",
+            "pointUp": 0
+          },
+          "waza2": {
+            "wazaId": "WAZA_SYADOOBOORU",
+            "pointUp": 0
+          },
+          "waza3": {
+            "wazaId": "WAZA_SIBIREGONA",
+            "pointUp": 0
+          },
+          "waza4": {
+            "wazaId": "WAZA_NETTOU",
+            "pointUp": 0
+          },
+          "gemType": "RANDOM",
+          "seikaku": "DEFAULT",
+          "tokusei": "SET_3",
+          "talentType": "V_NUM",
+          "talentValue": {
+            "hp": 0,
+            "atk": 0,
+            "def": 0,
+            "spAtk": 0,
+            "spDef": 0,
+            "agi": 0
+          },
+          "talentVnum": 5,
+          "effortValue": {
+            "hp": 252,
+            "atk": 0,
+            "def": 128,
+            "spAtk": 0,
+            "spDef": 128,
+            "agi": 0
+          },
+          "rareType": "DEFAULT",
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossPokeSize": {
+          "heightType": "RANDOM",
+          "heigntValue": 0,
+          "weightType": "RANDOM",
+          "waightValue": 0,
+          "scaleType": "RANDOM",
+          "scaleValue": 0
+        },
+        "bossDesc": {
+          "hpCoef": 2500,
+          "powerChargeTrigerHp": 55,
+          "powerChargeTrigerTime": 40,
+          "powerChargeLimitTime": 9999,
+          "powerChargeCancelDamage": 25,
+          "powerChargePenaltyTime": 0,
+          "powerChargePenaltyAction": "WAZA_NULL",
+          "powerChargeDamageRate": 30,
+          "powerChargeGemDamageRate": 85,
+          "powerChargeChangeGemDamageRate": 55,
+          "extraAction1": {
+            "timming": "HP",
+            "action": "BOSS_STATUS_RESET",
+            "value": 85,
+            "wazano": "WAZA_NULL"
+          },
+          "extraAction2": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 75,
+            "wazano": "WAZA_GURASUFIIRUDO"
+          },
+          "extraAction3": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 40,
+            "wazano": "WAZA_GURASUFIIRUDO"
+          },
+          "extraAction4": {
+            "timming": "HP",
+            "action": "WAZA",
+            "value": 15,
+            "wazano": "WAZA_SHAKASHAKAHO"
+          },
+          "extraAction5": {
+            "timming": "TIME",
+            "action": "WAZA",
+            "value": 10,
+            "wazano": "WAZA_SHAKASHAKAHO"
+          },
+          "extraAction6": {
+            "timming": "NONE",
+            "action": "NONE",
+            "value": 0,
+            "wazano": "WAZA_NULL"
+          },
+          "doubleActionTrigerHp": 0,
+          "doubleActionTrigerTime": 0,
+          "doubleActionRate": 0
+        },
+        "raidTimeData": {
+          "isActive": true,
+          "gameLimit": 450,
+          "clientLimit": 0,
+          "commandLimit": 60,
+          "pokeReviveTime": 0,
+          "aiIntervalTime": 0,
+          "aiIntervalRand": 0
+        }
+      }
+    }
+  ]
+}
