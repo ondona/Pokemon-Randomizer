@@ -339,7 +339,7 @@ void SVStats::randomize_pokemon(){
                 std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
                 QString QBaseAddress = QString::fromStdString(filePath);
                 QDir qBaseDir(QBaseAddress);
-                std::ifstream fileEvos(qBaseDir.filePath("pokemon_mapping_evos.json").toStdString());
+                std::ifstream fileEvos(qBaseDir.filePath("pokemon_mapping.json").toStdString());
 
                 if (!fileEvos.is_open()) {
                     qDebug() << qBaseDir.filePath("pokemon_mapping_evos.json");

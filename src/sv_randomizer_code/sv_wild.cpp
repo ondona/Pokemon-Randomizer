@@ -129,7 +129,7 @@ bool SVWilds::randomize_paldea_wilds(int passedSeed, int run, std::string fileNa
         for(unsigned long long j =0; j<wildPokemonInfo["pokemons"][i]["forms"].size(); j++){
             if(wildPokemonInfo["pokemons"][i]["forms"][j]["is_present"] == true){
                 wildTemplate = {
-                    {"devid", int(i)},
+                    {"devid", int(wildPokemonInfo["pokemons"][i]["devid"])},
                     {"sex", "DEFAULT"},
                     {"formno", int(j)},
                     {"minlevel", 2},
