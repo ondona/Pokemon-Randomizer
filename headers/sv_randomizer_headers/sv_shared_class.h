@@ -2256,6 +2256,7 @@ public:
         {"Ultra Ball",{"HAIPAABOORU", "ITEMID_HAIPAABOORU"}},
         {"Master Ball",{"MASUTAABOORU", "ITEMID_MASUTAABOORU"}},
         {"Beast Ball",{"URUTORABOORU", "ITEMID_URUTORABOORU"}},
+        {"Cherish Ball", {"PURESYASUBOORU", "ITEMID_PURESYASUBOORU"}},
         {"Luxury Ball",{"GOOZYASUBOORU", "ITEMID_GOOZYASUBOORU"}},
         {"Timer Ball",{"TAIMAABOORU", "ITEMID_TAIMAABOORU"}},
         {"Net Ball",{"NETTOBOORU", "ITEMID_NETTOBOORU"}},

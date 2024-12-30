@@ -707,6 +707,9 @@ bool SVWilds::randomize_statics(int passedSeed, int run){
             formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
         }
 
+        if(getItemForPokemon(wildPokemonInfo["pokemons"][random]["natdex"], formRandom) != "ITEMID_NONE"){
+            formRandom = 0;
+        }
 
         paldeaFixedJSON["values"][i]["pokeDataSymbol"]["devId"] = wildPokemonInfo["pokemons"][random]["devName"];
         paldeaFixedJSON["values"][i]["pokeDataSymbol"]["formId"] = formRandom;

@@ -221,7 +221,7 @@ void MainWindow::updateFavorites() {
 }
 
 void MainWindow::checkForUpdates() {
-    QString currentVersion = "0.1.0";
+    QString currentVersion = "0.1.1";
 
     // Replace with actual owner and repo
     QString owner = "Gonzalooo";
@@ -252,10 +252,12 @@ void MainWindow::checkForUpdates() {
         QVersionNumber current = QVersionNumber::fromString(currentVersion);
         QVersionNumber latest = QVersionNumber::fromString(latestVersion.startsWith('v') ? latestVersion.mid(1) : latestVersion);
 
-        if (latest > current) {
-            QMessageBox::information(this, "Update Available", "A new version (" + latestVersion + ") is available!");
-        } else {
+        if (latest == current) {
             QMessageBox::information(this, "Up-to-date", "You are already using the latest version (" + currentVersion + ").");
+        } else if(latest > current) {
+            QMessageBox::information(this, "Update Available", "A new version (" + latestVersion + ") is available!");
+        }else{
+            QMessageBox::information(this, "Early Version in Use", "You are using version: " + currentVersion + '\n' + "Latest version released is: " + latestVersion);
         }
 
         reply->deleteLater();

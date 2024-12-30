@@ -221,6 +221,15 @@ bool SVRaids::randomize_paldean_raids(int passedSeed, int run, std::string fileN
                 }
             }
 
+            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["timming"] = "HP";
+            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["action"] = "WAZA";
+            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["value"] = int(85);
+            if(random != 1024){
+                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERABAASUTO";
+            }else{
+                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERAKURASUTAA";
+            }
+
             indexesChanged.insert(i);
         }
 
@@ -389,6 +398,15 @@ bool SVRaids::randomize_kitakami_raids(int passedSeed, int run, std::string file
                 }
             }
 
+            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["timming"] = "HP";
+            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["action"] = "WAZA";
+            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["value"] = int(85);
+            if(random != 1024){
+                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERABAASUTO";
+            }else{
+                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERAKURASUTAA";
+            }
+
             indexesChanged.insert(i);
         }
 
@@ -555,6 +573,15 @@ bool SVRaids::randomize_blueberry_raids(int passedSeed, int run, std::string fil
                 if(shiny_num == 1){
                     paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] = "RARE";
                 }
+            }
+
+            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["timming"] = "HP";
+            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["action"] = "WAZA";
+            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["value"] = int(85);
+            if(random != 1024){
+                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERABAASUTO";
+            }else{
+                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERAKURASUTAA";
             }
 
             indexesChanged.insert(i);
