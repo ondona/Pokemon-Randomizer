@@ -1,4 +1,4 @@
-#include "thirdparty/nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 #include "headers/sv_randomizer_headers/sv_shared_class.h"
 #include <QMap>
 #include <QVector>
@@ -23,14 +23,143 @@
 #include <flatbuffers/flatbuffers.h>
 #include <flatbuffers/verifier.h>
 #include <TrinitySceneObject_generated.h>
+#include <QProcess>
 
-#ifdef _WIN32
-#include <windows.h>
-#else
-#include <unistd.h>
-#endif
 
 namespace fs = std::filesystem;
+
+std::string SVShared::getPokemonItemId(int index, int form){
+    if (paradox.contains(index) && index != 1007 && index != 1008 && index != 1024) {
+        return "ITEMID_BUUSUTOENAJII";
+    }
+
+    switch (index) {
+        case 25: return "ITEMID_DENKIDAMA";
+        case 113:
+        case 242: return "ITEMID_MANMARUISI";
+        case 283:
+        case 415: return "ITEMID_AMAIMITU";
+        case 285:
+        case 590:
+        case 948: return "ITEMID_TIISANAKINOKO";
+        case 286:
+        case 591:
+        case 949: return "ITEMID_TIISANAKINOKO";
+        case 316: return "ITEMID_ORENNOMI";
+        case 317: return "ITEMID_OBONNOMI";
+        case 440: return "ITEMID_MANMARUISI";
+        case 625: return "ITEMID_KASIRANOAKASI";
+        case 734: return "ITEMID_MOMONNOMI";
+        case 739: return "ITEMID_NANASINOMI";
+        case 740: return "ITEMID_KURABONOMI";
+        case 741: return "ITEMID_YAMABUKINOMITU";
+        case 778: return "ITEMID_KAGONOMI";
+        case 819: return "ITEMID_ORENNOMI";
+        case 483:
+            if (form == 1) return "ITEMID_DAIKONGOUDAMA";
+            break;
+        case 484:
+            if (form == 1) return "ITEMID_DAISIRATAMA";
+            break;
+        case 487:
+            if (form == 1) return "ITEMID_DAIHAKKINDAMA";
+            break;
+        case 493:
+            switch (form) {
+            case 1: return "ITEMID_KOBUSINOPUREETO";
+            case 2: return "ITEMID_AOZORAPUREETO";
+            case 3: return "ITEMID_MOUDOKUPUREETO";
+            case 4: return "ITEMID_DAITINOPUREETO";
+            case 5: return "ITEMID_GANSEKIPUREETO";
+            case 6: return "ITEMID_TAMAMUSIPUREETO";
+            case 7: return "ITEMID_MONONOKEPUREETO";
+            case 8: return "ITEMID_KOUTETUPUREETO";
+            case 9: return "ITEMID_HINOTAMAPUREETO";
+            case 10: return "ITEMID_SIZUKUPUREETO";
+            case 11: return "ITEMID_MIDORINOPUREETO";
+            case 12: return "ITEMID_IKAZUTIPUREETO";
+            case 13: return "ITEMID_HUSIGINOPUREETO";
+            case 14: return "ITEMID_TURARANOPUREETO";
+            case 15: return "ITEMID_RYUUNOPUREETO";
+            case 16: return "ITEMID_KOWAMOTEPUREETO";
+            case 17: return "ITEMID_SEIREIPUREETO";
+            }
+            break;
+        case 888:
+            if (form == 1) return "ITEMID_KUTITATURUGI";
+            break;
+        case 889:
+            if (form == 1) return "ITEMID_KUTITATATE";
+            break;
+        case 1017:
+            switch (form) {
+                case 1: return "ITEMID_IDONOMEN";
+                case 2: return "ITEMID_KAMADONOMEN";
+                case 3: return "ITEMID_ISHIDUENOMEN";
+            }
+        break;
+    }
+    return "ITEMID_NONE";
+}
+
+int SVShared::getPokemonItemValue(int index, int form){
+    if (paradox.contains(index) && index != 1007 && index != 1008 && index != 1024) {
+        return 25;
+    }
+
+    switch (index) {
+    case 25: return 5;
+    case 113:
+    case 242: return 30;
+    case 283:
+    case 415: return 5;
+    case 285:
+    case 590:
+    case 948: return 5;
+    case 286:
+    case 591:
+    case 949: return 30;
+    case 316: return 30;
+    case 317: return 5;
+    case 440: return 5;
+    case 625: return 100;
+    case 734: return 5;
+    case 739: return 5;
+    case 740: return 5;
+    case 741: return 5;
+    case 778: return 5;
+    case 819: return 5;
+    case 483:
+        if (form == 1) return 100;
+        break;
+    case 484:
+        if (form == 1) return 100;
+        break;
+    case 487:
+        if (form == 1) return 100;
+        break;
+    case 493:
+        switch (form) {
+        case 1: case 2: case 3: case 4: case 5:
+        case 6: case 7: case 8: case 9: case 10:
+        case 11: case 12: case 13: case 14: case 15:
+        case 16: case 17: return 100;
+        }
+        break;
+    case 888:
+        if (form == 1) return 100;
+        break;
+    case 889:
+        if (form == 1) return 100;
+        break;
+    case 1017:
+        switch (form) {
+        case 1: case 2: case 3: return 100;
+        }
+        break;
+    }
+    return 0;
+}
 
 std::string SVShared::getItemForPokemon(int pokemon, int form){
     switch(pokemon){
@@ -324,43 +453,36 @@ void SVShared::getBannedPokemon(bool stage1, bool stage2, bool stage3, bool sing
 }
 
 void SVShared::createFolderHierarchy(const std::string& folder) {
-    /**
-     * Creates a folder hierarchy from a given path.
-     * Parameter should be a folder inside the main output folder.
-     * Ex: output/romfs/world/data/pokemon
-     * @param folder: Output folder to create
-     */
+    try {
+        // Convert to absolute path
+        fs::path absolutePath = fs::absolute(folder);
+        std::cout << "Absolute path: " << absolutePath << std::endl;
 
-    std::string absolutePath = fs::absolute(folder).string();
-    std::replace(absolutePath.begin(), absolutePath.end(), '\\', '/');
+        // Create directories
+        fs::create_directories(absolutePath);
+        std::cout << "Created directories: " << absolutePath << std::endl;
 
-    std::vector<std::string> folders;
-    std::istringstream iss(absolutePath);
-    std::string part;
+        // Define where to start (example folder)
+        std::string startFolder = "output";
+        bool startSettingPermissions = false;
+        fs::path currentPath;
 
-    while (std::getline(iss, part, '/')) {
-        folders.push_back(part);
-    }
+        for (auto it = absolutePath.begin(); it != absolutePath.end(); ++it) {
+            if (*it == startFolder) {
+                startSettingPermissions = true;
+            }
 
-    size_t indexValue = 0;
-    for (size_t i = 0; i < folders.size(); ++i) {
-        indexValue++;
-        if (folders[i] == "output") {
-            break;
+            if (startSettingPermissions) {
+                currentPath /= *it; // Incrementally build the path
+                if (!fs::exists(currentPath)) {
+                    fs::create_directory(currentPath); // Create directory if it doesn't exist
+                }
+                fs::permissions(currentPath, fs::perms::all, fs::perm_options::add);
+                std::cout << "Set permissions for: " << currentPath << std::endl;
+            }
         }
-    }
-
-    std::vector<std::string> subFolders(folders.begin() + indexValue, folders.end());
-
-    std::string folderToGetPerms = "/";
-    for (size_t i = 1; i < indexValue; ++i) {
-        folderToGetPerms += folders[i] + "/";
-    }
-
-    for (const auto& subFolder : subFolders) {
-        folderToGetPerms += subFolder + "/";
-        fs::create_directories(folderToGetPerms);
-        fs::permissions(folderToGetPerms, fs::perms::all);
+    } catch (const fs::filesystem_error& e) {
+        std::cerr << "Error creating folder hierarchy: " << e.what() << std::endl;
     }
 }
 
@@ -416,25 +538,39 @@ int SVShared::generateBinary(const std::string& schema, const std::string& jsonF
         throw std::runtime_error("Unsupported platform or architecture");
     }
 
+    // Create the folder hierarchy
     createFolderHierarchy("output/romfs/" + path + "/");
     std::string outpath = fs::absolute("output/romfs/" + path + "/").string();
 
-    std::ostringstream command;
-    command << flatc
-            << " -b"
-            << " -o " << outpath
-            << " " << fs::absolute(schema).string()
-            << " " << fs::absolute(jsonFile).string()
-            << " " << "--no-warnings";
+    // Use QProcess to execute the command
+    QProcess process;
+    QString program = QString::fromStdString(flatc);
 
+    // Prepare the arguments
+    QStringList arguments;
+    arguments << "-b"
+              << "-o" << QString::fromStdString(outpath)
+              << QString::fromStdString(fs::absolute(schema).string())
+              << QString::fromStdString(fs::absolute(jsonFile).string())
+              << "--no-warnings";
+
+    // Debug the command
     if (debug) {
-        std::cout << "Executing command: " << command.str() << std::endl;
+        std::cout << "Executing: " << program.toStdString() << " " << arguments.join(' ').toStdString() << std::endl;
     }
 
-    int returnCode = std::system(command.str().c_str());
+    // Start the process
+    process.start(program, arguments);
+    process.waitForFinished();
+
+    // Check the process result
+    int returnCode = process.exitCode();
     if (debug) {
         if (returnCode != 0) {
             std::cerr << "Error executing command. Return code: " << returnCode << std::endl;
+            std::cerr << "Error output: " << process.readAllStandardError().toStdString() << std::endl;
+        } else {
+            std::cout << "Process executed successfully." << std::endl;
         }
     }
 

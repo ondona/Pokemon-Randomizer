@@ -129,7 +129,7 @@ bool SVWilds::randomize_paldea_wilds(int passedSeed, int run, std::string fileNa
         for(unsigned long long j =0; j<wildPokemonInfo["pokemons"][i]["forms"].size(); j++){
             if(wildPokemonInfo["pokemons"][i]["forms"][j]["is_present"] == true){
                 wildTemplate = {
-                    {"devid", int(i)},
+                    {"devid", int(wildPokemonInfo["pokemons"][i]["devid"])},
                     {"sex", "DEFAULT"},
                     {"formno", int(j)},
                     {"minlevel", 2},
@@ -173,13 +173,11 @@ bool SVWilds::randomize_paldea_wilds(int passedSeed, int run, std::string fileNa
                                      {"B", true}
                                  }},
                     {"bringItem", {
-                                  {"itemID", "ITEMID_NONE"},
-                                  {"bringRate", 0}
+                                   {"itemID", getPokemonItemId(wildPokemonInfo["pokemons"][i]["natdex"], int(j))},
+                                  {"bringRate", getPokemonItemValue(wildPokemonInfo["pokemons"][i]["natdex"], int(j))}
                               }}
                 };
 
-                //qDebug()<<QStringLiteral("Here on %1").arg(i);
-                // std::cout<<wildTemplate.dump(2)<<std::endl;
                 paldeaWildJSON["values"].push_back(wildTemplate);
 
             }
@@ -187,6 +185,58 @@ bool SVWilds::randomize_paldea_wilds(int passedSeed, int run, std::string fileNa
             choosenBiomes = {};
         }
     }
+
+    wildTemplate = {
+        {"devid", 625},
+        {"sex", "DEFAULT"},
+        {"formno", 0},
+        {"minlevel", 2},
+        {"maxlevel", 99},
+        {"lotvalue", 1+std::rand()%50},
+        {"biome1", pick_random_biome()},
+        {"lotvalue1", 1+std::rand()%50},
+        {"biome2", pick_random_biome()},
+        {"lotvalue2", 1+std::rand()%50},
+        {"biome3", pick_random_biome()},
+        {"lotvalue3", 1+std::rand()%50},
+        {"biome4", pick_random_biome()},
+        {"lotvalue4", 1+std::rand()%50},
+        {"area", generate_area_list()},
+        {"locationName", ""},
+        {"minheight", 0},
+        {"maxheight", 255},
+        {"enabletable", {
+                            {"land", true},
+                            {"up_water", true},
+                            {"underwater", true},
+                            {"air1", true},
+                            {"air2", true}
+                        }},
+        {"timetable", {
+                          {"morning", true},
+                          {"noon", true},
+                          {"evening", true},
+                          {"night", true}
+                      }},
+        {"flagName", ""},
+        {"bandrate", 100},
+        {"bandtype", "BOSS"},
+        {"bandpoke", "DEV_KOMATANA"},
+        {"bandSex", "DEFAULT"},
+        {"bandFormno", 0},
+        {"outbreakLotvalue", 10},
+        {"pokeVoiceClassification", "ANIMAL_LITTLE"},
+        {"versiontable", {
+                             {"A", true},
+                             {"B", true}
+                         }},
+        {"bringItem", {
+                          {"itemID", getPokemonItemId(625, 0)},
+                          {"bringRate", getPokemonItemValue(625, 0)}
+                      }}
+    };
+
+    paldeaWildJSON["values"].push_back(wildTemplate);
 
     std::ofstream fileSave(filePath+"/SV_WILDS/"+fileName);
     fileSave<<paldeaWildJSON.dump(4);
@@ -283,7 +333,7 @@ bool SVWilds::randomize_kitakami_wilds(int passedSeed, int run){
         for(unsigned long long j =0; j<wildPokemonInfo["pokemons"][i]["forms"].size(); j++){
             if(wildPokemonInfo["pokemons"][i]["forms"][j]["is_present"] == true){
                 wildTemplate = {
-                    {"devid", int(i)},
+                    {"devid", int(wildPokemonInfo["pokemons"][i]["devid"])},
                     {"sex", "DEFAULT"},
                     {"formno", int(j)},
                     {"minlevel", 2},
@@ -327,17 +377,70 @@ bool SVWilds::randomize_kitakami_wilds(int passedSeed, int run){
                                          {"B", true}
                                      }},
                     {"bringItem", {
-                                      {"itemID", "ITEMID_NONE"},
-                                      {"bringRate", 0}
+                                      {"itemID", getPokemonItemId(wildPokemonInfo["pokemons"][i]["natdex"], int(j))},
+                                      {"bringRate", getPokemonItemValue(wildPokemonInfo["pokemons"][i]["natdex"], int(j))}
                                   }}
                 };
-                paldeaWildJSON.push_back(wildTemplate);
+
+                paldeaWildJSON["values"].push_back(wildTemplate);
+
             }
             choosenBiomes.clear();
             choosenBiomes = {};
         }
     }
 
+    wildTemplate = {
+        {"devid", 625},
+        {"sex", "DEFAULT"},
+        {"formno", 0},
+        {"minlevel", 2},
+        {"maxlevel", 99},
+        {"lotvalue", 1+std::rand()%50},
+        {"biome1", pick_random_biome()},
+        {"lotvalue1", 1+std::rand()%50},
+        {"biome2", pick_random_biome()},
+        {"lotvalue2", 1+std::rand()%50},
+        {"biome3", pick_random_biome()},
+        {"lotvalue3", 1+std::rand()%50},
+        {"biome4", pick_random_biome()},
+        {"lotvalue4", 1+std::rand()%50},
+        {"area", generate_area_list()},
+        {"locationName", ""},
+        {"minheight", 0},
+        {"maxheight", 255},
+        {"enabletable", {
+                            {"land", true},
+                            {"up_water", true},
+                            {"underwater", true},
+                            {"air1", true},
+                            {"air2", true}
+                        }},
+        {"timetable", {
+                          {"morning", true},
+                          {"noon", true},
+                          {"evening", true},
+                          {"night", true}
+                      }},
+        {"flagName", ""},
+        {"bandrate", 100},
+        {"bandtype", "BOSS"},
+        {"bandpoke", "DEV_KOMATANA"},
+        {"bandSex", "DEFAULT"},
+        {"bandFormno", 0},
+        {"outbreakLotvalue", 10},
+        {"pokeVoiceClassification", "ANIMAL_LITTLE"},
+        {"versiontable", {
+                             {"A", true},
+                             {"B", true}
+                         }},
+        {"bringItem", {
+                          {"itemID", getPokemonItemId(625, 0)},
+                          {"bringRate", getPokemonItemValue(625, 0)}
+                      }}
+    };
+
+    paldeaWildJSON["values"].push_back(wildTemplate);
     std::ofstream fileSave(filePath+"/SV_WILDS/pokedata_su1_array.json");
     fileSave<<paldeaWildJSON.dump(4);
     fileSave.close();
@@ -433,7 +536,7 @@ bool SVWilds::randomize_blueberry_wilds(int passedSeed, int run){
         for(unsigned long long j =0; j<wildPokemonInfo["pokemons"][i]["forms"].size(); j++){
             if(wildPokemonInfo["pokemons"][i]["forms"][j]["is_present"] == true){
                 wildTemplate = {
-                    {"devid", int(i)},
+                    {"devid", int(wildPokemonInfo["pokemons"][i]["devid"])},
                     {"sex", "DEFAULT"},
                     {"formno", int(j)},
                     {"minlevel", 2},
@@ -477,16 +580,70 @@ bool SVWilds::randomize_blueberry_wilds(int passedSeed, int run){
                                          {"B", true}
                                      }},
                     {"bringItem", {
-                                      {"itemID", "ITEMID_NONE"},
-                                      {"bringRate", 0}
+                                      {"itemID", getPokemonItemId(wildPokemonInfo["pokemons"][i]["natdex"], int(j))},
+                                      {"bringRate", getPokemonItemValue(wildPokemonInfo["pokemons"][i]["natdex"], int(j))}
                                   }}
                 };
-                paldeaWildJSON.push_back(wildTemplate);
+
+                paldeaWildJSON["values"].push_back(wildTemplate);
+
             }
             choosenBiomes.clear();
             choosenBiomes = {};
         }
     }
+
+    wildTemplate = {
+        {"devid", 625},
+        {"sex", "DEFAULT"},
+        {"formno", 0},
+        {"minlevel", 2},
+        {"maxlevel", 99},
+        {"lotvalue", 1+std::rand()%50},
+        {"biome1", pick_random_biome()},
+        {"lotvalue1", 1+std::rand()%50},
+        {"biome2", pick_random_biome()},
+        {"lotvalue2", 1+std::rand()%50},
+        {"biome3", pick_random_biome()},
+        {"lotvalue3", 1+std::rand()%50},
+        {"biome4", pick_random_biome()},
+        {"lotvalue4", 1+std::rand()%50},
+        {"area", generate_area_list()},
+        {"locationName", ""},
+        {"minheight", 0},
+        {"maxheight", 255},
+        {"enabletable", {
+                            {"land", true},
+                            {"up_water", true},
+                            {"underwater", true},
+                            {"air1", true},
+                            {"air2", true}
+                        }},
+        {"timetable", {
+                          {"morning", true},
+                          {"noon", true},
+                          {"evening", true},
+                          {"night", true}
+                      }},
+        {"flagName", ""},
+        {"bandrate", 100},
+        {"bandtype", "BOSS"},
+        {"bandpoke", "DEV_KOMATANA"},
+        {"bandSex", "DEFAULT"},
+        {"bandFormno", 0},
+        {"outbreakLotvalue", 10},
+        {"pokeVoiceClassification", "ANIMAL_LITTLE"},
+        {"versiontable", {
+                             {"A", true},
+                             {"B", true}
+                         }},
+        {"bringItem", {
+                          {"itemID", getPokemonItemId(625, 0)},
+                          {"bringRate", getPokemonItemValue(625, 0)}
+                      }}
+    };
+
+    paldeaWildJSON["values"].push_back(wildTemplate);
 
     std::ofstream fileSave(filePath+"/SV_WILDS/pokedata_su2_array.json");
     fileSave<<paldeaWildJSON.dump(4);

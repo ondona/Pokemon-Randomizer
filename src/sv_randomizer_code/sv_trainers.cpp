@@ -47,8 +47,10 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
     for(int i =0; i<indeces.size(); i++){
         qDebug()<<QStringLiteral("Here - 1; %1").arg(indeces[i]);
         std::srand(seedPaldeaTrainers*(i+1));
-        if(globalSettings[0] == true || settings[2] == true){
-            cleanTrainerInfo["values"][indeces[i]]["changeGem"] = true;
+        if(!randomize_arven_titan.contains(indeces[i])){
+            if(globalSettings[0] == true || settings[2] == true){
+                cleanTrainerInfo["values"][indeces[i]]["changeGem"] = true;
+            }
         }
 
         int maxNum = getMaxNumberOfChanges(cleanTrainerInfo, indeces[i]);
@@ -157,11 +159,12 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
 
             cleanTrainerInfo["values"][indeces[i]][key]["devId"] = wildPokemonInfo["pokemons"][random]["devid"];
             cleanTrainerInfo["values"][indeces[i]][key]["formId"] = formRandom;
+            cleanTrainerInfo["values"][indeces[i]][key]["item"] = getPokemonItemId(wildPokemonInfo["pokemons"][random]["natdex"], formRandom);
             if(cleanTrainerInfo["values"][indeces[i]][key]["level"] == 0){
                 std::string stringMaxKey = "poke" + std::to_string(ogMax);
                 cleanTrainerInfo["values"][indeces[i]][key]["level"] = int(cleanTrainerInfo["values"][indeces[i]][stringMaxKey]["level"]) + std::rand()%3;
             }
-            cleanTrainerInfo["values"][indeces[i]][key]["item"] = getItemForPokemon(random, formRandom);
+
             cleanTrainerInfo["values"][indeces[i]][key]["wazaType"] = "DEFAULT";
             for(int k = 1; k<=4; k++){
                 std::string moveKey = "waza"+std::to_string(k);

@@ -124,6 +124,25 @@ void SVStats::randomize_pokemon(){
                     currentMoves.append(selectedMove);
                     cleanPersonalData["entry"][i]["reminder_moves"][j] = allowed_moves[selectedMove];
                 }
+                if(species_check == 57){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(889);
+                }else if(species_check == 190){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(458);
+                }else if(species_check == 193){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(246);
+                }else if(species_check == 203){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(888);
+                }else if(species_check == 206){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(887);
+                }else if(species_check == 211 && cleanPersonalData["entry"][i]["species"]["form"] == 1){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(839);
+                }else if(species_check == 221){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(246);
+                }else if(species_check == 438){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(102);
+                }else if(species_check == 762){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(23);
+                }
 
                 currentMoves = {};
                 for(unsigned long long j = 0; j<cleanPersonalData["entry"][i]["egg_moves"].size(); j++){
@@ -288,7 +307,13 @@ void SVStats::randomize_pokemon(){
                     cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 36}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
                                                                            {"reserved4", 0}, {"reserved5", 0}, {"species", 103},
                                                                            {"form", 1}});
-                }else if(species_check == 156){
+                }else if(species_check == 109){
+                    cleanPersonalData["entry"][i]["evolutions"][0]["condition"] = int(32);
+                    cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 35}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
+                                                                           {"reserved4", 0}, {"reserved5", 0}, {"species", 110},
+                                                                           {"form", 1}});
+                }
+                else if(species_check == 156){
                     cleanPersonalData["entry"][i]["evolutions"][0]["condition"] = int(32);
                     cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 36}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
                                                                            {"reserved4", 0}, {"reserved5", 0}, {"species", 157},
@@ -306,6 +331,12 @@ void SVStats::randomize_pokemon(){
                 }else if(species_check == 548){
                     cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 36}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
                                                                            {"reserved4", 0}, {"reserved5", 0}, {"species", 549},
+                                                                           {"form", 1}});
+                }
+                else if(species_check == 704){
+                    cleanPersonalData["entry"][i]["evolutions"][0]["condition"] = int(32);
+                    cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 36}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
+                                                                           {"reserved4", 0}, {"reserved5", 0}, {"species", 705},
                                                                            {"form", 1}});
                 }
                 else if(species_check == 627){
@@ -339,11 +370,11 @@ void SVStats::randomize_pokemon(){
                 std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
                 QString QBaseAddress = QString::fromStdString(filePath);
                 QDir qBaseDir(QBaseAddress);
-                std::ifstream fileEvos(qBaseDir.filePath("pokemon_mapping_evos.json").toStdString());
+                std::ifstream fileEvos(qBaseDir.filePath("pokemon_mapping.json").toStdString());
 
                 if (!fileEvos.is_open()) {
-                    qDebug() << qBaseDir.filePath("pokemon_mapping_evos.json");
-                    qDebug() << "Error: Could not open pokemon_mapping_evos.json!";
+                    qDebug() << qBaseDir.filePath("pokemon_mapping.json");
+                    qDebug() << "Error: Could not open pokemon_mapping.json!";
                 }
 
                 json pokemonMaps;
