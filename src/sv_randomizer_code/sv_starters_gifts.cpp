@@ -378,12 +378,14 @@ bool SVStarters::randomize_gifts(int passedSeed, int bulkNum){
         cleanGiftData["values"][i]["pokeData"]["formId"] = formRandom;
 
         // Set Starter Shiny Status
-        int val = 1+std::rand()%shiny_static_rate; // range is [1, shiny_starter_rate)
-        if(val == 1){
-            cleanGiftData["values"][i]["pokeData"]["rareType"] = "RARE";
-        }
-        else{
-            cleanGiftData["values"][i]["pokeData"]["rareType"] = "NO_RARE";
+        if(cleanGiftData["values"][i]["pokeData"]["rareType"] != "RARE"){
+            int val = 1+std::rand()%shiny_static_rate; // range is [1, shiny_starter_rate)
+            if(val == 1){
+                cleanGiftData["values"][i]["pokeData"]["rareType"] = "RARE";
+            }
+            else{
+                cleanGiftData["values"][i]["pokeData"]["rareType"] = "NO_RARE";
+            }
         }
 
         if(randomize_tera_types == true){

@@ -124,6 +124,25 @@ void SVStats::randomize_pokemon(){
                     currentMoves.append(selectedMove);
                     cleanPersonalData["entry"][i]["reminder_moves"][j] = allowed_moves[selectedMove];
                 }
+                if(species_check == 57){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(889);
+                }else if(species_check == 190){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(458);
+                }else if(species_check == 193){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(246);
+                }else if(species_check == 203){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(888);
+                }else if(species_check == 206){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(887);
+                }else if(species_check == 211 && cleanPersonalData["entry"][i]["species"]["form"] == 1){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(839);
+                }else if(species_check == 221){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(246);
+                }else if(species_check == 438){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(102);
+                }else if(species_check == 762){
+                    cleanPersonalData["entry"][i]["reminder_moves"].push_back(23);
+                }
 
                 currentMoves = {};
                 for(unsigned long long j = 0; j<cleanPersonalData["entry"][i]["egg_moves"].size(); j++){
@@ -342,8 +361,8 @@ void SVStats::randomize_pokemon(){
                 std::ifstream fileEvos(qBaseDir.filePath("pokemon_mapping.json").toStdString());
 
                 if (!fileEvos.is_open()) {
-                    qDebug() << qBaseDir.filePath("pokemon_mapping_evos.json");
-                    qDebug() << "Error: Could not open pokemon_mapping_evos.json!";
+                    qDebug() << qBaseDir.filePath("pokemon_mapping.json");
+                    qDebug() << "Error: Could not open pokemon_mapping.json!";
                 }
 
                 json pokemonMaps;

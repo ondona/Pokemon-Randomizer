@@ -1,4 +1,4 @@
-#include "thirdparty/nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 #include "headers/sv_randomizer_headers/sv_shared_class.h"
 #include <QMap>
 #include <QVector>
@@ -23,12 +23,8 @@
 #include <flatbuffers/flatbuffers.h>
 #include <flatbuffers/verifier.h>
 #include <TrinitySceneObject_generated.h>
+#include <QProcess>
 
-#ifdef _WIN32
-#include <windows.h>
-#else
-#include <unistd.h>
-#endif
 
 namespace fs = std::filesystem;
 
@@ -324,43 +320,36 @@ void SVShared::getBannedPokemon(bool stage1, bool stage2, bool stage3, bool sing
 }
 
 void SVShared::createFolderHierarchy(const std::string& folder) {
-    /**
-     * Creates a folder hierarchy from a given path.
-     * Parameter should be a folder inside the main output folder.
-     * Ex: output/romfs/world/data/pokemon
-     * @param folder: Output folder to create
-     */
+    try {
+        // Convert to absolute path
+        fs::path absolutePath = fs::absolute(folder);
+        std::cout << "Absolute path: " << absolutePath << std::endl;
 
-    std::string absolutePath = fs::absolute(folder).string();
-    std::replace(absolutePath.begin(), absolutePath.end(), '\\', '/');
+        // Create directories
+        fs::create_directories(absolutePath);
+        std::cout << "Created directories: " << absolutePath << std::endl;
 
-    std::vector<std::string> folders;
-    std::istringstream iss(absolutePath);
-    std::string part;
+        // Define where to start (example folder)
+        std::string startFolder = "output";
+        bool startSettingPermissions = false;
+        fs::path currentPath;
 
-    while (std::getline(iss, part, '/')) {
-        folders.push_back(part);
-    }
+        for (auto it = absolutePath.begin(); it != absolutePath.end(); ++it) {
+            if (*it == startFolder) {
+                startSettingPermissions = true;
+            }
 
-    size_t indexValue = 0;
-    for (size_t i = 0; i < folders.size(); ++i) {
-        indexValue++;
-        if (folders[i] == "output") {
-            break;
+            if (startSettingPermissions) {
+                currentPath /= *it; // Incrementally build the path
+                if (!fs::exists(currentPath)) {
+                    fs::create_directory(currentPath); // Create directory if it doesn't exist
+                }
+                fs::permissions(currentPath, fs::perms::all, fs::perm_options::add);
+                std::cout << "Set permissions for: " << currentPath << std::endl;
+            }
         }
-    }
-
-    std::vector<std::string> subFolders(folders.begin() + indexValue, folders.end());
-
-    std::string folderToGetPerms = "/";
-    for (size_t i = 1; i < indexValue; ++i) {
-        folderToGetPerms += folders[i] + "/";
-    }
-
-    for (const auto& subFolder : subFolders) {
-        folderToGetPerms += subFolder + "/";
-        fs::create_directories(folderToGetPerms);
-        fs::permissions(folderToGetPerms, fs::perms::all);
+    } catch (const fs::filesystem_error& e) {
+        std::cerr << "Error creating folder hierarchy: " << e.what() << std::endl;
     }
 }
 
@@ -416,25 +405,39 @@ int SVShared::generateBinary(const std::string& schema, const std::string& jsonF
         throw std::runtime_error("Unsupported platform or architecture");
     }
 
+    // Create the folder hierarchy
     createFolderHierarchy("output/romfs/" + path + "/");
     std::string outpath = fs::absolute("output/romfs/" + path + "/").string();
 
-    std::ostringstream command;
-    command << flatc
-            << " -b"
-            << " -o " << outpath
-            << " " << fs::absolute(schema).string()
-            << " " << fs::absolute(jsonFile).string()
-            << " " << "--no-warnings";
+    // Use QProcess to execute the command
+    QProcess process;
+    QString program = QString::fromStdString(flatc);
 
+    // Prepare the arguments
+    QStringList arguments;
+    arguments << "-b"
+              << "-o" << QString::fromStdString(outpath)
+              << QString::fromStdString(fs::absolute(schema).string())
+              << QString::fromStdString(fs::absolute(jsonFile).string())
+              << "--no-warnings";
+
+    // Debug the command
     if (debug) {
-        std::cout << "Executing command: " << command.str() << std::endl;
+        std::cout << "Executing: " << program.toStdString() << " " << arguments.join(' ').toStdString() << std::endl;
     }
 
-    int returnCode = std::system(command.str().c_str());
+    // Start the process
+    process.start(program, arguments);
+    process.waitForFinished();
+
+    // Check the process result
+    int returnCode = process.exitCode();
     if (debug) {
         if (returnCode != 0) {
             std::cerr << "Error executing command. Return code: " << returnCode << std::endl;
+            std::cerr << "Error output: " << process.readAllStandardError().toStdString() << std::endl;
+        } else {
+            std::cout << "Process executed successfully." << std::endl;
         }
     }
 

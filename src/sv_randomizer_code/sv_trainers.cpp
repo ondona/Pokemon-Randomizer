@@ -47,8 +47,10 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
     for(int i =0; i<indeces.size(); i++){
         qDebug()<<QStringLiteral("Here - 1; %1").arg(indeces[i]);
         std::srand(seedPaldeaTrainers*(i+1));
-        if(globalSettings[0] == true || settings[2] == true){
-            cleanTrainerInfo["values"][indeces[i]]["changeGem"] = true;
+        if(!randomize_arven_titan.contains(indeces[i])){
+            if(globalSettings[0] == true || settings[2] == true){
+                cleanTrainerInfo["values"][indeces[i]]["changeGem"] = true;
+            }
         }
 
         int maxNum = getMaxNumberOfChanges(cleanTrainerInfo, indeces[i]);

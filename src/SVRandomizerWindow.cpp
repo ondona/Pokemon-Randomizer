@@ -3494,6 +3494,13 @@ bool SVRandomizerWindow::checkAndDeleteFile(std::string filePath) {
     return true;
 }
 
+void showMessage(const QString &message) {
+    QMessageBox msgBox;
+    msgBox.setText(message);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.exec(); // Blocks until the user clicks OK
+}
+
 void SVRandomizerWindow::addToFavorites()
 {
     for(int i = 1; i< randomizer.bulk_amount+1; i++){
@@ -3830,7 +3837,10 @@ void SVRandomizerWindow::addToFavorites()
             fs::remove_all(dirPath);
         }
     }
+
+    showMessage("Finished Randomizer");
 }
+
 
 void SVRandomizerWindow::switchTabs(int index) {
     if (index >= 0 && index < stackedWidget->count()) {
