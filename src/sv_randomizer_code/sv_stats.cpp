@@ -203,6 +203,7 @@ void SVStats::randomize_pokemon(){
                 for(int z = 1; z<100; z += 5){
                     cleanPersonalData["entry"][i]["levelup_moves"].push_back({{"move", 851}, {"level", int(z)}});
                 }
+                cleanPersonalData["entry"][i]["levelup_moves"].push_back({{"move", 851}, {"level", 100}});
             }
 
             // Randomize TMs if its enabled (check incase moveset is disabled)
