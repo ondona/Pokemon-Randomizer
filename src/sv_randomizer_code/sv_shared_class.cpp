@@ -28,6 +28,139 @@
 
 namespace fs = std::filesystem;
 
+std::string SVShared::getPokemonItemId(int index, int form){
+    if (paradox.contains(index) && index != 1007 && index != 1008 && index != 1024) {
+        return "ITEMID_BUUSUTOENAJII";
+    }
+
+    switch (index) {
+        case 25: return "ITEMID_DENKIDAMA";
+        case 113:
+        case 242: return "ITEMID_MANMARUISI";
+        case 283:
+        case 415: return "ITEMID_AMAIMITU";
+        case 285:
+        case 590:
+        case 948: return "ITEMID_TIISANAKINOKO";
+        case 286:
+        case 591:
+        case 949: return "ITEMID_TIISANAKINOKO";
+        case 316: return "ITEMID_ORENNOMI";
+        case 317: return "ITEMID_OBONNOMI";
+        case 440: return "ITEMID_MANMARUISI";
+        case 625: return "ITEMID_KASIRANOAKASI";
+        case 734: return "ITEMID_MOMONNOMI";
+        case 739: return "ITEMID_NANASINOMI";
+        case 740: return "ITEMID_KURABONOMI";
+        case 741: return "ITEMID_YAMABUKINOMITU";
+        case 778: return "ITEMID_KAGONOMI";
+        case 819: return "ITEMID_ORENNOMI";
+        case 483:
+            if (form == 1) return "ITEMID_DAIKONGOUDAMA";
+            break;
+        case 484:
+            if (form == 1) return "ITEMID_DAISIRATAMA";
+            break;
+        case 487:
+            if (form == 1) return "ITEMID_DAIHAKKINDAMA";
+            break;
+        case 493:
+            switch (form) {
+            case 1: return "ITEMID_KOBUSINOPUREETO";
+            case 2: return "ITEMID_AOZORAPUREETO";
+            case 3: return "ITEMID_MOUDOKUPUREETO";
+            case 4: return "ITEMID_DAITINOPUREETO";
+            case 5: return "ITEMID_GANSEKIPUREETO";
+            case 6: return "ITEMID_TAMAMUSIPUREETO";
+            case 7: return "ITEMID_MONONOKEPUREETO";
+            case 8: return "ITEMID_KOUTETUPUREETO";
+            case 9: return "ITEMID_HINOTAMAPUREETO";
+            case 10: return "ITEMID_SIZUKUPUREETO";
+            case 11: return "ITEMID_MIDORINOPUREETO";
+            case 12: return "ITEMID_IKAZUTIPUREETO";
+            case 13: return "ITEMID_HUSIGINOPUREETO";
+            case 14: return "ITEMID_TURARANOPUREETO";
+            case 15: return "ITEMID_RYUUNOPUREETO";
+            case 16: return "ITEMID_KOWAMOTEPUREETO";
+            case 17: return "ITEMID_SEIREIPUREETO";
+            }
+            break;
+        case 888:
+            if (form == 1) return "ITEMID_KUTITATURUGI";
+            break;
+        case 889:
+            if (form == 1) return "ITEMID_KUTITATATE";
+            break;
+        case 1017:
+            switch (form) {
+                case 1: return "ITEMID_IDONOMEN";
+                case 2: return "ITEMID_KAMADONOMEN";
+                case 3: return "ITEMID_ISHIDUENOMEN";
+            }
+        break;
+    }
+    return "ITEMID_NONE";
+}
+
+int SVShared::getPokemonItemValue(int index, int form){
+    if (paradox.contains(index) && index != 1007 && index != 1008 && index != 1024) {
+        return 25;
+    }
+
+    switch (index) {
+    case 25: return 5;
+    case 113:
+    case 242: return 30;
+    case 283:
+    case 415: return 5;
+    case 285:
+    case 590:
+    case 948: return 5;
+    case 286:
+    case 591:
+    case 949: return 30;
+    case 316: return 30;
+    case 317: return 5;
+    case 440: return 5;
+    case 625: return 100;
+    case 734: return 5;
+    case 739: return 5;
+    case 740: return 5;
+    case 741: return 5;
+    case 778: return 5;
+    case 819: return 5;
+    case 483:
+        if (form == 1) return 100;
+        break;
+    case 484:
+        if (form == 1) return 100;
+        break;
+    case 487:
+        if (form == 1) return 100;
+        break;
+    case 493:
+        switch (form) {
+        case 1: case 2: case 3: case 4: case 5:
+        case 6: case 7: case 8: case 9: case 10:
+        case 11: case 12: case 13: case 14: case 15:
+        case 16: case 17: return 100;
+        }
+        break;
+    case 888:
+        if (form == 1) return 100;
+        break;
+    case 889:
+        if (form == 1) return 100;
+        break;
+    case 1017:
+        switch (form) {
+        case 1: case 2: case 3: return 100;
+        }
+        break;
+    }
+    return 0;
+}
+
 std::string SVShared::getItemForPokemon(int pokemon, int form){
     switch(pokemon){
         case 483:

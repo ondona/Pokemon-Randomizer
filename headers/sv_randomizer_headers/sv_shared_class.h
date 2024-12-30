@@ -3401,6 +3401,9 @@ public:
     void getUsablePokemon(QVector<bool> gens, bool legend, bool paradoxs, bool legends_paradox, QList<int>& allowedPokemon, QList<int>& allowedLegends);
     void getBannedPokemon(bool stage1, bool stage2, bool stage3, bool singlestage, QList<int>& allowedPokemon);
     std::string getItemForPokemon(int pokemon, int form);
+    std::string getPokemonItemId(int index, int form);
+    int getPokemonItemValue(int index, int form);
+
 private:
     std::vector<char> ReadBinaryFile(const std::string &filePath);
     std::vector<int> FindMarkerOffsets(const std::vector<char> &data, const std::string &marker);

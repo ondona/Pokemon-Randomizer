@@ -307,7 +307,13 @@ void SVStats::randomize_pokemon(){
                     cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 36}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
                                                                            {"reserved4", 0}, {"reserved5", 0}, {"species", 103},
                                                                            {"form", 1}});
-                }else if(species_check == 156){
+                }else if(species_check == 109){
+                    cleanPersonalData["entry"][i]["evolutions"][0]["condition"] = int(32);
+                    cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 35}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
+                                                                           {"reserved4", 0}, {"reserved5", 0}, {"species", 110},
+                                                                           {"form", 1}});
+                }
+                else if(species_check == 156){
                     cleanPersonalData["entry"][i]["evolutions"][0]["condition"] = int(32);
                     cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 36}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
                                                                            {"reserved4", 0}, {"reserved5", 0}, {"species", 157},
@@ -325,6 +331,12 @@ void SVStats::randomize_pokemon(){
                 }else if(species_check == 548){
                     cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 36}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
                                                                            {"reserved4", 0}, {"reserved5", 0}, {"species", 549},
+                                                                           {"form", 1}});
+                }
+                else if(species_check == 704){
+                    cleanPersonalData["entry"][i]["evolutions"][0]["condition"] = int(32);
+                    cleanPersonalData["entry"][i]["evolutions"].push_back({{"level", 36}, {"condition", 33}, {"parameter", 0}, {"reserved3", 0},
+                                                                           {"reserved4", 0}, {"reserved5", 0}, {"species", 705},
                                                                            {"form", 1}});
                 }
                 else if(species_check == 627){

@@ -153,6 +153,7 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
             keyVal = "mizu";
         }
 
+        cleanStarterData["values"][index]["pokeData"]["item"] = getPokemonItemId(pokemonMaps["pokemons"][random]["natdex"], formRandom);
         currectlySelectedStarters[keyVal]["id"] = pokemonMaps["pokemons"][random]["devid"];
         currectlySelectedStarters[keyVal]["form"] = formRandom;
         currectlySelectedStarters[keyVal]["gender"] = genderNum;
@@ -220,7 +221,7 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
         }else if(index == 2){
             keyVal = "mizu";
         }
-
+        cleanStarterData["values"][index]["pokeData"]["item"] = getPokemonItemId(pokemonMaps["pokemons_name"][starterNameStd]["natdex"], form);
         currectlySelectedStarters[keyVal]["id"] = pokemonMaps["pokemons_name"][starterNameStd]["devid"];
         currectlySelectedStarters[keyVal]["form"] = form;
         currectlySelectedStarters[keyVal]["gender"] = genderNum;
@@ -387,6 +388,8 @@ bool SVStarters::randomize_gifts(int passedSeed, int bulkNum){
                 cleanGiftData["values"][i]["pokeData"]["rareType"] = "NO_RARE";
             }
         }
+
+        cleanGiftData["values"][i]["pokeData"]["item"] = getPokemonItemId(pokemonMaps["pokemons"][random]["natdex"], formRandom);
 
         if(randomize_tera_types == true){
             cleanGiftData["values"][i]["pokeData"]["gemType"] = selectTeraTypes(random, formRandom);
