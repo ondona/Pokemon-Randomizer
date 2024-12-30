@@ -284,6 +284,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     starters_pokeball[0]->addItem("Ultra Ball"); // Added
     starters_pokeball[0]->addItem("Master Ball"); // Added
     starters_pokeball[0]->addItem("Beast Ball"); // Added
+    starters_pokeball[0]->addItem("Cherish Ball"); // Added
 
     starters_pokeball[0]->addItem("Luxury Ball"); // Added
     starters_pokeball[0]->addItem("Timer Ball"); // Added
@@ -366,6 +367,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     starters_pokeball[1]->addItem("Ultra Ball"); // Added
     starters_pokeball[1]->addItem("Master Ball"); // Added
     starters_pokeball[1]->addItem("Beast Ball"); // Added
+    starters_pokeball[1]->addItem("Cherish Ball"); // Added
 
     starters_pokeball[1]->addItem("Luxury Ball"); // Added
     starters_pokeball[1]->addItem("Timer Ball"); // Added
@@ -448,6 +450,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     starters_pokeball[2]->addItem("Ultra Ball"); // Added
     starters_pokeball[2]->addItem("Master Ball"); // Added
     starters_pokeball[2]->addItem("Beast Ball"); // Added
+    starters_pokeball[2]->addItem("Cherish Ball"); // Added
 
     starters_pokeball[2]->addItem("Luxury Ball"); // Added
     starters_pokeball[2]->addItem("Timer Ball"); // Added
@@ -707,9 +710,9 @@ QWidget* SVRandomizerWindow::setupStatsWidget(){
     // row2->addWidget(moveset_same_as_type);
     // connect(moveset_same_as_type, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
-    force_tera_blast_every_5_levels = new QCheckBox("Force Tera Blast Every 5 levels", statsSettingsGroup);
-    row2->addWidget(force_tera_blast_every_5_levels);
-    connect(force_tera_blast_every_5_levels, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
+    // force_tera_blast_every_5_levels = new QCheckBox("Force Tera Blast Every 5 levels", statsSettingsGroup);
+    // row2->addWidget(force_tera_blast_every_5_levels);
+    // connect(force_tera_blast_every_5_levels, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
     statsSettingsLayout->addLayout(row2);
 
