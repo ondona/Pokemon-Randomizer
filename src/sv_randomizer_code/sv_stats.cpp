@@ -199,6 +199,9 @@ void SVStats::randomize_pokemon(){
             }
             // Force TeraBlast as reminder move
             cleanPersonalData["entry"][i]["reminder_moves"].push_back(851);
+            if(species_check == 1021){
+                cleanPersonalData["entry"][i]["reminder_moves"].push_back(906);
+            }
 
             // Randomize TMs if its enabled (check incase moveset is disabled)
             if(tmsDone == false && enable_TMs == true){
