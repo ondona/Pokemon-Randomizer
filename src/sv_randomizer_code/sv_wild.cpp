@@ -1,11 +1,8 @@
 #include "thirdparty/nlohmann/json.hpp"
 #include "headers/sv_randomizer_headers/sv_wild_static.h"
 #include <QDebug>
-#include <ctime>
-#include <iostream>
 #include <fstream>
 #include <QDir>
-#include <random>
 
 using json = nlohmann::ordered_json;
 namespace fs = std::filesystem;
@@ -40,8 +37,7 @@ std::string generate_area_list(){
     return areaList;
 }
 
-bool SVWilds::randomize_paldea_wilds(int passedSeed, int run, std::string fileName){
-    int seedPaldeaWild;
+bool SVWilds::randomize_paldea_wilds(std::string fileName){
     json wildPokemonInfo;
     json paldeaWildJSON;
     json wildTemplate;
@@ -58,19 +54,6 @@ bool SVWilds::randomize_paldea_wilds(int passedSeed, int run, std::string fileNa
 
     file >> wildPokemonInfo;
     file.close();
-
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedPaldeaWild = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedPaldeaWild = passedSeed*run;
-    }
-
-    std::srand(seedPaldeaWild);
 
     paldeaWildJSON["values"] = json::array();
     QList<int> wildPaldeanPokemon = {};
@@ -244,8 +227,7 @@ bool SVWilds::randomize_paldea_wilds(int passedSeed, int run, std::string fileNa
     return true;
 }
 
-bool SVWilds::randomize_kitakami_wilds(int passedSeed, int run){
-    int seedPaldeaWild;
+bool SVWilds::randomize_kitakami_wilds(){
     json wildPokemonInfo;
     json paldeaWildJSON;
     json wildTemplate;
@@ -262,19 +244,6 @@ bool SVWilds::randomize_kitakami_wilds(int passedSeed, int run){
 
     file >> wildPokemonInfo;
     file.close();
-
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedPaldeaWild = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedPaldeaWild = passedSeed*run;
-    }
-
-    std::srand(seedPaldeaWild);
 
     paldeaWildJSON["values"] = json::array();
     QList<int> wildPaldeanPokemon = {};
@@ -447,8 +416,7 @@ bool SVWilds::randomize_kitakami_wilds(int passedSeed, int run){
     return true;
 }
 
-bool SVWilds::randomize_blueberry_wilds(int passedSeed, int run){
-    int seedPaldeaWild;
+bool SVWilds::randomize_blueberry_wilds(){
     json wildPokemonInfo;
     json paldeaWildJSON;
     json wildTemplate;
@@ -465,19 +433,6 @@ bool SVWilds::randomize_blueberry_wilds(int passedSeed, int run){
 
     file >> wildPokemonInfo;
     file.close();
-
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedPaldeaWild = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedPaldeaWild = passedSeed*run;
-    }
-
-    std::srand(seedPaldeaWild);
 
     paldeaWildJSON["values"] = json::array();
     QList<int> wildPaldeanPokemon = {};
@@ -651,8 +606,7 @@ bool SVWilds::randomize_blueberry_wilds(int passedSeed, int run){
     return true;
 }
 
-bool SVWilds::randomize_statics(int passedSeed, int run){
-    int seedPaldeaWild;
+bool SVWilds::randomize_statics(){
     json wildPokemonInfo;
     json paldeaFixedJSON;
 
@@ -675,19 +629,6 @@ bool SVWilds::randomize_statics(int passedSeed, int run){
     file.close();
     fileFixed >> paldeaFixedJSON;
     fileFixed.close();
-
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedPaldeaWild = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedPaldeaWild = passedSeed*run;
-    }
-
-    std::srand(seedPaldeaWild);
 
     QList<int> wildPaldeanPokemon = {};
     QList<int> wildLegendMons_Useless = {};

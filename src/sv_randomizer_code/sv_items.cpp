@@ -4,13 +4,10 @@
 #include <ctime>
 #include <fstream>
 #include <QDir>
-#include <random>
 
 using json = nlohmann::ordered_json;
 namespace fs = std::filesystem;
 
-int seedItems;
-int itemTableCount = 1;
 json itemsDev;
 
 SVItems::SVItems(){
@@ -37,8 +34,6 @@ void SVItems::randomizePokemonDrops(){
     file.close();
 
     for(unsigned long long i =0; i<syncrhoItems["values"].size(); i++){
-        std::srand(seedItems * (i+1)*itemTableCount);
-
         int itemChoice = 1+std::rand()%1090;
         while(itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_MATERIAL" ||
                itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_EVENT" ||
@@ -51,8 +46,6 @@ void SVItems::randomizePokemonDrops(){
         std::string itemName = itemsDev["items"][itemChoice]["devName"];
         syncrhoItems["values"][i]["item1"]["itemid"] = itemName;
     }
-    itemTableCount++;
-
     std::ofstream fileSave(filePath+"/SV_ITEMS/dropitemdata_array.json");
     fileSave<<syncrhoItems.dump(4);
     fileSave.close();
@@ -74,7 +67,6 @@ void SVItems::randomizeLetsGoItems(){
     file.close();
 
     for(unsigned long long i =0; i<pickUpItems["values"].size(); i++){
-        std::srand(seedItems * (i+1)*itemTableCount);
         for(int j = 0; j<=4; j++){
             int itemChoice = 1+std::rand()%1090;
             while(itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_MATERIAL" ||
@@ -94,7 +86,6 @@ void SVItems::randomizeLetsGoItems(){
             }
             pickUpItems["values"][i][itemKey] = itemName;
         }
-        itemTableCount++;
     }
 
     std::ofstream fileSave(filePath+"/SV_ITEMS/rummagingItemDataTable_array.json");
@@ -118,7 +109,6 @@ void SVItems::randomizePickUpItems(){
     file.close();
 
     for(unsigned long long i =0; i<pickUpItems["values"].size(); i++){
-        std::srand(seedItems * (i+1)*itemTableCount);
         for(int j = 1; j<=30; j++){
             int itemChoice = 1+std::rand()%1090;
             while(itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_MATERIAL" ||
@@ -138,7 +128,6 @@ void SVItems::randomizePickUpItems(){
             }
             pickUpItems["values"][i][itemKey]["itemId"] = itemName;
         }
-        itemTableCount++;
     }
 
     std::ofstream fileSave(filePath+"/SV_ITEMS/monohiroiItemData_array.json");
@@ -162,7 +151,6 @@ void SVItems::randomizeHiddenItems(std::string fileName, std::string saveFile){
     file.close();
 
     for(unsigned long long i =0; i<paldeaItems["values"].size(); i++){
-        std::srand(seedItems * (i+1) * itemTableCount);
         for(int j = 1; j<=10; j++){
             int itemChoice = 1+std::rand()%1090;
             while(itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_MATERIAL" ||
@@ -179,7 +167,6 @@ void SVItems::randomizeHiddenItems(std::string fileName, std::string saveFile){
             paldeaItems["values"][i][itemKey]["emergePercent"] = 100 + std::rand()%901;
             paldeaItems["values"][i][itemKey]["dropCount"] = 1 + std::rand()%20;
         }
-        itemTableCount++;
     }
 
     std::ofstream fileSave(filePath+"/SV_ITEMS/"+saveFile);
@@ -187,7 +174,7 @@ void SVItems::randomizeHiddenItems(std::string fileName, std::string saveFile){
     fileSave.close();
 }
 
-bool SVItems::randomize_items(int passedSeed, int run){
+bool SVItems::randomize_items(){
     std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
     QString QBaseAddress = QString::fromStdString(filePath);
     QDir qBaseDir(QBaseAddress);
@@ -200,17 +187,6 @@ bool SVItems::randomize_items(int passedSeed, int run){
 
     file >> itemsDev;
     file.close();
-
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedItems = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedItems = passedSeed*run;
-    }
 
     if(randomize_hidden_items == true){
         qDebug()<<"Here - HIdden";

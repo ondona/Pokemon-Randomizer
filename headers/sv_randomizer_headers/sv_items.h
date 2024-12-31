@@ -18,7 +18,7 @@ class SVItems: public SVShared{
         bool randomize_pokemon_drops = false;
         bool randomize_synchro_items = false;
 
-        bool randomize_items(int seed, int run);
+        bool randomize_items();
         void randomizeHiddenItems(std::string fileName, std::string saveFile);
         void randomizePickUpItems();
         void randomizeLetsGoItems();

@@ -1,10 +1,8 @@
 #include "thirdparty/nlohmann/json.hpp"
 #include "headers/sv_randomizer_headers/sv_stats.h"
 #include <QDebug>
-#include <ctime>
 #include <fstream>
 #include <QDir>
-#include <random>
 
 using json = nlohmann::ordered_json;
 namespace fs = std::filesystem;
@@ -14,7 +12,6 @@ json cleanPersonalData;
 json cleanMoveData;
 json cleanItemMoveData;
 json moveNames;
-int seedStats;
 
 SVStats::SVStats(){
 
@@ -26,7 +23,6 @@ SVStats::~SVStats(){
 
 void SVStats::randomize_pokemon(){
     for(unsigned long long i=0; i<cleanPersonalData["entry"].size(); i++){
-        std::srand(seedStats*(i+1));
         if(cleanPersonalData["entry"][i]["is_present"] == true){
             int species_check = cleanPersonalData["entry"][i]["species"]["species"];
 
@@ -371,10 +367,7 @@ void SVStats::randomize_pokemon(){
     }
 
     for(unsigned long long i =0; i<cleanPersonalData["entry"].size(); i++){
-        std::srand(seedStats*(i+1));
         if(cleanPersonalData["entry"][i]["is_present"] == true){
-            int species_check = cleanPersonalData["entry"][i]["species"]["species"];
-
             // Randomize Evolutions
             if(randomize_evolutions==true || evolve_every_5_levels == true){
                 // Change var to be every level so it matches what it does
@@ -454,7 +447,6 @@ void SVStats::randomize_tmsFile(bool useAllMoves){
 
     for(unsigned long long i = 0; i<cleanItemMoveData["values"].size(); i++){
         if(cleanItemMoveData["values"][i]["ItemType"] == "ITEMTYPE_WAZA"){
-            std::srand(seedStats*(i+1));
             int selectedMove = 1;
             if(useAllMoves == true){
                 selectedMove = 1 + std::rand()%919;
@@ -513,7 +505,7 @@ void SVStats::allow_all_moves(){
     fileSave.close();
 }
 
-bool SVStats::randomize_stats(int passedSeed, int run){
+bool SVStats::randomize_stats(){
     std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
     QString QBaseAddress = QString::fromStdString(filePath);
     QDir qBaseDir(QBaseAddress);
@@ -528,17 +520,6 @@ bool SVStats::randomize_stats(int passedSeed, int run){
     // initialize the json files and close the files for their values
     file >> cleanPersonalData;
     file.close();
-
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedStats = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedStats = passedSeed*run;
-    }
 
     if(ban_wonder_guard == true){
         bannedAbilities.append(25);

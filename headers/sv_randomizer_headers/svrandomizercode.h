@@ -19,7 +19,7 @@ public:
     //General
     bool auto_patch = true; // Added
     bool kaizo_mode;       // Added
-    int bulk_amount = 1;
+    unsigned int bulk_amount = 1;
     QString seed = "";
 
     //Starters and Gifts
@@ -45,13 +45,13 @@ public:
     QVector<bool> boss_settings;
     QVector<bool> boss_generation;
 
-    bool svRandomizeStarters(SVStarters svs, int seed, int run);
-    bool svRandomizeGifts(SVStarters svs, int seed, int run);
-    bool svRandomizeStats(SVStats stats, int seed, int run);
-    bool svRandomizeItem(SVItems items, int seed, int run);
-    bool svRandomizeWilds(SVWilds wild, int seed, int run);
-    bool svRandomizeRaids(SVRaids raids, int seed, int run);
-    bool svRandomizeTrainers(SVTrainers trainers, int seed, int run);
+    bool svRandomizeStarters(SVStarters svs);
+    bool svRandomizeGifts(SVStarters svs);
+    bool svRandomizeStats(SVStats stats);
+    bool svRandomizeItem(SVItems items);
+    bool svRandomizeWilds(SVWilds wild);
+    bool svRandomizeRaids(SVRaids raids);
+    bool svRandomizeTrainers(SVTrainers trainers);
 
 };
 

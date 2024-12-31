@@ -9,7 +9,6 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
-#include <sstream>
 #include <algorithm>
 #include <iostream>
 #include <fstream>
@@ -17,8 +16,6 @@
 #include <string>
 #include <stdexcept>
 #include <QSet>
-#include <chrono>
-#include <random>
 #include <QDebug>
 #include <flatbuffers/flatbuffers.h>
 #include <flatbuffers/verifier.h>
@@ -283,12 +280,8 @@ std::string SVShared::selectTeraTypes(int pokemon, int formId){
         default:
             break;
     }
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        int seed = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-        std::srand(seed);
-        return teraTypes[std::rand()%teraTypes.length()].toUpper().toStdString();
+
+    return teraTypes[std::rand()%teraTypes.length()].toUpper().toStdString();
 }
 
 void SVShared::getUsablePokemon(QVector<bool> generations, bool legend, bool paradoxs, bool legends_paradox, QList<int>& allowedPokemon, QList<int>& allowedLegends){

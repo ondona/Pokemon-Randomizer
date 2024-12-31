@@ -1,14 +1,10 @@
 #include "headers/sv_randomizer_headers/sv_raids.h"
 #include <QString>
-#include <cstdlib>
-#include <ctime>
 #include <string>
 #include <QMap>
 #include <QDir>
 #include <QDebug>
 #include <fstream>
-#include <chrono>
-#include <random>
 #include "thirdparty/nlohmann/json.hpp"
 
 // Look into QSharedData in the future
@@ -78,8 +74,7 @@ int getBannedLength(QList<bool> generations){
     return totalBanned;
 }
 
-bool SVRaids::randomize_paldean_raids(int passedSeed, int run, std::string fileName){
-    int seedPaldeaWild;
+bool SVRaids::randomize_paldean_raids(std::string fileName){
     json wildPokemonInfo;
     json paldeaRaidJSON;
 
@@ -96,19 +91,6 @@ bool SVRaids::randomize_paldean_raids(int passedSeed, int run, std::string fileN
     file >> wildPokemonInfo;
     file.close();
 
-
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedPaldeaWild = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedPaldeaWild = passedSeed*run;
-    }
-
-    std::srand(seedPaldeaWild);
 
     QList<int> wildPaldeanPokemon = {};
     QList<int> wildLegendMons_Useless = {};
@@ -140,7 +122,6 @@ bool SVRaids::randomize_paldean_raids(int passedSeed, int run, std::string fileN
         QSet<int> indexesChanged;
 
         for(unsigned long long j =0; j<paldeaRaidJSON["values"].size(); j++){
-            std::srand(seedPaldeaWild*i*(j+1));
             if(usedPokemon.length() - wildPaldeanPokemon.length() == 0){
                 break;
             }
@@ -255,8 +236,7 @@ bool SVRaids::randomize_paldean_raids(int passedSeed, int run, std::string fileN
     return true;
 }
 
-bool SVRaids::randomize_kitakami_raids(int passedSeed, int run, std::string fileName){
-    int seedPaldeaWild;
+bool SVRaids::randomize_kitakami_raids(std::string fileName){
     json wildPokemonInfo;
     json paldeaRaidJSON;
 
@@ -273,19 +253,6 @@ bool SVRaids::randomize_kitakami_raids(int passedSeed, int run, std::string file
     file >> wildPokemonInfo;
     file.close();
 
-
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedPaldeaWild = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedPaldeaWild = passedSeed*run;
-    }
-
-    std::srand(seedPaldeaWild);
 
     QList<int> wildPaldeanPokemon = {};
     QList<int> wildLegendMons_Useless = {};
@@ -317,7 +284,6 @@ bool SVRaids::randomize_kitakami_raids(int passedSeed, int run, std::string file
         QSet<int> indexesChanged;
 
         for(unsigned long long j =0; j<paldeaRaidJSON["values"].size(); j++){
-            std::srand(seedPaldeaWild*i*(j+1));
             if(usedPokemon.length() - wildPaldeanPokemon.length() == 0){
                 break;
             }
@@ -432,8 +398,7 @@ bool SVRaids::randomize_kitakami_raids(int passedSeed, int run, std::string file
     return true;
 }
 
-bool SVRaids::randomize_blueberry_raids(int passedSeed, int run, std::string fileName){
-    int seedPaldeaWild;
+bool SVRaids::randomize_blueberry_raids(std::string fileName){
     json wildPokemonInfo;
     json paldeaRaidJSON;
 
@@ -449,20 +414,6 @@ bool SVRaids::randomize_blueberry_raids(int passedSeed, int run, std::string fil
 
     file >> wildPokemonInfo;
     file.close();
-
-
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedPaldeaWild = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedPaldeaWild = passedSeed*run;
-    }
-
-    std::srand(seedPaldeaWild);
 
     QList<int> wildPaldeanPokemon = {};
     QList<int> wildLegendMons_Useless = {};
@@ -494,7 +445,6 @@ bool SVRaids::randomize_blueberry_raids(int passedSeed, int run, std::string fil
         QSet<int> indexesChanged;
 
         for(unsigned long long j =0; j<paldeaRaidJSON["values"].size(); j++){
-            std::srand(seedPaldeaWild*i*(j+1));
             if(usedPokemon.length() - wildPaldeanPokemon.length() == 0){
                 break;
             }

@@ -17,6 +17,9 @@
 #include <QStringListModel>
 #include <QComboBox>
 #include <QDir>
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 
 SVRandomizerWindow::SVRandomizerWindow(QWidget *parent)
@@ -3506,7 +3509,24 @@ void showMessage(const QString &message) {
 
 void SVRandomizerWindow::addToFavorites()
 {
-    for(int i = 1; i< randomizer.bulk_amount+1; i++){
+    unsigned int hash = 0;
+    if(!randomizer.seed.isEmpty()){
+        for (const QChar &ch : randomizer.seed) {
+            hash = hash * 31 + ch.unicode(); // Accumulate a numeric value
+        }
+    }
+    for(unsigned int i = 1; i< randomizer.bulk_amount+1; i++){
+        if(hash == 0){
+            std::random_device rd;
+            auto now = std::chrono::high_resolution_clock::now();
+            auto duration = now.time_since_epoch();
+            hash = static_cast<unsigned int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
+        }
+
+        srand(hash*i);
+        qDebug()<<"Seed is: "<<randomizer.seed;
+        qDebug()<<QStringLiteral("Numerical is: %1").arg(hash*i);
+
         std::string outputKey = "output";
 
         std::string dirPath = fs::absolute(outputKey).string();
@@ -3520,15 +3540,8 @@ void SVRandomizerWindow::addToFavorites()
         QString QBaseAddress = QString::fromStdString(baseAddress);
         QDir qBaseDir(QBaseAddress);
 
-        int hash = 0;
-        if(!randomizer.seed.isEmpty()){
-            for (const QChar &ch : randomizer.seed) {
-                hash = hash * 31 + ch.unicode(); // Accumulate a numeric value
-            }
-        }
-
         if(randomizer.svRandomizerStarters.enable_starters == true){
-            randomizer.svRandomizeStarters(randomizer.svRandomizerStarters, hash, i);
+            randomizer.svRandomizeStarters(randomizer.svRandomizerStarters);
 
             // Set up Scenes for Starters
             try {
@@ -3568,7 +3581,7 @@ void SVRandomizerWindow::addToFavorites()
         }
 
         if(randomizer.svRandomizerStarters.enable_gifts == true){
-            randomizer.svRandomizeGifts(randomizer.svRandomizerStarters, hash, i);
+            randomizer.svRandomizeGifts(randomizer.svRandomizerStarters);
         }
 
         if(randomizer.svRandomizerStarters.enable_starters == true || randomizer.svRandomizerStarters.enable_gifts == true){
@@ -3582,7 +3595,7 @@ void SVRandomizerWindow::addToFavorites()
             ||randomizer.svRandomizerStats.randomize_moveset == true || randomizer.svRandomizerStats.randomize_bst == true
             || randomizer.svRandomizerStats.randomize_evolutions == true || randomizer.svRandomizerStats.enable_TMs == true){
 
-            randomizer.svRandomizeStats(randomizer.svRandomizerStats, hash, i);
+            randomizer.svRandomizeStats(randomizer.svRandomizerStats);
 
             randomizer.generateBinary(qBaseDir.filePath("SV_PERSONAL/personal_array.fbs").toStdString(),
                                       qBaseDir.filePath(+"SV_PERSONAL/personal_array.json").toStdString(),
@@ -3607,7 +3620,7 @@ void SVRandomizerWindow::addToFavorites()
             || randomizer.svRandomizerItems.randomize_pickup_items == true || randomizer.svRandomizerItems.randomize_synchro_items == true
             || randomizer.svRandomizerItems.randomize_pokemon_drops == true){
 
-            randomizer.svRandomizeItem(randomizer.svRandomizerItems, hash, i);
+            randomizer.svRandomizeItem(randomizer.svRandomizerItems);
 
             if(randomizer.svRandomizerItems.randomize_hidden_items == true){
                 randomizer.generateBinary(qBaseDir.filePath("SV_ITEMS/hiddenItemDataTable_array.bfbs").toStdString(),
@@ -3650,7 +3663,7 @@ void SVRandomizerWindow::addToFavorites()
         if(randomizer.svRandomizerWilds.randomize_paldea_wild == true || randomizer.svRandomizerWilds.randomize_kitakami_wild == true
             || randomizer.svRandomizerWilds.randomize_blueberry_wild == true){
 
-            randomizer.svRandomizeWilds(randomizer.svRandomizerWilds, hash, i);
+            randomizer.svRandomizeWilds(randomizer.svRandomizerWilds);
 
             if(randomizer.svRandomizerWilds.paldea_Settings_for_all_wild == true){
                 if(randomizer.svRandomizerWilds.randomize_paldea_wild == true){
@@ -3697,7 +3710,7 @@ void SVRandomizerWindow::addToFavorites()
         if(randomizer.svRandomizerRaids.praids_randomize == true || randomizer.svRandomizerRaids.kraids_randomize == true
                 || randomizer.svRandomizerRaids.braids_randomize == true){
 
-            randomizer.svRandomizeRaids(randomizer.svRandomizerRaids, hash, i);
+            randomizer.svRandomizeRaids(randomizer.svRandomizerRaids);
 
             if(randomizer.svRandomizerRaids.paldea_Settings_for_all_raids == true){
                 for(int j = 1; j<=6; j++){
@@ -3766,7 +3779,7 @@ void SVRandomizerWindow::addToFavorites()
         // Trainers Save
         if(randomizer.svRandomizerTrainers.randomize_paldea_trainers == true || randomizer.svRandomizerTrainers.randomize_kitakami_trainers == true
                 || randomizer.svRandomizerTrainers.randomize_blueberry_trainers == true){
-            randomizer.svRandomizeTrainers(randomizer.svRandomizerTrainers, hash, i);
+            randomizer.svRandomizeTrainers(randomizer.svRandomizerTrainers);
             qDebug()<<"Made it here";
             randomizer.generateBinary(qBaseDir.filePath("SV_TRAINERS/trdata_array.bfbs").toStdString(),
                                       qBaseDir.filePath(+"SV_TRAINERS/trdata_array.json").toStdString(),
@@ -3809,6 +3822,7 @@ void SVRandomizerWindow::addToFavorites()
                 checkAndDeleteFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(ogName)).toStdString());
             }
             checkAndDeleteFile(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_TRAINERS/trdata_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su2_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su1_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/fixed_symbol_table_array.json").toStdString());
@@ -4436,9 +4450,8 @@ void SVRandomizerWindow::saveStringInput() {
     }
 
     // Determine which QLineEdit called the function
-    if (senderLineEdit == nullptr) {
-        qDebug() << "Saving input from starters_poke_ball:" << senderLineEdit->text();
-        // Save or process text from starters_poke_ball
+    if (senderLineEdit == seed) {
+        randomizer.seed = senderLineEdit->text();
     }else{
         int index = 0;
         index = starters.indexOf(senderLineEdit);
