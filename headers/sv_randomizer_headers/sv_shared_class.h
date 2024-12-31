@@ -40,6 +40,10 @@
 
 class SVShared {
 public:
+    QList <QMap<QString, int>> exitAbilitiesPokemon = {{{"id", 767}, {"form", 0}},
+                                                      {{"id", 768}, {"form", 0}},
+                                                      };
+
     QList<int> pokemonFormsWithItems = {483, 484, 487, 493, 888, 889, 1017};
     QMap<QString, QStringList> pokemonFormsInGame = {
         {"Bulbasaur", {"Normal"}},

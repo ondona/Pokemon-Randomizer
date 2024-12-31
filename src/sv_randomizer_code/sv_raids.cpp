@@ -144,8 +144,10 @@ bool SVRaids::randomize_paldean_raids(std::string fileName){
 
                 checkDict = {{"id", int(random)}, {"form", int(formRandom)}};
                 if(!usedForms.contains(checkDict)){
-                    usedForms.append(checkDict);
-                    check_loop = false;
+                    if(!exitAbilitiesPokemon.contains(checkDict)){
+                        usedForms.append(checkDict);
+                        check_loop = false;
+                    }
                 }
             } while (check_loop);
 
@@ -324,8 +326,10 @@ bool SVRaids::randomize_kitakami_raids(std::string fileName){
 
                 checkDict = {{"id", int(random)}, {"form", int(formRandom)}};
                 if(!usedForms.contains(checkDict)){
-                    usedForms.append(checkDict);
-                    check_loop = false;
+                    if(!exitAbilitiesPokemon.contains(checkDict)){
+                        usedForms.append(checkDict);
+                        check_loop = false;
+                    }
                 }
             } while (check_loop);
 
@@ -485,8 +489,10 @@ bool SVRaids::randomize_blueberry_raids(std::string fileName){
 
                 checkDict = {{"id", int(random)}, {"form", int(formRandom)}};
                 if(!usedForms.contains(checkDict)){
-                    usedForms.append(checkDict);
-                    check_loop = false;
+                    if(!exitAbilitiesPokemon.contains(checkDict)){
+                        usedForms.append(checkDict);
+                        check_loop = false;
+                    }
                 }
             } while (check_loop);
 
