@@ -119,6 +119,7 @@ private:
         QCheckBox *paldea_Ban1Stage; // Added
         QCheckBox *paldea_Settings_for_all_wild; // Added
         QCheckBox *paldea_BalanceAreaPerBST; //TBD
+        QCheckBox *let_ogre_pagos_spawn;
         QVector<QCheckBox*> generation_paldea_wild; // Added
 
         QCheckBox *randomize_kitakami_wild;

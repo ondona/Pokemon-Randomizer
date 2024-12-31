@@ -111,6 +111,28 @@ bool SVWilds::randomize_paldea_wilds(std::string fileName){
 
         for(unsigned long long j =0; j<wildPokemonInfo["pokemons"][i]["forms"].size(); j++){
             if(wildPokemonInfo["pokemons"][i]["forms"][j]["is_present"] == true){
+
+                if(i == 666 || i == 665 || i == 664){
+                    if(j != 18){
+                        continue;
+                    }
+                }
+                if(let_oger_pagos_spawn == false){
+                    if(types_changed == false){
+                        if(i == 1017 && j != 0){
+                            continue;
+                        }
+                        else if((i == 1017 && j != 0) || i == 1024){
+                            continue;
+                        }
+                    }
+                    else{
+                        if(i == 1017 || i == 1024){
+                            continue;
+                        }
+                    }
+                }
+
                 wildTemplate = {
                     {"devid", int(wildPokemonInfo["pokemons"][i]["devid"])},
                     {"sex", "DEFAULT"},
@@ -301,6 +323,27 @@ bool SVWilds::randomize_kitakami_wilds(){
 
         for(unsigned long long j =0; j<wildPokemonInfo["pokemons"][i]["forms"].size(); j++){
             if(wildPokemonInfo["pokemons"][i]["forms"][j]["is_present"] == true){
+                if(i == 666 || i == 665 || i == 664){
+                    if(j != 18){
+                        continue;
+                    }
+                }
+                if(let_oger_pagos_spawn == false){
+                    if(types_changed == false){
+                        if(i == 1017 && j != 0){
+                            continue;
+                        }
+                        else if((i == 1017 && j != 0) || i == 1024){
+                            continue;
+                        }
+                    }
+                    else{
+                        if(i == 1017 || i == 1024){
+                            continue;
+                        }
+                    }
+                }
+
                 wildTemplate = {
                     {"devid", int(wildPokemonInfo["pokemons"][i]["devid"])},
                     {"sex", "DEFAULT"},
@@ -490,6 +533,28 @@ bool SVWilds::randomize_blueberry_wilds(){
 
         for(unsigned long long j =0; j<wildPokemonInfo["pokemons"][i]["forms"].size(); j++){
             if(wildPokemonInfo["pokemons"][i]["forms"][j]["is_present"] == true){
+
+                if(i == 666 || i == 665 || i == 664){
+                    if(j != 18){
+                        continue;
+                    }
+                }
+                if(let_oger_pagos_spawn == false){
+                    if(types_changed == false){
+                        if(i == 1017 && j != 0){
+                            continue;
+                        }
+                        else if((i == 1017 && j != 0) || i == 1024){
+                            continue;
+                        }
+                    }
+                    else{
+                        if(i == 1017 || i == 1024){
+                            continue;
+                        }
+                    }
+                }
+
                 wildTemplate = {
                     {"devid", int(wildPokemonInfo["pokemons"][i]["devid"])},
                     {"sex", "DEFAULT"},
@@ -644,6 +709,11 @@ bool SVWilds::randomize_statics(){
             random = 1+std::rand()%1025;
 
         int formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
+
+        if(random == 664 || random == 665 || random == 666){
+            formRandom = 18;
+        }
+
         while(wildPokemonInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
             formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
         }

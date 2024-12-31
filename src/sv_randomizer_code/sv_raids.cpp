@@ -211,6 +211,24 @@ bool SVRaids::randomize_paldean_raids(std::string fileName){
                 paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERAKURASUTAA";
             }
 
+            for(int i = 2; i<=6; i++){
+                std::string key = "extraAction"+std::to_string(i);
+
+                if(paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"][key]["timming"] == "NONE"){
+                    continue;
+                }
+
+
+                if(paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"][key]["action"] == "WAZA"){
+                    if(random != 1024){
+                        paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"][key]["wazano"] = "WAZA_TERABAASUTO";
+                    }else{
+                        paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"][key]["wazano"] = "WAZA_TERAKURASUTAA";
+                    }
+                }
+
+            }
+
             indexesChanged.insert(i);
         }
 
