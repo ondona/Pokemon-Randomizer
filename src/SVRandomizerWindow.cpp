@@ -3806,47 +3806,48 @@ void SVRandomizerWindow::addToFavorites()
         }
 
         // Delete files for next generation
-            // for(int j = 1; j<=6; j++){
-            //     std::string ogName = "su2_raid_enemy_0" + std::to_string(j) + "_array.json";
+            for(int j = 1; j<=6; j++){
+                std::string ogName = "su2_raid_enemy_0" + std::to_string(j) + "_array.json";
 
-            //     checkAndDeleteFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(ogName)).toStdString());
-            // }
-            // for(int j = 1; j<=6; j++){
-            //     std::string ogName = "su1_raid_enemy_0" + std::to_string(j) + "_array.json";
+                checkAndDeleteFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(ogName)).toStdString());
+            }
+            for(int j = 1; j<=6; j++){
+                std::string ogName = "su1_raid_enemy_0" + std::to_string(j) + "_array.json";
 
-            //     checkAndDeleteFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(ogName)).toStdString());
-            // }
-            // for(int j = 1; j<=6; j++){
-            //     std::string ogName = "raid_enemy_0" + std::to_string(j) + "_array.json";
+                checkAndDeleteFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(ogName)).toStdString());
+            }
+            for(int j = 1; j<=6; j++){
+                std::string ogName = "raid_enemy_0" + std::to_string(j) + "_array.json";
 
-            //     checkAndDeleteFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(ogName)).toStdString());
-            // }
-            // checkAndDeleteFile(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su2_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su1_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/fixed_symbol_table_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/dropitemdata_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/rummagingItemDataTable_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/monohiroiItemData_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/hiddenItemDataTable_lc_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/hiddenItemDataTable_su2_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/hiddenItemDataTable_su1_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/hiddenItemDataTable_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_PERSONAL/waza_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_PERSONAL/itemdata_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_PERSONAL/personal_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath(+"SV_STARTERS_FLATBUFFERS/eventAddPokemon_array.json").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_1.trsog").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_0.trsog").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_1.trsog").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_0.trsog").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_1.trsog").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_0.trsog").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_1.trsog").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_0.trsog").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_1.trsog").toStdString());
-            // checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.trsog").toStdString());
+                checkAndDeleteFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(ogName)).toStdString());
+            }
+            checkAndDeleteFile(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_TRAINERS/trdata_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su2_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su1_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/fixed_symbol_table_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/dropitemdata_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/rummagingItemDataTable_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/monohiroiItemData_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/hiddenItemDataTable_lc_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/hiddenItemDataTable_su2_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/hiddenItemDataTable_su1_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_ITEMS/hiddenItemDataTable_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_PERSONAL/waza_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_PERSONAL/itemdata_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_PERSONAL/personal_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_STARTERS_FLATBUFFERS/eventAddPokemon_array.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_1.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_0.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_1.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_0.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_1.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_0.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_1.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_0.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_1.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.trsog").toStdString());
 
         // Delete Output file (again)
         if(fs::exists(dirPath)){
