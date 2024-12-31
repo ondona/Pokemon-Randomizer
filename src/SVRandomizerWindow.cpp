@@ -276,6 +276,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     connect(starters[0], &QLineEdit::textChanged, this, [=](const QString &text) {
         updateComboBoxGender(starters_gender[0], text);
     });
+    connect(starters_gender[0], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
     QLabel *pokeball_s1 = new QLabel("Pokeball ", startersGroupSettings);
     pokeball_s1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -359,6 +360,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     connect(starters[1], &QLineEdit::textChanged, this, [=](const QString &text) {
         updateComboBoxGender(starters_gender[1], text);
     });
+    connect(starters_gender[1], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
     QLabel *pokeball_s2 = new QLabel("Pokeball ", startersGroupSettings);
     pokeball_s2->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -442,6 +444,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     connect(starters[2], &QLineEdit::textChanged, this, [=](const QString &text) {
         updateComboBoxGender(starters_gender[2], text);
     });
+    connect(starters_gender[2], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
     QLabel *pokeball_s3 = new QLabel("Pokeball ", startersGroupSettings);
     pokeball_s3->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -3944,6 +3947,7 @@ void SVRandomizerWindow::saveComboInput() {
             randomizer.svRandomizerStarters.starters_pokeball[index] = comboBox->currentText();
             return;
         }
+
     }
 }
 
@@ -4471,10 +4475,18 @@ void SVRandomizerWindow::updateComboBoxForms(QComboBox *comboBox, const QString 
 
 void SVRandomizerWindow::updateComboBoxGender(QComboBox *comboBox, const QString &text) {
     comboBox->clear();
-    comboBox->addItem("MALE");
-    comboBox->addItem("FEMALE");
-    comboBox->addItem("DEFAULT");
-    qDebug()<<text;
+    if(randomizer.genderForms.contains(text)){
+        comboBox->addItem("DEFAULT");
+    }else if(randomizer.femaleOnlyPokemon.contains(text)){
+        comboBox->addItem("FEMALE");
+    }else if(randomizer.maleOnlyPokemon.contains(text)){
+        comboBox->addItem("MALE");
+    } else if(randomizer.genderlessPokemon.contains(text)){
+            comboBox->addItem("GENDERLESS");
+    } else{
+        comboBox->addItem("MALE");
+        comboBox->addItem("FEMALE");
+    }
 }
 
 void SVRandomizerWindow::updatePreview(const QString &text) {
