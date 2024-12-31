@@ -12,7 +12,6 @@
 #include <QScrollArea>
 #include <QStackedWidget>
 #include <QVBoxLayout>
-#include <string>
 #include <filesystem>
 #include <QNetworkAccessManager>
 #include <QUrl>

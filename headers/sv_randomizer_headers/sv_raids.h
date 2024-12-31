@@ -56,9 +56,9 @@ class SVRaids: public SVShared{
                                           false, false, false,
                                           false, false, false};
 
-        bool randomize_paldean_raids(int seed, int run, std::string fileName);
-        bool randomize_kitakami_raids(int seed, int run, std::string fileName);
-        bool randomize_blueberry_raids(int seed, int run, std::string fileName);
+        bool randomize_paldean_raids(std::string fileName);
+        bool randomize_kitakami_raids(std::string fileName);
+        bool randomize_blueberry_raids(std::string fileName);
 };
 
 #endif // SV_RAIDS_H

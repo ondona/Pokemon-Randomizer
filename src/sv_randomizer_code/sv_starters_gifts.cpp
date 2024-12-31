@@ -1,14 +1,11 @@
 #include "headers/sv_randomizer_headers/sv_starters_gifts.h"
 #include <QString>
 #include <cstdlib>
-#include <ctime>
 #include <string>
 #include <QMap>
 #include <QDir>
 #include <QDebug>
 #include <fstream>
-#include <chrono>
-#include <random>
 #include "thirdparty/nlohmann/json.hpp"
 
 // Look into QSharedData in the future
@@ -19,7 +16,6 @@ namespace fs = std::filesystem;
 json cleanStarterData;
 json cleanGiftData;
 json pokemonMaps;
-int seed;
 std::vector<int> devId  = {};
 std::vector<int> formId  = {};
 std::vector<int> gender  = {};
@@ -79,7 +75,7 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
 
     std::string starterNameStd = starterName.toStdString();
     std::string genderStd = gender.toStdString();
-    std::srand(seed*(index+1));
+
     int genderNum = 0;
     int rareNum = 0;
 
@@ -231,7 +227,7 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
     }
 }
 
-bool SVStarters::randomize_starters(int passedSeed, int bulkNum){
+bool SVStarters::randomize_starters(){
     // Logic to Setup combinations of settings for pokemon starters
 
     getUsablePokemon(generations_starters, only_legendary_pokemon_starters, only_paradox_pokemon_starters, only_legends_and_paradox_starters, allowedPokemon, allowedLegends);
@@ -259,19 +255,7 @@ bool SVStarters::randomize_starters(int passedSeed, int bulkNum){
     fileInfo.close();
     file.close();
 
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seed = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seed = passedSeed*bulkNum;
-    }
-
     if(force_shiny_starter == true){
-        std::srand(seed);
         int rare_Force = std::rand()%3;
         if(starters_shiny[rare_Force] == false){
             starters_shiny[rare_Force]=true;
@@ -317,7 +301,7 @@ bool SVStarters::randomize_starters(int passedSeed, int bulkNum){
     return true;
 }
 
-bool SVStarters::randomize_gifts(int passedSeed, int bulkNum){
+bool SVStarters::randomize_gifts(){
     // Logic to Setup combinations of settings for pokemon starters
 
     getUsablePokemon(generation_gifts, false, false, false, allowedPokemon_gifts, allowedLegends_gifts);
@@ -349,18 +333,7 @@ bool SVStarters::randomize_gifts(int passedSeed, int bulkNum){
     fileInfo.close();
     file.close();
 
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seed = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seed = passedSeed*bulkNum;
-    }
-
     for(unsigned long long i = 3; i<cleanGiftData["values"].size(); i++){
-        std::srand(seed*(i+1)*bulkNum);
         int random = 1+std::rand()%totalPokemon;
         while(!allowedPokemon_gifts.contains(random))
             random = 1+std::rand()%totalPokemon;

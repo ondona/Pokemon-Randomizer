@@ -1,14 +1,11 @@
 #include "headers/sv_randomizer_headers/sv_trainers.h"
 #include <QString>
 #include <cstdlib>
-#include <ctime>
 #include <string>
 #include <QMap>
 #include <QDir>
 #include <QDebug>
 #include <fstream>
-#include <chrono>
-#include <random>
 #include "thirdparty/nlohmann/json.hpp"
 
 // Look into QSharedData in the future
@@ -17,7 +14,6 @@ namespace fs = std::filesystem;
 
 json wildPokemonInfo;
 json cleanTrainerInfo;
-unsigned int seedPaldeaTrainers;
 
 int getMaxNumberOfChanges(json pokemonFile, int index, bool NULLS = false){
     int totalChanges = 0;
@@ -45,8 +41,6 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
     getBannedPokemon(settings[8], settings[9], settings[10], settings[11], allowedMons);
 
     for(int i =0; i<indeces.size(); i++){
-        qDebug()<<QStringLiteral("Here - 1; %1").arg(indeces[i]);
-        std::srand(seedPaldeaTrainers*(i+1));
         if(!randomize_arven_titan.contains(indeces[i])){
             if(globalSettings[0] == true || settings[2] == true){
                 cleanTrainerInfo["values"][indeces[i]]["changeGem"] = true;
@@ -212,20 +206,9 @@ void SVTrainers::closeFiles(){
     fileSave.close();
 }
 
-bool SVTrainers::randomize_trainers(int passedSeed, int run, QList<int> trainerList, QVector<bool> trainerSettings, QVector<bool> globalTrainerSettings, QVector<bool> regionGenerations){
-    // if there is no seed then use current time as seed
-    if(passedSeed == 0){
-        std::random_device rd;
-        auto now = std::chrono::high_resolution_clock::now();
-        auto duration = now.time_since_epoch();
-        seedPaldeaTrainers = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() ^ rd());
-    }
-    else{
-        seedPaldeaTrainers = passedSeed*run;
-    }
+bool SVTrainers::randomize_trainers(QList<int> trainerList, QVector<bool> trainerSettings, QVector<bool> globalTrainerSettings, QVector<bool> regionGenerations){
 
     randomizeTrainerIndexs(trainerList, trainerSettings, globalTrainerSettings, regionGenerations);
-    qDebug()<<"Here - 2";
 
     return true;
 }

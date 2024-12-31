@@ -6,6 +6,7 @@
 #include <QVector>
 #include "thirdparty/nlohmann/json.hpp"
 #include "headers/sv_randomizer_headers/sv_shared_class.h"
+
 using json = nlohmann::json;
 
 class SVStarters: public SVShared{
@@ -48,12 +49,12 @@ class SVStarters: public SVShared{
         QVector<bool> generation_gifts = {false, false, false, false, false, false, false, false, false};
 
         // functions
-        bool randomize_starters(int seed, int bulk);
+        bool randomize_starters();
         void get_selected_starter(int index, QString name, int form=0, QString gender="DEFAULT", bool shiny=false, QString ball ="Poke Ball");
         int getTeraTypeInt(std::string teraType);
 
         // functions gifts
-        bool randomize_gifts(int seed, int bulk);
+        bool randomize_gifts();
     };
 
 #endif // SV_STARTERS_GIFTS_H

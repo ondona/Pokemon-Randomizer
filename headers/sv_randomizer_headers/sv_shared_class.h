@@ -1,7 +1,6 @@
 #ifndef SV_SHARED_CLASS_H
 #define SV_SHARED_CLASS_H
 
-#include "thirdparty/nlohmann/json.hpp"
 #include <flatbuffers/flatbuffers.h>
 #include <TrinitySceneObject_generated.h>
 #include <QMap>
@@ -16,7 +15,6 @@
     #include <unistd.h>
 #endif
 
-namespace fs = std::filesystem;
 
 /*
     normal = normal

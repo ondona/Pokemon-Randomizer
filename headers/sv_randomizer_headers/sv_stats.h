@@ -274,7 +274,7 @@ class SVStats: public SVShared{
             918
         };
 
-        bool randomize_stats(int seed, int run);
+        bool randomize_stats();
         void randomize_pokemon();
         void randomize_tmsFile(bool all=false);
         void allow_all_moves();

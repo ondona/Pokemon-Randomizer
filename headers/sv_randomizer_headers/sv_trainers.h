@@ -108,7 +108,7 @@ class SVTrainers: public SVShared
         QVector<bool> btrainersgeneration= {false, false, false,
                                              false, false, false,
                                              false, false, false};
-        bool randomize_trainers(int seed, int run, QList<int> indeces, QVector<bool> files, QVector<bool> globalSettings, QVector<bool> generations);
+        bool randomize_trainers(QList<int> indeces, QVector<bool> files, QVector<bool> globalSettings, QVector<bool> generations);
         void randomizeTrainerIndexs(QList<int> indeces, QVector<bool> files, QVector<bool> globalSettings, QVector<bool> generations);
         void openFiles();
         void closeFiles();

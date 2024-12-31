@@ -63,10 +63,10 @@ class SVWilds: public SVShared{
                                                  false, false, false,
                                                  false, false, false};
 
-        bool randomize_paldea_wilds(int passedSeed, int run, std::string fileName);
-        bool randomize_kitakami_wilds(int passedSeed, int run);
-        bool randomize_blueberry_wilds(int passedSeed, int run);
-        bool randomize_statics(int passedSeed, int run);
+        bool randomize_paldea_wilds(std::string fileName);
+        bool randomize_kitakami_wilds();
+        bool randomize_blueberry_wilds();
+        bool randomize_statics();
 };
 
 #endif // SV_WILD_STATIC_H
