@@ -74,46 +74,83 @@ void SVStats::randomize_pokemon(){
                     while(bannedAbilities.contains(ability_choice)){
                         ability_choice = 1+std::rand()%310;
                     }
+
                     cleanPersonalData["entry"][i]["ability_hidden"] = ability_choice;
+                    if(ability_choice == 193 || ability_choice == 194){
+                        exitAbilitiesPokemon.append({{"id", cleanPersonalData["entry"][i]["species"]["model"]}, {"form", form_check}});
+                    }
                 }
                 else if(species_check == 1021 && cleanPersonalData["entry"][i]["species"]["form"] != 0){
+                    bool a1 = false;
+                    bool a2 = false;
+                    bool a3 = false;
                     while(bannedAbilities.contains(ability_choice)){
                         ability_choice = 1+std::rand()%310;
                     }
                     cleanPersonalData["entry"][i]["ability_1"] = ability_choice;
+                    if(ability_choice == 193 || ability_choice == 194){
+                        a1 = true;
+                    }
 
                     ability_choice = 1+std::rand()%310;
                     while(bannedAbilities.contains(ability_choice)){
                         ability_choice = 1+std::rand()%310;
                     }
                     cleanPersonalData["entry"][i]["ability_2"] = ability_choice;
+                    if(ability_choice == 193 || ability_choice == 194){
+                        a2 = true;
+                    }
 
                     ability_choice = 1+std::rand()%310;
                     while(bannedAbilities.contains(ability_choice)){
                         ability_choice = 1+std::rand()%310;
                     }
                     cleanPersonalData["entry"][i]["ability_hidden"] = ability_choice;
+                    if(ability_choice == 193 || ability_choice == 194){
+                        a3 = true;
+                    }
+
+                    if(a1 == true || a2 == true || a3 == true){
+                        exitAbilitiesPokemon.append({{"id", cleanPersonalData["entry"][i]["species"]["model"]}, {"form", form_check}});
+                    }
                 }
                 else if(species_check == 1021 && cleanPersonalData["entry"][i]["species"]["form"] == 0){
                     continue;
                 }
                 else{
+                    bool a1 = false;
+                    bool a2 = false;
+                    bool a3 = false;
+
                     while(bannedAbilities.contains(ability_choice)){
                         ability_choice = 1+std::rand()%310;
                     }
                     cleanPersonalData["entry"][i]["ability_1"] = ability_choice;
+                    if(ability_choice == 193 || ability_choice == 194){
+                        a1 = true;
+                    }
 
                     ability_choice = 1+std::rand()%310;
                     while(bannedAbilities.contains(ability_choice)){
                         ability_choice = 1+std::rand()%310;
                     }
                     cleanPersonalData["entry"][i]["ability_2"] = ability_choice;
+                    if(ability_choice == 193 || ability_choice == 194){
+                        a2 = true;
+                    }
 
                     ability_choice = 1+std::rand()%310;
                     while(bannedAbilities.contains(ability_choice)){
                         ability_choice = 1+std::rand()%310;
                     }
                     cleanPersonalData["entry"][i]["ability_hidden"] = ability_choice;
+                    if(ability_choice == 193 || ability_choice == 194){
+                        a3 = true;
+                    }
+
+                    if(a1 == true || a2 == true || a3 == true){
+                        exitAbilitiesPokemon.append({{"id", cleanPersonalData["entry"][i]["species"]["model"]}, {"form", form_check}});
+                    }
                 }
             }
 
