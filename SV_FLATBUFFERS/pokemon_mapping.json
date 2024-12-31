@@ -21956,7 +21956,7 @@
     },
     {
       "devid": 669,
-      "name": "Flabebe",
+      "name": "Flabébé",
       "devName": "DEV_HURABEBE",
       "natdex": 669,
       "anim_folder": "pm0713",
@@ -54401,7 +54401,7 @@
     },
     "DEV_HURABEBE": {
       "devid": 669,
-      "name": "Flabebe",
+      "name": "Flabébé",
       "natdex": 669,
       "anim_folder": "pm0713",
       "hex": "9D 02",
@@ -86487,7 +86487,7 @@
         }
       ]
     },
-    "Flabebe": {
+    "Flabébé": {
       "devid": 669,
       "devName": "DEV_HURABEBE",
       "natdex": 669,

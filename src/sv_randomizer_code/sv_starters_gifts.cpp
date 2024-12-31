@@ -6,6 +6,7 @@
 #include <QDir>
 #include <QDebug>
 #include <fstream>
+#include <iostream>
 #include "thirdparty/nlohmann/json.hpp"
 
 // Look into QSharedData in the future
@@ -73,7 +74,7 @@ void printJsonValues(const json& jsonData) {
 
 void SVStarters::get_selected_starter(int index, QString starterName, int form, QString gender, bool shiny, QString ball){
 
-    std::string starterNameStd = starterName.toStdString();
+    std::string starterNameStd = starterName.toUtf8().constData();
     std::string genderStd = gender.toStdString();
 
     int genderNum = 0;

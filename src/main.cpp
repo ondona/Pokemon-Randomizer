@@ -41,6 +41,9 @@ int main(int argc, char *argv[]) {
     // Move the window to the center
     mainWindow.move(x, y);
 
+    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
+
+
     mainWindow.setWindowFlag(Qt::WindowStaysOnTopHint, true);
     mainWindow.show();
     mainWindow.raise();
