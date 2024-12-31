@@ -98,14 +98,34 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
         cleanStarterData["values"][index]["pokeData"]["formId"] = formRandom;
 
         // Set Starter Gender
-        cleanStarterData["values"][index]["pokeData"]["sex"] = genderStd;
-        if(genderStd == "MALE" || genderStd == "DEFAULT"){
+        QString form_Check = QString::fromStdString(pokemonMaps["pokemons"][random]["name"]);
+        if(maleOnlyPokemon.contains(form_Check) || genderlessPokemon.contains(form_Check)){
             ::gender.push_back(0);
             genderNum = 0;
-        }else{
+            if(genderlessPokemon.contains(form_Check)){
+                genderStd = "DEFAULT";
+            }else{
+                genderStd = "MALE";
+            }
+        }else if(femaleOnlyPokemon.contains(form_Check)){
             ::gender.push_back(1);
             genderNum = 1;
+            genderStd = "FEMALE";
+        } else if(genderForms.contains(form_Check)){
+            if(form == 0){
+                ::gender.push_back(0);
+                genderNum = 0;
+                genderStd = "MALE";
+            }else{
+                ::gender.push_back(1);
+                genderNum = 1;
+                genderStd = "FEMALE";
+            }
+        }else{
+            qDebug()<<"How Here";
         }
+        cleanStarterData["values"][index]["pokeData"]["sex"] = genderStd;
+
 
         // Set Starter Shiny Status
         if(shiny == true){
@@ -165,15 +185,29 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
         formId.push_back(form);
 
         // Set Starter Gender
-        cleanStarterData["values"][index]["pokeData"]["sex"] = genderStd;
-
-        if(genderStd == "MALE" || genderStd == "DEFAULT"){
+        if(genderStd == "MALE" || genderStd == "GENDERLESS"){
             ::gender.push_back(0);
             genderNum = 0;
-        }else{
+            if(genderStd == "GENDERLESS")
+                genderStd = "DEFAULT";
+        }else if(genderStd == "FEMALE"){
             ::gender.push_back(1);
             genderNum = 1;
+        } else if(genderStd == "DEFAULT"){
+            if(form == 0){
+                ::gender.push_back(0);
+                genderNum = 0;
+                genderStd = "MALE";
+            }else{
+                ::gender.push_back(1);
+                genderNum = 1;
+                genderStd = "FEMALE";
+            }
+        }else{
+            qDebug()<<"How Here - 2";
         }
+
+        cleanStarterData["values"][index]["pokeData"]["sex"] = genderStd;
 
         // Stet Starter Shiny Status
         if(shiny == true){
@@ -267,13 +301,13 @@ bool SVStarters::randomize_starters(){
     rare.clear();
 
     // Fuecoco
-    get_selected_starter(0, starters[1], pokemonFormsIntsInGame[starters[1]][starters_forms[1]], "DEFAULT", starters_shiny[1], starters_pokeball[1]);
+    get_selected_starter(0, starters[1], pokemonFormsIntsInGame[starters[1]][starters_forms[1]], starters_gender[1], starters_shiny[1], starters_pokeball[1]);
 
     // Quaxly
-    get_selected_starter(2, starters[2], pokemonFormsIntsInGame[starters[2]][starters_forms[2]], "DEFAULT", starters_shiny[2], starters_pokeball[2]);
+    get_selected_starter(2, starters[2], pokemonFormsIntsInGame[starters[2]][starters_forms[2]], starters_gender[2], starters_shiny[2], starters_pokeball[2]);
 
     // Sprigattito
-    get_selected_starter(1, starters[0], pokemonFormsIntsInGame[starters[0]][starters_forms[0]], "DEFAULT", starters_shiny[0], starters_pokeball[0]);
+    get_selected_starter(1, starters[0], pokemonFormsIntsInGame[starters[0]][starters_forms[0]], starters_gender[0], starters_shiny[0], starters_pokeball[0]);
 
     if(show_starters_in_overworld == true){
         this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0060_always_0_clean.trsog", "SV_STARTERS_SCENES/common_0060_always_0.trsog");

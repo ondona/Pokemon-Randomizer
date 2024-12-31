@@ -276,6 +276,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     connect(starters[0], &QLineEdit::textChanged, this, [=](const QString &text) {
         updateComboBoxGender(starters_gender[0], text);
     });
+    connect(starters_gender[0], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
     QLabel *pokeball_s1 = new QLabel("Pokeball ", startersGroupSettings);
     pokeball_s1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -359,6 +360,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     connect(starters[1], &QLineEdit::textChanged, this, [=](const QString &text) {
         updateComboBoxGender(starters_gender[1], text);
     });
+    connect(starters_gender[1], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
     QLabel *pokeball_s2 = new QLabel("Pokeball ", startersGroupSettings);
     pokeball_s2->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -442,6 +444,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     connect(starters[2], &QLineEdit::textChanged, this, [=](const QString &text) {
         updateComboBoxGender(starters_gender[2], text);
     });
+    connect(starters_gender[2], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
     QLabel *pokeball_s3 = new QLabel("Pokeball ", startersGroupSettings);
     pokeball_s3->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -1125,6 +1128,10 @@ QWidget* SVRandomizerWindow::setupPaldeaWildWidget(){
     randomize_paldea_wild = new QCheckBox("Randomize Wilds", paldeaWildWidget);
     row0->addWidget(randomize_paldea_wild);
     connect(randomize_paldea_wild, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
+
+    let_ogre_pagos_spawn = new QCheckBox("Let Ogrepon \& Terapagos Spawn (Do not tera if caught in wild)", paldeaWildWidget);
+    row0->addWidget(let_ogre_pagos_spawn);
+    connect(let_ogre_pagos_spawn, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row0);
 
     paldea_ExcludeLegends = new QCheckBox("Exclude Legends", paldeaWildWidget);
@@ -3944,6 +3951,7 @@ void SVRandomizerWindow::saveComboInput() {
             randomizer.svRandomizerStarters.starters_pokeball[index] = comboBox->currentText();
             return;
         }
+
     }
 }
 
@@ -3958,6 +3966,9 @@ void SVRandomizerWindow::saveCheckboxState() {
     }
     else if (checkBox == kaizo_mode) {
         randomizer.kaizo_mode = kaizo_mode->isChecked();
+    }
+    else if(checkBox == let_ogre_pagos_spawn){
+        randomizer.svRandomizerWilds.let_oger_pagos_spawn = let_ogre_pagos_spawn->isChecked();
     }
     else if(checkBox == force_shiny_starter){
         randomizer.svRandomizerStarters.force_shiny_starter = force_shiny_starter->isChecked();
@@ -4009,6 +4020,7 @@ void SVRandomizerWindow::saveCheckboxState() {
     }
     else if(checkBox == randomize_types){
         randomizer.svRandomizerStats.randomize_types = randomize_types->isChecked();
+        randomizer.svRandomizerWilds.types_changed = randomize_types->isChecked();
     }
     else if(checkBox == give_extra_types){
         randomizer.svRandomizerStats.give_extra_types = give_extra_types->isChecked();
@@ -4471,10 +4483,18 @@ void SVRandomizerWindow::updateComboBoxForms(QComboBox *comboBox, const QString 
 
 void SVRandomizerWindow::updateComboBoxGender(QComboBox *comboBox, const QString &text) {
     comboBox->clear();
-    comboBox->addItem("MALE");
-    comboBox->addItem("FEMALE");
-    comboBox->addItem("DEFAULT");
-    qDebug()<<text;
+    if(randomizer.genderForms.contains(text)){
+        comboBox->addItem("DEFAULT");
+    }else if(randomizer.femaleOnlyPokemon.contains(text)){
+        comboBox->addItem("FEMALE");
+    }else if(randomizer.maleOnlyPokemon.contains(text)){
+        comboBox->addItem("MALE");
+    } else if(randomizer.genderlessPokemon.contains(text)){
+            comboBox->addItem("GENDERLESS");
+    } else{
+        comboBox->addItem("MALE");
+        comboBox->addItem("FEMALE");
+    }
 }
 
 void SVRandomizerWindow::updatePreview(const QString &text) {

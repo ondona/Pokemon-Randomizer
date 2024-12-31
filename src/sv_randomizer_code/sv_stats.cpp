@@ -21,10 +21,50 @@ SVStats::~SVStats(){
 
 }
 
+bool allowedToLearnMove(int move, int pokemon, int form){
+    switch(move){
+    case 464:
+        if(pokemon != 491){
+            return false;
+        }
+        break;
+    case 593:
+        if(pokemon == 720){
+            if(form !=0){
+                return false;
+            }
+        }else{
+            return false;
+        }
+        break;
+    case 783:
+        if(pokemon != 877){
+            return false;
+        }
+        break;
+    }
+
+    return true;
+}
+
+bool allowedTMMove(int move){
+    switch(move){
+    case 464:
+        return false;
+    case 593:
+        return false;
+    case 783:
+        return false;
+    }
+
+    return true;
+}
+
 void SVStats::randomize_pokemon(){
     for(unsigned long long i=0; i<cleanPersonalData["entry"].size(); i++){
         if(cleanPersonalData["entry"][i]["is_present"] == true){
             int species_check = cleanPersonalData["entry"][i]["species"]["species"];
+            int form_check = cleanPersonalData["entry"][i]["species"]["form"];
 
             // Randomize the Pokemon's Ability
             if(randomize_abilities == true){
@@ -80,15 +120,19 @@ void SVStats::randomize_pokemon(){
             // Randomize the Pokemon's Type
             if(randomize_types == true){
                 int type_selection_1 = std::rand()%18;
+                int oldType = cleanPersonalData["entry"][i]["type_1"];
                 cleanPersonalData["entry"][i]["type_1"] = type_selection_1;
 
-                if(cleanPersonalData["entry"][i]["type_2"] == 0 && give_extra_types == true){
-                    int type_selection_2 = std::rand()%18;
-                    while(type_selection_2 == type_selection_1){
-                        type_selection_2 = std::rand()%18;
+                if(cleanPersonalData["entry"][i]["type_2"] == oldType && give_extra_types == true){
+                    int newType = std::rand()%100;
+                    if(newType < 60){
+                        int type_selection_2 = std::rand()%18;
+                        while(type_selection_2 == type_selection_1){
+                            type_selection_2 = std::rand()%18;
+                        }
+                        cleanPersonalData["entry"][i]["type_2"] = type_selection_2;
                     }
-                    cleanPersonalData["entry"][i]["type_2"] = type_selection_2;
-                }else if(cleanPersonalData["entry"][i]["type_2"] != 0){
+                }else if(cleanPersonalData["entry"][i]["type_2"] != oldType){
                     int type_selection_2 = std::rand()%18;
                     while(type_selection_2 == type_selection_1){
                         type_selection_2 = std::rand()%18;
@@ -104,7 +148,7 @@ void SVStats::randomize_pokemon(){
                 QList<int> currentMoves;
                 for(unsigned long long j = 0; j<cleanPersonalData["entry"][i]["levelup_moves"].size(); j++){
                     int selectedMove = std::rand()%allowed_moves.size();
-                    while(currentMoves.contains(selectedMove)){
+                    while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
                         selectedMove = std::rand()%allowed_moves.size();
                     }
                     currentMoves.append(selectedMove);
@@ -114,7 +158,7 @@ void SVStats::randomize_pokemon(){
                 currentMoves = {};
                 for(unsigned long long j = 0; j<cleanPersonalData["entry"][i]["reminder_moves"].size(); j++){
                     int selectedMove = std::rand()%allowed_moves.size();
-                    while(currentMoves.contains(selectedMove)){
+                    while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
                         selectedMove = std::rand()%allowed_moves.size();
                     }
                     currentMoves.append(selectedMove);
@@ -143,7 +187,7 @@ void SVStats::randomize_pokemon(){
                 currentMoves = {};
                 for(unsigned long long j = 0; j<cleanPersonalData["entry"][i]["egg_moves"].size(); j++){
                     int selectedMove = std::rand()%allowed_moves.size();
-                    while(currentMoves.contains(selectedMove)){
+                    while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
                         selectedMove = std::rand()%allowed_moves.size();
                     }
                     currentMoves.append(selectedMove);
@@ -450,14 +494,14 @@ void SVStats::randomize_tmsFile(bool useAllMoves){
             int selectedMove = 1;
             if(useAllMoves == true){
                 selectedMove = 1 + std::rand()%919;
-                while(selectedTMs.contains(selectedMove)){
+                while(selectedTMs.contains(selectedMove) || !allowedTMMove(selectedMove)){
                     selectedMove = 1 + std::rand()%919;
                 }
                 cleanItemMoveData["values"][i]["MachineWaza"] = moveNames["moves"][selectedMove]["devName"];
                 selectedTMs.append(int(moveNames["moves"][selectedMove]["id"]));
             }else{
                 selectedMove = std::rand()%allowed_moves.size();
-                while(selectedTMs.contains(allowed_moves[selectedMove])){
+                while(selectedTMs.contains(allowed_moves[selectedMove]) || !allowedTMMove(allowed_moves[selectedMove])){
                     selectedMove = std::rand()%allowed_moves.size();
                 }
                 cleanItemMoveData["values"][i]["MachineWaza"] = moveNames["moves"][allowed_moves[selectedMove]]["devName"];

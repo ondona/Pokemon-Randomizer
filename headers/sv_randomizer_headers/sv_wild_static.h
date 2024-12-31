@@ -18,6 +18,8 @@ class SVWilds: public SVShared{
         bool paldea_Ban1Stage = false;
         bool paldea_Settings_for_all_wild = false;
         bool paldea_BalanceAreaPerBST = false; //TBD
+        bool let_oger_pagos_spawn = false;
+        bool types_changed = false;
         QVector<bool> generation_paldea_wild = {false, false, false,
                                                 false, false, false,
                                                 false, false, false};
