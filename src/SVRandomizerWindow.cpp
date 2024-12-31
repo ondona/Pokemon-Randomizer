@@ -18,6 +18,7 @@
 #include <QComboBox>
 #include <QDir>
 #include <filesystem>
+#include <iostream>
 
 namespace fs = std::filesystem;
 

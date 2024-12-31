@@ -35,7 +35,7 @@ class SVStarters: public SVShared{
         bool only_legends_and_paradox_starters = false; //Added
         QVector<QString> starters = {"", "", ""};
         QVector<int> starters_forms = {0,0,0};
-        QVector<QString> starters_gender = {"", "", ""};
+        QVector<QString> starters_gender = {"MALE", "MALE", "MALE"};
         QVector<QString> starters_pokeball = {"Poke Ball", "Poke Ball", "Poke Ball"};
         QVector<bool> starters_shiny = {false, false, false};
 
