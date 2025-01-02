@@ -3514,10 +3514,16 @@ void showMessage(const QString &message) {
 void SVRandomizerWindow::runRandomizer()
 {
     unsigned int hash = 0;
-    if(!randomizer.seed.isEmpty()){
-        for (const QChar &ch : randomizer.seed) {
-            hash = hash * 31 + ch.unicode(); // Accumulate a numeric value
+    bool randomizerIsNum = false;
+    randomizer.seed.toUInt(&randomizerIsNum);
+    if(randomizerIsNum == false){
+        if(!randomizer.seed.isEmpty()){
+            for (const QChar &ch : randomizer.seed) {
+                hash = hash * 31 + ch.unicode(); // Accumulate a numeric value
+            }
         }
+    }else{
+        hash = randomizer.seed.toUInt();
     }
     for(unsigned int i = 1; i< randomizer.bulk_amount+1; i++){
         if(hash == 0){
