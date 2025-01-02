@@ -322,11 +322,11 @@ bool SVStarters::randomize_starters(){
     // Sprigattito
     get_selected_starter(1, starters[0], pokemonFormsIntsInGame[starters[0]][starters_forms[0]], starters_gender[0], starters_shiny[0], starters_pokeball[0]);
 
-    // Fuecoco
-    get_selected_starter(0, starters[1], pokemonFormsIntsInGame[starters[1]][starters_forms[1]], starters_gender[1], starters_shiny[1], starters_pokeball[1]);
-
     // Quaxly
     get_selected_starter(2, starters[2], pokemonFormsIntsInGame[starters[2]][starters_forms[2]], starters_gender[2], starters_shiny[2], starters_pokeball[2]);
+
+    // Fuecoco
+    get_selected_starter(0, starters[1], pokemonFormsIntsInGame[starters[1]][starters_forms[1]], starters_gender[1], starters_shiny[1], starters_pokeball[1]);
 
     if(show_starters_in_overworld == true){
         std::vector<std::pair<std::string, std::string>> filePairs = {

@@ -9,6 +9,7 @@
 #include "sv_items.h"
 #include "sv_stats.h"
 #include "sv_starters_gifts.h"
+#include "sv_boss.h"
 
 
 class SVRandomizerCode : public SVShared
@@ -41,9 +42,7 @@ public:
     SVTrainers svRandomizerTrainers;
 
     //Bosses
-    bool randomize_bosses;
-    QVector<bool> boss_settings;
-    QVector<bool> boss_generation;
+    SVBoss svRandomizerBoss;
 
     bool svRandomizeStarters(SVStarters svs);
     bool svRandomizeGifts(SVStarters svs);
@@ -52,7 +51,7 @@ public:
     bool svRandomizeWilds(SVWilds wild);
     bool svRandomizeRaids(SVRaids raids);
     bool svRandomizeTrainers(SVTrainers trainers);
-
+    bool svRandomizeBoss(SVBoss boss, QDir dir);
 };
 
 #endif // SVRANDOMIZERCODE_H

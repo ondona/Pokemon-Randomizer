@@ -1,0 +1,40 @@
+#ifndef SV_BOSS_H
+#define SV_BOSS_H
+#include "headers/sv_randomizer_headers/sv_shared_class.h"
+#include <QDir>
+
+class SVBoss: public SVShared{
+    public:
+        bool randomize_bosses = false;
+        /* Key: [0] Legends Only
+         *      [1] Paradox Only
+         *      [2] Legends and Paradox Only
+         *      [3] Ban Stage 1
+         *      [4] Ban Stage 2
+         *      [5] Ban Stage 3
+         *      [6] Ban 1 Stage
+         */
+        QVector<bool> boss_settings = {false, false, false, false, false, false, false};
+        QVector<bool> boss_generation= {false, false, false, false, false, false, false, false, false};
+
+        void randomizeBosses(QDir dir);
+        void randomizeFight(unsigned long long index);
+        void copyFight(unsigned long long indexSet, unsigned long long indexCopy);
+        void patchMultiBattle();
+        void patchGimmighoul();
+        void patchLeChonk();
+        void patchHoundoom();
+        void patchSunflora();
+        void patchDonzoTitan();
+        void patchOrthwormTitan();
+        void patchBombariderTitan();
+        void patchKlawfTitan();
+        void patchGreatIronTitan();
+        void patchTingLu();
+        void patchChienPao();
+        void patchWoChien();
+        void patchChiYu();
+        void obtainPokemonScene(int &dev, int &form, int& gender, int &rare);
+};
+
+#endif // SV_BOSS_H

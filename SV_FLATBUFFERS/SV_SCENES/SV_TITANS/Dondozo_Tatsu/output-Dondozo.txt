@@ -1,0 +1,48 @@
+"nushi_dragon_010_always"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_dragon_010_always"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_dragon_fp_1035_010"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_dragon_fp_1035_010"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_dragon_fp_1035_020"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Dondozo  FormId: 2  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_dragon_fp_1035_020"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Dondozo  FormId: 2  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Dondozo  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_dragon_fp_1056_010"
+"---- Default ----"
+TIFieldPokemonComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIPokemonModelComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_dragon_fp_1056_010"
+"---- Default ----"
+TIFieldPokemonComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIPokemonModelComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_dragon_fp_1056_020"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_dragon_fp_1056_020"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_040_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_040_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Tatsugiri  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE

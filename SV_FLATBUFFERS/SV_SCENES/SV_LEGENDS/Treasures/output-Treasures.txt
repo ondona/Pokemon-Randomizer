@@ -1,0 +1,28 @@
+"sub_014_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Ting-Lu  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_014_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Ting-Lu  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_015_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Chien-Pao  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Chien-Pao  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_015_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Chien-Pao  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Chien-Pao  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_016_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Wo-Chien  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_016_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Wo-Chien  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_017_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Chi-Yu  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Chi-Yu  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_017_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Chi-Yu  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Chi-Yu  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE

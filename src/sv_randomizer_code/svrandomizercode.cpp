@@ -37,6 +37,12 @@ bool SVRandomizerCode::svRandomizeItem(SVItems items){
     return true;
 }
 
+bool SVRandomizerCode::svRandomizeBoss(SVBoss boss, QDir dir){
+    boss.randomizeBosses(dir);
+
+    return true;
+}
+
 bool SVRandomizerCode::svRandomizeWilds(SVWilds wilds){
     if(wilds.paldea_Settings_for_all_wild == true){
         if(wilds.randomize_paldea_wild == true){

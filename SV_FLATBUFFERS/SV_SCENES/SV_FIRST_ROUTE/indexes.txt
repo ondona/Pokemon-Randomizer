@@ -1,0 +1,4 @@
+LeChonk: 0->4
+Tarantoula: 5->8
+Pawmi: 9
+Fletching: 10->11

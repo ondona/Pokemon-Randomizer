@@ -204,6 +204,7 @@ SOURCES += \
     src/alternatewindow.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
+    src/sv_randomizer_code/sv_boss.cpp \
     src/sv_randomizer_code/sv_items.cpp \
     src/sv_randomizer_code/sv_raids.cpp \
     src/sv_randomizer_code/sv_shared_class.cpp \
@@ -219,6 +220,7 @@ HEADERS += \
     headers/SVRandomizerWindow.h \
     headers/VGCWindow.h \
     headers/mainwindow.h \
+    headers/sv_randomizer_headers/sv_boss.h \
     headers/sv_randomizer_headers/sv_items.h \
     headers/sv_randomizer_headers/sv_raids.h \
     headers/sv_randomizer_headers/sv_shared_class.h \

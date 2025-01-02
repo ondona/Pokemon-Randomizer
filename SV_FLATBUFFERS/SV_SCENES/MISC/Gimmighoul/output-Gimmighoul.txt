@@ -1,0 +1,14 @@
+"coin_symbol_box"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Gimmighoul  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Gimmighoul  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"coin_symbol_box"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Gimmighoul  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Gimmighoul  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"coin_symbol_walk"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Gimmighoul  FormId: 1  Sex: MALE/GENDERLESS  Rare: FALSE
+"coin_symbol_walk"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Gimmighoul  FormId: 1  Sex: MALE/GENDERLESS  Rare: FALSE

@@ -100,7 +100,7 @@ void SVRandomizerWindow::createLayout()
         seedSettings->addWidget(seed);
 
         startRandomizer = new QPushButton("Start Randomizing", generalGroup);
-        connect(startRandomizer, &QPushButton::clicked, this, &SVRandomizerWindow::addToFavorites);
+        connect(startRandomizer, &QPushButton::clicked, this, &SVRandomizerWindow::runRandomizer);
         seedSettings->addWidget(startRandomizer);
 
         generalSettings->addLayout(mainSettings);
@@ -119,7 +119,7 @@ void SVRandomizerWindow::createLayout()
     topBar->addTab("Wild/Static Pokemon");
     topBar->addTab("Raids");
     topBar->addTab("Trainers");
-    //topBar->addTab("Bosses");
+    topBar->addTab("Bosses");
     //topBar->addTab("Shop");
 
     connect(topBar, &QTabBar::currentChanged, this, &SVRandomizerWindow::switchTabs);
@@ -140,7 +140,7 @@ void SVRandomizerWindow::createLayout()
     stackedWidget->addWidget(setupWildWidget());
     stackedWidget->addWidget(setupRaidsWidget());
     stackedWidget->addWidget(setupTrainersWidget());
-    //stackedWidget->addWidget(setupScenesWidget());
+    stackedWidget->addWidget(setupScenesWidget());
     //stackedWidget->addWidget(setupShopWidget());
 
     // Set the stretch factors
@@ -1024,7 +1024,7 @@ QWidget* SVRandomizerWindow::setupScenesWidget(){
     QHBoxLayout *generation_boss_header = new QHBoxLayout();
     QHBoxLayout *generation_boss_selection = new QHBoxLayout();
 
-    randomize_bosses =new QCheckBox("Randomize Bosses", bossWidget);
+    randomize_bosses =new QCheckBox("Randomize Bosses (Only Paldea ones)", bossWidget);
     row0->addWidget(randomize_bosses);
     connect(randomize_bosses, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
@@ -1032,41 +1032,37 @@ QWidget* SVRandomizerWindow::setupScenesWidget(){
 
     // -------------- New Row --------------
 
-    boss_settings.append(new QCheckBox("Exclude Legends", bossWidget));
+    boss_settings.append(new QCheckBox("Only Legends", bossWidget));
     row1->addWidget(boss_settings[0]);
     connect(boss_settings[0], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
-    boss_settings.append(new QCheckBox("Only Legends", bossWidget));
+    boss_settings.append(new QCheckBox("Only Paradox", bossWidget));
     row1->addWidget(boss_settings[1]);
     connect(boss_settings[1], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
-    boss_settings.append(new QCheckBox("Only Paradox", bossWidget));
+    boss_settings.append(new QCheckBox("Only Legends and Paradox", bossWidget));
     row1->addWidget(boss_settings[2]);
     connect(boss_settings[2], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-
-    boss_settings.append(new QCheckBox("Only Legends and Paradox", bossWidget));
-    row1->addWidget(boss_settings[3]);
-    connect(boss_settings[3], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
     formLayout->addRow(row1);
 
     // -------------- New Row --------------
 
     boss_settings.append(new QCheckBox("Ban Stage 1", bossWidget));
+    row2->addWidget(boss_settings[3]);
+    connect(boss_settings[3], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
+
+    boss_settings.append(new QCheckBox("Ban Stage 2", bossWidget));
     row2->addWidget(boss_settings[4]);
     connect(boss_settings[4], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
-    boss_settings.append(new QCheckBox("Ban Stage 2", bossWidget));
+    boss_settings.append(new QCheckBox("Ban Stage 3", bossWidget));
     row2->addWidget(boss_settings[5]);
     connect(boss_settings[5], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
-    boss_settings.append(new QCheckBox("Ban Stage 3", bossWidget));
+    boss_settings.append(new QCheckBox("Ban 1 Stage", bossWidget));
     row2->addWidget(boss_settings[6]);
     connect(boss_settings[6], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-
-    boss_settings.append(new QCheckBox("Ban 1 Stage", bossWidget));
-    row2->addWidget(boss_settings[7]);
-    connect(boss_settings[7], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
     formLayout->addRow(row2);
 
@@ -3515,7 +3511,7 @@ void showMessage(const QString &message) {
     msgBox.exec(); // Blocks until the user clicks OK
 }
 
-void SVRandomizerWindow::addToFavorites()
+void SVRandomizerWindow::runRandomizer()
 {
     unsigned int hash = 0;
     if(!randomizer.seed.isEmpty()){
@@ -3829,6 +3825,23 @@ void SVRandomizerWindow::addToFavorites()
                                       "world/data/trainer/trdata/", true);
         }
 
+        if(randomizer.svRandomizerBoss.randomize_bosses == true){
+            randomizer.svRandomizeBoss(randomizer.svRandomizerBoss, qBaseDir);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/eventBattlePokemon_array.fbs").toStdString(),
+                           qBaseDir.filePath(+"SV_SCENES/eventBattlePokemon_array.json").toStdString(),
+                           "world/data/battle/eventBattlePokemon/");
+
+            try{
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0100_/common_0100_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0100_/common_0100_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0100_/common_0100_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0100_/common_0100_main_1.trsog").string());
+            }catch (const fs::filesystem_error& e) {
+                qDebug() << "Error renaming file: " << e.what();
+            }
+        }
+
         if(randomizer.auto_patch == true){
             randomizer.patchFileDescriptor();
             randomizer.generateBinary(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.fbs").toStdString(),
@@ -3891,7 +3904,8 @@ void SVRandomizerWindow::addToFavorites()
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_0.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.json").toStdString());
-
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_FIRST_ROUTE/common_0100_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_FIRST_ROUTE/common_0100_main_1.json").toStdString());
         // Delete Output file (again)
         if(fs::exists(dirPath)){
             fs::remove_all(dirPath);
@@ -4326,6 +4340,9 @@ void SVRandomizerWindow::saveCheckboxState() {
     else if (checkBox == use_trainer_paldea_for_all){
         randomizer.svRandomizerTrainers.use_trainer_paldea_for_all = use_trainer_paldea_for_all ->isChecked();
     }
+    else if(checkBox == randomize_bosses){
+        randomizer.svRandomizerBoss.randomize_bosses = randomize_bosses->isChecked();
+    }
     else{
         int index = 0;
         index = generations_starters.indexOf(checkBox);
@@ -4485,6 +4502,18 @@ void SVRandomizerWindow::saveCheckboxState() {
         index = btrainersgeneration.indexOf(checkBox);
         if (index != -1) {  // Ensure the checkbox was found in the array
             randomizer.svRandomizerTrainers.btrainersgeneration[index] = btrainersgeneration[index]->isChecked();
+            return;
+        }
+
+        index = boss_settings.indexOf(checkBox);
+        if (index != -1) {  // Ensure the checkbox was found in the array
+            randomizer.svRandomizerBoss.boss_settings[index] = boss_settings[index]->isChecked();
+            return;
+        }
+
+        index = boss_generation.indexOf(checkBox);
+        if (index != -1) {  // Ensure the checkbox was found in the array
+            randomizer.svRandomizerBoss.boss_generation[index] = boss_generation[index]->isChecked();
             return;
         }
         // same exact code but for the second array
