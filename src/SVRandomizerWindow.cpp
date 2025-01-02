@@ -3551,39 +3551,74 @@ void SVRandomizerWindow::addToFavorites()
         if(randomizer.svRandomizerStarters.enable_starters == true){
             randomizer.svRandomizeStarters(randomizer.svRandomizerStarters);
 
-            // Set up Scenes for Starters
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0060_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0060_always_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0060_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0060_main_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0060_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0060_main_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0060_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0070_always_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0070_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0070_always_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0070_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0088_always_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0088_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0088_always_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0088_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0090_main_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0090_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0090_main_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/main_scenario/common_0090_/", true);
+
             try {
-                randomizer.createFolderHierarchy(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/");
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_0.trsog").string());
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_1.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_1.trsog").string());
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_0.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_main_0.trsog").string());
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_1.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_main_1.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_0.trsog").string());
 
-                randomizer.createFolderHierarchy(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0070_/");
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_0.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0070_/common_0070_always_0.trsog").string());
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_1.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0070_/common_0070_always_1.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_1.trsog").string());
 
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_main_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_main_0.trsog").string());
 
-                randomizer.createFolderHierarchy(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0088_/");
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_0.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0088_/common_0088_always_0.trsog").string());
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_1.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0088_/common_0088_always_1.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_main_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_main_1.trsog").string());
 
-                randomizer.createFolderHierarchy(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0090_/");
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_0.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0090_/common_0090_main_0.trsog").string());
-                fs::copy(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_1.trsog").toStdString(),
-                         fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0090_/common_0090_main_1.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0070_/common_0070_always_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0070_/common_0070_always_0.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0070_/common_0070_always_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0070_/common_0070_always_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0088_/common_0088_always_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0088_/common_0088_always_0.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0088_/common_0088_always_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0088_/common_0088_always_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0090_/common_0090_main_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0090_/common_0090_main_0.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0090_/common_0090_main_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0090_/common_0090_main_1.trsog").string());
 
             } catch (const fs::filesystem_error& e) {
-                qDebug() << "Error copying file: " << e.what();
+                qDebug() << "Error renaming file: " << e.what();
             }
 
         }
@@ -3846,16 +3881,16 @@ void SVRandomizerWindow::addToFavorites()
             checkAndDeleteFile(qBaseDir.filePath(+"SV_PERSONAL/itemdata_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_PERSONAL/personal_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_STARTERS_FLATBUFFERS/eventAddPokemon_array.json").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_1.trsog").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_0.trsog").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_1.trsog").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_0.trsog").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_1.trsog").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_0.trsog").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_1.trsog").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_0.trsog").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_1.trsog").toStdString());
-            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.trsog").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0090_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0088_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0070_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.json").toStdString());
 
         // Delete Output file (again)
         if(fs::exists(dirPath)){
