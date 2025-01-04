@@ -28,9 +28,9 @@ bool allowedToLearnMove(int move, int pokemon, int form){
             return false;
         }
         break;
-    case 593:
+    case 621:
         if(pokemon == 720){
-            if(form !=0){
+            if(form !=1){
                 return false;
             }
         }else{
@@ -51,7 +51,7 @@ bool allowedTMMove(int move){
     switch(move){
     case 464:
         return false;
-    case 593:
+    case 621:
         return false;
     case 783:
         return false;
