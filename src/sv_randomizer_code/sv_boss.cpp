@@ -1,5 +1,6 @@
 #include <QDebug>
 #include <QVector>
+#include <QString>
 #include <nlohmann/json.hpp>
 #include <filesystem>
 #include <fstream>
@@ -15,27 +16,24 @@ json cleanBossData;
 json bossMappingInfo;
 QDir BaseDir;
 
-void checkAndDeleteFile(std::string filePath) {
-    try {
-        // Check if the file exists
-        if (fs::exists(filePath)) {
-            // Delete the file
-            if (fs::remove(filePath)) {
-                qDebug() << "File deleted successfully: " << filePath;
-            } else {
-                qDebug() << "Failed to delete the file: " << filePath;
-            }
-        } else {
-            qDebug()  << "File does not exist: " << filePath;
-        }
-    } catch (const fs::filesystem_error& e) {
-        // Handle filesystem-related exceptions
-        qDebug() << "Filesystem error: " << e.what();
-    } catch (const std::exception& e) {
-        // Handle other exceptions
-        qDebug() << "Error: " << e.what();
+void SVBoss::saveIndividualPokemon(int index, std::vector<int> &dev, std::vector<int> &form, std::vector<int> &genderV, std::vector<bool> &rareV){
+    dev.push_back(bossMappingInfo["pokemons_dev"][cleanBossData["values"][index]["pokeData"]["devId"]]["devid"]);
+    form.push_back(cleanBossData["values"][index]["pokeData"]["formId"]);
+    std::string gender = cleanBossData["values"][index]["pokeData"]["sex"];
+    if(gender != "FEMALE"){
+        genderV.push_back(0);
+    }
+    else{
+        genderV.push_back(1);
     }
 
+    std::string rare = cleanBossData["values"][index]["pokeData"]["rareType"];
+    if(gender != "RARE"){
+        rareV.push_back(0);
+    }
+    else{
+        rareV.push_back(1);
+    }
 }
 
 void SVBoss::obtainPokemonScene(int &dev, int &form, int& gender, int &rare){
@@ -89,11 +87,176 @@ void SVBoss::obtainPokemonScene(int &dev, int &form, int& gender, int &rare){
 
 }
 
+void SVBoss::changeSceneOne(std::vector<std::pair<std::string, std::string>> filePairs,
+                         std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare,
+                         std::string output, std::string romAddress){
+
+    for (const auto& filePair : filePairs) {
+        this->modifyPokemonScene(dev, form, gender, rare, filePair.first, filePair.second);
+    }
+
+    generateBinary(BaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                   BaseDir.filePath("SV_SCENES/"+QString::fromStdString(output)).toStdString(),
+                   romAddress);
+}
+
+void SVBoss::changeScene(std::vector<std::pair<std::string, std::string>> filePairs,
+                 std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare,
+                         std::string output, std::string romAddress){
+
+    for (const auto& filePair : filePairs) {
+        this->modifyPokemonScene(dev, form, gender, rare, filePair.first, filePair.second);
+    }
+
+    generateBinary(BaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                   BaseDir.filePath("SV_SCENES/"+QString::fromStdString(output)+"_0.json").toStdString(),
+                   romAddress);
+
+    generateBinary(BaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                   BaseDir.filePath("SV_SCENES/"+QString::fromStdString(output)+"_1.json").toStdString(),
+                   romAddress);
+}
+
 void SVBoss::patchMultiBattle(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+    // Glimmora - 0 - 1055
+    saveIndividualPokemon(0, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_AZ/WayHome/common_1055_main_0_clean.json", "SV_AZ/WayHome/common_1055_main_0.json"},
+        {"SV_AZ/WayHome/common_1055_main_1_clean.json", "SV_AZ/WayHome/common_1055_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/WayHome/common_1055_main",
+                "world/scene/parts/event/event_scenario/main_scenario/common_1055_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
+
+    // Scream Tails - 1 - 1075
+    // Iron Bundle - 2 - 1075
+    saveIndividualPokemon(1, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(2, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    filePairs = {
+        {"SV_AZ/WayHome/common_1075_main_0_clean.json", "SV_AZ/WayHome/common_1075_main_0.json"},
+        {"SV_AZ/WayHome/common_1075_main_1_clean.json", "SV_AZ/WayHome/common_1075_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/WayHome/common_1075_main",
+                "world/scene/parts/event/event_scenario/main_scenario/common_1075_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
+
+    // Great Tusk - 3 - 1095
+    // Iron Treads - 4 - 1095
+    saveIndividualPokemon(3, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(4, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    filePairs = {
+        {"SV_AZ/WayHome/common_1095_main_0_clean.json", "SV_AZ/WayHome/common_1095_main_0.json"},
+        {"SV_AZ/WayHome/common_1095_main_1_clean.json", "SV_AZ/WayHome/common_1095_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/WayHome/common_1095_main",
+                "world/scene/parts/event/event_scenario/main_scenario/common_1095_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
+
+
+    // 6 6 5 6 6 7 6 5 - 1170
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(5, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(7, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(5, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    filePairs = {
+        {"SV_AZ/WayHome/common_1170_always_0_clean.json", "SV_AZ/WayHome/common_1170_always_0.json"},
+    };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/WayHome/common_1170_always_0.json",
+                "world/scene/parts/event/event_scenario/main_scenario/common_1170_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
+
+    // 9 9 8 9 9 10 8 9 -- 1170
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(8, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(10, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(8, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    filePairs = {
+                 {"SV_AZ/WayHome/common_1170_always_1_clean.json", "SV_AZ/WayHome/common_1170_always_1.json"},
+                 };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                   "SV_AZ/WayHome/common_1170_always_1.json",
+                   "world/scene/parts/event/event_scenario/main_scenario/common_1170_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 
 }
 
 void SVBoss::patchGimmighoul(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+    // Gimmighoul - 11
+    saveIndividualPokemon(11, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"MISC/Gimmighoul/coin_symbol_walk_0_clean.json", "MISC/Gimmighoul/coin_symbol_walk_0.json"},
+        {"MISC/Gimmighoul/coin_symbol_walk_1_clean.json", "MISC/Gimmighoul/coin_symbol_walk_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "MISC/Gimmighoul/coin_symbol_walk",
+                "world/obj_template/parts/coin_symbol/coin_symbol_walk_/");
+
+    filePairs.clear();
+
+    filePairs = {
+        {"MISC/Gimmighoul/coin_symbol_box_0_clean.json", "MISC/Gimmighoul/coin_symbol_box_0.json"},
+        {"MISC/Gimmighoul/coin_symbol_box_1_clean.json", "MISC/Gimmighoul/coin_symbol_box_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "MISC/Gimmighoul/coin_symbol_box",
+                "world/obj_template/parts/coin_symbol/coin_symbol_box_/");
+
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
 
 }
 
@@ -117,10 +280,10 @@ void SVBoss::patchLeChonk(){
 
         std::string rare = cleanBossData["values"][24]["pokeData"]["rareType"];
         if(gender != "RARE"){
-            genderBoss.push_back(0);
+            rareBoss.push_back(0);
         }
         else{
-            genderBoss.push_back(1);
+            rareBoss.push_back(1);
         }
     }
 
@@ -173,47 +336,536 @@ void SVBoss::patchLeChonk(){
 }
 
 void SVBoss::patchHoundoom(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+    // Houndoom - 25 - 1050
+    saveIndividualPokemon(25, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"MISC/Houndoom/common_0150_main_0_clean.json", "MISC/Houndoom/common_0150_main_0.json"},
+        {"MISC/Houndoom/common_0150_main_1_clean.json", "MISC/Houndoom/common_0150_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "MISC/Houndoom/common_0150_main",
+                "world/scene/parts/event/event_scenario/main_scenario/common_0150_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::patchSunflora(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+
+    // Sunflora - 26
+    for(int i =0; i<=29; i ++)
+        saveIndividualPokemon(26, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"MISC/Sunflora/pokes_0_clean.json", "MISC/Sunflora/pokes_0.json"},
+        {"MISC/Sunflora/pokes_1_clean.json", "MISC/Sunflora/pokes_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "MISC/Sunflora/pokes",
+                "world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 
 }
 
 void SVBoss::patchDonzoTitan(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
 
+    // Donzo - 33
+    saveIndividualPokemon(33, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_0_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_0.json"},
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_1_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_010_0_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_010_0.json"},
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_010_1_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_010_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_010",
+                "world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_010_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_020_0_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_020_0.json"},
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_020_1_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_020_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_020",
+                "world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_020_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
+
+    // Tatsugiri - 37
+    saveIndividualPokemon(37, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_010_0_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_010_0.json"},
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_010_1_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_010_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_010",
+                "world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_010_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_020_0_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_020_0.json"},
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_020_1_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_020_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_020",
+                "world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Dondozo_Tatsu/sub_040_pre_start_0_clean.json", "SV_TITANS/Dondozo_Tatsu/sub_040_pre_start_0.json"},
+        {"SV_TITANS/Dondozo_Tatsu/sub_040_pre_start_1_clean.json", "SV_TITANS/Dondozo_Tatsu/sub_040_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Dondozo_Tatsu/sub_040_pre_start",
+                "world/scene/parts/event/event_scenario/sub_scenario/sub_040_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::patchOrthwormTitan(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
 
+    // Orthworm - 35
+    saveIndividualPokemon(35, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_TITANS/Orthworm/nushi_hagane_010_pre_start_0_clean.json", "SV_TITANS/Orthworm/nushi_hagane_010_pre_start_0.json"},
+        {"SV_TITANS/Orthworm/nushi_hagane_010_pre_start_1_clean.json", "SV_TITANS/Orthworm/nushi_hagane_010_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Orthworm/nushi_hagane_010_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_010_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Orthworm/nushi_hagane_020_pre_start_0_clean.json", "SV_TITANS/Orthworm/nushi_hagane_020_pre_start_0.json"},
+        {"SV_TITANS/Orthworm/nushi_hagane_020_pre_start_1_clean.json", "SV_TITANS/Orthworm/nushi_hagane_020_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Orthworm/nushi_hagane_020_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Orthworm/nushi_hagane_fp_1048_010_0_clean.json", "SV_TITANS/Orthworm/nushi_hagane_fp_1048_010_0.json"},
+        {"SV_TITANS/Orthworm/nushi_hagane_fp_1048_010_1_clean.json", "SV_TITANS/Orthworm/nushi_hagane_fp_1048_010_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Orthworm/nushi_hagane_fp_1048_010",
+                "world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_010_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Orthworm/nushi_hagane_fp_1048_020_0_clean.json", "SV_TITANS/Orthworm/nushi_hagane_fp_1048_020_0.json"},
+        {"SV_TITANS/Orthworm/nushi_hagane_fp_1048_020_1_clean.json", "SV_TITANS/Orthworm/nushi_hagane_fp_1048_020_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Orthworm/nushi_hagane_fp_1048_020",
+                "world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Orthworm/sub_039_pre_start_0_clean.json", "SV_TITANS/Orthworm/sub_039_pre_start_0.json"},
+        {"SV_TITANS/Orthworm/sub_039_pre_start_1_clean.json", "SV_TITANS/Orthworm/sub_039_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Orthworm/sub_039_pre_start",
+                "world/scene/parts/event/event_scenario/sub_scenario/sub_039_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::patchBombariderTitan(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
 
+    // Bombardier - 41
+    saveIndividualPokemon(41, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(41, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_TITANS/Bombirdier/HikoNushi_0_clean.json", "SV_TITANS/Bombirdier/HikoNushi_0.json"},
+        {"SV_TITANS/Bombirdier/HikoNushi_1_clean.json", "SV_TITANS/Bombirdier/HikoNushi_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Bombirdier/HikoNushi",
+                "world/scene/parts/field/field_contents/nushi/hiko/HikoNushi_/");
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(41, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    filePairs = {
+        {"SV_TITANS/Bombirdier/nushi_hikou_010_pre_start_0_clean.json", "SV_TITANS/Bombirdier/nushi_hikou_010_pre_start_0.json"},
+        {"SV_TITANS/Bombirdier/nushi_hikou_010_pre_start_1_clean.json", "SV_TITANS/Bombirdier/nushi_hikou_010_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Bombirdier/nushi_hikou_010_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_010_/");
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_TITANS/Bombirdier/nushi_hikou_020_pre_start_0_clean.json", "SV_TITANS/Bombirdier/nushi_hikou_020_pre_start_0.json"},
+        {"SV_TITANS/Bombirdier/nushi_hikou_020_pre_start_1_clean.json", "SV_TITANS/Bombirdier/nushi_hikou_020_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Bombirdier/nushi_hikou_020_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Bombirdier/nushi_hikou_020_main_0_clean.json", "SV_TITANS/Bombirdier/nushi_hikou_020_main_0.json"},
+        {"SV_TITANS/Bombirdier/nushi_hikou_020_main_1_clean.json", "SV_TITANS/Bombirdier/nushi_hikou_020_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Bombirdier/nushi_hikou_020_main",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_0_clean.json", "SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_0.json"},
+        {"SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_1_clean.json", "SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010",
+                "world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_010_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Bombirdier/nushi_hiko_fp_1063_020_0_clean.json", "SV_TITANS/Bombirdier/nushi_hiko_fp_1063_020_0.json"},
+        {"SV_TITANS/Bombirdier/nushi_hiko_fp_1063_020_1_clean.json", "SV_TITANS/Bombirdier/nushi_hiko_fp_1063_020_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Bombirdier/nushi_hiko_fp_1063_020",
+                "world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Bombirdier/sub_038_pre_start_0_clean.json", "SV_TITANS/Bombirdier/sub_038_pre_start_0.json"},
+        {"SV_TITANS/Bombirdier/sub_038_pre_start_1_clean.json", "SV_TITANS/Bombirdier/sub_038_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Bombirdier/sub_038_pre_start",
+                "world/scene/parts/event/event_scenario/sub_scenario/sub_038_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::patchKlawfTitan(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
 
+    // Bombardier - 41
+    saveIndividualPokemon(43, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_TITANS/Klawf/nushi_iwa_010_pre_start_0_clean.json", "SV_TITANS/Klawf/nushi_iwa_010_pre_start_0.json"},
+        {"SV_TITANS/Klawf/nushi_iwa_010_pre_start_1_clean.json", "SV_TITANS/Klawf/nushi_iwa_010_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Klawf/nushi_iwa_010_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_010_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Klawf/nushi_iwa_020_pre_start_0_clean.json", "SV_TITANS/Klawf/nushi_iwa_020_pre_start_0.json"},
+        {"SV_TITANS/Klawf/nushi_iwa_020_pre_start_1_clean.json", "SV_TITANS/Klawf/nushi_iwa_020_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Klawf/nushi_iwa_020_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Klawf/nushi_iwa_fp_1066_0_clean.json", "SV_TITANS/Klawf/nushi_iwa_fp_1066_0.json"},
+        {"SV_TITANS/Klawf/nushi_iwa_fp_1066_1_clean.json", "SV_TITANS/Klawf/nushi_iwa_fp_1066_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Klawf/nushi_iwa_fp_1066",
+                "world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_/");
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Klawf/nushi_iwa_fp_1066_020_0_clean.json", "SV_TITANS/Klawf/nushi_iwa_fp_1066_020_0.json"},
+        {"SV_TITANS/Klawf/nushi_iwa_fp_1066_020_1_clean.json", "SV_TITANS/Klawf/nushi_iwa_fp_1066_020_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Klawf/nushi_iwa_fp_1066_020",
+                "world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Klawf/sub_037_pre_start_0_clean.json", "SV_TITANS/Klawf/sub_037_pre_start_0.json"},
+        {"SV_TITANS/Klawf/sub_037_pre_start_1_clean.json", "SV_TITANS/Klawf/sub_037_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Klawf/sub_037_pre_start",
+                "world/scene/parts/event/event_scenario/sub_scenario/sub_037_/");
+
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::patchGreatIronTitan(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
 
+    // Great Tusk - 45
+    // Iron Treads - 47
+    saveIndividualPokemon(47, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(45, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_0_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_0.json"},
+        {"SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_1_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Great_Iron/nushi_jimen_010_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_010_/");
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_TITANS/Great_Iron/nushi_jimen_020_pre_start_0_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_020_pre_start_0.json"},
+        {"SV_TITANS/Great_Iron/nushi_jimen_020_pre_start_1_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_020_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Great_Iron/nushi_jimen_020_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_020_/");
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    // Great Tusk Only
+    saveIndividualPokemon(45, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Great_Iron/nushi_jimen_fp_1082_010_0_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_fp_1082_010_0.json"},
+        {"SV_TITANS/Great_Iron/nushi_jimen_fp_1082_010_1_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_fp_1082_010_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Great_Iron/nushi_jimen_fp_1082_010",
+                "world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_010_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Great_Iron/nushi_jimen_fp_1082_020_0_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_fp_1082_020_0.json"},
+        {"SV_TITANS/Great_Iron/nushi_jimen_fp_1082_020_1_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_fp_1082_020_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Great_Iron/nushi_jimen_fp_1082_020",
+                "world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Great_Iron/sub_041_pre_start_0_clean.json", "SV_TITANS/Great_Iron/sub_041_pre_start_0.json"}
+    };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                   "SV_TITANS/Great_Iron/sub_041_pre_start_0.json",
+                   "world/scene/parts/event/event_scenario/sub_scenario/sub_041_/");
+
+    // Iron Treads Only
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(47, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Great_Iron/nushi_jimen_fp_1090_010_0_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_fp_1090_010_0.json"},
+        {"SV_TITANS/Great_Iron/nushi_jimen_fp_1090_010_1_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_fp_1090_010_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Great_Iron/nushi_jimen_fp_1090_010",
+                "world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_010_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Great_Iron/nushi_jimen_fp_1090_020_0_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_fp_1090_020_0.json"},
+        {"SV_TITANS/Great_Iron/nushi_jimen_fp_1090_020_1_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_fp_1090_020_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Great_Iron/nushi_jimen_fp_1090_020",
+                "world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_020_/");
+
+    filePairs.clear();
+    filePairs = {
+        {"SV_TITANS/Great_Iron/sub_041_pre_start_1_clean.json", "SV_TITANS/Great_Iron/sub_041_pre_start_1.json"}
+    };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Great_Iron/sub_041_pre_start_1.json",
+                "world/scene/parts/event/event_scenario/sub_scenario/sub_041_/");
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::patchTingLu(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
 
+    // Bombardier - 49
+    saveIndividualPokemon(49, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_LEGENDS/Treasures/sub_014_main_0_clean.json", "SV_LEGENDS/Treasures/sub_014_main_0.json"},
+        {"SV_LEGENDS/Treasures/sub_014_main_1_clean.json", "SV_LEGENDS/Treasures/sub_014_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_LEGENDS/Treasures/sub_014_main",
+                "world/scene/parts/event/event_scenario/sub_scenario/sub_014_/");
+
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::patchChienPao(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
 
+    // Bombardier - 49
+    saveIndividualPokemon(50, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_LEGENDS/Treasures/sub_015_main_0_clean.json", "SV_LEGENDS/Treasures/sub_015_main_0.json"},
+        {"SV_LEGENDS/Treasures/sub_015_main_1_clean.json", "SV_LEGENDS/Treasures/sub_015_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_LEGENDS/Treasures/sub_015_main",
+                "world/scene/parts/event/event_scenario/sub_scenario/sub_015_/");
+
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::patchWoChien(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
 
+    // Bombardier - 49
+    saveIndividualPokemon(51, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_LEGENDS/Treasures/sub_016_main_0_clean.json", "SV_LEGENDS/Treasures/sub_016_main_0.json"},
+        {"SV_LEGENDS/Treasures/sub_016_main_1_clean.json", "SV_LEGENDS/Treasures/sub_016_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_LEGENDS/Treasures/sub_016_main",
+                "world/scene/parts/event/event_scenario/sub_scenario/sub_016_/");
+
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::patchChiYu(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
 
+    // Bombardier - 49
+    saveIndividualPokemon(52, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_LEGENDS/Treasures/sub_017_main_0_clean.json", "SV_LEGENDS/Treasures/sub_017_main_0.json"},
+        {"SV_LEGENDS/Treasures/sub_017_main_1_clean.json", "SV_LEGENDS/Treasures/sub_017_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_LEGENDS/Treasures/sub_017_main",
+                "world/scene/parts/event/event_scenario/sub_scenario/sub_017_/");
+
+
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    filePairs.clear();
 }
 
 void SVBoss::copyFight(unsigned long long indexSet, unsigned long long indexCopy){
@@ -376,10 +1028,25 @@ void SVBoss::randomizeBosses(QDir baseDir){
             randomizeFight(i);
         }
     }
-
+    patchMultiBattle();
+    patchGimmighoul();
     patchLeChonk();
+    patchHoundoom();
+    patchSunflora();
+    patchDonzoTitan();
+    patchOrthwormTitan();
+    patchBombariderTitan();
+    patchKlawfTitan();
+    patchGreatIronTitan();
+    patchTingLu();
+    patchChienPao();
+    patchWoChien();
+    patchChiYu();
 
-    std::ofstream fileSave(filePath+"SV_SCENES/eventBattlePokemon_array.json");
+    std::ofstream fileSave((qBaseDir.filePath("SV_SCENES/eventBattlePokemon_array.json").toStdString()));
+    if(!fileSave.is_open()){
+        qFatal()<<"eventBattlePokemon_array.json did not open!";
+    }
     fileSave<<cleanBossData.dump(4);
     fileSave.close();
 }

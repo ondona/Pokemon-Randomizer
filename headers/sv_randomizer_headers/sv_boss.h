@@ -35,6 +35,13 @@ class SVBoss: public SVShared{
         void patchWoChien();
         void patchChiYu();
         void obtainPokemonScene(int &dev, int &form, int& gender, int &rare);
+        void saveIndividualPokemon(int index, std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare);
+        void changeScene(std::vector<std::pair<std::string, std::string>> filePairs,
+                         std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare,
+                         std::string output, std::string romAddress);
+        void changeSceneOne(std::vector<std::pair<std::string, std::string>> filePairs,
+                                std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare,
+                                std::string output, std::string romAddress);
 };
 
 #endif // SV_BOSS_H

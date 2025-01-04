@@ -3834,17 +3834,243 @@ void SVRandomizerWindow::runRandomizer()
         if(randomizer.svRandomizerBoss.randomize_bosses == true){
             randomizer.svRandomizeBoss(randomizer.svRandomizerBoss, qBaseDir);
 
-            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/eventBattlePokemon_array.fbs").toStdString(),
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/eventBattlePokemon_array.bfbs").toStdString(),
                            qBaseDir.filePath(+"SV_SCENES/eventBattlePokemon_array.json").toStdString(),
                            "world/data/battle/eventBattlePokemon/");
 
             try{
+                // Lechonk
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0100_/common_0100_main_0.bin").string(),
                            fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0100_/common_0100_main_0.trsog").string());
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0100_/common_0100_main_1.bin").string(),
                            fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0100_/common_0100_main_1.trsog").string());
+
+                // Treasure of Ruin
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_017_/sub_017_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_017_/sub_017_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_017_/sub_017_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_017_/sub_017_main_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_016_/sub_016_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_016_/sub_016_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_016_/sub_016_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_016_/sub_016_main_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_015_/sub_015_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_015_/sub_015_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_015_/sub_015_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_015_/sub_015_main_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_014_/sub_014_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_014_/sub_014_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_014_/sub_014_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_014_/sub_014_main_1.trsog").string());
+
+                // GreatIron Titan
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_041_/sub_041_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_041_/sub_041_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_041_/sub_041_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_041_/sub_041_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_020_/nushi_jimen_fp_1090_020_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_020_/nushi_jimen_fp_1090_020_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_020_/nushi_jimen_fp_1090_020_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_020_/nushi_jimen_fp_1090_020_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_010_/nushi_jimen_fp_1090_010_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_010_/nushi_jimen_fp_1090_010_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_010_/nushi_jimen_fp_1090_010_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1090_010_/nushi_jimen_fp_1090_010_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_010_/nushi_jimen_fp_1082_010_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_010_/nushi_jimen_fp_1082_010_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_010_/nushi_jimen_fp_1082_010_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_010_/nushi_jimen_fp_1082_010_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_020_/nushi_jimen_fp_1082_020_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_020_/nushi_jimen_fp_1082_020_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_020_/nushi_jimen_fp_1082_020_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/jimen/nushi_jimen_fp_1082_020_/nushi_jimen_fp_1082_020_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_020_/nushi_jimen_020_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_020_/nushi_jimen_020_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_020_/nushi_jimen_020_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_020_/nushi_jimen_020_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_010_/nushi_jimen_010_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_010_/nushi_jimen_010_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_010_/nushi_jimen_010_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_010_/nushi_jimen_010_pre_start_1.trsog").string());
+
+                //Klawf
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_037_/sub_037_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_037_/sub_037_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_037_/sub_037_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_037_/sub_037_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_020_/nushi_iwa_fp_1066_020_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_020_/nushi_iwa_fp_1066_020_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_020_/nushi_iwa_fp_1066_020_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_020_/nushi_iwa_fp_1066_020_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_/nushi_iwa_fp_1066_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_/nushi_iwa_fp_1066_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_/nushi_iwa_fp_1066_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/iwa/nushi_iwa_fp_1066_/nushi_iwa_fp_1066_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_020_/nushi_iwa_020_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_020_/nushi_iwa_020_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_020_/nushi_iwa_020_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_020_/nushi_iwa_020_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_010_/nushi_iwa_010_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_010_/nushi_iwa_010_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_010_/nushi_iwa_010_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_iwa_010_/nushi_iwa_010_pre_start_1.trsog").string());
+
+                //Bombirdier
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_038_/sub_038_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_038_/sub_038_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_038_/sub_038_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_038_/sub_038_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_020_/nushi_hiko_fp_1063_020_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_020_/nushi_hiko_fp_1063_020_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_020_/nushi_hiko_fp_1063_020_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_020_/nushi_hiko_fp_1063_020_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_010_/nushi_hiko_fp_1063_010_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_010_/nushi_hiko_fp_1063_010_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_010_/nushi_hiko_fp_1063_010_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hiko/nushi_hiko_fp_1063_010_/nushi_hiko_fp_1063_010_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/nushi_hikou_020_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/nushi_hikou_020_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/nushi_hikou_020_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/nushi_hikou_020_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/nushi_hikou_020_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/nushi_hikou_020_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/nushi_hikou_020_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_020_/nushi_hikou_020_main_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_010_/nushi_hikou_010_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_010_/nushi_hikou_010_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_010_/nushi_hikou_010_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hikou_010_/nushi_hikou_010_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/field/field_contents/nushi/hiko/HikoNushi_/HikoNushi_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/field/field_contents/nushi/hiko/HikoNushi_/HikoNushi_0.trscn").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/field/field_contents/nushi/hiko/HikoNushi_/HikoNushi_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/field/field_contents/nushi/hiko/HikoNushi_/HikoNushi_1.trscn").string());
+
+                //Orthworm
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_039_/sub_039_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_039_/sub_039_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_039_/sub_039_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_039_/sub_039_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_020_/nushi_hagane_fp_1048_020_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_020_/nushi_hagane_fp_1048_020_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_020_/nushi_hagane_fp_1048_020_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_020_/nushi_hagane_fp_1048_020_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_010_/nushi_hagane_fp_1048_010_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_010_/nushi_hagane_fp_1048_010_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_010_/nushi_hagane_fp_1048_010_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/hagane/nushi_hagane_fp_1048_010_/nushi_hagane_fp_1048_010_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_020_/nushi_hagane_020_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_020_/nushi_hagane_020_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_020_/nushi_hagane_020_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_020_/nushi_hagane_020_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_010_/nushi_hagane_010_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_010_/nushi_hagane_010_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_010_/nushi_hagane_010_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_hagane_010_/nushi_hagane_010_pre_start_1.trsog").string());
+
+                // Tatsugiri
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_040_/sub_040_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_040_/sub_040_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_040_/sub_040_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/sub_040_/sub_040_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_020_/nushi_dragon_fp_1056_020_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_020_/nushi_dragon_fp_1056_020_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_020_/nushi_dragon_fp_1056_020_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_020_/nushi_dragon_fp_1056_020_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_010_/nushi_dragon_fp_1056_010_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_010_/nushi_dragon_fp_1056_010_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_010_/nushi_dragon_fp_1056_010_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1056_010_/nushi_dragon_fp_1056_010_1.trsot").string());
+
+                // Dondozo
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_020_/nushi_dragon_fp_1035_020_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_020_/nushi_dragon_fp_1035_020_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_020_/nushi_dragon_fp_1035_020_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_020_/nushi_dragon_fp_1035_020_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_010_/nushi_dragon_fp_1035_010_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_010_/nushi_dragon_fp_1035_010_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_010_/nushi_dragon_fp_1035_010_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/nushi/dragon/nushi_dragon_fp_1035_010_/nushi_dragon_fp_1035_010_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_always_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_always_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_always_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_always_1.trsog").string());
+
+                // Sunflora
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_1.trsot").string());
+
+                // Houndoom
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0150_/common_0150_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0150_/common_0150_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0150_/common_0150_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0150_/common_0150_main_1.trsog").string());
+
+                // Gimmighoul
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/coin_symbol/coin_symbol_box_/coin_symbol_box_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/coin_symbol/coin_symbol_box_/coin_symbol_box_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/coin_symbol/coin_symbol_box_/coin_symbol_box_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/coin_symbol/coin_symbol_box_/coin_symbol_box_1.trsot").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/coin_symbol/coin_symbol_walk_/coin_symbol_walk_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/coin_symbol/coin_symbol_walk_/coin_symbol_walk_0.trsot").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/obj_template/parts/coin_symbol/coin_symbol_walk_/coin_symbol_walk_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/obj_template/parts/coin_symbol/coin_symbol_walk_/coin_symbol_walk_1.trsot").string());
+
+                // Way Home
+                // Paradox Circle
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1170_/common_1170_always_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1170_/common_1170_always_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1170_/common_1170_always_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1170_/common_1170_always_1.trsog").string());
+
+                // Tusk/Treads
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1095_/common_1095_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1095_/common_1095_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1095_/common_1095_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1095_/common_1095_main_1.trsog").string());
+
+                // Tails/Bundle
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1075_/common_1075_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1075_/common_1075_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1075_/common_1075_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1075_/common_1075_main_1.trsog").string());
+
+                // Glimmora
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1055_/common_1055_main_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1055_/common_1055_main_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1055_/common_1055_main_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1055_/common_1055_main_1.trsog").string());
             }catch (const fs::filesystem_error& e) {
-                qDebug() << "Error renaming file: " << e.what();
+                qFatal() << "Error renaming file: " << e.what();
             }
         }
 
@@ -3912,6 +4138,90 @@ void SVRandomizerWindow::runRandomizer()
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_FIRST_ROUTE/common_0100_main_0.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_FIRST_ROUTE/common_0100_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/MISC/Gimmighoul/coin_symbol_box_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/MISC/Gimmighoul/coin_symbol_box_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/MISC/Gimmighoul/coin_symbol_walk_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/MISC/Gimmighoul/coin_symbol_walk_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/MISC/Houndoom/common_0150_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/MISC/Houndoom/common_0150_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/MISC/Sunflora/pokes_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/MISC/Sunflora/pokes_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/WayHome/common_1055_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/WayHome/common_1075_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/WayHome/common_1095_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/WayHome/common_1170_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/WayHome/common_1055_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/WayHome/common_1075_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/WayHome/common_1095_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/WayHome/common_1170_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Treasures/sub_014_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Treasures/sub_015_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Treasures/sub_016_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Treasures/sub_017_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Treasures/sub_014_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Treasures/sub_015_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Treasures/sub_016_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Treasures/sub_017_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/HikoNushi_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hiko_fp_1063_020_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hikou_010_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hikou_020_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hikou_020_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/sub_038_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_010_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_020_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_010_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_020_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/sub_040_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_020_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_fp_1082_010_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_fp_1082_020_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_fp_1090_010_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_fp_1090_020_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/sub_041_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/nushi_iwa_010_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/nushi_iwa_020_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/nushi_iwa_fp_1066_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/nushi_iwa_fp_1066_020_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/sub_037_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_010_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_020_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_fp_1048_010_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_fp_1048_020_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/sub_039_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/HikoNushi_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hiko_fp_1063_020_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hikou_010_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hikou_020_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hikou_020_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/sub_038_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_010_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1035_020_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_010_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_fp_1056_020_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/sub_040_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_020_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_fp_1082_010_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_fp_1082_020_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_fp_1090_010_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/nushi_jimen_fp_1090_020_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Great_Iron/sub_041_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/nushi_iwa_010_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/nushi_iwa_020_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/nushi_iwa_fp_1066_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/nushi_iwa_fp_1066_020_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Klawf/sub_037_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_010_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_020_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_fp_1048_010_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_fp_1048_020_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/sub_039_pre_start_1.json").toStdString());
         // Delete Output file (again)
         if(fs::exists(dirPath)){
             fs::remove_all(dirPath);

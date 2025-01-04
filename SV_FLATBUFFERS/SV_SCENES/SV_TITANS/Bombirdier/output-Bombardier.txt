@@ -1,0 +1,58 @@
+"HikoNushi"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIPokemonModelComponent [1]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [1]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"HikoNushi"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIPokemonModelComponent [1]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [1]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hikou_010_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hikou_010_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hikou_020_main"
+null
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hikou_020_main"
+null
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hikou_020_pre_start"
+null
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hikou_020_pre_start"
+null
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hiko_fp_1063_010"
+null
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hiko_fp_1063_010"
+null
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hiko_fp_1063_020"
+null
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hiko_fp_1063_020"
+null
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_038_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_038_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Bombirdier  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE

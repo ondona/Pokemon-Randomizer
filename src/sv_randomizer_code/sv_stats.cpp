@@ -115,7 +115,7 @@ void SVStats::randomize_pokemon(){
                     }
                 }
                 else if(species_check == 1021 && cleanPersonalData["entry"][i]["species"]["form"] == 0){
-                    continue;
+                    // Do not randomize abilities but change the rest
                 }
                 else{
                     bool a1 = false;
@@ -184,22 +184,41 @@ void SVStats::randomize_pokemon(){
             if(randomize_moveset == true){
                 QList<int> currentMoves;
                 for(unsigned long long j = 0; j<cleanPersonalData["entry"][i]["levelup_moves"].size(); j++){
-                    int selectedMove = std::rand()%allowed_moves.size();
-                    while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
-                        selectedMove = std::rand()%allowed_moves.size();
+                    if(allow_moves_without_animation == true){
+                        int selectedMove = 1+std::rand()%919;
+                        while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
+                            selectedMove = 1+std::rand()%919;;
+                        }
+                        currentMoves.append(selectedMove);
+                        cleanPersonalData["entry"][i]["levelup_moves"][j]["move"] = selectedMove;
+                    }else{
+                        int selectedMove = std::rand()%allowed_moves.size();
+                        while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
+                            selectedMove = std::rand()%allowed_moves.size();
+                        }
+                        currentMoves.append(selectedMove);
+                        cleanPersonalData["entry"][i]["levelup_moves"][j]["move"] = allowed_moves[selectedMove];
                     }
-                    currentMoves.append(selectedMove);
-                    cleanPersonalData["entry"][i]["levelup_moves"][j]["move"] = allowed_moves[selectedMove];
                 }
 
                 currentMoves = {};
                 for(unsigned long long j = 0; j<cleanPersonalData["entry"][i]["reminder_moves"].size(); j++){
-                    int selectedMove = std::rand()%allowed_moves.size();
-                    while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
-                        selectedMove = std::rand()%allowed_moves.size();
+                    if(allow_moves_without_animation == true){
+                        int selectedMove = 1+std::rand()%919;
+                        while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
+                            selectedMove = 1+std::rand()%919;;
+                        }
+                        currentMoves.append(selectedMove);
+                        cleanPersonalData["entry"][i]["reminder_moves"][j] = selectedMove;
                     }
-                    currentMoves.append(selectedMove);
-                    cleanPersonalData["entry"][i]["reminder_moves"][j] = allowed_moves[selectedMove];
+                    else{
+                        int selectedMove = std::rand()%allowed_moves.size();
+                        while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
+                            selectedMove = std::rand()%allowed_moves.size();
+                        }
+                        currentMoves.append(selectedMove);
+                        cleanPersonalData["entry"][i]["reminder_moves"][j] = allowed_moves[selectedMove];
+                    }
                 }
                 if(species_check == 57){
                     cleanPersonalData["entry"][i]["reminder_moves"].push_back(889);
@@ -223,12 +242,21 @@ void SVStats::randomize_pokemon(){
 
                 currentMoves = {};
                 for(unsigned long long j = 0; j<cleanPersonalData["entry"][i]["egg_moves"].size(); j++){
-                    int selectedMove = std::rand()%allowed_moves.size();
-                    while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
-                        selectedMove = std::rand()%allowed_moves.size();
+                    if(allow_moves_without_animation == true){
+                        int selectedMove = 1+std::rand()%919;
+                        while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
+                            selectedMove = 1+std::rand()%919;;
+                        }
+                        currentMoves.append(selectedMove);
+                        cleanPersonalData["entry"][i]["egg_moves"][j] = selectedMove;
+                    }else{
+                        int selectedMove = std::rand()%allowed_moves.size();
+                        while(currentMoves.contains(selectedMove) || !allowedToLearnMove(selectedMove, species_check, form_check)){
+                            selectedMove = std::rand()%allowed_moves.size();
+                        }
+                        currentMoves.append(selectedMove);
+                        cleanPersonalData["entry"][i]["egg_moves"][j] = allowed_moves[selectedMove];
                     }
-                    currentMoves.append(selectedMove);
-                    cleanPersonalData["entry"][i]["egg_moves"][j] = allowed_moves[selectedMove];
                 }
 
                 currentMoves = {};

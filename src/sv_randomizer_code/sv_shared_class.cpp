@@ -781,7 +781,6 @@ void SVShared::modifyPokemonScene(std::vector<int> devId, std::vector<int> formI
 
     cleanSceneData >>cleanSceneJSON;
     qDebug()<<QString::fromUtf8(cleanSceneJSON["ObjectTemplateName"].get<std::string>().c_str());
-    qDebug()<<QString::fromUtf8(cleanSceneJSON["ObjectTemplateExtra"].get<std::string>().c_str());
 
     recursiveFindOfPokemonSceneTable(cleanSceneJSON["Objects"], devId, formId, gender, rare);
 
