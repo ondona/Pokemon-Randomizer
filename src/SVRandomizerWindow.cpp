@@ -3476,19 +3476,28 @@ void SVRandomizerWindow::showRestartWidget() {
 }
 
 bool SVRandomizerWindow::checkAndDeleteFile(std::string filePath) {
+
+    size_t pos = filePath.find("SV_FLATBUFFERS");
+    std::string keyword = "SV_FLATBUFFERS";
+
+    std::string result;
+    if(pos != std::string::npos){
+        result = filePath.substr(pos + keyword.length() + 1);
+    }
+
     try {
         // Check if the file exists
         if (fs::exists(filePath)) {
             // Delete the file
             if (fs::remove(filePath)) {
-                qDebug() << "File deleted successfully: " << filePath;
+                qDebug() << "File deleted successfully: " << result;
                 return true; // File existed and was deleted
             } else {
-                std::cerr << "Failed to delete the file: " << filePath << std::endl;
+                std::cerr << "Failed to delete the file: " << result << std::endl;
                 return false;
             }
         } else {
-            qDebug()  << "File does not exist: " << filePath;
+            qDebug()  << "File does not exist: " << result;
             return false; // File does not exist
         }
     } catch (const fs::filesystem_error& e) {
@@ -4022,6 +4031,11 @@ void SVRandomizerWindow::runRandomizer()
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_always_1.bin").string(),
                            fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_always_1.trsog").string());
 
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_020_/nushi_dragon_020_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_020_/nushi_dragon_020_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_020_/nushi_dragon_020_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_020_/nushi_dragon_020_pre_start_1.trsog").string());
+
                 // Sunflora
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.bin").string(),
                            fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.trsot").string());
@@ -4069,6 +4083,12 @@ void SVRandomizerWindow::runRandomizer()
                            fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1055_/common_1055_main_0.trsog").string());
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1055_/common_1055_main_1.bin").string(),
                            fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_1055_/common_1055_main_1.trsog").string());
+
+                //Testing
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_pre_start_0.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_pre_start_1.bin").string(),
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/nushi_dragon_010_pre_start_1.trsog").string());
             }catch (const fs::filesystem_error& e) {
                 qFatal() << "Error renaming file: " << e.what();
             }

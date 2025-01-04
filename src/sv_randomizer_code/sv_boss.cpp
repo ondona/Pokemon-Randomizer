@@ -1,6 +1,7 @@
 #include <QDebug>
 #include <QVector>
 #include <QString>
+#include <QStringListModel>
 #include <nlohmann/json.hpp>
 #include <filesystem>
 #include <fstream>
@@ -14,6 +15,7 @@ QVector<int> allowedPokemonBoss;
 QVector<int> allowedLegendsBoss;
 json cleanBossData;
 json bossMappingInfo;
+json trainerInfo;
 QDir BaseDir;
 
 void SVBoss::saveIndividualPokemon(int index, std::vector<int> &dev, std::vector<int> &form, std::vector<int> &genderV, std::vector<bool> &rareV){
@@ -28,6 +30,26 @@ void SVBoss::saveIndividualPokemon(int index, std::vector<int> &dev, std::vector
     }
 
     std::string rare = cleanBossData["values"][index]["pokeData"]["rareType"];
+    if(gender != "RARE"){
+        rareV.push_back(0);
+    }
+    else{
+        rareV.push_back(1);
+    }
+}
+
+void SVBoss::savePokemonFromTrainer(int index, std::string& pokeKey, std::vector<int> &dev, std::vector<int> &form, std::vector<int> &genderV, std::vector<bool> &rareV){
+    dev.push_back(bossMappingInfo["pokemons_dev"][trainerInfo["values"][index][pokeKey]["devId"].get<std::string>().c_str()]["devid"]);
+    form.push_back(trainerInfo["values"][index][pokeKey]["formId"]);
+    std::string gender = trainerInfo["values"][index][pokeKey]["sex"].get<std::string>().c_str();
+    if(gender != "FEMALE"){
+        genderV.push_back(0);
+    }
+    else{
+        genderV.push_back(1);
+    }
+
+    std::string rare = trainerInfo["values"][index][pokeKey]["rareType"].get<std::string>().c_str();
     if(gender != "RARE"){
         rareV.push_back(0);
     }
@@ -455,6 +477,43 @@ void SVBoss::patchDonzoTitan(){
                 "SV_TITANS/Dondozo_Tatsu/sub_040_pre_start",
                 "world/scene/parts/event/event_scenario/sub_scenario/sub_040_/");
 
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    for(int i =0; i<=25; i++)
+        saveIndividualPokemon(37, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    filePairs = {
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_0_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_0.json"},
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_1_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_010_/");
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(33, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(37, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    std::string pokeKy = "poke1";
+    savePokemonFromTrainer(435, pokeKy, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    //saveIndividualPokemon(37, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    filePairs = {
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_0_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_0.json"},
+        {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_1_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/nushi_dragon_020_/");
+
     devIdBoss.clear();
     formIdBoss.clear();
     genderBoss.clear();
@@ -689,6 +748,12 @@ void SVBoss::patchGreatIronTitan(){
                 "world/scene/parts/event/event_scenario/main_scenario/nushi_jimen_010_/");
 
     filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+    saveIndividualPokemon(45, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(47, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
     filePairs = {
         {"SV_TITANS/Great_Iron/nushi_jimen_020_pre_start_0_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_020_pre_start_0.json"},
@@ -957,6 +1022,15 @@ void SVBoss::randomizeBosses(QDir baseDir){
     QDir qBaseDir(QBaseAddress);
     std::ifstream fileInfo(qBaseDir.filePath("pokemon_mapping.json").toStdString());
     std::ifstream fileBoss(qBaseDir.filePath("SV_SCENES/eventBattlePokemon_array_clean.json").toStdString());
+    std::ifstream fileTrainer(qBaseDir.filePath("SV_TRAINERS/trdata_array.json").toStdString());
+
+    if(!fileTrainer.is_open()){
+        fileTrainer.open(qBaseDir.filePath("SV_TRAINERS/trdata_array_clean.json").toStdString());
+        if(!fileTrainer.is_open()){
+            qFatal()<<"Couldn't open any of the trdata_array jsons";
+        }
+    }
+
     BaseDir = baseDir;
 
     if(!fileBoss.is_open()){
@@ -971,6 +1045,8 @@ void SVBoss::randomizeBosses(QDir baseDir){
     fileInfo.close();
     fileBoss >>cleanBossData;
     fileBoss.close();
+    fileTrainer >> trainerInfo;
+    fileTrainer.close();
 
     for(unsigned long long i =0; i<cleanBossData["values"].size(); i++){
         if(i > 52){
@@ -1004,6 +1080,11 @@ void SVBoss::randomizeBosses(QDir baseDir){
                 break;
             case 36:
                 copyFight(i, 35);
+                break;
+            case 38:
+            case 39:
+            case 40:
+                copyFight(i, 37);
                 break;
             case 42:
                 copyFight(i, 41);

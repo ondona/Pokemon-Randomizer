@@ -21,11 +21,15 @@
 #include <QJsonObject>
 #include <QMessageBox>
 #include <QVersionNumber>
+#include <QSettings>
+#include <QWidgetAction>
 
 namespace fs = std::filesystem;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     resize(950, 800);
+    QSettings settings("YourCompany", "YourApp");
+    bool alwaysOnTopValue = settings.value("AlwaysOnTop", false).toBool();
 
     // Central Widget
     centralWidget = new QWidget(this);
@@ -74,6 +78,28 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     // Toolbar
     QToolBar *toolbar = addToolBar("Main Tool Bar");
     toolbar->setMovable(false);
+
+    // Create the "Always on Top" checkbox
+    QCheckBox *alwaysOnTopCheckBox = new QCheckBox("Always on Top", this);
+
+    // Load the saved setting (default to true if not set)
+    alwaysOnTopCheckBox->setChecked(alwaysOnTopValue);
+
+    // Connect checkbox to update the setting and apply it immediately
+    connect(alwaysOnTopCheckBox, &QCheckBox::toggled, this, [this](bool checked) {
+        QSettings settings("YourCompany", "YourApp");
+        settings.setValue("AlwaysOnTop", checked);
+        setWindowFlag(Qt::WindowStaysOnTopHint, checked);
+        show();  // Reapply the window flags
+    });
+
+    // Create a QWidgetAction to embed the checkbox into the toolbar
+    QWidgetAction *alwaysOnTopAction = new QWidgetAction(toolbar);
+    alwaysOnTopAction->setDefaultWidget(alwaysOnTopCheckBox);
+
+    // Add the action (with the checkbox) to the toolbar
+    toolbar->addAction(alwaysOnTopAction);
+
     QAction *updateAction = new QAction("Check for Updates", this);
     connect(updateAction, &QAction::triggered, this, &MainWindow::checkForUpdates);
     toolbar->addAction(updateAction);
@@ -158,6 +184,18 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event) {
     }
     return QMainWindow::eventFilter(watched, event);  // Pass the event on to the parent class
 }
+
+void MainWindow::alwaysOnTop(bool always){
+    if(always == true){
+        setWindowFlag(Qt::WindowStaysOnTopHint, true);
+        show();
+        raise();
+        activateWindow();
+        setWindowFlag(Qt::WindowStaysOnTopHint, false);
+    }
+    show();
+}
+
 // Add a map to store references to the widgets and tabs
 QMap<int, AlternateWindow*> openWindows;
 

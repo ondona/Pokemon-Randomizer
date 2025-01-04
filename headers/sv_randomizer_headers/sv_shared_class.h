@@ -4,6 +4,7 @@
 #include <nlohmann/json.hpp>
 #include <QMap>
 #include <QVector>
+#include <QWidget>
 #include <QString>
 #include <string>
 #include <cstdlib>
@@ -37,7 +38,8 @@
     niji = stellar
 */
 
-class SVShared {
+class SVShared{
+
 public:
     QList <QMap<QString, int>> exitAbilitiesPokemon = {{{"id", 767}, {"form", 0}},
                                                       {{"id", 768}, {"form", 0}},

@@ -636,10 +636,8 @@ bool SVStats::randomize_stats(){
 
     if(enable_TMs == true){
         if(allow_moves_without_animation == true){
-            qDebug()<<"Here";
             allow_all_moves();
             randomize_tmsFile(true);
-            qDebug()<<"Finished TMs Random w/All";
         }else{
             randomize_tmsFile();
         }

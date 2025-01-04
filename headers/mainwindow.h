@@ -18,6 +18,7 @@ class MainWindow : public QMainWindow {
 public:
     MainWindow(QWidget *parent = nullptr);
     void setupAutoUpdater();
+    void alwaysOnTop(bool always);
 
 private slots:
     void openAlternateWindow(int index);

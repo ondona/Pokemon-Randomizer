@@ -448,11 +448,11 @@ void SVShared::createFolderHierarchy(const std::string& folder) {
     try {
         // Convert to absolute path
         fs::path absolutePath = fs::absolute(folder);
-        qDebug() << "Absolute path: " << QString::fromUtf8(absolutePath.string());
+        //qDebug() << "Absolute path: " << QString::fromUtf8(absolutePath.string());
 
         // Create directories
         fs::create_directories(absolutePath);
-        qDebug() << "Created path: " << QString::fromUtf8(absolutePath.string());
+        //qDebug() << "Created path: " << QString::fromUtf8(absolutePath.string());
 
         // Define where to start (example folder)
         std::string startFolder = "output";
@@ -545,7 +545,7 @@ int SVShared::generateBinary(const std::string& schema, const std::string& jsonF
               << "--no-warnings";
 
     // Debug the command
-    qDebug()<< QString("Executing: %1 with Arguments: %2").arg(program, arguments.join(' '));
+    // qDebug()<< QString("Executing: %1 with Arguments: %2").arg(program, arguments.join(' '));
 
     // Start the process
     process.start(program, arguments);
