@@ -189,7 +189,6 @@ bool SVItems::randomize_items(){
     file.close();
 
     if(randomize_hidden_items == true){
-        qDebug()<<"Here - HIdden";
         randomizeHiddenItems("hiddenItemDataTable_lc_array_clean.json", "hiddenItemDataTable_lc_array.json");
         randomizeHiddenItems("hiddenItemDataTable_su2_array_clean.json", "hiddenItemDataTable_su2_array.json");
         randomizeHiddenItems("hiddenItemDataTable_su1_array_clean.json", "hiddenItemDataTable_su1_array.json");
@@ -197,17 +196,14 @@ bool SVItems::randomize_items(){
     }
 
     if(randomize_pickup_items == true){
-        qDebug()<<"Here - PickUp";
         randomizePickUpItems();
     }
 
     if(randomize_synchro_items == true){
-        qDebug()<<"Here - Synchro";
         randomizeLetsGoItems();
     }
 
     if(randomize_pokemon_drops == true){
-        qDebug()<<"Here - Drops";
         randomizePokemonDrops();
     }
 

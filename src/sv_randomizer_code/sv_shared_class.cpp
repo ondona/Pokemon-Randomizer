@@ -3,16 +3,13 @@
 #include <QMap>
 #include <QVector>
 #include <QString>
-#include <iostream>
 #include <fstream>
 #include <filesystem>
 #include <string>
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
-#include <iostream>
 #include <fstream>
-#include <vector>
 #include <string>
 #include <stdexcept>
 #include <QSet>
@@ -21,9 +18,12 @@
 #include <flatbuffers/verifier.h>
 #include <TrinitySceneObject_generated.h>
 #include <QProcess>
-
+#include <QStringListModel>
 
 namespace fs = std::filesystem;
+using json = nlohmann::json;
+
+json cleanSceneJSON;
 
 std::string SVShared::getPokemonItemId(int index, int form){
     if (paradox.contains(index) && index != 1007 && index != 1008 && index != 1024) {
@@ -548,7 +548,6 @@ void SVShared::getUsablePokemon(QVector<bool> generations, bool legend, bool par
 
     // Legends and Paradox > Legends > Paradox
     if(legends_paradox == true){
-        qDebug()<<"Here";
         allowedPokemon = {};
         allowedPokemon = legends_and_paradox;
     }else if(legend == true){
@@ -593,11 +592,11 @@ void SVShared::createFolderHierarchy(const std::string& folder) {
     try {
         // Convert to absolute path
         fs::path absolutePath = fs::absolute(folder);
-        std::cout << "Absolute path: " << absolutePath << std::endl;
+        //qDebug() << "Absolute path: " << QString::fromUtf8(absolutePath.string());
 
         // Create directories
         fs::create_directories(absolutePath);
-        std::cout << "Created directories: " << absolutePath << std::endl;
+        //qDebug() << "Created path: " << QString::fromUtf8(absolutePath.string());
 
         // Define where to start (example folder)
         std::string startFolder = "output";
@@ -615,11 +614,11 @@ void SVShared::createFolderHierarchy(const std::string& folder) {
                     fs::create_directory(currentPath); // Create directory if it doesn't exist
                 }
                 fs::permissions(currentPath, fs::perms::all, fs::perm_options::add);
-                std::cout << "Set permissions for: " << currentPath << std::endl;
+                qDebug() << "Set permissions for: " << QString::fromUtf8(currentPath.string());
             }
         }
     } catch (const fs::filesystem_error& e) {
-        std::cerr << "Error creating folder hierarchy: " << e.what() << std::endl;
+        qCritical() << "Error creating folder hierarchy: " << e.what();
     }
 }
 
@@ -655,9 +654,7 @@ int SVShared::generateBinary(const std::string& schema, const std::string& jsonF
     #endif
 
     // Print detected platform and architecture if debug is enabled
-    if (debug) {
-        std::cout << "Platform: " << platform << ", Architecture: " << architecture << std::endl;
-    }
+    qDebug()<< QString("Platform %1 with Architecture %2").arg(QString::fromStdString(platform), QString::fromStdString(architecture));
 
     // Determine the binary path based on platform and architecture
     std::string flatc;
@@ -692,9 +689,7 @@ int SVShared::generateBinary(const std::string& schema, const std::string& jsonF
               << "--no-warnings";
 
     // Debug the command
-    if (debug) {
-        std::cout << "Executing: " << program.toStdString() << " " << arguments.join(' ').toStdString() << std::endl;
-    }
+    // qDebug()<< QString("Executing: %1 with Arguments: %2").arg(program, arguments.join(' '));
 
     // Start the process
     process.start(program, arguments);
@@ -704,10 +699,10 @@ int SVShared::generateBinary(const std::string& schema, const std::string& jsonF
     int returnCode = process.exitCode();
     if (debug) {
         if (returnCode != 0) {
-            std::cerr << "Error executing command. Return code: " << returnCode << std::endl;
-            std::cerr << "Error output: " << process.readAllStandardError().toStdString() << std::endl;
+            qCritical()<< "Error executing command. Return code: " << returnCode;
+            qCritical() << "Error output: " << process.readAllStandardError().toStdString();
         } else {
-            std::cout << "Process executed successfully." << std::endl;
+            qDebug()<< "Program Ended Successfully";
         }
     }
 
@@ -730,7 +725,7 @@ void SVShared::patchFileDescriptor() {
     // Load the JSON file
     std::ifstream file(fs::absolute("SV_FLATBUFFERS/SV_DATA_FLATBUFFERS/data_clean.json").string());
     if (!file.is_open()) {
-        std::cerr << "Error: Could not open data_clean.json!" << std::endl;
+        qFatal()<< "Error: Could not open data_clean.json!";
         return;
     }
 
@@ -766,330 +761,177 @@ void SVShared::patchFileDescriptor() {
     // Write the modified data back to a JSON file
     std::ofstream outfile(fs::absolute("SV_FLATBUFFERS/SV_DATA_FLATBUFFERS/data.json").string());
     if (!outfile.is_open()) {
-        std::cerr << "Error: Could not open data.json for writing!" << std::endl;
+        qFatal()<< "Error: Could not open data.json for writing!";
         return;
     }
 
     outfile << data.dump(2);
     outfile.close();
 
-    std::cout << "Patched trpfd!" << std::endl;
+    qDebug() << "Patched trpfd!";
 }
 
-// Function to read the binary file into a vector of bytes
-std::vector<char> SVShared::ReadBinaryFile(const std::string &filePath) {
-    std::ifstream file(filePath, std::ios::binary | std::ios::ate);
-    if (!file.is_open()) {
-        throw std::runtime_error("Failed to open file: " + filePath);
+
+int modelCount = 0;
+int fieldCount = 0;
+void SVShared::recursiveFindOfPokemonSceneTable(nlohmann::json& sceneObject, std::vector<int> devId, std::vector<int> formId,std::vector<int> gender, std::vector<bool> rare){
+    if (!sceneObject.is_array()) {
+        return;
     }
+    for(unsigned long long i =0; i<sceneObject.size(); i++){
+        if(sceneObject[i]["Type"] == "ti_PokemonModelComponent" || sceneObject[i]["Type"] == "ti_FieldPokemonComponent"){
+            qDebug()<<"Type: "<< QString::fromUtf8(sceneObject[i]["Type"].get<std::string>().c_str());
 
-    int size = static_cast<int>(file.tellg());
-    file.seekg(0, std::ios::beg);
-
-    std::vector<char> buffer(size);
-    if (!file.read(buffer.data(), size)) {
-        throw std::runtime_error("Failed to read file: " + filePath);
-    }
-    return buffer;
-}
-
-// Function to find marker offsets in the binary data
-std::vector<int> SVShared::FindMarkerOffsets(const std::vector<char> &data, const std::string &marker) {
-    std::vector<int> offsets;
-    int index = 0;
-
-    std::string dataAsString(data.begin(), data.end());
-    while ((index = static_cast<int>(dataAsString.find(marker, index))) != std::string::npos) {
-        offsets.push_back(index);
-        ++index; // Move to the next character
-    }
-    return offsets;
-}
-
-// Function to validate offsets
-bool SVShared::IsValidOffset(int offset, int dataSize) {
-    return offset >= 0 && offset < dataSize;
-}
-
-// Function to verify a FlatBuffer table
-bool SVShared::VerifyFlatBufferTable(const char *data, int size) {
-    if (size < 4) {
-        return false;
-    }
-
-    flatbuffers::Verifier verifier(reinterpret_cast<const uint8_t *>(data), size);
-    return verifier.VerifyBuffer<pkNX::Structures::FlatBuffers::SV::Trinity::TIPokemonModelComponent>();
-}
-
-// Function to dynamically find the correct offset adjustment for a table
-int SVShared::FindCorrectOffsetAdjustment(
-    const std::vector<char> &data,
-    int markerOffset,
-    int maxAdjustmentRange,
-    int step,
-    int dataSize,
-    bool (*verifier)(const char *, int)) {
-
-    for (int adjustment = 0; adjustment <= maxAdjustmentRange; adjustment += step) {
-        int adjustedOffset = markerOffset - adjustment;
-
-        if (!IsValidOffset(adjustedOffset, dataSize)) {
-            continue; // Skip invalid offsets
-        }
-
-        const int remainingBytes = dataSize - adjustedOffset;
-        if (remainingBytes < 4) { // Minimum size for FlatBuffer table
-            continue;
-        }
-
-        if (verifier(data.data() + adjustedOffset, remainingBytes)) {
-            return adjustedOffset; // Found valid adjustment
-        }
-    }
-
-    return -1; // No valid adjustment found
-}
-
-// Function to print table values
-void SVShared::PrintTableValues(const pkNX::Structures::FlatBuffers::SV::Trinity::TIPokemonModelComponent *table) {
-    std::cout << "DevId: " << table->DevId() << "\n";
-    std::cout << "FormId: " << table->FormId() << "\n";
-
-    std::string sexStr;
-    switch (table->Sex()) {
-    case -1: sexStr = "Unknown"; break;
-    case 0: sexStr = "Male"; break;
-    case 1: sexStr = "Female"; break;
-    default: sexStr = "Invalid"; break;
-    }
-    std::cout << "Sex: " << sexStr << "\n";
-
-    std::string rareStr = (table->Rare() == 1) ? "True" : "False";
-    std::cout << "Rare: " << rareStr << "\n";
-    std::cout << "Field_04: " << (int)table->Field_04() << "\n";
-    std::cout << "Field_05: " << (int)table->Field_05() << "\n";
-    std::cout << "Field_06: " << (int)table->Field_06() << "\n";
-    std::cout << "Field_07: " << (int)table->Field_07() << "\n";
-    std::cout << "Field_08: " << table->Field_08() << "\n";
-}
-
-void SVShared::PrintTableValues(const pkNX::Structures::FlatBuffers::SV::Trinity::TIFieldPokemonComponent *table) {
-    std::cout << "DevId: " << table->DevId() << "\n";
-    std::cout << "FormId: " << table->FormId() << "\n";
-
-    std::string sexStr;
-    switch (table->Sex()) {
-    case -1: sexStr = "Unknown"; break;
-    case 0: sexStr = "Male"; break;
-    case 1: sexStr = "Female"; break;
-    default: sexStr = "Invalid"; break;
-    }
-    std::cout << "Sex: " << sexStr << "\n";
-
-    std::string rareStr = (table->Rare() == 1) ? "True" : "False";
-    std::cout << "Rare: " << rareStr << "\n";
-    std::cout << "Field_04: " << (int)table->Field_04() << "\n";
-    std::cout << "Field_05: " << (int)table->Field_05() << "\n";
-    std::cout << "Field_06: " << (int)table->Field_06() << "\n";
-    std::cout << "Field_07: " << (int)table->Field_07() << "\n";
-    std::cout << "Field_08: " << table->Field_08() << "\n";
-}
-std::string fileCheck;
-// Function to modify a FlatBuffer table in place
-void SVShared::ModifyTable_Model(char *rawData, int tableOffset, int markerOffset, int dataSize, const std::string &marker,
-                                 int devid, int form, int gender, bool shiny) {
-    // Access the original table
-    auto originalTable = flatbuffers::GetRoot<
-        pkNX::Structures::FlatBuffers::SV::Trinity::TIPokemonModelComponent>(
-        rawData + tableOffset);
-
-    // Extract existing fields
-    uint16_t dev_id = 0;
-    uint16_t form_id = 0;
-    int8_t sex = originalTable->Sex();
-    int8_t rare = 0;
-    int8_t field_04 = originalTable->Field_04();
-    int8_t field_05 = originalTable->Field_05();
-    int8_t field_06 = originalTable->Field_06();
-    int8_t field_07 = originalTable->Field_07();
-    bool field_08 = originalTable->Field_08();
-
-    // Modify fields
-    dev_id = devid;
-    form_id = form;
-    if(fileCheck.find("_0060_always") != std::string::npos){
-        form_id = 0;
-    }
-    sex = gender;
-    rare = (int8_t)shiny;  // True
-
-    // Serialize the new table
-    flatbuffers::FlatBufferBuilder builder(1024);
-
-    // Create the modified table
-    auto modifiedTable = pkNX::Structures::FlatBuffers::SV::Trinity::CreateTIPokemonModelComponent(
-        builder, dev_id, form_id, sex, rare, field_04, field_05, field_06, field_07, field_08);
-
-    builder.Finish(modifiedTable);
-
-    // Extract only the serialized table bytes
-    const uint8_t *bufferPtr = builder.GetBufferPointer();
-    int tableSize = builder.GetSize();
-
-    // Preserve the marker
-    std::string preservedMarker(rawData + markerOffset, marker.size());
-
-    // Replace the table's data in the buffer
-    std::memcpy(rawData + tableOffset, bufferPtr, tableSize);
-
-    // // Restore the marker in the buffer
-    std::memcpy(rawData + markerOffset, preservedMarker.data(), preservedMarker.size());
-
-}
-
-void SVShared::ModifyTable_Field(char *rawData, int tableOffset, int markerOffset, int dataSize, const std::string &marker,
-    int devid, int form, int gender, bool shiny) {
-    // Access the original table
-    auto originalTable_f = flatbuffers::GetRoot<
-        pkNX::Structures::FlatBuffers::SV::Trinity::TIFieldPokemonComponent>(
-        rawData + tableOffset);
-
-    // Extract existing fields
-    uint16_t dev_id = 0;
-    uint16_t form_id = 0;
-    int8_t sex = originalTable_f->Sex();
-    int8_t rare = 0;
-    int8_t field_04 = originalTable_f->Field_04();
-    int8_t field_05 = originalTable_f->Field_05();
-    int8_t field_06 = originalTable_f->Field_06();
-    int8_t field_07 = originalTable_f->Field_07();
-    bool field_08 = originalTable_f->Field_08();
-
-    // Modify fields (example modifications)
-    dev_id = devid;
-    form_id = form;
-    sex = gender;   // Female
-    rare = (int8_t)shiny;  // True
-
-    // Serialize the new table
-    flatbuffers::FlatBufferBuilder builder2(1024);
-
-    // Create the modified table
-    auto modifiedTable_f = pkNX::Structures::FlatBuffers::SV::Trinity::CreateTIFieldPokemonComponent(
-        builder2, dev_id, form_id, sex, rare, field_04, field_05, field_06, field_07, field_08);
-
-    builder2.Finish(modifiedTable_f);
-
-    // Extract only the serialized table bytes
-    const uint8_t *bufferPtr = builder2.GetBufferPointer();
-    int tableSize = builder2.GetSize();
-
-    // Preserve the marker
-    std::string preservedMarker(rawData + markerOffset, marker.size());
-
-    // Replace the table's data in the buffer
-    std::memcpy(rawData + tableOffset, bufferPtr, tableSize);
-    // Restore the marker in the buffer
-    std::memcpy(rawData + markerOffset, preservedMarker.data(), preservedMarker.size());
-}
-
-// Function to save the modified data into a new file
-void SVShared::SaveModifiedFile(const std::string &filePath, const std::vector<char> &data) {
-    std::ofstream outFile(filePath, std::ios::binary);
-    if (!outFile.is_open()) {
-        throw std::runtime_error("Failed to open file for writing: " + filePath);
-    }
-
-    outFile.write(data.data(), data.size());
-    if (!outFile.good()) {
-        throw std::runtime_error("Failed to write data to file: " + filePath);
-    }
-
-    std::cout<<"Saved data on: "<<filePath<<"\n";
-
-}
-
-bool SVShared::modifyPokemonScene(std::vector<int> devId, std::vector<int> formId, std::vector<int> gender, std::vector<bool> rare, std::string input, std::string output) {
-    std::string filePath = fs::absolute("SV_FLATBUFFERS/SV_SCENES").string();
-
-    const std::string binaryFilePath = filePath+"/"+input;
-    const std::string outputFilePath = filePath+"/"+output;
-    fileCheck = input;
-
-    try {
-        auto data = ReadBinaryFile(binaryFilePath);
-        if (data.empty()) {
-            throw std::runtime_error("Binary file is empty.");
-        }
-
-        const std::string marker[2] = {"ti_PokemonModelComponent", "ti_FieldPokemonComponent"};
-        int maxAdjustmentRange = 64;
-        int step = 4;
-        for(int i=0; i<2; i++) {
-            auto markerOffsets = FindMarkerOffsets(data, marker[i]);
-            if (markerOffsets.empty()) {
-                continue;
+            const auto& dataArray = sceneObject[i]["Data"];
+            std::vector<uint8_t> data;
+            for (const auto& byteValue : dataArray) {
+                if (byteValue.is_number_unsigned()) {
+                    data.push_back(static_cast<uint8_t>(byteValue.get<uint32_t>()));
+                } else {
+                    qFatal() << "Invalid byte value in Data array.\n";
+                }
             }
-            int total = 0;
-            for (int markerOffset : markerOffsets) {
-                int tableOffset = FindCorrectOffsetAdjustment(
-                    data,
-                    markerOffset,
-                    maxAdjustmentRange,
-                    step,
-                    static_cast<int>(data.size()),
-                    VerifyFlatBufferTable
+
+            if(sceneObject[i]["Type"] == "ti_PokemonModelComponent"){
+                auto originalTable = flatbuffers::GetRoot<
+                    pkNX::Structures::FlatBuffers::SV::Trinity::TIPokemonModelComponent>(
+                    data.data());
+
+                 qDebug() << "TIPokemonModelComponent:";
+                 qDebug() << "  DevId: " << originalTable->DevId();
+                 qDebug() << "  FormId: " << originalTable->FormId();
+                 qDebug() << "  Sex: " << static_cast<int>(originalTable->Sex());
+                 qDebug() << "  Rare: " << static_cast<int>(originalTable->Rare());
+
+                flatbuffers::FlatBufferBuilder builder;
+                uint16_t dev_id = devId[modelCount];
+                uint16_t form_id = formId[modelCount];
+                int8_t sex_num = gender[modelCount];
+                int8_t rare_bool = rare[modelCount];
+                modelCount++;
+
+                // Serialize the new table with updated values
+                auto updatedTable = pkNX::Structures::FlatBuffers::SV::Trinity::CreateTIPokemonModelComponent(
+                    builder,
+                    dev_id,
+                    form_id,
+                    sex_num,
+                    rare_bool,
+                    originalTable->Field_04(),
+                    originalTable->Field_05(),
+                    originalTable->Field_06(),
+                    originalTable->Field_07(),
+                    originalTable->Field_08()
                     );
 
-                if (tableOffset == -1) {
-                    continue;
+                // Finish the FlatBuffer
+                builder.Finish(updatedTable);
+
+                // Replace the data vector with the new FlatBuffer content
+                data.assign(builder.GetBufferPointer(), builder.GetBufferPointer() + builder.GetSize());
+                json newTablePokemon = json::array();
+                for(uint8_t byte: data){
+                    newTablePokemon.push_back(byte);
                 }
 
-                if(marker[i] == "ti_PokemonModelComponent"){
-                    auto table = flatbuffers::GetRoot<
-                        pkNX::Structures::FlatBuffers::SV::Trinity::TIPokemonModelComponent>(
-                        data.data() + tableOffset);
-                    //std::cout << "Original table values (ti_PokemonModelComponent):\n";
-                    //PrintTableValues(table);
+                sceneObject[i]["Data"] = newTablePokemon;
 
-                    // Modify the table
-                    ModifyTable_Model(data.data(), tableOffset, markerOffset, static_cast<int>(data.size()), marker[i],
-                    devId[total], formId[total], gender[total], rare[total]);
 
-                    // Verify modifications
-                    auto modifiedTable = flatbuffers::GetRoot<
-                        pkNX::Structures::FlatBuffers::SV::Trinity::TIPokemonModelComponent>(
-                        data.data() + tableOffset);
-                    //std::cout << "Modified table values:\n";
-                    //PrintTableValues(modifiedTable);
+                auto modifiedTale = flatbuffers::GetRoot<
+                    pkNX::Structures::FlatBuffers::SV::Trinity::TIPokemonModelComponent>(
+                    data.data());
+
+                qDebug() << "TIPokemonModelComponent (Updated)";
+                qDebug() << "  DevId: " << modifiedTale->DevId();
+                qDebug() << "  FormId: " << modifiedTale->FormId();
+                qDebug() << "  Sex: " << static_cast<int>(modifiedTale->Sex());
+                qDebug() << "  Rare: " << static_cast<int>(modifiedTale->Rare());
+
+
+            }else if(sceneObject[i]["Type"] == "ti_FieldPokemonComponent"){
+
+                auto originalTable = flatbuffers::GetRoot<
+                    pkNX::Structures::FlatBuffers::SV::Trinity::TIFieldPokemonComponent>(
+                    data.data());
+
+                qDebug() << "TIFieldPokemonComponent:\n";
+                qDebug() << "  DevId: " << originalTable->DevId();
+                qDebug() << "  FormId: " << originalTable->FormId();
+                qDebug() << "  Sex: " << static_cast<int>(originalTable->Sex());
+                qDebug() << "  Rare: " << static_cast<int>(originalTable->Rare());
+
+                flatbuffers::FlatBufferBuilder builder;
+                uint16_t dev_id = devId[fieldCount];
+                uint16_t form_id = formId[fieldCount];
+                int8_t sex_num = gender[fieldCount];
+                int8_t rare_bool = rare[fieldCount];
+                fieldCount++;
+
+                // Serialize the new table with updated values
+                auto updatedTable = pkNX::Structures::FlatBuffers::SV::Trinity::CreateTIFieldPokemonComponent(
+                    builder,
+                    dev_id,
+                    form_id,
+                    sex_num,
+                    rare_bool,
+                    originalTable->Field_04(),
+                    originalTable->Field_05(),
+                    originalTable->Field_06(),
+                    originalTable->Field_07(),
+                    originalTable->Field_08()
+                    );
+
+                // Finish the FlatBuffer
+                builder.Finish(updatedTable);
+
+                // Replace the data vector with the new FlatBuffer content
+                data.assign(builder.GetBufferPointer(), builder.GetBufferPointer() + builder.GetSize());
+                json newTablePokemon = json::array();
+                for(uint8_t byte: data){
+                    newTablePokemon.push_back(byte);
                 }
-                else{
-                    auto table = flatbuffers::GetRoot<
-                        pkNX::Structures::FlatBuffers::SV::Trinity::TIFieldPokemonComponent>(
-                        data.data() + tableOffset);
-                    //std::cout << "Original table values (ti_FieldPokemonComponent):\n";
-                    //PrintTableValues(table);
 
-                    // Modify the table
-                    ModifyTable_Field(data.data(), tableOffset, markerOffset, static_cast<int>(data.size()), marker[i],
-                    devId[total], formId[total], gender[total], rare[total]);
+                sceneObject[i]["Data"] = newTablePokemon;
 
-                    // Verify modifications
-                    auto modifiedTable = flatbuffers::GetRoot<
-                        pkNX::Structures::FlatBuffers::SV::Trinity::TIFieldPokemonComponent>(
-                        data.data() + tableOffset);
-                    //std::cout << "Modified table values:\n";
-                    //PrintTableValues(modifiedTable);
-                }
-                total++;
+
+                auto modifiedTale = flatbuffers::GetRoot<
+                    pkNX::Structures::FlatBuffers::SV::Trinity::TIFieldPokemonComponent>(
+                    data.data());
+
+                qDebug() << "TIFieldPokemonComponent (Updated):";
+                qDebug() << "  DevId: " << modifiedTale->DevId();
+                qDebug() << "  FormId: " << modifiedTale->FormId();
+                qDebug() << "  Sex: " << static_cast<int>(modifiedTale->Sex());
+                qDebug() << "  Rare: " << static_cast<int>(modifiedTale->Rare());
+
             }
         }
+        recursiveFindOfPokemonSceneTable(sceneObject[i]["SubObjects"], devId, formId, gender, rare);
+}
+}
+void SVShared::modifyPokemonScene(std::vector<int> devId, std::vector<int> formId,std::vector<int> gender, std::vector<bool> rare, std::string input, std::string output){
 
-        SaveModifiedFile(outputFilePath, data);
+    std::string filePath = fs::absolute("SV_FLATBUFFERS/SV_SCENES").string();
+    const std::string binaryFilePath = filePath+"/"+input;
+    const std::string outputFilePath = filePath+"/"+output;
 
-    } catch (const std::exception &e) {
-        std::cerr << "Error: " << e.what() << "\n";
+    modelCount = 0;
+    fieldCount = 0;
+
+    std::ifstream cleanSceneData(binaryFilePath);
+    if(!cleanSceneData.is_open()){
+        qFatal()<<"File: "<<binaryFilePath<<" didn't open";
     }
 
-    return true;
+    cleanSceneData >>cleanSceneJSON;
+    qDebug()<<QString::fromUtf8(cleanSceneJSON["ObjectTemplateName"].get<std::string>().c_str());
+
+    recursiveFindOfPokemonSceneTable(cleanSceneJSON["Objects"], devId, formId, gender, rare);
+
+    modelCount = 0;
+    fieldCount = 0;
+
+    std::ofstream outFile(outputFilePath);
+    outFile<<cleanSceneJSON.dump(2);
+    outFile.close();
 }

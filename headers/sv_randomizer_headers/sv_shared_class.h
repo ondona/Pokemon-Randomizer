@@ -1,10 +1,10 @@
 #ifndef SV_SHARED_CLASS_H
 #define SV_SHARED_CLASS_H
 
-#include <flatbuffers/flatbuffers.h>
-#include <TrinitySceneObject_generated.h>
+#include <nlohmann/json.hpp>
 #include <QMap>
 #include <QVector>
+#include <QWidget>
 #include <QString>
 #include <string>
 #include <cstdlib>
@@ -38,7 +38,8 @@
     niji = stellar
 */
 
-class SVShared {
+class SVShared{
+
 public:
     QList <QMap<QString, int>> exitAbilitiesPokemon = {{{"id", 767}, {"form", 0}},
                                                       {{"id", 768}, {"form", 0}},
@@ -3632,7 +3633,7 @@ public:
     int generateBinary(const std::string& schema, const std::string& jsonFile, const std::string& path, bool debug = false);
     uint64_t fnv1a_64(const std::string& str, uint64_t basis = 0xCBF29CE484222645);
     void patchFileDescriptor();
-    bool modifyPokemonScene(std::vector<int> devId, std::vector<int> formId,std::vector<int> gender, std::vector<bool> rare, std::string input, std::string output);
+    void modifyPokemonScene(std::vector<int> devId, std::vector<int> formId, std::vector<int> gender, std::vector<bool> rare, std::string input, std::string output);
     void getUsablePokemon(QVector<bool> gens, bool legend, bool paradoxs, bool legends_paradox, QList<int>& allowedPokemon, QList<int>& allowedLegends);
     void getBannedPokemon(bool stage1, bool stage2, bool stage3, bool singlestage, QList<int>& allowedPokemon);
     std::string getItemForPokemon(int pokemon, int form);
@@ -3675,24 +3676,8 @@ public:
     int GenerateAllowedMons(LimiterDetails Limiter, QList<int>& allowedPokemon);
 	
 private:
-    std::vector<char> ReadBinaryFile(const std::string &filePath);
-    std::vector<int> FindMarkerOffsets(const std::vector<char> &data, const std::string &marker);
-    bool IsValidOffset(int offset, int dataSize);
-    static bool VerifyFlatBufferTable(const char *data, int size);
-    void PrintTableValues(const pkNX::Structures::FlatBuffers::SV::Trinity::TIPokemonModelComponent *table);
-    void PrintTableValues(const pkNX::Structures::FlatBuffers::SV::Trinity::TIFieldPokemonComponent *table);
-    void ModifyTable_Model(char *rawData, int tableOffset, int markerOffset, int dataSize, const std::string &marker,
-                            int devid, int form, int gender, bool rare);
-    void ModifyTable_Field(char *rawData, int tableOffset, int markerOffset, int dataSize, const std::string &marker,
-                            int devid, int form, int gender, bool rare);
-    void SaveModifiedFile(const std::string &filePath, const std::vector<char> &data);
-    int FindCorrectOffsetAdjustment(
-        const std::vector<char> &data,
-        int markerOffset,
-        int maxAdjustmentRange,
-        int step,
-        int dataSize,
-        bool (*verifier)(const char *, int));
+    void recursiveFindOfPokemonSceneTable(nlohmann::json& test, std::vector<int> devId, std::vector<int> formId,std::vector<int> gender, std::vector<bool> rare);
+
 };
 
 #endif // SV_SHARED_CLASS_H

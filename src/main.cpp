@@ -1,8 +1,46 @@
 #include <QApplication>
 #include <QScreen>
+#include <QMutex>
+#include <QSettings>
 #include "headers/mainwindow.h"
 
+// Global file, mutex, and settings
+QFile logFile;
+QMutex logMutex;
+bool enableDebugInRelease = false; // This will be read from QSettings
 
+void customMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
+    QMutexLocker locker(&logMutex); // Ensure thread safety
+
+    QString logMessage = QString("[%1] %2")
+                             .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"))
+                             .arg(msg);
+
+    #ifdef QT_DEBUG
+        // In debug mode, also log to the terminal
+        switch (type) {
+        case QtDebugMsg:
+            fprintf(stdout, "Debug: %s\n", logMessage.toLocal8Bit().constData());
+            break;
+        case QtWarningMsg:
+            fprintf(stdout, "Warning: %s\n", logMessage.toLocal8Bit().constData());
+            break;
+        case QtCriticalMsg:
+            fprintf(stderr, "Critical: %s\n", logMessage.toLocal8Bit().constData());
+            break;
+        case QtFatalMsg:
+            fprintf(stderr, "Fatal: %s\n", logMessage.toLocal8Bit().constData());
+            logFile.close();
+            abort();
+        }
+    #endif
+
+    // Always write to file
+    if (logFile.isOpen()) {
+        QTextStream stream(&logFile);
+        stream << logMessage << Qt::endl;
+    }
+}
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
@@ -42,13 +80,20 @@ int main(int argc, char *argv[]) {
     mainWindow.move(x, y);
 
     QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
+    // Open log file
+    QString logFilePath = "logs/logs.log";
+    logFile.setFileName(logFilePath);
+    if (!logFile.open(QIODevice::Append | QIODevice::Text)) {
+        qCritical() << "Failed to open log file!";
+    }
 
+    qInstallMessageHandler(customMessageHandler);
 
-    mainWindow.setWindowFlag(Qt::WindowStaysOnTopHint, true);
-    mainWindow.show();
-    mainWindow.raise();
-    mainWindow.activateWindow();
-    mainWindow.setWindowFlag(Qt::WindowStaysOnTopHint, false);
-    mainWindow.show();
+    QSettings settings("YourCompany", "YourApp");
+
+    // Default to true for "Always on Top"
+    bool alwaysOnTopValue = settings.value("AlwaysOnTop", true).toBool();
+
+    mainWindow.alwaysOnTop(alwaysOnTopValue);
     return app.exec();
 }

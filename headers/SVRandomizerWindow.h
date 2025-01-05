@@ -248,7 +248,7 @@ private:
         QVector<QCheckBox*> boss_generation; // Done
 
 private slots:
-    void addToFavorites();  // Slot to add this window to favorites
+    void runRandomizer();  // Slot to add this window to favorites
     void switchTabs(int i=0);
     void switchInnerWildTabs(int i=0);
     void switchInnerRaidTabs(int i=0);

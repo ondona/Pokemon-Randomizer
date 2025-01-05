@@ -1,0 +1,6 @@
+"common_0150_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Houndoom  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"common_0150_main"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Houndoom  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE

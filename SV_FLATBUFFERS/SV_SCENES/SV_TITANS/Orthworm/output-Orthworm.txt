@@ -1,0 +1,40 @@
+"nushi_hagane_010_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hagane_010_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hagane_020_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hagane_020_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hagane_fp_1048_010"
+null
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hagane_fp_1048_010"
+null
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hagane_fp_1048_020"
+null
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_hagane_fp_1048_020"
+null
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_039_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_039_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Orthworm  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE

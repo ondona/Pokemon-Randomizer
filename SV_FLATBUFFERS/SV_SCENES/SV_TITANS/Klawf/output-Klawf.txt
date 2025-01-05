@@ -1,0 +1,40 @@
+"nushi_iwa_010_pre_start"
+null
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_iwa_010_pre_start"
+null
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_iwa_020_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_iwa_020_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_iwa_fp_1066_020"
+null
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_iwa_fp_1066_020"
+null
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_iwa_fp_1066"
+null
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"nushi_iwa_fp_1066"
+null
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_037_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+"sub_037_pre_start"
+"---- Default ----"
+TIPokemonModelComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE
+TIFieldPokemonComponent [0]  DevId: Klawf  FormId: 0  Sex: MALE/GENDERLESS  Rare: FALSE

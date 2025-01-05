@@ -100,7 +100,7 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
         cleanStarterData["values"][index]["pokeData"]["formId"] = formRandom;
 
         // Set Starter Gender
-        QString form_Check = QString::fromStdString(pokemonMaps["pokemons"][random]["name"]);
+        QString form_Check = QString::fromUtf8(pokemonMaps["pokemons"][random]["name"].get<std::string>().c_str());
         if(maleOnlyPokemon.contains(form_Check) || genderlessPokemon.contains(form_Check)){
             ::gender.push_back(0);
             genderNum = 0;
@@ -124,7 +124,16 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
                 genderStd = "FEMALE";
             }
         }else{
-            qDebug()<<"How Here";
+            int rand_gender = std::rand()%50;
+            if(rand_gender < 24){
+                ::gender.push_back(0);
+                genderNum = 0;
+                genderStd = "MALE";
+            }else{
+                ::gender.push_back(1);
+                genderNum = 1;
+                genderStd = "FEMALE";
+            }
         }
         cleanStarterData["values"][index]["pokeData"]["sex"] = genderStd;
 
@@ -206,7 +215,16 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
                 genderStd = "FEMALE";
             }
         }else{
-            qDebug()<<"How Here - 2";
+            int rand_gender = std::rand()%50;
+            if(rand_gender < 24){
+                ::gender.push_back(0);
+                genderNum = 0;
+                genderStd = "MALE";
+            }else{
+                ::gender.push_back(1);
+                genderNum = 1;
+                genderStd = "FEMALE";
+            }
         }
 
         cleanStarterData["values"][index]["pokeData"]["sex"] = genderStd;
@@ -302,26 +320,32 @@ bool SVStarters::randomize_starters(){
     gender.clear();
     rare.clear();
 
-    // Fuecoco
-    get_selected_starter(0, starters[1], pokemonFormsIntsInGame[starters[1]][starters_forms[1]], starters_gender[1], starters_shiny[1], starters_pokeball[1]);
+    // Sprigattito
+    get_selected_starter(1, starters[0], pokemonFormsIntsInGame[starters[0]][starters_forms[0]], starters_gender[0], starters_shiny[0], starters_pokeball[0]);
 
     // Quaxly
     get_selected_starter(2, starters[2], pokemonFormsIntsInGame[starters[2]][starters_forms[2]], starters_gender[2], starters_shiny[2], starters_pokeball[2]);
 
-    // Sprigattito
-    get_selected_starter(1, starters[0], pokemonFormsIntsInGame[starters[0]][starters_forms[0]], starters_gender[0], starters_shiny[0], starters_pokeball[0]);
+    // Fuecoco
+    get_selected_starter(0, starters[1], pokemonFormsIntsInGame[starters[1]][starters_forms[1]], starters_gender[1], starters_shiny[1], starters_pokeball[1]);
 
     if(show_starters_in_overworld == true){
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0060_always_0_clean.trsog", "SV_STARTERS_SCENES/common_0060_always_0.trsog");
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0060_always_1_clean.trsog", "SV_STARTERS_SCENES/common_0060_always_1.trsog");
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0060_main_0_clean.trsog", "SV_STARTERS_SCENES/common_0060_main_0.trsog");
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0060_main_1_clean.trsog", "SV_STARTERS_SCENES/common_0060_main_1.trsog");
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0070_always_0_clean.trsog", "SV_STARTERS_SCENES/common_0070_always_0.trsog");
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0070_always_1_clean.trsog", "SV_STARTERS_SCENES/common_0070_always_1.trsog");
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0088_always_0_clean.trsog", "SV_STARTERS_SCENES/common_0088_always_0.trsog");
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0088_always_1_clean.trsog", "SV_STARTERS_SCENES/common_0088_always_1.trsog");
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0090_main_0_clean.trsog", "SV_STARTERS_SCENES/common_0090_main_0.trsog");
-        this->modifyPokemonScene(devId, formId, gender, rare, "SV_STARTERS_SCENES/common_0090_main_1_clean.trsog", "SV_STARTERS_SCENES/common_0090_main_1.trsog");
+        std::vector<std::pair<std::string, std::string>> filePairs = {
+            {"SV_STARTERS_SCENES/common_0060_always_0_clean.json", "SV_STARTERS_SCENES/common_0060_always_0.json"},
+            {"SV_STARTERS_SCENES/common_0060_always_1_clean.json", "SV_STARTERS_SCENES/common_0060_always_1.json"},
+            {"SV_STARTERS_SCENES/common_0060_main_0_clean.json", "SV_STARTERS_SCENES/common_0060_main_0.json"},
+            {"SV_STARTERS_SCENES/common_0060_main_1_clean.json", "SV_STARTERS_SCENES/common_0060_main_1.json"},
+            {"SV_STARTERS_SCENES/common_0070_always_0_clean.json", "SV_STARTERS_SCENES/common_0070_always_0.json"},
+            {"SV_STARTERS_SCENES/common_0070_always_1_clean.json", "SV_STARTERS_SCENES/common_0070_always_1.json"},
+            {"SV_STARTERS_SCENES/common_0088_always_0_clean.json", "SV_STARTERS_SCENES/common_0088_always_0.json"},
+            {"SV_STARTERS_SCENES/common_0088_always_1_clean.json", "SV_STARTERS_SCENES/common_0088_always_1.json"},
+            {"SV_STARTERS_SCENES/common_0090_main_0_clean.json", "SV_STARTERS_SCENES/common_0090_main_0.json"},
+            {"SV_STARTERS_SCENES/common_0090_main_1_clean.json", "SV_STARTERS_SCENES/common_0090_main_1.json"}
+        };
+
+        for (const auto& filePair : filePairs) {
+            this->modifyPokemonScene(devId, formId, gender, rare, filePair.first, filePair.second);
+        }
     }
 
     devId.clear();

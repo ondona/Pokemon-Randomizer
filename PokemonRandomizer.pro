@@ -11,6 +11,7 @@ INCLUDEPATH += $$PWD/thirdparty
 INCLUDEPATH += $$PWD/SV_FLATBUFFERS
 INCLUDEPATH += $$PWD/images
 INCLUDEPATH += $$PWD/include
+INCLUDEPATH += $$PWD/logs
 
 # Add files to DISTFILES for deployment
 DISTFILES += $$files($$PWD/thirdparty/*, true) \
@@ -32,6 +33,7 @@ DISTFILES += $$files($$PWD/thirdparty/*, true) \
 DISTFILES += $$files($$PWD/SV_FLATBUFFERS/*, true)
 DISTFILES += $$files($$PWD/images/*, true)
 DISTFILES += $$files($$PWD/include/*, true)
+DISTFILES += $$files($$PWD/logs/*, true)
 
 # Enable compatibility for building across platforms
 win32 {
@@ -51,6 +53,7 @@ win32 {
     IMAGES_SRC = $$PWD/images
     SV_FLATBUFFERS_SRC = $$PWD/SV_FLATBUFFERS
     INCLUDE_SRC = $$PWD/include
+    LOGS_SRC = $$PWD/logs
 
     # Destination directory adjusted for release/debug
     CONFIG(debug, debug|release) {
@@ -63,6 +66,7 @@ win32 {
     IMAGES_DEST = $$BUILD_DIR/images
     SV_FLATBUFFERS_DEST = $$BUILD_DIR/SV_FLATBUFFERS
     INCLUDE_DEST = $$BUILD_DIR/include
+    LOGS_DEST = $$BUILD_DIR/logs
 
 
     SOURCE_DIR_WIN = $$replace(THIRDPARTY_SRC, /, \\)
@@ -73,12 +77,15 @@ win32 {
     DEST_FLAT_WIN = $$replace(SV_FLATBUFFERS_DEST, /, \\)
     SOURCE_INCLUDE_WIN = $$replace(INCLUDE_SRC, /, \\)
     DEST_INCLUDE_WIN = $$replace(INCLUDE_DEST, /, \\)
+    DEST_LOGS_WIN = $$replace(LOGS_DEST, /, \\)
+    SOURCE_LOGS_WIN = $$replace(LOGS_SRC, /, \\)
 
     copy_third.commands = \
         $$QMAKE_COPY_DIR \"$$SOURCE_DIR_WIN\" \"$$DEST_DIR_WIN\" && \
         $$QMAKE_COPY_DIR \"$$SOURCE_IMAGE_WIN\" \"$$DEST_IMAGE_WIN\" && \
         $$QMAKE_COPY_DIR \"$$SOURCE_FLAT_WIN\" \"$$DEST_FLAT_WIN\" && \
-        $$QMAKE_COPY_DIR \"$$SOURCE_INCLUDE_WIN\" \"$$DEST_INCLUDE_WIN\"
+        $$QMAKE_COPY_DIR \"$$SOURCE_INCLUDE_WIN\" \"$$DEST_INCLUDE_WIN\" && \
+        $$QMAKE_COPY_DIR \"$$SOURCE_LOGS_WIN\" \"$$DEST_LOGS_WIN\"
 
 
     QMAKE_EXTRA_TARGETS += copy_third
@@ -92,9 +99,6 @@ win32 {
         QMAKE_EXTRA_TARGETS += post_build
         QMAKE_POST_LINK += $(MAKE) -f Makefile post_build
     }
-
-
-
 }
 
 macx {
@@ -204,6 +208,7 @@ SOURCES += \
     src/alternatewindow.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
+    src/sv_randomizer_code/sv_boss.cpp \
     src/sv_randomizer_code/sv_items.cpp \
     src/sv_randomizer_code/sv_raids.cpp \
     src/sv_randomizer_code/sv_shared_class.cpp \
@@ -219,6 +224,7 @@ HEADERS += \
     headers/SVRandomizerWindow.h \
     headers/VGCWindow.h \
     headers/mainwindow.h \
+    headers/sv_randomizer_headers/sv_boss.h \
     headers/sv_randomizer_headers/sv_items.h \
     headers/sv_randomizer_headers/sv_raids.h \
     headers/sv_randomizer_headers/sv_shared_class.h \

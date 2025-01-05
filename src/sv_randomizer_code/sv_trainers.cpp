@@ -151,7 +151,7 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
                 formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
             }
 
-            cleanTrainerInfo["values"][indeces[i]][key]["devId"] = wildPokemonInfo["pokemons"][random]["devid"];
+            cleanTrainerInfo["values"][indeces[i]][key]["devId"] = wildPokemonInfo["pokemons"][random]["devName"];
             cleanTrainerInfo["values"][indeces[i]][key]["formId"] = formRandom;
             cleanTrainerInfo["values"][indeces[i]][key]["item"] = getPokemonItemId(wildPokemonInfo["pokemons"][random]["natdex"], formRandom);
             if(cleanTrainerInfo["values"][indeces[i]][key]["level"] == 0){
