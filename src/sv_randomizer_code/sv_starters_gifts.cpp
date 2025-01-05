@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <fstream>
 #include <iostream>
+#include "headers/SVRandomizerWindow.h"
 #include "thirdparty/nlohmann/json.hpp"
 
 // Look into QSharedData in the future
@@ -265,10 +266,10 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
 bool SVStarters::randomize_starters(){
     // Logic to Setup combinations of settings for pokemon starters
 
-    getUsablePokemon(generations_starters, only_legendary_pokemon_starters, only_paradox_pokemon_starters, only_legends_and_paradox_starters, allowedPokemon, allowedLegends);
-    getBannedPokemon(ban_stage_1_pokemon_starters, ban_stage_2_pokemon_starters, ban_stage_3_pokemon_starters, ban_single_stage_pokemon_starters, allowedPokemon);
+    //getUsablePokemon(generations_starters, only_legendary_pokemon_starters, only_paradox_pokemon_starters, only_legends_and_paradox_starters, allowedPokemon, allowedLegends);
+    //getBannedPokemon(ban_stage_1_pokemon_starters, ban_stage_2_pokemon_starters, ban_stage_3_pokemon_starters, ban_single_stage_pokemon_starters, allowedPokemon);
 
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
+	std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
     QString QBaseAddress = QString::fromStdString(filePath);
     QDir qBaseDir(QBaseAddress);
     std::ifstream file(qBaseDir.filePath("SV_STARTERS_FLATBUFFERS/eventAddPokemon_array_clean.json").toStdString());
@@ -339,7 +340,7 @@ bool SVStarters::randomize_starters(){
 bool SVStarters::randomize_gifts(){
     // Logic to Setup combinations of settings for pokemon starters
 
-    getUsablePokemon(generation_gifts, false, false, false, allowedPokemon_gifts, allowedLegends_gifts);
+    //getUsablePokemon(generation_gifts, false, false, false, allowedPokemon_gifts, allowedLegends_gifts);
     //getBannedPokemon(ban_stage_1_pokemon_starters, ban_stage_2_pokemon_starters, ban_stage_3_pokemon_starters, ban_single_stage_pokemon_starters, allowedPokemon_gifts);
 
     std::string filePath = fs::absolute("SV_FLATBUFFERS").string();

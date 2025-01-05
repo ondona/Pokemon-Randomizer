@@ -7,6 +7,9 @@
 
 class SVWilds: public SVShared{
     public:
+	
+		LimiterDetails PaldeaLimiter;
+		QList<int> WildPaldeaAllowed = {};
         bool randomize_paldea_wild = false;
         bool paldea_ExcludeLegends = false;
         bool paldea_OnlyLegends = false;
@@ -23,7 +26,9 @@ class SVWilds: public SVShared{
         QVector<bool> generation_paldea_wild = {false, false, false,
                                                 false, false, false,
                                                 false, false, false};
-
+												
+		LimiterDetails KitakamiLimiter;
+		QList<int> WildKitakamiAllowed = {};
         bool randomize_kitakami_wild = false;
         bool kitakami_ExcludeLegends = false;
         bool kitakami_OnlyLegends = false;
@@ -37,7 +42,9 @@ class SVWilds: public SVShared{
         QVector<bool> generation_kitakami_wild = {false, false, false,
                                                   false, false, false,
                                                   false, false, false};
-
+												  
+		LimiterDetails BlueberryLimiter;
+		QList<int> WildBlueberryAllowed = {};
         bool randomize_blueberry_wild = false;
         bool blueberry_ExcludeLegends = false;
         bool blueberry_OnlyLegends = false;
@@ -51,7 +58,9 @@ class SVWilds: public SVShared{
         QVector<bool> generation_blueberry_wild = {false, false, false,
                                                    false, false, false,
                                                    false, false, false};
-
+	  
+		LimiterDetails FixedSymbolLimiter;
+		QList<int> FixedSymbolAllowed = {};
         bool statics_ExcludeLegends = false;
         bool statics_OnlyLegends = false;
         bool statics_OnlyParadox = false;

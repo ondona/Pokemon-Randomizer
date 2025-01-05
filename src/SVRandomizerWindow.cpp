@@ -109,8 +109,6 @@ void SVRandomizerWindow::createLayout()
         generalSettings->addLayout(seedSettings);
 
     mainLayout->addWidget(generalGroup);
-
-
     // Configure the tab bar
     topBar = new QTabBar(this);
     topBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // Expand horizontally
@@ -150,6 +148,120 @@ void SVRandomizerWindow::createLayout()
     // Apply the main layout to RandomizerWindow
     setLayout(mainLayout);
 }
+
+void SVRandomizerWindow::MonLimiterSection(QVBoxLayout *OuterBox, QGroupBox *LimiterGroup, LimiterDetails *Details)
+{	
+    LimiterGroup = new QGroupBox("Available Mons (WIP)");
+	OuterBox->addWidget(LimiterGroup);
+	
+    QVBoxLayout *LimiterSettings = new QVBoxLayout(LimiterGroup);
+	
+    QHBoxLayout *StagesSettings = new QHBoxLayout();
+    QHBoxLayout *ClassSettings = new QHBoxLayout();
+    QHBoxLayout *ExcludeSetting = new QHBoxLayout();
+    QHBoxLayout *IncludeSetting = new QHBoxLayout();
+    QHBoxLayout *GenerationSetting = new QHBoxLayout();
+    QHBoxLayout *GenLegendsSetting = new QHBoxLayout();
+
+    LimiterSettings->addLayout(GenerationSetting);
+    LimiterSettings->addLayout(GenLegendsSetting);
+    LimiterSettings->addLayout(StagesSettings);
+    LimiterSettings->addLayout(ClassSettings);
+    LimiterSettings->addLayout(ExcludeSetting);
+    LimiterSettings->addLayout(IncludeSetting);
+
+    QCheckBox *Stage_1 = new QCheckBox("Stage 1", LimiterGroup);
+    Stage_1->setChecked(true);
+    StagesSettings->addWidget(Stage_1);
+    QString _key = "1";
+    connect(Stage_1, &QCheckBox::toggled, this, [=]() { saveLimiterState(Details, _key);});
+
+    QCheckBox *Stage_2 = new QCheckBox("Stage 2", LimiterGroup);
+    Stage_2->setChecked(true);
+    StagesSettings->addWidget(Stage_2);
+    _key = "2";
+    connect(Stage_2, &QCheckBox::toggled, this, [=]() { saveLimiterState(Details, _key);});
+
+    QCheckBox *Stage_3 = new QCheckBox("Stage 3", LimiterGroup);
+    Stage_3->setChecked(true);
+    StagesSettings->addWidget(Stage_3);
+    _key = "3";
+    connect(Stage_3, &QCheckBox::toggled, this, [=]() { saveLimiterState(Details, _key);});
+
+    QCheckBox *Single_stage = new QCheckBox("Single stage", LimiterGroup);
+    Single_stage->setChecked(true);
+    StagesSettings->addWidget(Single_stage);
+    _key = "Single";
+    connect(Single_stage, &QCheckBox::toggled, this, [=]() { saveLimiterState(Details, _key);});
+	
+    QCheckBox *Paradox = new QCheckBox("Paradox", LimiterGroup);
+    Paradox->setChecked(true);
+    ClassSettings->addWidget(Paradox);
+    _key = "Paradox";
+    connect(Paradox, &QCheckBox::toggled, this, [=]() { saveLimiterState(Details, _key);});
+	
+	/*
+    QCheckBox *Ultrabeasts = new QCheckBox("Ultra Beasts", LimiterGroup);
+    Ultrabeasts->setChecked(true);
+    ClassSettings->addWidget(Ultrabeasts);
+    _key = "UB";
+    connect(Ultrabeasts, &QCheckBox::toggled, this, [=]() { saveLimiterState(Details, _key);});
+	*/
+	QLineEdit *Excludes = new QLineEdit(LimiterGroup);
+	connect(Excludes, &QLineEdit::textChanged, this, &SVRandomizerWindow::saveStringInput);
+
+	QLabel *ExcludesLabel = new QLabel("Force exclude (PLACEHOLDER)", LimiterGroup);
+	ExcludesLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	ExcludeSetting->addWidget(ExcludesLabel);
+
+	Excludes->setFixedWidth(348);
+	Excludes->setPlaceholderText("(PLACEHOLDER)Enter names of mons to exclude and seperate each with a comma.(PLACEHOLDER)");
+	ExcludeSetting->addWidget(Excludes);
+	
+	QLineEdit *Includes = new QLineEdit(LimiterGroup);
+	connect(Includes, &QLineEdit::textChanged, this, &SVRandomizerWindow::saveStringInput);
+
+	QLabel *IncludesLabel = new QLabel("Force allowed (PLACEHOLDER)", LimiterGroup);
+	IncludesLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+	IncludeSetting->addWidget(IncludesLabel);
+
+	Includes->setFixedWidth(348);
+	Includes->setPlaceholderText("(PLACEHOLDER)Enter names of mons to allow and seperate each with a comma.(PLACEHOLDER)");
+	IncludeSetting->addWidget(Includes);
+	
+    QVector<QCheckBox*> generationslist;
+
+    QLabel *GenerationsHeader = new QLabel("Allowed Generations", LimiterGroup);
+    GenerationsHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
+    GenerationSetting->addWidget(GenerationsHeader);
+
+    for(int i =0; i<9; i++){
+        generationslist.append(new QCheckBox(QStringLiteral("%1").arg(i+1), LimiterGroup));
+        generationslist[i]->setChecked(true);
+        GenerationSetting->addWidget(generationslist[i]);
+    connect(generationslist[i], &QCheckBox::toggled, this, [=]() { saveLimiterState(Details, "G" + QString::number(i));});
+    }
+
+    QVector<QCheckBox*> GenLegendslist;
+    QLabel *GenLegendsHeader = new QLabel("Legends", LimiterGroup);
+    GenLegendsHeader->setStyleSheet("font-weight: bold; padding: 0px 30;");
+    GenLegendsSetting->addWidget(GenLegendsHeader);
+
+    for(int i =0; i<9; i++){
+        GenLegendslist.append(new QCheckBox(QStringLiteral("%1").arg(i+1), LimiterGroup));
+        GenLegendslist[i]->setChecked(true);
+        GenLegendsSetting->addWidget(GenLegendslist[i]);
+    connect(GenLegendslist[i], &QCheckBox::toggled, this, [=]() { saveLimiterState(Details, "L" + QString::number(i));});
+    }
+	
+	/*
+    #SharedVariables.banned_pokemon
+    #SharedVariables.legends_and_paradox
+	*/
+}
+
+
+
 
 // Work on these for now
 QWidget* SVRandomizerWindow::setupGiftWidget(){
@@ -487,7 +599,34 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
 
     startersSettingsLayout->addLayout(startersRow_Q3);
     startersRow_Q3->addStretch(1);  // Pushes widgets to the left
-    // Banned Stages
+    
+    // Misc Settings
+    show_starters_in_overworld = new QCheckBox("Show New Starters in Overworld ", startersGroupSettings);
+    show_starters_in_overworld->setChecked(true);
+    miscSelection->addWidget(show_starters_in_overworld);
+    connect(show_starters_in_overworld, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
+
+    QLabel *shiny_rate_Starters = new QLabel("Starters Shiny Rate ", startersGroupSettings);
+    shiny_rate_Starters->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    shiny_starter_rate= new QSpinBox(startersGroupSettings);  // Number input
+    shiny_starter_rate->setRange(1, 100);  // Set range for the number input
+    shiny_starter_rate->setValue(10);
+    connect(shiny_starter_rate, QOverload<int>::of(&QSpinBox::valueChanged), this, &SVRandomizerWindow::saveSpinBoxValue);
+    shiny_starter_rate->setMaximumWidth(100);
+
+    miscSelection->addWidget(shiny_rate_Starters);
+    miscSelection->addWidget(shiny_starter_rate);
+
+    // Add the horizontal layout to the group
+    miscSelection->addStretch(1);  // Pushes widgets to the left
+
+    startersSettingsLayout->addLayout(miscSelection);
+	
+    MonLimiterSection(startersSettingsLayout, StartersLimiterGroup, &randomizer.svRandomizerStarters.StartersLimiter);
+	
+	//ondo cut here
+	
+	/* Banned Stages
     ban_stage_1_pokemon_starters = new QCheckBox("Ban Stage 1 Pokemon ", startersGroupSettings);
     bannedStages->addWidget(ban_stage_1_pokemon_starters);
     connect(ban_stage_1_pokemon_starters, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
@@ -521,28 +660,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
 
     startersSettingsLayout->addLayout(onlySelection);
 
-    // Misc Settings
-    show_starters_in_overworld = new QCheckBox("Show New Starters in Overworld ", startersGroupSettings);
-    show_starters_in_overworld->setChecked(true);
-    miscSelection->addWidget(show_starters_in_overworld);
-    connect(show_starters_in_overworld, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
-
-    QLabel *shiny_rate_Starters = new QLabel("Starters Shiny Rate ", startersGroupSettings);
-    shiny_rate_Starters->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    shiny_starter_rate= new QSpinBox(startersGroupSettings);  // Number input
-    shiny_starter_rate->setRange(1, 100);  // Set range for the number input
-    shiny_starter_rate->setValue(10);
-    connect(shiny_starter_rate, QOverload<int>::of(&QSpinBox::valueChanged), this, &SVRandomizerWindow::saveSpinBoxValue);
-    shiny_starter_rate->setMaximumWidth(100);
-
-    miscSelection->addWidget(shiny_rate_Starters);
-    miscSelection->addWidget(shiny_starter_rate);
-
-    // Add the horizontal layout to the group
-    miscSelection->addStretch(1);  // Pushes widgets to the left
-
-    startersSettingsLayout->addLayout(miscSelection);
 
     // Starters Generation
     QLabel *startersSectionHeader = new QLabel("Allowed Generations (empty means all are allowed)", startersGroupSettings);
@@ -556,7 +674,8 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     }
     startersSettingsLayout->addLayout(generation_StartersHeader);
     startersSettingsLayout->addLayout(generation_StartersSelection);
-
+	// ondo cut here*/
+	
     // if not added it will open a new window
     formLayout->addRow(startersGroupSettings);
 
@@ -616,7 +735,10 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
 
     giftsSettingsLayout->addLayout(gifts_general);
 
-    // Starters Generation
+    MonLimiterSection(giftsSettingsLayout, GiftsLimiterGroup, &randomizer.svRandomizerStarters.GiftsLimiter);
+	
+	/*/ondo cut here
+	// Starters Generation
     QLabel *giftsSectionHeader = new QLabel("Allowed Generations (empty means all are allowed)", giftPokemonSection);
     giftsSectionHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
     generation_GiftsHeader->addWidget(giftsSectionHeader);
@@ -626,8 +748,9 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
         generation_GiftsSelection->addWidget(generation_gifts[i]);
         connect(generation_gifts[i], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     }
-    giftsSettingsLayout->addLayout(generation_GiftsHeader);
+	giftsSettingsLayout->addLayout(generation_GiftsHeader);
     giftsSettingsLayout->addLayout(generation_GiftsSelection);
+	//ondo end cut here*/
 
     // if not added it will open a new window
     //Last thing to add
@@ -1171,7 +1294,7 @@ QWidget* SVRandomizerWindow::setupPaldeaWildWidget(){
     row2->addWidget(paldea_Ban1Stage);
     connect(paldea_Ban1Stage, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
-    formLayout->addRow(row2);
+    formLayout->addRow(row2);*/
 
     // -------------- New Row --------------
     paldea_Settings_for_all_wild = new QCheckBox("Use Paldea Settings for all other wilds", paldeaWildWidget);
@@ -1183,6 +1306,7 @@ QWidget* SVRandomizerWindow::setupPaldeaWildWidget(){
     connect(paldea_BalanceAreaPerBST, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row3);
 
+/*
     // -------------- New Row --------------
     QLabel *startsSectionHeader = new QLabel("Allowed Generations (empty means all are allowed)", paldeaWildWidget);
     startsSectionHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
@@ -1195,10 +1319,11 @@ QWidget* SVRandomizerWindow::setupPaldeaWildWidget(){
     }
     formLayout->addRow(generation_wild_header);
     formLayout->addRow(generation_wild_selection);
-
+*/
     //--------------Wild Settings End--------------
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
+    MonLimiterSection(mainLayout, PaldeaWildLimiterGroup, &randomizer.svRandomizerWilds.PaldeaLimiter);
 
     // Add giftWidget to scroll area and set scrollArea as the widget
     scrollArea->setWidget(paldeaWildWidget);
@@ -1233,6 +1358,7 @@ QWidget* SVRandomizerWindow::setupKitakamiWildWidget(){
     connect(randomize_kitakami_wild, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row0);
 
+/*
     kitakami_ExcludeLegends = new QCheckBox("Exclude Legends", kitakamiWildWidget);
     row1->addWidget(kitakami_ExcludeLegends);
     connect(kitakami_ExcludeLegends, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
@@ -1269,7 +1395,7 @@ QWidget* SVRandomizerWindow::setupKitakamiWildWidget(){
     row2->addWidget(kitakami_Ban1Stage);
     connect(kitakami_Ban1Stage, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
-    formLayout->addRow(row2);
+    formLayout->addRow(row2);*/
 
     // -------------- New Row --------------
 
@@ -1278,6 +1404,7 @@ QWidget* SVRandomizerWindow::setupKitakamiWildWidget(){
     connect(kitakami_BalanceAreaPerBST, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row3);
 
+/*
     // -------------- New Row --------------
     QLabel *startsSectionHeader = new QLabel("Allowed Generations (empty means all are allowed)", kitakamiWildWidget);
     startsSectionHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
@@ -1290,11 +1417,12 @@ QWidget* SVRandomizerWindow::setupKitakamiWildWidget(){
     }
     formLayout->addRow(generation_wild_header);
     formLayout->addRow(generation_wild_selection);
-
+*/
     //--------------Wild Settings End--------------
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
+    MonLimiterSection(mainLayout, KitakamiWildLimiterGroup, &randomizer.svRandomizerWilds.KitakamiLimiter);
 
     // Add giftWidget to scroll area and set scrollArea as the widget
     scrollArea->setWidget(kitakamiWildWidget);
@@ -1328,7 +1456,7 @@ QWidget* SVRandomizerWindow::setupBlueberryWildWidget(){
     row0->addWidget(randomize_blueberry_wild);
     connect(randomize_blueberry_wild, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row0);
-
+/*
     blueberry_ExcludeLegends = new QCheckBox("Exclude Legends", blueberryWildWidget);
     row1->addWidget(blueberry_ExcludeLegends);
     connect(blueberry_ExcludeLegends, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
@@ -1366,7 +1494,7 @@ QWidget* SVRandomizerWindow::setupBlueberryWildWidget(){
     connect(blueberry_Ban1Stage, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
     formLayout->addRow(row2);
-
+*/
     // -------------- New Row --------------
 
     blueberry_BalanceAreaPerBST = new QCheckBox("Balance Area per BST (useless for now)", blueberryWildWidget);
@@ -1374,6 +1502,7 @@ QWidget* SVRandomizerWindow::setupBlueberryWildWidget(){
     connect(blueberry_BalanceAreaPerBST, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row3);
 
+/*
     // -------------- New Row --------------
     QLabel *startsSectionHeader = new QLabel("Allowed Generations (empty means all are allowed)", blueberryWildWidget);
     startsSectionHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
@@ -1386,11 +1515,12 @@ QWidget* SVRandomizerWindow::setupBlueberryWildWidget(){
     }
     formLayout->addRow(generation_wild_header);
     formLayout->addRow(generation_wild_selection);
-
+*/
     //--------------Wild Settings End--------------
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
+    MonLimiterSection(mainLayout, BlueberryWildLimiterGroup, &randomizer.svRandomizerWilds.BlueberryLimiter);
 
     // Add giftWidget to scroll area and set scrollArea as the widget
     scrollArea->setWidget(blueberryWildWidget);
@@ -1429,6 +1559,7 @@ QWidget* SVRandomizerWindow::setupPaldeaRaidWidget(){
     row0->addWidget(praids_randomize_per_star);
     connect(praids_randomize_per_star, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row0);
+	/*
     // -------------- New Row --------------
 
     praids_onlyLegends = new QCheckBox("Only Legends", paldeaRaidsWidget);
@@ -1464,7 +1595,7 @@ QWidget* SVRandomizerWindow::setupPaldeaRaidWidget(){
     connect(praids_Ban1Stage, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
     formLayout->addRow(row2);
-
+*/
     // -------------- New Row --------------
     paldea_Settings_for_all_raids = new QCheckBox("Use Paldea Settings for all other raids", paldeaRaidsWidget);
     row3->addWidget(paldea_Settings_for_all_raids);
@@ -1499,7 +1630,7 @@ QWidget* SVRandomizerWindow::setupPaldeaRaidWidget(){
     // Add the horizontal layout to the group
     horizontalQuestionsLayout2->addStretch(1);
     formLayout->addRow(horizontalQuestionsLayout2);
-
+/*
     // -------------- New Row --------------
     QLabel *startsSectionHeader = new QLabel("Allowed Generations (empty means all are allowed)", paldeaRaidsWidget);
     startsSectionHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
@@ -1512,10 +1643,11 @@ QWidget* SVRandomizerWindow::setupPaldeaRaidWidget(){
     }
     formLayout->addRow(generation_wild_header);
     formLayout->addRow(generation_wild_selection);
-
+*/
     //--------------Raid Settings End--------------
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
+    MonLimiterSection(mainLayout, RaidsPaldeaLimiterGroup, &randomizer.svRandomizerRaids.RaidsPaldeaLimiter);
 
     // Add giftWidget to scroll area and set scrollArea as the widget
     scrollArea->setWidget(paldeaRaidsWidget);
@@ -1555,7 +1687,7 @@ QWidget* SVRandomizerWindow::setupKitakamiRaidWidget(){
     connect(kraids_randomize_per_star, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row0);
     // -------------- New Row --------------
-
+/*
     kraids_onlyLegends = new QCheckBox("Only Legends", kitakamiRaidsWidget);
     row1->addWidget(kraids_onlyLegends);
     connect(kraids_onlyLegends, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
@@ -1589,7 +1721,7 @@ QWidget* SVRandomizerWindow::setupKitakamiRaidWidget(){
     connect(kraids_Ban1Stage, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
     formLayout->addRow(row2);
-
+*/
     // -------------- New Row --------------
 
     kraidsBalanceAreaPerBST = new QCheckBox("Balance Raid per BST (useless for now)", kitakamiRaidsWidget);
@@ -1622,6 +1754,7 @@ QWidget* SVRandomizerWindow::setupKitakamiRaidWidget(){
     horizontalQuestionsLayout2->addStretch(1);
     formLayout->addRow(horizontalQuestionsLayout2);
 
+/*
     // -------------- New Row --------------
     QLabel *startsSectionHeader = new QLabel("Allowed Generations (empty means all are allowed)", kitakamiRaidsWidget);
     startsSectionHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
@@ -1634,10 +1767,11 @@ QWidget* SVRandomizerWindow::setupKitakamiRaidWidget(){
     }
     formLayout->addRow(generation_wild_header);
     formLayout->addRow(generation_wild_selection);
-
+*/
     //--------------Raid Settings End--------------
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
+    MonLimiterSection(mainLayout, RaidsKitakamiLimiterGroup, &randomizer.svRandomizerRaids.RaidsKitakamiLimiter);
 
     // Add giftWidget to scroll area and set scrollArea as the widget
     scrollArea->setWidget(kitakamiRaidsWidget);
@@ -1677,7 +1811,7 @@ QWidget* SVRandomizerWindow::setupBlueberryRaidWidget(){
     connect(braids_randomize_per_star, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row0);
     // -------------- New Row --------------
-
+/*
     braids_onlyLegends = new QCheckBox("Only Legends", blueberryRaidsWidget);
     row1->addWidget(braids_onlyLegends);
     connect(braids_onlyLegends, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
@@ -1711,7 +1845,7 @@ QWidget* SVRandomizerWindow::setupBlueberryRaidWidget(){
     connect(braids_Ban1Stage, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
 
     formLayout->addRow(row2);
-
+*/
     // -------------- New Row --------------
 
     braidsBalanceAreaPerBST = new QCheckBox("Balance Raid per BST (useless for now)", blueberryRaidsWidget);
@@ -1744,6 +1878,7 @@ QWidget* SVRandomizerWindow::setupBlueberryRaidWidget(){
     horizontalQuestionsLayout2->addStretch(1);
     formLayout->addRow(horizontalQuestionsLayout2);
 
+/*
     // -------------- New Row --------------
     QLabel *startsSectionHeader = new QLabel("Allowed Generations (empty means all are allowed)", blueberryRaidsWidget);
     startsSectionHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
@@ -1756,10 +1891,11 @@ QWidget* SVRandomizerWindow::setupBlueberryRaidWidget(){
     }
     formLayout->addRow(generation_wild_header);
     formLayout->addRow(generation_wild_selection);
-
+*/
     //--------------Raid Settings End--------------
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
+    MonLimiterSection(mainLayout, RaidsBlueberryLimiterGroup, &randomizer.svRandomizerRaids.RaidsBlueberryLimiter);
 
     // Add giftWidget to scroll area and set scrollArea as the widget
 
@@ -3517,6 +3653,39 @@ void showMessage(const QString &message) {
 
 void SVRandomizerWindow::addToFavorites()
 {
+	//check allowedlists
+	int starterscount = SVShared::GenerateAllowedMons(randomizer.svRandomizerStarters.StartersLimiter, randomizer.svRandomizerStarters.allowedPokemon);
+	int giftscount = SVShared::GenerateAllowedMons(randomizer.svRandomizerStarters.GiftsLimiter, randomizer.svRandomizerStarters.allowedPokemon_gifts);
+	
+	int raidspcount = SVShared::GenerateAllowedMons(randomizer.svRandomizerRaids.RaidsPaldeaLimiter, randomizer.svRandomizerRaids.RaidsPaldeaAllowed);
+	int raidskcount = SVShared::GenerateAllowedMons(randomizer.svRandomizerRaids.RaidsKitakamiLimiter, randomizer.svRandomizerRaids.RaidsKitakamiAllowed);
+	int raidsbcount = SVShared::GenerateAllowedMons(randomizer.svRandomizerRaids.RaidsBlueberryLimiter, randomizer.svRandomizerRaids.RaidsBlueberryAllowed);
+	
+	int wildspcount = SVShared::GenerateAllowedMons(randomizer.svRandomizerWilds.PaldeaLimiter, randomizer.svRandomizerWilds.WildPaldeaAllowed);
+	int wildskcount = SVShared::GenerateAllowedMons(randomizer.svRandomizerWilds.KitakamiLimiter, randomizer.svRandomizerWilds.WildKitakamiAllowed);
+	int wildsbcount = SVShared::GenerateAllowedMons(randomizer.svRandomizerWilds.BlueberryLimiter, randomizer.svRandomizerWilds.WildBlueberryAllowed);
+	int wildsfcount = SVShared::GenerateAllowedMons(randomizer.svRandomizerWilds.FixedSymbolLimiter, randomizer.svRandomizerWilds.FixedSymbolAllowed);
+	
+	//int trainerscount = SVShared::GenerateAllowedMons(randomizer.svRandomizerTrainers.GiftsLimiter, randomizer.svRandomizerTrainers.allowedPokemon_gifts);
+	
+	qDebug()<<QString("Starters: %1, Gifts: %2, Raids P: %3, Raids K: %4, Raids B: %5, Wilds P: %6, Wilds K: %7, Wilds B: %8, Wilds Fixed: %9")
+				.arg(starterscount)
+				.arg(giftscount)
+				.arg(raidspcount)
+				.arg(raidskcount)
+				.arg(raidsbcount)
+				.arg(wildspcount)
+				.arg(wildskcount)
+				.arg(wildsbcount)
+				.arg(wildsfcount);
+//add a check to make sure there r usable mons for all sections
+	
+    if ((starterscount <= 0) or (giftscount <= 0))
+	{
+		//send user message to say it cant randomize with 0 pokemon
+        return;
+	}
+
     unsigned int hash = 0;
     if(!randomizer.seed.isEmpty()){
         for (const QChar &ch : randomizer.seed) {
@@ -3812,6 +3981,8 @@ void SVRandomizerWindow::addToFavorites()
         } catch (const fs::filesystem_error& e) {
             std::cerr << "Error copying directory: " << e.what() << std::endl;
         }
+
+        //ondo spoiler placeholder
 
         // Delete files for next generation
             for(int j = 1; j<=6; j++){
@@ -4474,6 +4645,61 @@ void SVRandomizerWindow::saveStringInput() {
         }
     }
 }
+
+void SVRandomizerWindow::saveLimiterState(LimiterDetails *Details, QString opt) {
+    QCheckBox *checkBox = qobject_cast<QCheckBox *>(sender());
+	
+    qDebug() << opt;
+    if (!checkBox) return;  // Exit if sender is not a QCheckBox
+    //NOTE: must make sure no opts start with G
+    const QString zerovalue = "0";
+    if (opt[0] == "G")
+    {
+        int index = opt[1].digitValue() - zerovalue[0].digitValue();
+        Details->Gens[index] = checkBox->isChecked();
+        qDebug() << Details->toString();
+        return;
+    }
+    if (opt[0] == "L")
+    {
+        int index = opt[1].digitValue() - zerovalue[0].digitValue();
+        Details->GenLegends[index] = checkBox->isChecked();
+        qDebug() << Details->toString();
+        return;
+    }
+    //if it isnt the gen lists then its a checkbox
+    QList<QString> options = {"1", "2", "3", "Single", "Paradox", "UB"};
+	int selected = options.indexOf(opt);
+    qDebug() << "test a";
+	switch (selected)
+	{
+		break;
+        case 0://"1"
+        Details->Stage1 = checkBox->isChecked();
+		break;
+		case 1://"2"
+        Details->Stage2 = checkBox->isChecked();
+		break;
+		case 2://"3"
+        Details->Stage3 = checkBox->isChecked();
+		break;
+		case 3://"Single"
+        Details->SingleStage = checkBox->isChecked();
+        break;
+        case 4://"Paradox"
+        Details->Paradox = checkBox->isChecked();
+		break;
+        case 5://"UB"
+        Details->UltraBeast = checkBox->isChecked();
+		break;
+		default:
+		qDebug() << "Ondo: How here?" << opt;
+		break;
+	}
+
+    qDebug() << Details->toString();
+}
+
 
 void SVRandomizerWindow::updateComboBoxForms(QComboBox *comboBox, const QString &text) {
     comboBox->clear();

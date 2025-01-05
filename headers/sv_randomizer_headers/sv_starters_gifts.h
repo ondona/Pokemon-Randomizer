@@ -19,6 +19,7 @@ class SVStarters: public SVShared{
         QList<int> allowedLegends;
 
         //Starters
+		LimiterDetails StartersLimiter;
         QVector<bool> generations_starters = {false, false, false, false, false, false, false, false, false};
         bool enable_starters = false; // TB Deleted
         bool force_shiny_starter = false; // Added
@@ -40,6 +41,7 @@ class SVStarters: public SVShared{
         QVector<bool> starters_shiny = {false, false, false};
 
         // Gifts
+		LimiterDetails GiftsLimiter;
         QList<int> bannedPokemon_gifts;
         QList<int> allowedPokemon_gifts;
         QList<int> allowedLegends_gifts;

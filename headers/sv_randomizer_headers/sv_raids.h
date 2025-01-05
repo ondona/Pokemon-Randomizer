@@ -7,6 +7,9 @@
 
 class SVRaids: public SVShared{
     public:    
+	
+		LimiterDetails RaidsPaldeaLimiter;
+		QList<int> RaidsPaldeaAllowed = {};
         bool praids_randomize = false;
         bool praids_randomize_per_star = false;
         bool praids_force_shiny = false;
@@ -24,6 +27,8 @@ class SVRaids: public SVShared{
                                          false, false, false,
                                          false, false, false};
 
+		LimiterDetails RaidsKitakamiLimiter;
+		QList<int> RaidsKitakamiAllowed = {};
         bool kraids_randomize = false;
         bool kraids_randomize_per_star = false;
         bool kraids_force_shiny = false;
@@ -40,6 +45,8 @@ class SVRaids: public SVShared{
                                           false, false, false,
                                           false, false, false};
 
+		LimiterDetails RaidsBlueberryLimiter;
+		QList<int> RaidsBlueberryAllowed = {};
         bool braids_randomize = false;
         bool braids_randomize_per_star = false;
         bool braids_force_shiny = false;

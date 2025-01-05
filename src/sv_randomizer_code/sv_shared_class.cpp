@@ -284,6 +284,150 @@ std::string SVShared::selectTeraTypes(int pokemon, int formId){
     return teraTypes[std::rand()%teraTypes.length()].toUpper().toStdString();
 }
 
+int SVShared::GenerateAllowedMons(LimiterDetails Limiter, QList<int>& allowedPokemon){
+    // Logic for Poke Limiter
+	QList<int> RemoveList;
+	QList<int> AllowList;
+    for(int i=0; i<9; i++){
+        if(Limiter.Gens[i] == true){
+            switch (i){
+            case 0:
+                AllowList += pokemonDevIds_Gen1;
+                break;
+            case 1:
+                AllowList += pokemonDevIds_Gen2;
+                break;
+            case 2:
+                AllowList += pokemonDevIds_Gen3;
+                break;
+            case 3:
+                AllowList += pokemonDevIds_Gen4;
+                break;
+            case 4:
+                AllowList += pokemonDevIds_Gen5;
+                break;
+            case 5:
+                AllowList += pokemonDevIds_Gen6;
+                break;
+            case 6:
+                AllowList += pokemonDevIds_Gen7;
+                break;
+            case 7:
+                AllowList += pokemonDevIds_Gen8;
+                break;
+            case 8:
+                AllowList += pokemonDevIds_Gen9;
+                break;
+            };
+        }
+        switch (i){
+        case 0:
+            if(Limiter.GenLegends[i] == false){
+                RemoveList += gen1_legends;
+            }else{
+                AllowList += gen1_legends;
+            }
+            break;
+        case 1:
+            if(Limiter.GenLegends[i] == false){
+                RemoveList += gen2_legends;
+            }else{
+                AllowList += gen2_legends;
+            }
+            break;
+        case 2:
+            if(Limiter.GenLegends[i] == false){
+                RemoveList += gen3_legends;
+            }else{
+                AllowList += gen3_legends;
+            }
+            break;
+        case 3:
+            if(Limiter.GenLegends[i] == false){
+                RemoveList += gen4_legends;
+            }else{
+                AllowList += gen4_legends;
+            }
+            break;
+        case 4:
+            if(Limiter.GenLegends[i] == false){
+                RemoveList += gen5_legends;
+            }else{
+                AllowList += gen5_legends;
+            }
+            break;
+        case 5:
+            if(Limiter.GenLegends[i] == false){
+                RemoveList += gen6_legends;
+            }else{
+                AllowList += gen6_legends;
+            }
+            break;
+        case 6:
+            if(Limiter.GenLegends[i] == false){
+                RemoveList += gen7_legends;
+            }else{
+                AllowList += gen7_legends;
+            }
+            break;
+        case 7:
+            if(Limiter.GenLegends[i] == false){
+                RemoveList += gen8_legends;
+            }else{
+                AllowList += gen8_legends;
+            }
+            break;
+        case 8:
+            if(Limiter.GenLegends[i] == false){
+                RemoveList += gen9_legends;
+            }else{
+                AllowList += gen9_legends;
+            }
+            break;
+        };
+    }
+
+    if(Limiter.Paradox == false){
+        RemoveList += paradox;
+    }else{
+        AllowList += paradox;
+    }
+    if(Limiter.UltraBeast == false){
+        RemoveList += UB;
+    }else{
+        AllowList += UB;
+    }
+    QSet<int> AllowSet(AllowList.begin(), AllowList.end());
+    QSet<int> RemoveSet(RemoveList.begin(), RemoveList.end());
+    AllowSet.subtract(RemoveSet);
+	
+    if(Limiter.Stage1 == false){
+        QSet<int> stage1Set(gen9Stage1.begin(), gen9Stage1.end());
+        AllowSet.subtract(stage1Set);
+    }
+    if(Limiter.Stage2 == false){
+        QSet<int> stage2Set(gen9Stage2.begin(), gen9Stage2.end());
+        AllowSet.subtract(stage2Set);
+    }
+    if(Limiter.Stage3 == false){
+        QSet<int> stage3Set(gen9Stage3.begin(), gen9Stage3.end());
+        AllowSet.subtract(stage3Set);
+    }
+    if(Limiter.SingleStage == false){
+        QSet<int> singleStageSet(no_evolution.begin(), no_evolution.end());
+        AllowSet.subtract(singleStageSet);
+    }
+	
+    QSet<int> bannedSet(banned_pokemon.begin(), banned_pokemon.end());
+    AllowSet.subtract(bannedSet);
+
+    allowedPokemon = QList<int>(AllowSet.begin(), AllowSet.end());
+    //organise list
+    std::sort(allowedPokemon.begin(), allowedPokemon.end());
+    //qDebug() << allowedPokemon.size();
+	return allowedPokemon.size();
+}
+
 void SVShared::getUsablePokemon(QVector<bool> generations, bool legend, bool paradoxs, bool legends_paradox, QList<int>& allowedPokemon, QList<int>& allowedLegends){
     // Logic for generation limiter
     int totalGens = 0;

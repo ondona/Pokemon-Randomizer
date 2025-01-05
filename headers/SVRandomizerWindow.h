@@ -10,16 +10,19 @@
 #include <QComboBox>
 #include <QCheckBox>
 #include <QSpinBox>
+#include "qgroupbox.h"
 #include "sv_randomizer_headers/svrandomizercode.h"
 
-class SVRandomizerWindow : public QWidget
+class SVRandomizerWindow : public QWidget, SVShared
 {
     Q_OBJECT
 
 public:
     explicit SVRandomizerWindow(QWidget *parent = nullptr);
     ~SVRandomizerWindow();
-
+    void MonLimiterSection(QVBoxLayout *OuterBox, QGroupBox *LimiterGroup, LimiterDetails *Details);
+	void saveLimiterState(LimiterDetails *Details, QString opt);
+	
 private:
     void createLayout();
 
@@ -49,6 +52,7 @@ private:
         QSpinBox *bulk_amount; // Added
 
         //Starters
+		QGroupBox *StartersLimiterGroup;
         QVector<QCheckBox*> generations_starters; // Added
         QCheckBox *enable_starters; // Added
         QCheckBox *force_shiny_starter; // Added
@@ -71,6 +75,7 @@ private:
 
 
         // Gifts
+		QGroupBox *GiftsLimiterGroup;
         QCheckBox *enable_gifts; // Added
         QSpinBox *shiny_static_rate; // Added
         QCheckBox *randomize_tera_types; // Added
@@ -108,6 +113,7 @@ private:
         QCheckBox *randomize_synchro_items; // Added
 
     // Wild and Static Encounters
+		QGroupBox *PaldeaWildLimiterGroup;
         QCheckBox *randomize_paldea_wild;
         QCheckBox *paldea_ExcludeLegends; // Added
         QCheckBox *paldea_OnlyLegends; // Added
@@ -122,6 +128,7 @@ private:
         QCheckBox *let_ogre_pagos_spawn;
         QVector<QCheckBox*> generation_paldea_wild; // Added
 
+		QGroupBox *KitakamiWildLimiterGroup;
         QCheckBox *randomize_kitakami_wild;
         QCheckBox *kitakami_ExcludeLegends; // Added
         QCheckBox *kitakami_OnlyLegends; // Added
@@ -134,6 +141,7 @@ private:
         QCheckBox *kitakami_BalanceAreaPerBST; //TBD
         QVector<QCheckBox*> generation_kitakami_wild; // Added
 
+		QGroupBox *BlueberryWildLimiterGroup;
         QCheckBox *randomize_blueberry_wild;
         QCheckBox *blueberry_ExcludeLegends; // Added
         QCheckBox *blueberry_OnlyLegends; // Added
@@ -146,6 +154,7 @@ private:
         QCheckBox *blueberry_BalanceAreaPerBST; // TBD
         QVector<QCheckBox*> generation_blueberry_wild; // Added
 
+		QGroupBox *FixedSymbolsLimiterGroup;
         QCheckBox *statics_ExcludeLegends; // Added
         QCheckBox *statics_OnlyLegends; // Added
         QCheckBox *statics_OnlyParadox; // Added
@@ -157,6 +166,7 @@ private:
         QCheckBox *statics_BalanceAreaPerBST; //TBD
         QVector<QCheckBox*> generation_statics_wild; // Added
     // Raids
+		QGroupBox *RaidsPaldeaLimiterGroup;
         QCheckBox *praids_randomize_per_star; // Added
         QCheckBox *praids_force_shiny; // Added
         QSpinBox *praids_shiny_chance; // Added
@@ -171,6 +181,7 @@ private:
         QCheckBox *paldea_Settings_for_all_raids; // Added
         QVector<QCheckBox*> praidsgeneration; // Added
 
+		QGroupBox *RaidsKitakamiLimiterGroup;
         QCheckBox *kraids_randomize_per_star; // Added
         QCheckBox *kraids_force_shiny; // Added
         QSpinBox *kraids_shiny_chance; // Added
@@ -184,6 +195,7 @@ private:
         QCheckBox *kraidsBalanceAreaPerBST; //TBD
         QVector<QCheckBox*> kraidsgeneration; // Added
 
+		QGroupBox *RaidsBlueberryLimiterGroup;
         QCheckBox *braids_randomize_per_star; // Added
         QCheckBox *braids_force_shiny; // Added
         QSpinBox *braids_shiny_chance; // Added

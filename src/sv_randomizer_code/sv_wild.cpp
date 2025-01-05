@@ -56,12 +56,12 @@ bool SVWilds::randomize_paldea_wilds(std::string fileName){
     file.close();
 
     paldeaWildJSON["values"] = json::array();
-    QList<int> wildPaldeanPokemon = {};
+    /*QList<int> wildPaldeanPokemon = {};
     QList<int> wildLegendMons_Useless = {};
-    getUsablePokemon(generation_paldea_wild, false, false, false, wildPaldeanPokemon, wildLegendMons_Useless);
+    getUsablePokemon(generation_paldea_wild, false, false, false, wildPaldeanPokemon, wildLegendMons_Useless);*/
 
     for(int i = 1; i<1026; i++){
-        if(!wildPaldeanPokemon.contains(i)){
+        if(!WildPaldeaAllowed.contains(i)){
             continue;
         }
 

@@ -3328,7 +3328,7 @@ public:
                   74, 77, 79, 81, 83, 84, 86, 88, 90, 92, 95, 96, 98, 100, 102, 104, 108, 109, 111, 114, 116, 118, 120, 123,
                   129, 133, 137, 138, 140, 147, 152, 155, 158, 161, 163, 165, 167, 170, 172, 173, 174, 175, 177, 179, 187,
                   190, 191, 193, 194, 198, 200, 203, 204, 206, 207, 209, 211, 215, 216, 218, 220, 222, 223, 228, 231, 234,
-                  236, 238, 239, 240, 246, 252, 255, 258, 261, 262, 263, 265, 270, 273, 276, 278, 280, 283, 285, 287, 290,
+                  236, 238, 239, 240, 246, 252, 255, 258, 261, 263, 265, 270, 273, 276, 278, 280, 283, 285, 287, 290,
                   293, 296, 298, 299, 300, 304, 307, 309, 316, 318, 320, 322, 325, 328, 331, 333, 339, 341, 343, 345, 347,
                   349, 353, 355, 360, 361, 363, 366, 371, 374, 387, 390, 393, 396, 399, 401, 403, 406, 408, 410, 412, 415,
                   418, 420, 422, 425, 427, 431, 433, 434, 436, 438, 439, 440, 443, 446, 447, 449, 451, 453, 456, 458, 459,
@@ -3639,6 +3639,41 @@ public:
     std::string getPokemonItemId(int index, int form);
     int getPokemonItemValue(int index, int form);
 
+    struct LimiterDetails {
+        QList<bool> Gens = {/*1*/true, /*2*/true, /*3*/true, /*4*/true, /*5*/true, /*6*/true, /*7*/true, /*8*/true, /*9*/true};
+        QList<bool> GenLegends = {/*1*/true, /*2*/true, /*3*/true, /*4*/true, /*5*/true, /*6*/true, /*7*/true, /*8*/true, /*9*/true};
+		bool Stage1 = true;
+		bool Stage2 = true;
+		bool Stage3 = true;
+		bool SingleStage = true;
+        bool Paradox = true;
+		bool UltraBeast = false;//defaulting it off for now
+		
+		// toString() method
+        QString toString() const {
+            QStringList gensList;
+            for (bool gen : Gens) {
+                gensList.append(gen ? "true" : "false");
+            }
+            QStringList GenLegendsList;
+            for (bool gen : GenLegends) {
+                GenLegendsList.append(gen ? "true" : "false");
+            }
+
+            return QString("Gens: [%1], Legends: [%8], Stage1: %2, Stage2: %3, Stage3: %4, SingleStage: %5, Paradox: %6, UltraBeast: %7")
+                .arg(gensList.join(", "))
+				.arg(Stage1 ? "true" : "false")
+				.arg(Stage2 ? "true" : "false")
+				.arg(Stage3 ? "true" : "false")
+				.arg(SingleStage ? "true" : "false")
+                .arg(Paradox ? "true" : "false")
+                .arg(UltraBeast ? "true" : "false")
+                .arg(GenLegendsList.join(", "));
+			}
+		};
+		
+    int GenerateAllowedMons(LimiterDetails Limiter, QList<int>& allowedPokemon);
+	
 private:
     std::vector<char> ReadBinaryFile(const std::string &filePath);
     std::vector<int> FindMarkerOffsets(const std::vector<char> &data, const std::string &marker);
