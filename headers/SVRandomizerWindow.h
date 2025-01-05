@@ -10,6 +10,9 @@
 #include <QComboBox>
 #include <QCheckBox>
 #include <QSpinBox>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QJsonArray>
 #include "qgroupbox.h"
 #include "sv_randomizer_headers/svrandomizercode.h"
 
@@ -30,8 +33,13 @@ private:
     QPushButton *importButton;
     QPushButton *exportButton;
     QPushButton *startRandomizer;
+
     QLineEdit *seed;
     SVRandomizerCode randomizer;
+    QJsonObject settings;
+    json settingsEdit;
+    unsigned int hash = 0;
+
 
     //GUI Variables
     QWidget *centralWidget;
@@ -57,7 +65,7 @@ private:
         QCheckBox *enable_starters; // Added
         QCheckBox *force_shiny_starter; // Added
         QCheckBox *all_starters_shiny; // Added
-        QSpinBox *shiny_starter_rate; // Added
+        QSpinBox *shiny_starter_rate; // Added - not imported
         QCheckBox *show_starters_in_overworld; // Added
         QCheckBox *randomize_starters_tera_types; // Added
         QCheckBox *ban_stage_1_pokemon_starters; // Added
@@ -281,8 +289,17 @@ private slots:
     void updateComboBoxForms(QComboBox *c, const QString &t);
     void updateComboBoxGender(QComboBox *c, const QString &t);
     void updatePreview(const QString &text);
-    void showRestartWidget();
     bool checkAndDeleteFile(std::string filePath);
+    void importSettings();
+    void exportSettings();
+    void setUpJSONSettings();
+    void forceExportSettings();
+    void setUpUISettings();
+    void updateCheckboxImport(QCheckBox *checkbox, const QString &key, QJsonObject &listOfChanges);
+    void updateQLineEditImport(QLineEdit *lineEdit, const QString& key, QJsonObject &listOfChanges);
+    void updateComboBoxImport(QComboBox *comboBox, const QString& key, QJsonObject &listOfChanges, int index);
+    void updateCheckboxArrayImportGenerations(QVector<QCheckBox*> t, QJsonObject &listOfChanges);
+    void updateSpinBoxImport(QSpinBox* spinBox, const QString& key, QJsonObject &listOfChanges);
 };
 
 #endif // SVRANDOMIZERWINDOW_H

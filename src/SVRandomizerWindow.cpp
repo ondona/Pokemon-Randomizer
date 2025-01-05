@@ -17,6 +17,7 @@
 #include <QStringListModel>
 #include <QComboBox>
 #include <QDir>
+#include <QFileDialog>
 #include <filesystem>
 #include <iostream>
 
@@ -79,12 +80,12 @@ void SVRandomizerWindow::createLayout()
         extraSettings->addStretch(1);  // Pushes widgets to the left
 
         importButton = new QPushButton("Import Settings and Seed", generalGroup);
-        //connect(importButton, &QPushButton::clicked, this, &SVRandomizerWindow::addToFavorites);
+        connect(importButton, &QPushButton::clicked, this, &SVRandomizerWindow::importSettings);
 
         settings->addWidget(importButton);
 
         exportButton = new QPushButton("Export Settings and Seed", generalGroup);
-        //connect(exportButton, &QPushButton::clicked, this, &SVRandomizerWindow::addToFavorites);
+        connect(exportButton, &QPushButton::clicked, this, &SVRandomizerWindow::exportSettings);
 
         settings->addWidget(exportButton);
 
@@ -3591,26 +3592,6 @@ QWidget* SVRandomizerWindow::setupTrainersBerryWidget(){
     return scrollArea;
 }
 
-void SVRandomizerWindow::showRestartWidget() {
-    QWidget *restartWidget = new QWidget;
-    QVBoxLayout *layout = new QVBoxLayout(restartWidget);
-
-    QLabel *label = new QLabel("Program has finished running.\nRestarting for next use...");
-    layout->addWidget(label);
-
-    QPushButton *restartButton = new QPushButton("Restart Now");
-    layout->addWidget(restartButton);
-
-    QObject::connect(restartButton, &QPushButton::clicked, [=]() {
-        // Restart the application
-        QString program = QCoreApplication::applicationFilePath();
-        QProcess::startDetached(program, QStringList());
-        QApplication::exit(); // Exit the current instance
-    });
-
-    restartWidget->show();
-}
-
 bool SVRandomizerWindow::checkAndDeleteFile(std::string filePath) {
 
     size_t pos = filePath.find("SV_FLATBUFFERS");
@@ -3653,6 +3634,9 @@ void showMessage(const QString &message) {
     QMessageBox msgBox;
     msgBox.setText(message);
     msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.raise();
+    msgBox.activateWindow();
+    QApplication::beep();
     msgBox.exec(); // Blocks until the user clicks OK
 }
 
@@ -3691,7 +3675,6 @@ void SVRandomizerWindow::runRandomizer()
         return;
 	}
 
-    unsigned int hash = 0;
     bool randomizerIsNum = false;
     randomizer.seed.toUInt(&randomizerIsNum);
     if(randomizerIsNum == false){
@@ -4383,6 +4366,9 @@ void SVRandomizerWindow::runRandomizer()
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_fp_1048_010_0.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_fp_1048_020_0.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/sub_039_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_0.json").toStdString());
+
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/HikoNushi_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hiko_fp_1063_020_1.json").toStdString());
@@ -4413,15 +4399,16 @@ void SVRandomizerWindow::runRandomizer()
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_fp_1048_010_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/nushi_hagane_fp_1048_020_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/sub_039_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_1.json").toStdString());
         // Delete Output file (again)
         if(fs::exists(dirPath)){
             fs::remove_all(dirPath);
         }
     }
-
+    forceExportSettings();
     showMessage("Finished Randomizer");
 }
-
 
 void SVRandomizerWindow::switchTabs(int index) {
     if (index >= 0 && index < stackedWidget->count()) {
@@ -4571,7 +4558,8 @@ void SVRandomizerWindow::saveCheckboxState() {
     }
     else if(checkBox == randomize_tera_types){
         randomizer.svRandomizerStarters.randomize_tera_types = randomize_tera_types->isChecked();
-    } // Stats
+    }
+    // Stats
     else if(checkBox == randomize_abilities){
         randomizer.svRandomizerStats.randomize_abilities = randomize_abilities->isChecked();
     }
@@ -4637,7 +4625,9 @@ void SVRandomizerWindow::saveCheckboxState() {
     }
     else if(checkBox == randomize_synchro_items){
         randomizer.svRandomizerItems.randomize_synchro_items = randomize_synchro_items->isChecked();
-    }// Wilds and Statics
+    }
+
+    // Wilds and Statics
     else if(checkBox == randomize_paldea_wild){
         randomizer.svRandomizerWilds.randomize_paldea_wild = randomize_paldea_wild->isChecked();
     }
@@ -4731,7 +4721,9 @@ void SVRandomizerWindow::saveCheckboxState() {
     }
     else if(checkBox == blueberry_BalanceAreaPerBST){
         randomizer.svRandomizerWilds.blueberry_BalanceAreaPerBST = blueberry_BalanceAreaPerBST->isChecked();
-    } // Raids
+    }
+
+    // Raids
     else if(checkBox == praids_randomize){
         randomizer.svRandomizerRaids.praids_randomize = praids_randomize ->isChecked();
     }
@@ -5126,4 +5118,1110 @@ void SVRandomizerWindow::updateComboBoxGender(QComboBox *comboBox, const QString
 
 void SVRandomizerWindow::updatePreview(const QString &text) {
     previewLabel->setText("Preview: " + text);  // Update the preview label with the current text
+}
+
+void SVRandomizerWindow::updateCheckboxImport(QCheckBox *checkbox, const QString &key, QJsonObject &listOfChanges){
+    checkbox->setChecked(listOfChanges[key].toBool());
+}
+
+void SVRandomizerWindow::updateQLineEditImport(QLineEdit *lineEdit, const QString& key, QJsonObject &listOfChanges){
+    lineEdit ->setText(listOfChanges[key].toString());
+}
+
+void SVRandomizerWindow::updateComboBoxImport(QComboBox *comboBox, const QString& key, QJsonObject &listOfChanges, int index){
+    if(comboBox == starters_pokeball[index]){
+        comboBox->setCurrentIndex(randomizer.pokeballIndex[listOfChanges[key].toString()]);
+    }
+    else if(comboBox == starters_gender[index]){
+        if(randomizer.maleOnlyPokemon.contains(randomizer.svRandomizerStarters.starters[index]) ||
+            randomizer.femaleOnlyPokemon.contains(randomizer.svRandomizerStarters.starters[index]) ||
+            randomizer.genderlessPokemon.contains(randomizer.svRandomizerStarters.starters[index])){
+            comboBox ->setCurrentIndex(0);
+        }else{
+            if(listOfChanges[key].toString() == "FEMALE"){
+                comboBox ->setCurrentIndex(1);
+            }else{
+                comboBox ->setCurrentIndex(0);
+            }
+        }
+    }
+    else{
+        comboBox ->setCurrentIndex(listOfChanges[key].toInt());
+    }
+}
+
+void SVRandomizerWindow::updateCheckboxArrayImportGenerations(QVector<QCheckBox*> gens, QJsonObject &listOfChanges){
+    for(int i = 1; i<=9; i++){
+        gens[i-1]->setChecked(listOfChanges[QString::number(i)].toBool());
+    }
+}
+
+void SVRandomizerWindow::updateSpinBoxImport(QSpinBox* spinBox, const QString& key, QJsonObject &listOfChanges){
+    spinBox->setValue(listOfChanges[key].toInt());
+}
+
+void SVRandomizerWindow::setUpUISettings(){
+    /*
+     * DO NOT MAKE SUB FUNCTIONS FOR THINGS HERE - THIS WAY WE CAN EASILYTELL
+     * WHAT IS WRONG IN IMPORTING WITHOUT HAVING TO DIVE 3 FUNCTIONS DEEP
+     */
+
+    // Global Settings Done
+    auto_patch->setChecked(settings["Auto-Patch"].toBool());
+    seed ->setText(settings["Seed"].toString());
+    bulk_amount->setValue(settings["Batch"].toInt());
+    if(settings["Seed Numerical"].toInt() != 0){
+        randomizer.seed = settings["Seed Numerical"].toString();
+    }
+    kaizo_mode->setChecked(settings["Kaizo Mode"].toBool());
+
+    // Starters
+    QJsonObject startersJson = settings["Starters"].toObject();
+    updateCheckboxImport(enable_starters, "Randomize", startersJson);
+    updateCheckboxImport(force_shiny_starter, "One Shiny", startersJson);
+    updateCheckboxImport(all_starters_shiny, "All Shiny", startersJson);
+    updateCheckboxImport(show_starters_in_overworld, "Show Starters in Overworld", startersJson);
+    updateCheckboxImport(randomize_starters_tera_types, "Tera Types", startersJson);
+    updateCheckboxImport(ban_stage_1_pokemon_starters, "Ban Stage 1", startersJson);
+    updateCheckboxImport(ban_stage_2_pokemon_starters, "Ban Stage 2", startersJson);
+    updateCheckboxImport(ban_stage_3_pokemon_starters, "Ban Stage 3", startersJson);
+    updateCheckboxImport(ban_single_stage_pokemon_starters, "Ban 1 Stage", startersJson);
+    updateCheckboxImport(only_legendary_pokemon_starters, "Only Legend", startersJson);
+    updateCheckboxImport(only_paradox_pokemon_starters, "Only Paradox", startersJson);
+    updateCheckboxImport(only_legends_and_paradox_starters, "Only Legends and Paradox", startersJson);
+
+    QJsonObject starterIndividual = startersJson["Fuecoco"].toObject();
+    updateCheckboxImport(starters_shiny[1], "Shiny", starterIndividual);
+    updateQLineEditImport(starters[1], "Name", starterIndividual);
+    updateComboBoxImport(starters_form[1], "Form", starterIndividual, 0);
+    updateComboBoxImport(starters_pokeball[1], "Poke Ball", starterIndividual, 1);
+    updateComboBoxImport(starters_gender[1], "Gender", starterIndividual, 1);
+
+    starterIndividual = startersJson["Quaxly"].toObject();
+    updateCheckboxImport(starters_shiny[2], "Shiny", starterIndividual);
+    updateQLineEditImport(starters[2], "Name", starterIndividual);
+    updateComboBoxImport(starters_form[2], "Form", starterIndividual, 0);
+    updateComboBoxImport(starters_pokeball[2], "Poke Ball", starterIndividual, 2);
+    updateComboBoxImport(starters_gender[2], "Gender", starterIndividual, 2);
+
+    starterIndividual = startersJson["Sprigatito"].toObject();
+    updateCheckboxImport(starters_shiny[0], "Shiny", starterIndividual);
+    updateQLineEditImport(starters[0], "Name", starterIndividual);
+    updateComboBoxImport(starters_form[0], "Form", starterIndividual, 0);
+    updateComboBoxImport(starters_pokeball[0], "Poke Ball", starterIndividual, 0);
+    updateComboBoxImport(starters_gender[0], "Gender", starterIndividual, 0);
+
+    QJsonObject generations = startersJson["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(generations_starters, generations);
+
+    updateSpinBoxImport(shiny_starter_rate, "Shiny Rate", startersJson);
+
+    // Gifts
+    QJsonObject giftsJson = settings["Gifts"].toObject();
+    updateCheckboxImport(enable_gifts, "Randomize", giftsJson);
+    updateCheckboxImport(randomize_tera_types, "Tera Types", giftsJson);
+    updateSpinBoxImport(shiny_static_rate, "Shiny Rate", giftsJson);
+
+    generations = giftsJson["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(generation_gifts, generations);
+
+    // Stats
+    QJsonObject statsJson = settings["Stats"].toObject();
+    QJsonObject insideStats = statsJson["Abilities"].toObject();
+    updateCheckboxImport(randomize_abilities, "Randomize", insideStats);
+    updateCheckboxImport(ban_wonder_guard, "Ban Wonder Guard", insideStats);
+
+    insideStats = statsJson["Base Stats"].toObject();
+    updateCheckboxImport(randomize_bst, "Randomize", insideStats);
+    updateCheckboxImport(keep_same_bst, "Keep Same BST", insideStats);
+
+    insideStats = statsJson["Evolutions"].toObject();
+    updateCheckboxImport(randomize_evolutions, "Randomize", insideStats);
+    updateCheckboxImport(force_unobtainable_evolutions_at_night, "Fixed Regional Evolutions", insideStats);
+    updateCheckboxImport(evolve_every_5_levels, "Evolve Every Level", insideStats);
+
+    insideStats = statsJson["Moves"].toObject();
+    updateCheckboxImport(randomize_moveset, "Randomize", insideStats);
+
+    insideStats = statsJson["TMs"].toObject();
+    updateCheckboxImport(enable_TMs, "Randomize", insideStats);
+    updateCheckboxImport(allow_moves_without_animation, "Allow Moves w/out Animation", insideStats);
+
+    insideStats = statsJson["Types"].toObject();
+    updateCheckboxImport(randomize_types, "Randomize", insideStats);
+    updateCheckboxImport(give_extra_types, "Grand Extra Types", insideStats);
+
+    // Items
+    QJsonObject itemsJson = settings["Items"].toObject();
+    updateCheckboxImport(randomize_hidden_items, "Randomize Hidden Items", itemsJson);
+    updateCheckboxImport(randomize_pickup_items, "Randomize PickUp Items", itemsJson);
+    updateCheckboxImport(randomize_pokemon_drops, "Randomize Pokemon Drops", itemsJson);
+    updateCheckboxImport(randomize_synchro_items, "Randomize Synchro Items", itemsJson);
+
+    // Wilds
+    QJsonObject wildsJson = settings["Wild Paldea"].toObject();
+    updateCheckboxImport(randomize_paldea_wild, "Randomize", wildsJson);
+    updateCheckboxImport(paldea_ExcludeLegends, "Exclude Legendary", wildsJson);
+    updateCheckboxImport(paldea_OnlyLegends, "Only Legend", wildsJson);
+    updateCheckboxImport(paldea_OnlyParadox, "Only Paradox", wildsJson);
+    updateCheckboxImport(paldea_OnlyLegendsAndParadox, "Only Legends and Paradox", wildsJson);
+    updateCheckboxImport(paldea_BanStage1, "Ban Stage 1", wildsJson);
+    updateCheckboxImport(paldea_BanStage2, "Ban Stage 2", wildsJson);
+    updateCheckboxImport(paldea_BanStage3, "Ban Stage 3", wildsJson);
+    updateCheckboxImport(paldea_Ban1Stage, "Ban 1 Stage", wildsJson);
+    updateCheckboxImport(paldea_Settings_for_all_wild, "Wild Paldea settings for All", wildsJson);
+    updateCheckboxImport(let_ogre_pagos_spawn, "Ogerpon/Terapos Spawn", wildsJson);
+    generations = wildsJson["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(generation_paldea_wild, generations);
+
+    wildsJson = settings["Wild Kitakami"].toObject();
+    updateCheckboxImport(randomize_kitakami_wild, "Randomize", wildsJson);
+    updateCheckboxImport(kitakami_ExcludeLegends, "Exclude Legendary", wildsJson);
+    updateCheckboxImport(kitakami_OnlyLegends, "Only Legend", wildsJson);
+    updateCheckboxImport(kitakami_OnlyParadox, "Only Paradox", wildsJson);
+    updateCheckboxImport(kitakami_OnlyLegendsAndParadox, "Only Legends and Paradox", wildsJson);
+    updateCheckboxImport(kitakami_BanStage1, "Ban Stage 1", wildsJson);
+    updateCheckboxImport(kitakami_BanStage2, "Ban Stage 2", wildsJson);
+    updateCheckboxImport(kitakami_BanStage3, "Ban Stage 3", wildsJson);
+    updateCheckboxImport(kitakami_Ban1Stage, "Ban 1 Stage", wildsJson);
+    generations = wildsJson["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(generation_kitakami_wild, generations);
+
+    wildsJson = settings["Wild Blueberry"].toObject();
+    updateCheckboxImport(randomize_blueberry_wild, "Randomize", wildsJson);
+    updateCheckboxImport(blueberry_ExcludeLegends, "Exclude Legendary", wildsJson);
+    updateCheckboxImport(blueberry_OnlyLegends, "Only Legend", wildsJson);
+    updateCheckboxImport(blueberry_OnlyParadox, "Only Paradox", wildsJson);
+    updateCheckboxImport(blueberry_OnlyLegendsAndParadox, "Only Legends and Paradox", wildsJson);
+    updateCheckboxImport(blueberry_BanStage1, "Ban Stage 1", wildsJson);
+    updateCheckboxImport(blueberry_BanStage2, "Ban Stage 2", wildsJson);
+    updateCheckboxImport(blueberry_BanStage3, "Ban Stage 3", wildsJson);
+    updateCheckboxImport(blueberry_Ban1Stage, "Ban 1 Stage", wildsJson);
+    generations = wildsJson["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(generation_blueberry_wild, generations);
+
+    // Raids
+    QJsonObject raidsJson = settings["Raids Paldea"].toObject();
+    updateCheckboxImport(praids_randomize, "Randomize", raidsJson);
+    updateCheckboxImport(praids_onlyLegends, "Only Legend", raidsJson);
+    updateCheckboxImport(praids_onlyParadox, "Only Paradox", raidsJson);
+    updateCheckboxImport(praids_onlyLegendsandParadox, "Only Legends and Paradox", raidsJson);
+    updateCheckboxImport(praids_BanStage1, "Ban Stage 1", raidsJson);
+    updateCheckboxImport(praids_BanStage2, "Ban Stage 2", raidsJson);
+    updateCheckboxImport(praids_BanStage3, "Ban Stage 3", raidsJson);
+    updateCheckboxImport(praids_Ban1Stage, "Ban 1 Stage", raidsJson);
+    updateCheckboxImport(paldea_Settings_for_all_raids, "Raid Paldea settings for All", raidsJson);
+    updateCheckboxImport(praids_force_shiny, "Force Shiny", raidsJson);
+    updateSpinBoxImport(praids_shiny_chance, "Shiny Rate", raidsJson);
+    generations = raidsJson["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(praidsgeneration, generations);
+
+    raidsJson = settings["Raids Kitakami"].toObject();
+    updateCheckboxImport(kraids_randomize, "Randomize", raidsJson);
+    updateCheckboxImport(kraids_onlyLegends, "Only Legend", raidsJson);
+    updateCheckboxImport(kraids_onlyParadox, "Only Paradox", raidsJson);
+    updateCheckboxImport(kraids_onlyLegendsandParadox, "Only Legends and Paradox", raidsJson);
+    updateCheckboxImport(kraids_BanStage1, "Ban Stage 1", raidsJson);
+    updateCheckboxImport(kraids_BanStage2, "Ban Stage 2", raidsJson);
+    updateCheckboxImport(kraids_BanStage3, "Ban Stage 3", raidsJson);
+    updateCheckboxImport(kraids_Ban1Stage, "Ban 1 Stage", raidsJson);
+    updateCheckboxImport(kraids_force_shiny, "Force Shiny", raidsJson);
+    updateSpinBoxImport(kraids_shiny_chance, "Shiny Rate", raidsJson);
+    generations = raidsJson["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(kraidsgeneration, generations);
+
+    raidsJson = settings["Raids Blueberry"].toObject();
+    updateCheckboxImport(braids_randomize, "Randomize", raidsJson);
+    updateCheckboxImport(braids_onlyLegends, "Only Legend", raidsJson);
+    updateCheckboxImport(braids_onlyParadox, "Only Paradox", raidsJson);
+    updateCheckboxImport(braids_onlyLegendsandParadox, "Only Legends and Paradox", raidsJson);
+    updateCheckboxImport(braids_BanStage1, "Ban Stage 1", raidsJson);
+    updateCheckboxImport(braids_BanStage2, "Ban Stage 2", raidsJson);
+    updateCheckboxImport(braids_BanStage3, "Ban Stage 3", raidsJson);
+    updateCheckboxImport(braids_Ban1Stage, "Ban 1 Stage", raidsJson);
+    updateCheckboxImport(braids_force_shiny, "Force Shiny", raidsJson);
+    updateSpinBoxImport(braids_shiny_chance, "Shiny Rate", raidsJson);
+    generations = raidsJson["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(braidsgeneration, generations);
+
+    //Bosses
+    QJsonObject bossesJson = settings["Bosses"].toObject();
+    updateCheckboxImport(randomize_bosses, "Randomize", bossesJson);
+    updateCheckboxImport(boss_settings[0], "Only Legend", bossesJson);
+    updateCheckboxImport(boss_settings[1], "Only Paradox", bossesJson);
+    updateCheckboxImport(boss_settings[2], "Only Legends and Paradox", bossesJson);
+    updateCheckboxImport(boss_settings[3], "Ban Stage 1", bossesJson);
+    updateCheckboxImport(boss_settings[4], "Ban Stage 2", bossesJson);
+    updateCheckboxImport(boss_settings[5], "Ban Stage 3", bossesJson);
+    updateCheckboxImport(boss_settings[6], "Ban 1 Stage", bossesJson);
+    generations = bossesJson["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(boss_generation, generations);
+
+    // Trainers
+    QJsonObject trainersJson = settings["Trainers Paldea"].toObject();
+    updateCheckboxImport(use_trainer_paldea_for_all, "Trainer Paldea Settings for All", trainersJson);
+
+    QJsonObject nonGlobalTrainer = trainersJson["Champion"].toObject();
+    updateCheckboxImport(pchampion_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(pchampion_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Elite 4"].toObject();
+    updateCheckboxImport(pelite4_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(pelite4_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Gym"].toObject();
+    updateCheckboxImport(pgym_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(pgym_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Raids"].toObject();
+    updateCheckboxImport(praid_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(praid_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Rivals"].toObject();
+    updateCheckboxImport(prival_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(prival_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Routes"].toObject();
+    updateCheckboxImport(proute_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(proute_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    QJsonObject globalTrainer = trainersJson["Global"].toObject();
+    updateCheckboxImport(pglobal_trainer_randomizer_settings[0], "Allow All to Tera", globalTrainer);
+    updateCheckboxImport(pglobal_trainer_randomizer_settings[2], "Allow Shinies", globalTrainer);
+    updateCheckboxImport(pglobal_trainer_randomizer_settings[4], "Doubles Only", globalTrainer);
+    updateCheckboxImport(randomize_paldea_trainers, "Randomize", globalTrainer);
+    updateCheckboxImport(pglobal_trainer_randomizer_settings[5], "Rival Settings for All", globalTrainer);
+    updateCheckboxImport(pglobal_trainer_randomizer_settings[3], "Singles or Doubles", globalTrainer);
+    updateCheckboxImport(pglobal_trainer_randomizer_settings[1], "Tera Types", globalTrainer);
+    generations = globalTrainer["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(ptrainersgeneration, generations);
+
+    // Trainers Kitakami
+    trainersJson = settings["Trainers Kitakami"].toObject();
+
+    nonGlobalTrainer = trainersJson["Rivals"].toObject();
+    updateCheckboxImport(krival_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(krival_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Routes"].toObject();
+    updateCheckboxImport(kroute_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(kroute_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Raids"].toObject();
+    updateCheckboxImport(kraid_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(kraid_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Ogre Clan"].toObject();
+    updateCheckboxImport(kogre_clan_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(kogre_clan_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    globalTrainer = trainersJson["Global"].toObject();
+    updateCheckboxImport(kglobal_trainer_randomizer_settings[0], "Allow All to Tera", globalTrainer);
+    updateCheckboxImport(kglobal_trainer_randomizer_settings[2], "Allow Shinies", globalTrainer);
+    updateCheckboxImport(kglobal_trainer_randomizer_settings[4], "Doubles Only", globalTrainer);
+    updateCheckboxImport(randomize_kitakami_trainers, "Randomize", globalTrainer);
+    updateCheckboxImport(kglobal_trainer_randomizer_settings[5], "Rival Settings for All", globalTrainer);
+    updateCheckboxImport(kglobal_trainer_randomizer_settings[3], "Singles or Doubles", globalTrainer);
+    updateCheckboxImport(kglobal_trainer_randomizer_settings[1], "Tera Types", globalTrainer);
+    generations = globalTrainer["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(ktrainersgeneration, generations);
+
+    // Trainers Blueberry
+    trainersJson = settings["Trainers Blueberry"].toObject();
+
+    nonGlobalTrainer = trainersJson["Rivals"].toObject();
+    updateCheckboxImport(brival_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(brival_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Routes"].toObject();
+    updateCheckboxImport(broute_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(broute_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["Raids"].toObject();
+    updateCheckboxImport(braid_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(braid_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    nonGlobalTrainer = trainersJson["BBClub"].toObject();
+    updateCheckboxImport(b_bb4_randomizer[2], "Allow Tera", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[8], "Ban 1 Stage", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[9], "Ban Stage 1", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[10], "Ban Stage 2", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[11], "Ban Stage 3", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[3], "Force 6 IVs", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[0], "Force 6 Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[1], "Give Extra Pokemon", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[4], "Make AI Smart", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[5], "Only Legend", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[6], "Only Paradox", nonGlobalTrainer);
+    updateCheckboxImport(b_bb4_randomizer[7], "Only Legends and Paradox", nonGlobalTrainer);
+
+    globalTrainer = trainersJson["Global"].toObject();
+    updateCheckboxImport(bglobal_trainer_randomizer_settings[0], "Allow All to Tera", globalTrainer);
+    updateCheckboxImport(bglobal_trainer_randomizer_settings[2], "Allow Shinies", globalTrainer);
+    updateCheckboxImport(bglobal_trainer_randomizer_settings[4], "Doubles Only", globalTrainer);
+    updateCheckboxImport(randomize_blueberry_trainers, "Randomize", globalTrainer);
+    updateCheckboxImport(bglobal_trainer_randomizer_settings[5], "Rival Settings for All", globalTrainer);
+    updateCheckboxImport(bglobal_trainer_randomizer_settings[3], "Singles or Doubles", globalTrainer);
+    updateCheckboxImport(bglobal_trainer_randomizer_settings[1], "Tera Types", globalTrainer);
+    generations = globalTrainer["Generation"].toObject();
+    updateCheckboxArrayImportGenerations(btrainersgeneration, generations);
+}
+
+void SVRandomizerWindow::importSettings(){
+    // Step 1: Open a dialog to select the JSON file to import
+    QString filePath = QFileDialog::getOpenFileName(nullptr, "Select Settings File", "", "JSON Files (*.json)");
+    if (filePath.isEmpty()) {
+        qDebug() << "No file selected.";
+        return;
+    }
+
+    // Step 2: Open the file and read its contents
+    QFile file(filePath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << "Failed to open file for reading.";
+        return;
+    }
+
+    QByteArray data = file.readAll();
+    file.close();
+
+    // Step 3: Parse the JSON data and check validity
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    if (doc.isNull() || !doc.isObject()) {
+        qDebug() << "Invalid JSON format.";
+        return;
+    }
+
+    settings = doc.object();
+    setUpUISettings();
+}
+
+void SVRandomizerWindow::exportSettings(){
+    // Step 1: Let the user select a directory to save the file
+    QString defaultDir = QDir::currentPath();  // Get the current working directory
+    QString fileName = QFileDialog::getSaveFileName(nullptr,
+                                                    "Choose File Name",
+                                                    defaultDir + "/SVRandomizerSettings.json",
+                                                    "JSON Files (*.json)");
+
+    setUpJSONSettings();
+
+    // Step 2: Write settings to the chosen file
+    QFile file(fileName);
+    if (file.open(QIODevice::WriteOnly)) {
+        QJsonDocument doc(settings);
+        file.write(doc.toJson());
+        file.close();
+    } else {
+        qDebug() << "Failed to open file for writing.";
+    }
+}
+
+void SVRandomizerWindow::forceExportSettings(){
+    // Step 1: Let the user select a directory to save the file
+
+    setUpJSONSettings();
+    QString logFilePath = "logs/settings_debug.json";
+
+    // Step 2: Write settings to the chosen file
+    QFile file(logFilePath);
+    if (file.open(QIODevice::WriteOnly)) {
+        QJsonDocument doc(settings);
+        file.write(doc.toJson());
+        file.close();
+    } else {
+        qDebug() << "Failed to open file for writing.";
+    }
+}
+
+void SVRandomizerWindow::setUpJSONSettings(){
+    QJsonObject generation;
+    /*
+     * EARLY VERSION - WILL WORK ON IT TO IMPROVE LOGIC LATER ON
+     */
+    settings["Auto-Patch"] = randomizer.auto_patch;
+    settings["Kaizo Mode"] = randomizer.kaizo_mode;
+    settings["Seed"] = randomizer.seed;
+    settings["Seed Numerical"] = QStringLiteral("%1").arg(hash);
+    settings["Batch"] = bulk_amount->value();
+    QJsonObject starters;
+    starters["Randomize"] = randomizer.svRandomizerStarters.enable_starters;
+    starters["Tera Types"] = randomizer.svRandomizerStarters.randomize_starters_tera_types;
+    starters["All Shiny"] = randomizer.svRandomizerStarters.all_starters_shiny;
+    starters["One Shiny"] = randomizer.svRandomizerStarters.force_shiny_starter;
+    QJsonObject starterAlone;
+    starterAlone["Shiny"] = randomizer.svRandomizerStarters.starters_shiny[0];
+    starterAlone["Name"] = randomizer.svRandomizerStarters.starters[0];
+    starterAlone["Form"] = randomizer.svRandomizerStarters.starters_forms[0];
+    starterAlone["Gender"] = randomizer.svRandomizerStarters.starters_gender[0];
+    starterAlone["Poke Ball"] = randomizer.svRandomizerStarters.starters_pokeball[0];
+    starters["Sprigatito"] = starterAlone;
+    starterAlone["Shiny"] = randomizer.svRandomizerStarters.starters_shiny[1];
+    starterAlone["Name"] = randomizer.svRandomizerStarters.starters[1];
+    starterAlone["Form"] = randomizer.svRandomizerStarters.starters_forms[1];
+    starterAlone["Gender"] = randomizer.svRandomizerStarters.starters_gender[1];
+    starterAlone["Poke Ball"] = randomizer.svRandomizerStarters.starters_pokeball[1];
+    starters["Fuecoco"] = starterAlone;
+    starterAlone["Shiny"] = randomizer.svRandomizerStarters.starters_shiny[2];
+    starterAlone["Name"] = randomizer.svRandomizerStarters.starters[2];
+    starterAlone["Form"] = randomizer.svRandomizerStarters.starters_forms[2];
+    starterAlone["Gender"] = randomizer.svRandomizerStarters.starters_gender[2];
+    starterAlone["Poke Ball"] = randomizer.svRandomizerStarters.starters_pokeball[2];
+    starters["Quaxly"] = starterAlone;
+    starters["Ban Stage 1"] = randomizer.svRandomizerStarters.ban_stage_1_pokemon_starters;
+    starters["Ban Stage 2"] = randomizer.svRandomizerStarters.ban_stage_2_pokemon_starters;
+    starters["Ban Stage 3"] = randomizer.svRandomizerStarters.ban_stage_3_pokemon_starters;
+    starters["Ban 1 Stage"] = randomizer.svRandomizerStarters.ban_single_stage_pokemon_starters;
+    starters["Only Legend"] = randomizer.svRandomizerStarters.only_legendary_pokemon_starters;
+    starters["Only Paradox"] = randomizer.svRandomizerStarters.only_paradox_pokemon_starters;
+    starters["Only Legends and Paradox"] =  randomizer.svRandomizerStarters.only_legends_and_paradox_starters;
+    starters["Show Starters in Overworld"] = randomizer.svRandomizerStarters.show_starters_in_overworld;
+    starters["Shiny Rate"] = shiny_starter_rate->value();
+    generation["1"] = randomizer.svRandomizerStarters.generations_starters[0];
+    generation["2"] = randomizer.svRandomizerStarters.generations_starters[1];
+    generation["3"] = randomizer.svRandomizerStarters.generations_starters[2];
+    generation["4"] = randomizer.svRandomizerStarters.generations_starters[3];
+    generation["5"] = randomizer.svRandomizerStarters.generations_starters[4];
+    generation["6"] = randomizer.svRandomizerStarters.generations_starters[5];
+    generation["7"] = randomizer.svRandomizerStarters.generations_starters[6];
+    generation["8"] = randomizer.svRandomizerStarters.generations_starters[7];
+    generation["9"] = randomizer.svRandomizerStarters.generations_starters[8];
+    starters["Generation"] = generation;
+    settings["Starters"] = starters;
+
+    QJsonObject gifts;
+    gifts["Randomize"] = randomizer.svRandomizerStarters.enable_gifts;
+    gifts["Tera Types"] = randomizer.svRandomizerStarters.randomize_tera_types;;
+    gifts["Shiny Rate"] = randomizer.svRandomizerStarters.shiny_static_rate;
+    // gifts["Ban Stage 1"] = false;
+    // gifts["Ban Stage 2"] = false;
+    // gifts["Ban Stage 3"] = false;
+    // gifts["Ban 1 Stage"] = false;
+    // gifts["Only Legend"] = false;
+    // gifts["Only Paradox"] = false;
+    // gifts["Only Legends and Paradox"] = false;
+    generation["1"] = randomizer.svRandomizerStarters.generation_gifts[0];
+    generation["2"] = randomizer.svRandomizerStarters.generation_gifts[1];
+    generation["3"] = randomizer.svRandomizerStarters.generation_gifts[2];
+    generation["4"] = randomizer.svRandomizerStarters.generation_gifts[3];
+    generation["5"] = randomizer.svRandomizerStarters.generation_gifts[4];
+    generation["6"] = randomizer.svRandomizerStarters.generation_gifts[5];
+    generation["7"] = randomizer.svRandomizerStarters.generation_gifts[6];
+    generation["8"] = randomizer.svRandomizerStarters.generation_gifts[7];
+    generation["9"] = randomizer.svRandomizerStarters.generation_gifts[8];
+    gifts["Generation"] = generation;
+    settings["Gifts"] = gifts;
+
+    QJsonObject stats;
+    QJsonObject abilities;
+    abilities["Randomize"] = randomizer.svRandomizerStats.randomize_abilities;
+    abilities["Ban Wonder Guard"] = randomizer.svRandomizerStats.ban_wonder_guard;
+    stats["Abilities"] = abilities;
+
+    QJsonObject types;
+    types["Randomize"] = randomizer.svRandomizerStats.randomize_types;
+    types["Grand Extra Types"] = randomizer.svRandomizerStats.give_extra_types;
+    stats["Types"] = types;
+
+    QJsonObject moves;
+    moves["Randomize"] = randomizer.svRandomizerStats.randomize_moveset;
+    //moves["Allow Moves w/out Animation"] = false;
+    moves["Match Moves to Types"] = randomizer.svRandomizerStats.moveset_same_as_type;
+    stats["Moves"] = moves;
+
+    QJsonObject bst;
+    bst["Randomize"] = randomizer.svRandomizerStats.randomize_bst;
+    bst["Keep Same BST"] = randomizer.svRandomizerStats.keep_same_bst;
+    stats["Base Stats"] = bst;
+
+    QJsonObject evos;
+    evos["Randomize"] = randomizer.svRandomizerStats.randomize_evolutions;
+    evos["Evolve Every Level"] = randomizer.svRandomizerStats.evolve_every_5_levels;
+    evos["Fix Regional Evolutions"] = randomizer.svRandomizerStats.force_unobtainable_evolutions_at_night;
+    //evos["Fix Trade Evolutions"] = false;
+    stats["Evolutions"] = evos;
+
+    QJsonObject tms;
+    tms["Randomize"] = randomizer.svRandomizerStats.enable_TMs;
+    tms["Allow Moves w/out Animation"] = randomizer.svRandomizerStats.allow_moves_without_animation;
+    stats["TMs"] = tms;
+
+    settings["Stats"] = stats;
+
+    QJsonObject items;
+    items["Randomize Hidden Items"] = randomizer.svRandomizerItems.randomize_hidden_items;
+    items["Randomize PickUp Items"] = randomizer.svRandomizerItems.randomize_pickup_items;
+    items["Randomize Synchro Items"] = randomizer.svRandomizerItems.randomize_synchro_items;
+    items["Randomize Pokemon Drops"] = randomizer.svRandomizerItems.randomize_pokemon_drops;
+    //items["Randomize Pokeball Items"] = false;
+    settings["Items"] = items;
+
+    QJsonObject wild;
+
+    //Kitakami Wild
+    wild["Randomize"] = randomizer.svRandomizerWilds.randomize_kitakami_wild;
+    wild["Exclude Legendary"] = randomizer.svRandomizerWilds.kitakami_ExcludeLegends;
+    wild["Ban Stage 1"] = randomizer.svRandomizerWilds.kitakami_BanStage1;
+    wild["Ban Stage 2"] = randomizer.svRandomizerWilds.kitakami_BanStage2;
+    wild["Ban Stage 3"] = randomizer.svRandomizerWilds.kitakami_BanStage3;
+    wild["Ban 1 Stage"] = randomizer.svRandomizerWilds.kitakami_Ban1Stage;
+    wild["Only Legend"] = randomizer.svRandomizerWilds.kitakami_OnlyLegends;
+    wild["Only Paradox"] = randomizer.svRandomizerWilds.kitakami_OnlyParadox;
+    wild["Only Legends and Paradox"] = randomizer.svRandomizerWilds.kitakami_OnlyLegendsAndParadox;
+    //wild["Balance Area per BST"] = false;
+    generation["1"] = randomizer.svRandomizerWilds.generation_kitakami_wild[0];
+    generation["2"] = randomizer.svRandomizerWilds.generation_kitakami_wild[1];
+    generation["3"] = randomizer.svRandomizerWilds.generation_kitakami_wild[2];
+    generation["4"] = randomizer.svRandomizerWilds.generation_kitakami_wild[3];
+    generation["5"] = randomizer.svRandomizerWilds.generation_kitakami_wild[4];
+    generation["6"] = randomizer.svRandomizerWilds.generation_kitakami_wild[5];
+    generation["7"] = randomizer.svRandomizerWilds.generation_kitakami_wild[6];
+    generation["8"] = randomizer.svRandomizerWilds.generation_kitakami_wild[7];
+    generation["9"] = randomizer.svRandomizerWilds.generation_kitakami_wild[8];
+    wild["Generation"] = generation;
+    settings["Wild Kitakami"] = wild;
+
+    // Blueberry Wild
+    wild["Randomize"] = randomizer.svRandomizerWilds.randomize_blueberry_wild;
+    wild["Exclude Legendary"] = randomizer.svRandomizerWilds.blueberry_ExcludeLegends;
+    wild["Ban Stage 1"] = randomizer.svRandomizerWilds.blueberry_BanStage1;
+    wild["Ban Stage 2"] = randomizer.svRandomizerWilds.blueberry_BanStage2;
+    wild["Ban Stage 3"] = randomizer.svRandomizerWilds.blueberry_BanStage3;
+    wild["Ban 1 Stage"] = randomizer.svRandomizerWilds.blueberry_Ban1Stage;
+    wild["Only Legend"] = randomizer.svRandomizerWilds.blueberry_OnlyLegends;
+    wild["Only Paradox"] = randomizer.svRandomizerWilds.blueberry_OnlyParadox;
+    wild["Only Legends and Paradox"] = randomizer.svRandomizerWilds.blueberry_OnlyLegendsAndParadox;
+    //wild["Balance Area per BST"] = false;
+    generation["1"] = randomizer.svRandomizerWilds.generation_blueberry_wild[0];
+    generation["2"] = randomizer.svRandomizerWilds.generation_blueberry_wild[1];
+    generation["3"] = randomizer.svRandomizerWilds.generation_blueberry_wild[2];
+    generation["4"] = randomizer.svRandomizerWilds.generation_blueberry_wild[3];
+    generation["5"] = randomizer.svRandomizerWilds.generation_blueberry_wild[4];
+    generation["6"] = randomizer.svRandomizerWilds.generation_blueberry_wild[5];
+    generation["7"] = randomizer.svRandomizerWilds.generation_blueberry_wild[6];
+    generation["8"] = randomizer.svRandomizerWilds.generation_blueberry_wild[7];
+    generation["9"] = randomizer.svRandomizerWilds.generation_blueberry_wild[8];
+    wild["Generation"] = generation;
+    settings["Wild Blueberry"] = wild;
+
+    // Paldea Wild
+    wild["Randomize"] = randomizer.svRandomizerWilds.randomize_paldea_wild;
+    wild["Ogerpon/Terapos Spawn"] = randomizer.svRandomizerWilds.let_oger_pagos_spawn;
+    wild["Exclude Legendary"] = randomizer.svRandomizerWilds.paldea_ExcludeLegends;
+    wild["Ban Stage 1"] = randomizer.svRandomizerWilds.paldea_BanStage1;
+    wild["Ban Stage 2"] = randomizer.svRandomizerWilds.paldea_BanStage2;
+    wild["Ban Stage 3"] = randomizer.svRandomizerWilds.paldea_BanStage3;
+    wild["Ban 1 Stage"] = randomizer.svRandomizerWilds.paldea_Ban1Stage;
+    wild["Only Legend"] = randomizer.svRandomizerWilds.paldea_OnlyLegends;
+    wild["Only Paradox"] = randomizer.svRandomizerWilds.paldea_OnlyParadox;
+    wild["Only Legends and Paradox"] = randomizer.svRandomizerWilds.paldea_OnlyLegendsAndParadox;
+    //wild["Balance Area per BST"] = false;
+    generation["1"] = randomizer.svRandomizerWilds.generation_paldea_wild[0];
+    generation["2"] = randomizer.svRandomizerWilds.generation_paldea_wild[1];
+    generation["3"] = randomizer.svRandomizerWilds.generation_paldea_wild[2];
+    generation["4"] = randomizer.svRandomizerWilds.generation_paldea_wild[3];
+    generation["5"] = randomizer.svRandomizerWilds.generation_paldea_wild[4];
+    generation["6"] = randomizer.svRandomizerWilds.generation_paldea_wild[5];
+    generation["7"] = randomizer.svRandomizerWilds.generation_paldea_wild[6];
+    generation["8"] = randomizer.svRandomizerWilds.generation_paldea_wild[7];
+    generation["9"] = randomizer.svRandomizerWilds.generation_paldea_wild[8];
+    wild["Generation"] = generation;
+    wild["Wild Paldea settings for All"] = randomizer.svRandomizerWilds.paldea_Settings_for_all_wild;
+    settings["Wild Paldea"] = wild;
+
+    // For Statics
+    // wild["Shiny Rate"] = shiny_static_rate->value();
+    // settings["Statics"] = wild;
+
+    QJsonObject raid;
+
+    // Kitakami Raids
+    raid["Randomize"] = randomizer.svRandomizerRaids.kraids_randomize;
+    raid["Shiny Rate"] = praids_shiny_chance->value();
+    raid["Ban Stage 1"] = randomizer.svRandomizerRaids.kraids_BanStage1;
+    raid["Ban Stage 2"] = randomizer.svRandomizerRaids.kraids_BanStage2;
+    raid["Ban Stage 3"] = randomizer.svRandomizerRaids.kraids_BanStage3;
+    raid["Ban 1 Stage"] = randomizer.svRandomizerRaids.kraids_Ban1Stage;
+    raid["Only Legend"] = randomizer.svRandomizerRaids.kraids_onlyLegends;
+    raid["Only Paradox"] = randomizer.svRandomizerRaids.kraids_onlyParadox;
+    raid["Only Legends and Paradox"] = randomizer.svRandomizerRaids.kraids_onlyLegendsandParadox;
+    raid["Force Shiny"] = randomizer.svRandomizerRaids.kraids_force_shiny;
+    generation["1"] = randomizer.svRandomizerRaids.kraidsgeneration[0];
+    generation["2"] = randomizer.svRandomizerRaids.kraidsgeneration[1];
+    generation["3"] = randomizer.svRandomizerRaids.kraidsgeneration[2];
+    generation["4"] = randomizer.svRandomizerRaids.kraidsgeneration[3];
+    generation["5"] = randomizer.svRandomizerRaids.kraidsgeneration[4];
+    generation["6"] = randomizer.svRandomizerRaids.kraidsgeneration[5];
+    generation["7"] = randomizer.svRandomizerRaids.kraidsgeneration[6];
+    generation["8"] = randomizer.svRandomizerRaids.kraidsgeneration[7];
+    generation["9"] = randomizer.svRandomizerRaids.kraidsgeneration[8];
+    raid["Generation"] = generation;
+    settings["Raids Kitakami"] = raid;
+
+    // Blueberry Raid
+    raid["Randomize"] = randomizer.svRandomizerRaids.braids_randomize;
+    raid["Shiny Rate"] = braids_shiny_chance->value();
+    raid["Ban Stage 1"] = randomizer.svRandomizerRaids.braids_BanStage1;
+    raid["Ban Stage 2"] = randomizer.svRandomizerRaids.braids_BanStage2;
+    raid["Ban Stage 3"] = randomizer.svRandomizerRaids.braids_BanStage3;
+    raid["Ban 1 Stage"] = randomizer.svRandomizerRaids.braids_Ban1Stage;
+    raid["Only Legend"] = randomizer.svRandomizerRaids.braids_onlyLegends;
+    raid["Only Paradox"] = randomizer.svRandomizerRaids.braids_onlyParadox;
+    raid["Only Legends and Paradox"] = randomizer.svRandomizerRaids.braids_onlyLegendsandParadox;
+    raid["Force Shiny"] = randomizer.svRandomizerRaids.braids_force_shiny;
+    generation["1"] = randomizer.svRandomizerRaids.braidsgeneration[0];
+    generation["2"] = randomizer.svRandomizerRaids.braidsgeneration[1];
+    generation["3"] = randomizer.svRandomizerRaids.braidsgeneration[2];
+    generation["4"] = randomizer.svRandomizerRaids.braidsgeneration[3];
+    generation["5"] = randomizer.svRandomizerRaids.braidsgeneration[4];
+    generation["6"] = randomizer.svRandomizerRaids.braidsgeneration[5];
+    generation["7"] = randomizer.svRandomizerRaids.braidsgeneration[6];
+    generation["8"] = randomizer.svRandomizerRaids.braidsgeneration[7];
+    generation["9"] = randomizer.svRandomizerRaids.braidsgeneration[8];
+    raid["Generation"] = generation;
+    settings["Raids Blueberry"] = raid;
+
+    // Paldea Raid
+    raid["Raid Paldea settings for All"] = false;
+    raid["Randomize"] = randomizer.svRandomizerRaids.praids_randomize;
+    raid["Shiny Rate"] = praids_shiny_chance->value();
+    raid["Ban Stage 1"] = randomizer.svRandomizerRaids.praids_BanStage1;
+    raid["Ban Stage 2"] = randomizer.svRandomizerRaids.praids_BanStage2;
+    raid["Ban Stage 3"] = randomizer.svRandomizerRaids.praids_BanStage3;
+    raid["Ban 1 Stage"] = randomizer.svRandomizerRaids.praids_Ban1Stage;
+    raid["Only Legend"] = randomizer.svRandomizerRaids.praids_onlyLegends;
+    raid["Only Paradox"] = randomizer.svRandomizerRaids.praids_onlyParadox;
+    raid["Only Legends and Paradox"] = randomizer.svRandomizerRaids.praids_onlyLegendsandParadox;
+    raid["Force Shiny"] = randomizer.svRandomizerRaids.praids_force_shiny;
+    generation["1"] = randomizer.svRandomizerRaids.praidsgeneratio[0];
+    generation["2"] = randomizer.svRandomizerRaids.praidsgeneratio[1];
+    generation["3"] = randomizer.svRandomizerRaids.praidsgeneratio[2];
+    generation["4"] = randomizer.svRandomizerRaids.praidsgeneratio[3];
+    generation["5"] = randomizer.svRandomizerRaids.praidsgeneratio[4];
+    generation["6"] = randomizer.svRandomizerRaids.praidsgeneratio[5];
+    generation["7"] = randomizer.svRandomizerRaids.praidsgeneratio[6];
+    generation["8"] = randomizer.svRandomizerRaids.praidsgeneratio[7];
+    generation["9"] = randomizer.svRandomizerRaids.praidsgeneratio[8];
+    raid["Generation"] = generation;
+    settings["Raids Paldea"] = raid;
+
+    QJsonObject trainers_global;
+    QJsonObject trainers_paldea;
+    QJsonObject trainers_kitakami;
+    QJsonObject trainers_blueberry;
+    QJsonObject trainers_settings;
+
+    // Paldea Trainers
+    trainers_global["Randomize"] = randomizer.svRandomizerTrainers.randomize_paldea_trainers;
+    trainers_global["Allow All to Tera"] = randomizer.svRandomizerTrainers.pglobal_trainer_randomizer_settings[0];
+    trainers_global["Tera Types"] = randomizer.svRandomizerTrainers.pglobal_trainer_randomizer_settings[1];
+    trainers_global["Allow Shinies"] = randomizer.svRandomizerTrainers.pglobal_trainer_randomizer_settings[2];
+    trainers_global["Singles or Doubles"] = randomizer.svRandomizerTrainers.pglobal_trainer_randomizer_settings[3];
+    trainers_global["Doubles Only"] = randomizer.svRandomizerTrainers.pglobal_trainer_randomizer_settings[4];
+    trainers_global["Rival Settings for All"] = randomizer.svRandomizerTrainers.pglobal_trainer_randomizer_settings[5];
+    generation["1"] = randomizer.svRandomizerTrainers.ptrainersgeneration[0];
+    generation["2"] = randomizer.svRandomizerTrainers.ptrainersgeneration[1];
+    generation["3"] = randomizer.svRandomizerTrainers.ptrainersgeneration[2];
+    generation["4"] = randomizer.svRandomizerTrainers.ptrainersgeneration[3];
+    generation["5"] = randomizer.svRandomizerTrainers.ptrainersgeneration[4];
+    generation["6"] = randomizer.svRandomizerTrainers.ptrainersgeneration[5];
+    generation["7"] = randomizer.svRandomizerTrainers.ptrainersgeneration[6];
+    generation["8"] = randomizer.svRandomizerTrainers.ptrainersgeneration[7];
+    generation["9"] = randomizer.svRandomizerTrainers.ptrainersgeneration[8];
+    trainers_global["Generation"] = generation;
+    trainers_paldea["Global"] = trainers_global;
+    trainers_paldea["Trainer Paldea Settings for All"] = randomizer.svRandomizerTrainers.use_trainer_paldea_for_all;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.prival_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.prival_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.prival_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.prival_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.prival_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.prival_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.prival_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.prival_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.prival_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.prival_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.prival_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.prival_randomizer[7];
+    trainers_paldea["Rivals"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.proute_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.proute_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.proute_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.proute_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.proute_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.proute_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.proute_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.proute_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.proute_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.proute_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.proute_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.proute_randomizer[7];
+    trainers_paldea["Routes"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.pgym_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.pgym_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.pgym_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.pgym_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.pgym_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.pgym_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.pgym_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.pgym_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.pgym_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.pgym_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.pgym_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.pgym_randomizer[7];
+    trainers_paldea["Gym"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.pelite4_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.pelite4_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.pelite4_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.pelite4_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.pelite4_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.pelite4_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.pelite4_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.pelite4_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.pelite4_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.pelite4_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.pelite4_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.pelite4_randomizer[7];
+    trainers_paldea["Elite 4"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.pchampion_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.pchampion_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.pchampion_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.pchampion_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.pchampion_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.pchampion_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.pchampion_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.pchampion_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.pchampion_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.pchampion_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.pchampion_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.pchampion_randomizer[7];
+    trainers_paldea["Champion"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.praid_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.praid_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.praid_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.praid_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.praid_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.praid_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.praid_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.praid_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.praid_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.praid_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.praid_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.praid_randomizer[7];
+    trainers_paldea["Raids"] = trainers_settings;
+
+    // Kitakami Trainers
+
+    trainers_global["Randomize"] = randomizer.svRandomizerTrainers.randomize_kitakami_trainers;
+    trainers_global["Allow All to Tera"] = randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings[0];
+    trainers_global["Tera Types"] = randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings[1];
+    trainers_global["Allow Shinies"] = randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings[2];
+    trainers_global["Singles or Doubles"] = randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings[3];
+    trainers_global["Doubles Only"] = randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings[4];
+    trainers_global["Rival Settings for All"] = randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings[5];
+    generation["1"] = randomizer.svRandomizerTrainers.ktrainersgeneration[0];
+    generation["2"] = randomizer.svRandomizerTrainers.ktrainersgeneration[1];
+    generation["3"] = randomizer.svRandomizerTrainers.ktrainersgeneration[2];
+    generation["4"] = randomizer.svRandomizerTrainers.ktrainersgeneration[3];
+    generation["5"] = randomizer.svRandomizerTrainers.ktrainersgeneration[4];
+    generation["6"] = randomizer.svRandomizerTrainers.ktrainersgeneration[5];
+    generation["7"] = randomizer.svRandomizerTrainers.ktrainersgeneration[6];
+    generation["8"] = randomizer.svRandomizerTrainers.ktrainersgeneration[7];
+    generation["9"] = randomizer.svRandomizerTrainers.ktrainersgeneration[8];
+    trainers_global["Generation"] = generation;
+    trainers_kitakami["Global"] = trainers_global;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.krival_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.krival_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.krival_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.krival_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.krival_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.krival_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.krival_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.krival_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.krival_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.krival_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.krival_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.krival_randomizer[7];
+    trainers_kitakami["Rivals"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.kroute_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.kroute_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.kroute_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.kroute_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.kroute_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.kroute_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.kroute_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.kroute_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.kroute_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.kroute_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.kroute_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.kroute_randomizer[7];
+    trainers_kitakami["Routes"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.kogre_clan_randomizer[7];
+    trainers_kitakami["Ogre Clan"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.kraid_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.kraid_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.kraid_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.kraid_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.kraid_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.kraid_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.kraid_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.kraid_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.kraid_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.kraid_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.kraid_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.kraid_randomizer[7];
+    trainers_kitakami["Raids"] = trainers_settings;
+
+    // Blueberry Trainers
+    trainers_global["Randomize"] = randomizer.svRandomizerTrainers.randomize_blueberry_trainers;
+    trainers_global["Allow All to Tera"] = randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings[0];
+    trainers_global["Tera Types"] = randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings[1];
+    trainers_global["Allow Shinies"] = randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings[2];
+    trainers_global["Singles or Doubles"] = randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings[3];
+    trainers_global["Doubles Only"] = randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings[4];
+    trainers_global["Rival Settings for All"] = randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings[5];
+    generation["1"] = randomizer.svRandomizerTrainers.btrainersgeneration[0];
+    generation["2"] = randomizer.svRandomizerTrainers.btrainersgeneration[1];
+    generation["3"] = randomizer.svRandomizerTrainers.btrainersgeneration[2];
+    generation["4"] = randomizer.svRandomizerTrainers.btrainersgeneration[3];
+    generation["5"] = randomizer.svRandomizerTrainers.btrainersgeneration[4];
+    generation["6"] = randomizer.svRandomizerTrainers.btrainersgeneration[5];
+    generation["7"] = randomizer.svRandomizerTrainers.btrainersgeneration[6];
+    generation["8"] = randomizer.svRandomizerTrainers.btrainersgeneration[7];
+    generation["9"] = randomizer.svRandomizerTrainers.btrainersgeneration[8];
+    trainers_global["Generation"] = generation;
+    trainers_blueberry["Global"] = trainers_global;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.brival_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.brival_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.brival_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.brival_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.brival_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.brival_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.brival_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.brival_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.brival_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.brival_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.brival_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.brival_randomizer[7];
+    trainers_blueberry["Rivals"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.broute_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.broute_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.broute_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.broute_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.broute_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.broute_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.broute_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.broute_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.broute_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.broute_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.broute_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.broute_randomizer[7];
+    trainers_blueberry["Routes"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.b_bb4_randomizer[7];
+    trainers_blueberry["BBClub"] = trainers_settings;
+
+    trainers_settings["Force 6 Pokemon"] = randomizer.svRandomizerTrainers.braid_randomizer[0];
+    trainers_settings["Give Extra Pokemon"] = randomizer.svRandomizerTrainers.braid_randomizer[1];
+    trainers_settings["Allow Tera"] = randomizer.svRandomizerTrainers.braid_randomizer[2];
+    trainers_settings["Force 6 IVs"] = randomizer.svRandomizerTrainers.braid_randomizer[3];
+    trainers_settings["Make AI Smart"] = randomizer.svRandomizerTrainers.braid_randomizer[4];
+    trainers_settings["Ban Stage 1"] = randomizer.svRandomizerTrainers.braid_randomizer[8];
+    trainers_settings["Ban Stage 2"] = randomizer.svRandomizerTrainers.braid_randomizer[9];
+    trainers_settings["Ban Stage 3"] = randomizer.svRandomizerTrainers.braid_randomizer[10];
+    trainers_settings["Ban 1 Stage"] = randomizer.svRandomizerTrainers.braid_randomizer[11];
+    trainers_settings["Only Legend"] = randomizer.svRandomizerTrainers.braid_randomizer[5];
+    trainers_settings["Only Paradox"] = randomizer.svRandomizerTrainers.braid_randomizer[6];
+    trainers_settings["Only Legends and Paradox"] = randomizer.svRandomizerTrainers.braid_randomizer[7];
+    trainers_blueberry["Raids"] = trainers_settings;
+
+    settings["Trainers Paldea"] = trainers_paldea;
+    settings["Trainers Kitakami"] = trainers_kitakami;
+    settings["Trainers Blueberry"] = trainers_blueberry;
+
+    QJsonObject boss;
+    boss["Randomize"] = randomizer.svRandomizerBoss.randomize_bosses;
+    boss["Ban Stage 1"] = randomizer.svRandomizerBoss.boss_settings[3];
+    boss["Ban Stage 2"] = randomizer.svRandomizerBoss.boss_settings[4];
+    boss["Ban Stage 3"] = randomizer.svRandomizerBoss.boss_settings[5];
+    boss["Ban 1 Stage"] = randomizer.svRandomizerBoss.boss_settings[6];
+    boss["Only Legend"] = randomizer.svRandomizerBoss.boss_settings[0];
+    boss["Only Paradox"] = randomizer.svRandomizerBoss.boss_settings[1];
+    boss["Only Legends and Paradox"] = randomizer.svRandomizerBoss.boss_settings[2];
+    generation["1"] = randomizer.svRandomizerBoss.boss_generation[0];
+    generation["2"] = randomizer.svRandomizerBoss.boss_generation[1];
+    generation["3"] = randomizer.svRandomizerBoss.boss_generation[2];
+    generation["4"] = randomizer.svRandomizerBoss.boss_generation[3];
+    generation["5"] = randomizer.svRandomizerBoss.boss_generation[4];
+    generation["6"] = randomizer.svRandomizerBoss.boss_generation[5];
+    generation["7"] = randomizer.svRandomizerBoss.boss_generation[6];
+    generation["8"] = randomizer.svRandomizerBoss.boss_generation[7];
+    generation["9"] = randomizer.svRandomizerBoss.boss_generation[8];
+    boss["Generation"] = generation;
+    settings["Bosses"] = boss;
+
 }
