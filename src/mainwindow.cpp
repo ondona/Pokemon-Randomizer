@@ -28,7 +28,7 @@ namespace fs = std::filesystem;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     resize(950, 800);
-    QSettings settings("YourCompany", "YourApp");
+    QSettings settings("Pokemon Randomizer", "Main");
     bool alwaysOnTopValue = settings.value("AlwaysOnTop", false).toBool();
 
     // Central Widget
@@ -87,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     // Connect checkbox to update the setting and apply it immediately
     connect(alwaysOnTopCheckBox, &QCheckBox::toggled, this, [this](bool checked) {
-        QSettings settings("YourCompany", "YourApp");
+        QSettings settings("Pokemon Randomizer", "Main");
         settings.setValue("AlwaysOnTop", checked);
         setWindowFlag(Qt::WindowStaysOnTopHint, checked);
         show();  // Reapply the window flags
@@ -258,7 +258,7 @@ void MainWindow::updateFavorites() {
 }
 
 void MainWindow::checkForUpdates() {
-    QString currentVersion = "0.1.1";
+    QString currentVersion = "0.1.2";
 
     // Replace with actual owner and repo
     QString owner = "Gonzalooo";

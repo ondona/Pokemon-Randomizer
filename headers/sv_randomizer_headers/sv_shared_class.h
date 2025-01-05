@@ -2514,6 +2514,35 @@ public:
         {"Dream Ball",{"DORIIMUBOORU", "ITEMID_DORIIMUBOORU"}}
     };
 
+    QMap<QString, int> pokeballIndex = {
+        {"Poke Ball", 0},
+        {"Great Ball", 1},
+        {"Ultra Ball", 2},
+        {"Master Ball", 3},
+        {"Beast Ball", 4},
+        {"Cherish Ball", 5},
+        {"Luxury Ball", 6},
+        {"Timer Ball", 7},
+        {"Net Ball", 8},
+        {"Nest Ball", 9},
+        {"Repeat Ball", 10},
+        {"Dive Ball", 11},
+        {"Dusk Ball", 12},
+        {"Heal Ball", 13},
+        {"Quick Ball", 14},
+        {"Premier Ball", 15},
+        {"Safari Ball", 16},
+        {"Fast Ball", 17},
+        {"Level Ball", 18},
+        {"Lure Ball", 19},
+        {"Heavy Ball", 20},
+        {"Love Ball", 21},
+        {"Friend Ball", 22},
+        {"Moon Ball", 23},
+        {"Sport Ball", 24},
+        {"Dream Ball", 25}
+    };
+
     QList<int> pokemonDevIds_Gen1 = {
         1,
         2,
