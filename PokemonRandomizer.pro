@@ -115,6 +115,8 @@ macx {
     SV_FLATBUFFERS_DEST = $$OUT_PWD/SV_FLATBUFFERS
     INCLUDE_SRC = $$PWD/include
     INCLUDE_DEST = $$OUT_PWD/include
+    LOGS_DEST = $$OUT_PWD/logs
+    LOGS_SRC = $$PWD/logs
 
     # Custom command to copy the include folder
     copy_include.commands = mkdir -p $$INCLUDE_DEST && cp -r $$INCLUDE_SRC/. $$INCLUDE_DEST
@@ -131,6 +133,10 @@ macx {
     # Custom command to copy the SV_FLATBUFFERS folder
     copy_sv_flatbuffers.commands = mkdir -p $$SV_FLATBUFFERS_DEST && cp -r $$SV_FLATBUFFERS_SRC/. $$SV_FLATBUFFERS_DEST
     QMAKE_EXTRA_TARGETS += copy_sv_flatbuffers
+
+    # Custom command to copy the logs folder
+    copy_logs.commands = mkdir -p $$LOGS_DEST && cp -r $$LOGS_SRC/. $$LOGS_DEST
+    QMAKE_EXTRA_TARGETS += copy_logs
 
     # Ensure the copy commands are executed before building
     PRE_TARGETDEPS += copy_images copy_thirdparty copy_sv_flatbuffers copy_include
@@ -155,6 +161,8 @@ unix:!macx {
     SV_FLATBUFFERS_DEST = $$OUT_PWD/SV_FLATBUFFERS
     INCLUDE_SRC = $$PWD/include
     INCLUDE_DEST = $$OUT_PWD/include
+    LOGS_DEST = $$OUT_PWD/logs
+    LOGS_SRC = $$PWD/logs
 
     # Custom command to copy the include folder
     copy_include.commands = mkdir -p $$INCLUDE_DEST && cp -r $$INCLUDE_SRC/. $$INCLUDE_DEST
@@ -171,6 +179,10 @@ unix:!macx {
     # Custom command to copy the SV_FLATBUFFERS folder
     copy_sv_flatbuffers.commands = mkdir -p $$SV_FLATBUFFERS_DEST && cp -r $$SV_FLATBUFFERS_SRC/. $$SV_FLATBUFFERS_DEST
     QMAKE_EXTRA_TARGETS += copy_sv_flatbuffers
+
+    # Custom command to copy the logs folder
+    copy_logs.commands = mkdir -p $$LOGS_DEST && cp -r $$LOGS_SRC/. $$LOGS_DEST
+    QMAKE_EXTRA_TARGETS += copy_logs
 
     # Ensure the copy commands are executed before building
     PRE_TARGETDEPS += copy_images copy_thirdparty copy_sv_flatbuffers
