@@ -1254,7 +1254,7 @@ QWidget* SVRandomizerWindow::setupPaldeaWildWidget(){
     row0->addWidget(let_ogre_pagos_spawn);
     connect(let_ogre_pagos_spawn, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
     formLayout->addRow(row0);
-
+/*
     paldea_ExcludeLegends = new QCheckBox("Exclude Legends", paldeaWildWidget);
     row1->addWidget(paldea_ExcludeLegends);
     connect(paldea_ExcludeLegends, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
