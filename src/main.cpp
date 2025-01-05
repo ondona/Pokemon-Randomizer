@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
 
     qInstallMessageHandler(customMessageHandler);
 
-    QSettings settings("YourCompany", "YourApp");
+    QSettings settings("Pokemon Randomizer", "Main");
 
     // Default to true for "Always on Top"
     bool alwaysOnTopValue = settings.value("AlwaysOnTop", true).toBool();
