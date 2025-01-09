@@ -91,10 +91,6 @@ bool SVRaids::randomize_paldean_raids(std::string fileName){
     file >> wildPokemonInfo;
     file.close();
 
-    /*QList<int> wildPaldeanPokemon = {};
-    QList<int> wildLegendMons_Useless = {};
-    getUsablePokemon(praidsgeneratio, praids_onlyLegends, praids_onlyParadox, praids_onlyLegendsandParadox, wildPaldeanPokemon, wildLegendMons_Useless);
-    getBannedPokemon(praids_BanStage1, praids_BanStage2, praids_BanStage3, praids_Ban1Stage, wildPaldeanPokemon);//*/
     int banned = getBannedLength(praidsgeneratio);
     std::string ogName = fileName;
 
@@ -272,11 +268,7 @@ bool SVRaids::randomize_kitakami_raids(std::string fileName){
     file >> wildPokemonInfo;
     file.close();
 
-    /*QList<int> wildPaldeanPokemon = {};
-    QList<int> wildLegendMons_Useless = {};
-    getUsablePokemon(kraidsgeneration, kraids_onlyLegends, kraids_onlyParadox, kraids_onlyLegendsandParadox, wildPaldeanPokemon, wildLegendMons_Useless);
-    getBannedPokemon(kraids_BanStage1, kraids_BanStage2, kraids_BanStage3, kraids_Ban1Stage, wildPaldeanPokemon);//*/
-	int banned = getBannedLength(kraidsgeneration);
+    int banned = getBannedLength(kraidsgeneration);
     std::string ogName = fileName;
 
     for(int i = 1; i<=6; i++){
@@ -435,10 +427,6 @@ bool SVRaids::randomize_blueberry_raids(std::string fileName){
     file >> wildPokemonInfo;
     file.close();
 
-    /*QList<int> wildPaldeanPokemon = {};
-    QList<int> wildLegendMons_Useless = {};
-    getUsablePokemon(braidsgeneration, braids_onlyLegends, braids_onlyParadox, braids_onlyLegendsandParadox, wildPaldeanPokemon, wildLegendMons_Useless);
-    getBannedPokemon(braids_BanStage1, braids_BanStage2, braids_BanStage3, braids_Ban1Stage, wildPaldeanPokemon);//*/
     int banned = getBannedLength(braidsgeneration);
     std::string ogName = fileName;
 

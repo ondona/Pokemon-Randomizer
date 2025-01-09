@@ -284,10 +284,34 @@ std::string SVShared::selectTeraTypes(int pokemon, int formId){
     return teraTypes[std::rand()%teraTypes.length()].toUpper().toStdString();
 }
 
+bool SVShared::CheckAllowedMons(QList<int>& allowedPokemon){
+    int i = 0;
+    //qDebug() << "Allow check: " << allowedPokemon.size();
+    //qDebug() << allowedPokemon;
+    while ((i+1) < allowedPokemon.size())
+    {
+        int checka = allowedPokemon[i];
+        int ii = i+1;
+        while (ii < allowedPokemon.size())
+        {
+            int checkb = allowedPokemon[ii];
+            if (checkb == checka)
+            {
+            qDebug() << "Allow check, double up ID: " << checkb;
+            allowedPokemon.removeAt(ii);
+            }else{
+            ii++;
+            }
+        }
+        i++;
+    }
+    return true;
+}
+
 int SVShared::GenerateAllowedMons(LimiterDetails Limiter, QList<int>& allowedPokemon){
     // Logic for Poke Limiter
-	QList<int> RemoveList;
-	QList<int> AllowList;
+    QList<int> RemoveList;
+    QList<int> AllowList;
     for(int i=0; i<9; i++){
         if(Limiter.Gens[i] == true){
             switch (i){
@@ -425,7 +449,8 @@ int SVShared::GenerateAllowedMons(LimiterDetails Limiter, QList<int>& allowedPok
     //organise list
     std::sort(allowedPokemon.begin(), allowedPokemon.end());
     //qDebug() << allowedPokemon.size();
-	return allowedPokemon.size();
+    CheckAllowedMons(allowedPokemon);
+    return allowedPokemon.size();
 }
 
 void SVShared::getUsablePokemon(QVector<bool> generations, bool legend, bool paradoxs, bool legends_paradox, QList<int>& allowedPokemon, QList<int>& allowedLegends){

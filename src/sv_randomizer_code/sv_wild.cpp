@@ -695,17 +695,10 @@ bool SVWilds::randomize_statics(){
     fileFixed >> paldeaFixedJSON;
     fileFixed.close();
 
-    QList<int> wildPaldeanPokemon = {};
-    QList<int> wildLegendMons_Useless = {};
-
-    getUsablePokemon(generation_paldea_wild, paldea_OnlyLegends, paldea_OnlyParadox, paldea_OnlyLegendsAndParadox, wildPaldeanPokemon, wildLegendMons_Useless);
-    getBannedPokemon(paldea_BanStage1, paldea_BanStage2, paldea_BanStage3, paldea_Ban1Stage, wildPaldeanPokemon);
-
-
     for(unsigned long long i =0; i<paldeaFixedJSON["values"].size(); i++){
 
         int random = 1+std::rand()%1025;
-        while(!wildPaldeanPokemon.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
+        while(!FixedSymbolAllowed.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
             random = 1+std::rand()%1025;
 
         int formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());

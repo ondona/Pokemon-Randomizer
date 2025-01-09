@@ -250,6 +250,24 @@ private:
         QCheckBox *randomize_paldea_trainers;
         QCheckBox *randomize_kitakami_trainers;
         QCheckBox *randomize_blueberry_trainers;
+
+		QGroupBox *PRivalLimiterGroup;
+		QGroupBox *PRouteLimiterGroup;
+		QGroupBox *PGymLimiterGroup;
+		QGroupBox *PE4LimiterGroup;
+		QGroupBox *PRaidLimiterGroup;
+		QGroupBox *PChampionLimiterGroup;
+		
+		QGroupBox *KRivalLimiterGroup;
+		QGroupBox *KRouteLimiterGroup;
+		QGroupBox *KOCLimiterGroup;
+		QGroupBox *KRaidLimiterGroup;
+		
+		QGroupBox *BRivalLimiterGroup;
+		QGroupBox *BRouteLimiterGroup;
+		QGroupBox *BBB4LimiterGroup;
+		QGroupBox *BRaidLimiterGroup;
+		
     //Bosses
         QCheckBox *randomize_bosses; // Done
         QVector<QCheckBox*> boss_settings; // Done

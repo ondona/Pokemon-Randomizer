@@ -34,35 +34,30 @@ int getMaxNumberOfChanges(json pokemonFile, int index, bool NULLS = false){
     return totalChanges;
 }
 
-void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settings, QVector<bool> globalSettings, QVector<bool> generations){
-    QList<int> allowedMons;
-    QList<int> allowedLegends;
-    getUsablePokemon(generations, settings[5], settings[6], settings[7], allowedMons, allowedLegends);
-    getBannedPokemon(settings[8], settings[9], settings[10], settings[11], allowedMons);
-
-    for(int i =0; i<indeces.size(); i++){
-        if(!randomize_arven_titan.contains(indeces[i])){
+void SVTrainers::randomizeTrainerFights(QList<int> FightLists, QVector<bool> settings, QVector<bool> globalSettings, QList<int> AllowedMons){
+    for(int i =0; i<FightLists.size(); i++){
+        if(!randomize_arven_titan.contains(FightLists[i])){
             if(globalSettings[0] == true || settings[2] == true){
-                cleanTrainerInfo["values"][indeces[i]]["changeGem"] = true;
+                cleanTrainerInfo["values"][FightLists[i]]["changeGem"] = true;
             }
         }
 
-        int maxNum = getMaxNumberOfChanges(cleanTrainerInfo, indeces[i]);
+        int maxNum = getMaxNumberOfChanges(cleanTrainerInfo, FightLists[i]);
         int ogMax = maxNum;
 
-        if(!raid_npc_index.contains(indeces[i]) == true && !multi_battles_index.contains(indeces[i]) == true){
+        if(!raid_npc_index.contains(FightLists[i]) == true && !multi_battles_index.contains(FightLists[i]) == true){
             if(globalSettings[3] == true){
                 if(1+std::rand()%2 == 2){
-                    cleanTrainerInfo["values"][indeces[i]]["aiDouble"] = true;
-                    cleanTrainerInfo["values"][indeces[i]]["battleType"] = "_2vs2";
+                    cleanTrainerInfo["values"][FightLists[i]]["aiDouble"] = true;
+                    cleanTrainerInfo["values"][FightLists[i]]["battleType"] = "_2vs2";
                     if(maxNum < 2){
                         maxNum = 2 ;
                     }
                 }
             }
             if(globalSettings[4] == true){
-                cleanTrainerInfo["values"][indeces[i]]["aiDouble"] = true;
-                cleanTrainerInfo["values"][indeces[i]]["battleType"] = "_2vs2";
+                cleanTrainerInfo["values"][FightLists[i]]["aiDouble"] = true;
+                cleanTrainerInfo["values"][FightLists[i]]["battleType"] = "_2vs2";
                 if(maxNum < 2){
                     maxNum = 2 ;
                 }
@@ -72,11 +67,11 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
         // ----------Start Changing Pokemon Settings
         if(settings[0] == true){
             maxNum = 6;
-            if(cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_aku_boss_01" ||
-                cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_doku_boss_01" ||
-                cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_fairy_boss_01" ||
-                cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_hono_boss_01" ||
-                cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_kakutou_boss_01"){
+            if(cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_aku_boss_01" ||
+                cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_doku_boss_01" ||
+                cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_fairy_boss_01" ||
+                cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_hono_boss_01" ||
+                cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_kakutou_boss_01"){
                 maxNum = 5;
             }
         }else if(settings[1] == true){
@@ -87,21 +82,21 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
             // protective case
             if(maxNum>6){
                 maxNum = 6;
-                if(cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_aku_boss_01" ||
-                    cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_doku_boss_01" ||
-                    cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_fairy_boss_01" ||
-                    cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_hono_boss_01" ||
-                    cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_kakutou_boss_01"){
+                if(cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_aku_boss_01" ||
+                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_doku_boss_01" ||
+                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_fairy_boss_01" ||
+                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_hono_boss_01" ||
+                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_kakutou_boss_01"){
                     maxNum = 5;
                 }
             }
 
             if(maxNum == 6){
-                if(cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_aku_boss_01" ||
-                    cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_doku_boss_01" ||
-                    cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_fairy_boss_01" ||
-                    cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_hono_boss_01" ||
-                    cleanTrainerInfo["values"][indeces[i]]["trid"] == "dan_kakutou_boss_01"){
+                if(cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_aku_boss_01" ||
+                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_doku_boss_01" ||
+                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_fairy_boss_01" ||
+                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_hono_boss_01" ||
+                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_kakutou_boss_01"){
                     maxNum = 5;
                 }
             }
@@ -109,32 +104,32 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
 
 
 
-        if(cleanTrainerInfo["values"][indeces[i]]["trid"] == "rival_01_hono" ||
-           cleanTrainerInfo["values"][indeces[i]]["trid"] == "rival_01_kusa" ||
-            cleanTrainerInfo["values"][indeces[i]]["trid"] == "rival_01_mizu"){
-            cleanTrainerInfo["values"][indeces[i]]["aiDouble"] = false;
-            cleanTrainerInfo["values"][indeces[i]]["battleType"] = "_1vs1";
-            cleanTrainerInfo["values"][indeces[i]]["changeGem"] = false;
+        if(cleanTrainerInfo["values"][FightLists[i]]["trid"] == "rival_01_hono" ||
+           cleanTrainerInfo["values"][FightLists[i]]["trid"] == "rival_01_kusa" ||
+            cleanTrainerInfo["values"][FightLists[i]]["trid"] == "rival_01_mizu"){
+            cleanTrainerInfo["values"][FightLists[i]]["aiDouble"] = false;
+            cleanTrainerInfo["values"][FightLists[i]]["battleType"] = "_1vs1";
+            cleanTrainerInfo["values"][FightLists[i]]["changeGem"] = false;
             maxNum = 1;
         }
 
         if(settings[3] == true){
             for(int j = 1; j<=maxNum; j++){
                 std::string key = "poke"+std::to_string(j);
-                cleanTrainerInfo["values"][indeces[i]][key]["talentType"] = "VALUE";
-                cleanTrainerInfo["values"][indeces[i]][key]["talentValue"]["hp"] = 31;
-                cleanTrainerInfo["values"][indeces[i]][key]["talentValue"]["atk"] = 31;
-                cleanTrainerInfo["values"][indeces[i]][key]["talentValue"]["def"] = 31;
-                cleanTrainerInfo["values"][indeces[i]][key]["talentValue"]["spAtk"] = 31;
-                cleanTrainerInfo["values"][indeces[i]][key]["talentValue"]["spDef"] = 31;
-                cleanTrainerInfo["values"][indeces[i]][key]["talentValue"]["agi"] = 31;
+                cleanTrainerInfo["values"][FightLists[i]][key]["talentType"] = "VALUE";
+                cleanTrainerInfo["values"][FightLists[i]][key]["talentValue"]["hp"] = 31;
+                cleanTrainerInfo["values"][FightLists[i]][key]["talentValue"]["atk"] = 31;
+                cleanTrainerInfo["values"][FightLists[i]][key]["talentValue"]["def"] = 31;
+                cleanTrainerInfo["values"][FightLists[i]][key]["talentValue"]["spAtk"] = 31;
+                cleanTrainerInfo["values"][FightLists[i]][key]["talentValue"]["spDef"] = 31;
+                cleanTrainerInfo["values"][FightLists[i]][key]["talentValue"]["agi"] = 31;
             }
         }
 
         if(settings[4] == true){
-            cleanTrainerInfo["values"][indeces[i]]["aiExpert"] = true;
-            cleanTrainerInfo["values"][indeces[i]]["aiItem"] = true;
-            cleanTrainerInfo["values"][indeces[i]]["aiChange"] = true;
+            cleanTrainerInfo["values"][FightLists[i]]["aiExpert"] = true;
+            cleanTrainerInfo["values"][FightLists[i]]["aiItem"] = true;
+            cleanTrainerInfo["values"][FightLists[i]]["aiChange"] = true;
         }
 
         // Change Pokemons
@@ -143,7 +138,7 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
             std::string key = "poke"+std::to_string(j);
 
             int random = 1+std::rand()%1025;
-            while(!allowedMons.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
+            while(!AllowedMons.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
                 random = 1+std::rand()%1025;
 
             int formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
@@ -151,28 +146,28 @@ void SVTrainers::randomizeTrainerIndexs(QList<int> indeces, QVector<bool> settin
                 formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
             }
 
-            cleanTrainerInfo["values"][indeces[i]][key]["devId"] = wildPokemonInfo["pokemons"][random]["devName"];
-            cleanTrainerInfo["values"][indeces[i]][key]["formId"] = formRandom;
-            cleanTrainerInfo["values"][indeces[i]][key]["item"] = getPokemonItemId(wildPokemonInfo["pokemons"][random]["natdex"], formRandom);
-            if(cleanTrainerInfo["values"][indeces[i]][key]["level"] == 0){
+            cleanTrainerInfo["values"][FightLists[i]][key]["devId"] = wildPokemonInfo["pokemons"][random]["devName"];
+            cleanTrainerInfo["values"][FightLists[i]][key]["formId"] = formRandom;
+            cleanTrainerInfo["values"][FightLists[i]][key]["item"] = getPokemonItemId(wildPokemonInfo["pokemons"][random]["natdex"], formRandom);
+            if(cleanTrainerInfo["values"][FightLists[i]][key]["level"] == 0){
                 std::string stringMaxKey = "poke" + std::to_string(ogMax);
-                cleanTrainerInfo["values"][indeces[i]][key]["level"] = int(cleanTrainerInfo["values"][indeces[i]][stringMaxKey]["level"]) + std::rand()%3;
+                cleanTrainerInfo["values"][FightLists[i]][key]["level"] = int(cleanTrainerInfo["values"][FightLists[i]][stringMaxKey]["level"]) + std::rand()%3;
             }
 
-            cleanTrainerInfo["values"][indeces[i]][key]["wazaType"] = "DEFAULT";
+            cleanTrainerInfo["values"][FightLists[i]][key]["wazaType"] = "DEFAULT";
             for(int k = 1; k<=4; k++){
                 std::string moveKey = "waza"+std::to_string(k);
-                cleanTrainerInfo["values"][indeces[i]][key][moveKey]["wazaId"] = "WAZA_NULL";
+                cleanTrainerInfo["values"][FightLists[i]][key][moveKey]["wazaId"] = "WAZA_NULL";
             }
 
             if(globalSettings[2] == true){
                 int selection = 1+std::rand()%50;
                 if(selection == 1)
-                    cleanTrainerInfo["values"][indeces[i]][key]["rareType"] = "RARE";
+                    cleanTrainerInfo["values"][FightLists[i]][key]["rareType"] = "RARE";
             }
 
             if(globalSettings[1] == true){
-                cleanTrainerInfo["values"][indeces[i]][key]["gemType"] = selectTeraTypes(random, formRandom);
+                cleanTrainerInfo["values"][FightLists[i]][key]["gemType"] = selectTeraTypes(random, formRandom);
             }
         }
     }
@@ -204,13 +199,6 @@ void SVTrainers::closeFiles(){
     std::ofstream fileSave(filePath+"/SV_TRAINERS/trdata_array.json");
     fileSave<<cleanTrainerInfo.dump(4);
     fileSave.close();
-}
-
-bool SVTrainers::randomize_trainers(QList<int> trainerList, QVector<bool> trainerSettings, QVector<bool> globalTrainerSettings, QVector<bool> regionGenerations){
-
-    randomizeTrainerIndexs(trainerList, trainerSettings, globalTrainerSettings, regionGenerations);
-
-    return true;
 }
 
 /*

@@ -108,9 +108,9 @@ class SVTrainers: public SVShared
         QVector<bool> btrainersgeneration= {false, false, false,
                                              false, false, false,
                                              false, false, false};
-        bool randomize_trainers(QList<int> indeces, QVector<bool> files, QVector<bool> globalSettings, QVector<bool> generations);
-        void randomizeTrainerIndexs(QList<int> indeces, QVector<bool> files, QVector<bool> globalSettings, QVector<bool> generations);
-        void openFiles();
+        void randomizeTrainerFights(QList<int> FightLists, QVector<bool> settings, QVector<bool> globalSettings, QList<int> AllowedMons);
+        
+		void openFiles();
         void closeFiles();
         QList<int> randomize_penny = {356, 357, 358, 677, 678};
         QList<int> randomize_geeta = {359, 360, 361};
@@ -137,7 +137,39 @@ class SVTrainers: public SVShared
         QList<int> randomize_kieran_terapagos = {680};
         QList<int> randomize_perrin = {595};
         QList<int> randomize_billy_onare = {596, 597, 598};
-
+		
+		
+		LimiterDetails PRivalLimiter;
+        QList<int> PRivalAllowedPokemon;
+		LimiterDetails PRouteLimiter;
+        QList<int> PRouteAllowedPokemon;
+		LimiterDetails PGymLimiter;
+        QList<int> PGymAllowedPokemon;
+		LimiterDetails PE4Limiter;
+        QList<int> PE4AllowedPokemon;
+		LimiterDetails PRaidLimiter;
+        QList<int> PRaidAllowedPokemon;
+		LimiterDetails PChampionLimiter;
+        QList<int> PChampionAllowedPokemon;
+		
+		LimiterDetails KRivalLimiter;
+        QList<int> KRivalAllowedPokemon;
+		LimiterDetails KRouteLimiter;
+        QList<int> KRouteAllowedPokemon;
+		LimiterDetails KOCLimiter;
+        QList<int> KOCAllowedPokemon;
+		LimiterDetails KRaidLimiter;
+        QList<int> KRaidAllowedPokemon;
+		
+		LimiterDetails BRivalLimiter;
+        QList<int> BRivalAllowedPokemon;
+		LimiterDetails BRouteLimiter;
+        QList<int> BRouteAllowedPokemon;
+		LimiterDetails BBB4Limiter;
+        QList<int> BBB4AllowedPokemon;
+		LimiterDetails BRaidLimiter;
+        QList<int> BRaidAllowedPokemon;
+		
 };
 
 

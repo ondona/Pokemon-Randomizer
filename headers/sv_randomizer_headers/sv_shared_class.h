@@ -3703,6 +3703,7 @@ public:
 		};
 		
     int GenerateAllowedMons(LimiterDetails Limiter, QList<int>& allowedPokemon);
+	bool CheckAllowedMons(QList<int>& allowedPokemon);
 	
 private:
     void recursiveFindOfPokemonSceneTable(nlohmann::json& test, std::vector<int> devId, std::vector<int> formId,std::vector<int> gender, std::vector<bool> rare);
