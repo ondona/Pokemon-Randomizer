@@ -1081,59 +1081,14 @@ QWidget* SVRandomizerWindow::setupScenesWidget(){
 
     // -------------- New Row --------------
 
-    boss_settings.append(new QCheckBox("Only Legends", bossWidget));
-    row1->addWidget(boss_settings[0]);
-    connect(boss_settings[0], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-
-    boss_settings.append(new QCheckBox("Only Paradox", bossWidget));
-    row1->addWidget(boss_settings[1]);
-    connect(boss_settings[1], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-
-    boss_settings.append(new QCheckBox("Only Legends and Paradox", bossWidget));
-    row1->addWidget(boss_settings[2]);
-    connect(boss_settings[2], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-
-    formLayout->addRow(row1);
-
-    // -------------- New Row --------------
-
-    boss_settings.append(new QCheckBox("Ban Stage 1", bossWidget));
-    row2->addWidget(boss_settings[3]);
-    connect(boss_settings[3], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-
-    boss_settings.append(new QCheckBox("Ban Stage 2", bossWidget));
-    row2->addWidget(boss_settings[4]);
-    connect(boss_settings[4], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-
-    boss_settings.append(new QCheckBox("Ban Stage 3", bossWidget));
-    row2->addWidget(boss_settings[5]);
-    connect(boss_settings[5], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-
-    boss_settings.append(new QCheckBox("Ban 1 Stage", bossWidget));
-    row2->addWidget(boss_settings[6]);
-    connect(boss_settings[6], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-
-    formLayout->addRow(row2);
-
-
-    QLabel *startsSectionHeader = new QLabel("Allowed Generations (empty means all are allowed)", bossWidget);
-    startsSectionHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
-    generation_boss_header->addWidget(startsSectionHeader);
-
-    for(int i =0; i<9; i++){
-        boss_generation.append(new QCheckBox(QStringLiteral("%1").arg(i+1), bossWidget));
-        generation_boss_selection->addWidget(boss_generation[i]);
-        connect(boss_generation[i], &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
-    }
-    formLayout->addRow(generation_boss_header);
-    formLayout->addRow(generation_boss_selection);
-
     QLabel *comingsoon = new QLabel("More Options Coming Soon", bossWidget);
     comingsoon->setStyleSheet("font-weight: bold; padding: 0px 0;");
 
     formLayout->addRow(comingsoon);
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
+	
+    MonLimiterSection(mainLayout, BossLimiterGroup, &randomizer.svRandomizerBoss.BossLimiter);
 
     // Add giftWidget to scroll area and set scrollArea as the widget
     scrollArea->setWidget(bossWidget);
@@ -2788,8 +2743,10 @@ void SVRandomizerWindow::runRandomizer()
 	int BTrainersRocount = SVShared::GenerateAllowedMons(randomizer.svRandomizerTrainers.BRouteLimiter, randomizer.svRandomizerTrainers.BRouteAllowedPokemon);
 	int BTrainersBBcount = SVShared::GenerateAllowedMons(randomizer.svRandomizerTrainers.BBB4Limiter, randomizer.svRandomizerTrainers.BBB4AllowedPokemon);
 	int BTrainersRacount = SVShared::GenerateAllowedMons(randomizer.svRandomizerTrainers.BRaidLimiter, randomizer.svRandomizerTrainers.BRaidAllowedPokemon);
+
+	int Bosscount = SVShared::GenerateAllowedMons(randomizer.svRandomizerBoss.BossLimiter, randomizer.svRandomizerBoss.BossAllowedPokemon);
 		
-	qDebug()<<QString("Starters: %1, Gifts: %2, Raids P: %3, Raids K: %4, Raids B: %5, Wilds P: %6, Wilds K: %7, Wilds B: %8, Wilds Fixed: %9")
+	qDebug()<<QString("Starters: %1, Gifts: %2, Raids P: %3, Raids K: %4, Raids B: %5, Wilds P: %6, Wilds K: %7, Wilds B: %8, Wilds Fixed: %9, Boss: %10")
 				.arg(starterscount)
 				.arg(giftscount)
 				.arg(raidspcount)
@@ -2798,7 +2755,8 @@ void SVRandomizerWindow::runRandomizer()
 				.arg(wildspcount)
 				.arg(wildskcount)
 				.arg(wildsbcount)
-				.arg(wildsfcount);	
+				.arg(wildsfcount)	
+				.arg(Bosscount);	
 				
 	qDebug()<<QString("Paldea Rivals: %1, Routes: %2, Gyms: %3, Elite4: %4, Raids: %5, Champion: %6")
 				.arg(PTrainersRicount)
@@ -2822,7 +2780,7 @@ void SVRandomizerWindow::runRandomizer()
 				
 
 //add a check to make sure there r usable mons for all sections
-    if ((starterscount <= 0) or (giftscount <= 0) or (raidspcount <= 0) or (raidskcount <= 0) or (raidsbcount <= 0) or (wildspcount <= 0) or (wildskcount <= 0) or (wildsbcount <= 0) or (wildsfcount <= 0) or (PTrainersRicount <= 0) or (PTrainersRocount <= 0) or (PTrainersGycount <= 0) or (PTrainersE4count <= 0) or (PTrainersRacount <= 0) or (PTrainersChcount <= 0) or (KTrainersRicount <= 0) or (KTrainersRocount <= 0) or (KTrainersOCcount <= 0) or (KTrainersRacount <= 0) or (BTrainersRicount <= 0) or (BTrainersRocount <= 0) or (BTrainersBBcount <= 0) or (BTrainersRacount <= 0))
+    if ((starterscount <= 0) or (giftscount <= 0) or (raidspcount <= 0) or (raidskcount <= 0) or (raidsbcount <= 0) or (wildspcount <= 0) or (wildskcount <= 0) or (wildsbcount <= 0) or (wildsfcount <= 0) or (PTrainersRicount <= 0) or (PTrainersRocount <= 0) or (PTrainersGycount <= 0) or (PTrainersE4count <= 0) or (PTrainersRacount <= 0) or (PTrainersChcount <= 0) or (KTrainersRicount <= 0) or (KTrainersRocount <= 0) or (KTrainersOCcount <= 0) or (KTrainersRacount <= 0) or (BTrainersRicount <= 0) or (BTrainersRocount <= 0) or (BTrainersBBcount <= 0) or (BTrainersRacount <= 0) or (Bosscount <= 0))
 	{//send user message to say it cant randomize with 0 pokemon
 		showMessage("Unable to use allowed pokemon selection for a section, it results in 0 allowed. Randomization Aborted");
         return;

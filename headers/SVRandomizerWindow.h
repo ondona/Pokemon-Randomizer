@@ -269,6 +269,8 @@ private:
 		QGroupBox *BRaidLimiterGroup;
 		
     //Bosses
+	
+		QGroupBox *BossLimiterGroup;
         QCheckBox *randomize_bosses; // Done
         QVector<QCheckBox*> boss_settings; // Done
         QVector<QCheckBox*> boss_generation; // Done
