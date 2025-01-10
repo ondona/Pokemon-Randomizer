@@ -25,6 +25,7 @@ public:
     ~SVRandomizerWindow();
     void MonLimiterSection(QVBoxLayout *OuterBox, QGroupBox *LimiterGroup, LimiterDetails *Details);
 	void saveLimiterState(LimiterDetails *Details, QString opt);
+	bool Combobox_listfill(QComboBox *Combobox, QList<QString> List);
 	
 private:
     void createLayout();

@@ -3657,6 +3657,12 @@ public:
                                                                    {"kusa", {{"id", 906}, {"form", 0}, {"gender", 0}, {"rare", 0},{"gem", 0}}},
                                                                    {"mizu", {{"id", 912}, {"form", 0}, {"gender", 0}, {"rare", 0},{"gem", 0}}}};
 
+	QList<QString> Pokeball_Names = {"Poke Ball", "Great Ball", "Ultra Ball", "Master Ball", "Beast Ball",
+	"Cherish Ball", "Luxury Ball", "Timer Ball", "Net Ball", "Nest Ball", "Dive Ball", "Dusk Ball",
+	"Repeat Ball", "Premier Ball", "Heal Ball", "Quick Ball", "Fast Ball", "Level Ball", "Lure Ball",
+	"Heavy Ball","Love Ball","Friend Ball","Moon Ball","Sport Ball","Safari Ball","Dream Ball"};
+
+
     std::string selectTeraTypes(int pokemon, int formId);
     void createFolderHierarchy(const std::string& folder);
     int generateBinary(const std::string& schema, const std::string& jsonFile, const std::string& path, bool debug = false);

@@ -211,23 +211,23 @@ void SVRandomizerWindow::MonLimiterSection(QVBoxLayout *OuterBox, QGroupBox *Lim
 	QLineEdit *Excludes = new QLineEdit(LimiterGroup);
 	connect(Excludes, &QLineEdit::textChanged, this, &SVRandomizerWindow::saveStringInput);
 
-	QLabel *ExcludesLabel = new QLabel("Force exclude (PLACEHOLDER)", LimiterGroup);
+	QLabel *ExcludesLabel = new QLabel("Force exclude", LimiterGroup);
 	ExcludesLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	ExcludeSetting->addWidget(ExcludesLabel);
 
 	Excludes->setFixedWidth(348);
-	Excludes->setPlaceholderText("(PLACEHOLDER)Enter names of mons to exclude and seperate each with a comma.(PLACEHOLDER)");
+	Excludes->setPlaceholderText("Enter names of mons to exclude.");
 	ExcludeSetting->addWidget(Excludes);
 	
 	QLineEdit *Includes = new QLineEdit(LimiterGroup);
 	connect(Includes, &QLineEdit::textChanged, this, &SVRandomizerWindow::saveStringInput);
 
-	QLabel *IncludesLabel = new QLabel("Force allowed (PLACEHOLDER)", LimiterGroup);
+	QLabel *IncludesLabel = new QLabel("Force allowed", LimiterGroup);
 	IncludesLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 	IncludeSetting->addWidget(IncludesLabel);
 
 	Includes->setFixedWidth(348);
-	Includes->setPlaceholderText("(PLACEHOLDER)Enter names of mons to allow and seperate each with a comma.(PLACEHOLDER)");
+	Includes->setPlaceholderText("Enter names of mons to allow.");
 	IncludeSetting->addWidget(Includes);*/
 	
     QVector<QCheckBox*> generationslist;
@@ -244,8 +244,8 @@ void SVRandomizerWindow::MonLimiterSection(QVBoxLayout *OuterBox, QGroupBox *Lim
     }
 
     QVector<QCheckBox*> GenLegendslist;
-    QLabel *GenLegendsHeader = new QLabel("Legends", LimiterGroup);
-    GenLegendsHeader->setStyleSheet("font-weight: bold; padding: 0px 30;");
+    QLabel *GenLegendsHeader = new QLabel("Allowed Legendaries", LimiterGroup);
+    GenLegendsHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
     GenLegendsSetting->addWidget(GenLegendsHeader);
 
     for(int i =0; i<9; i++){
@@ -254,6 +254,13 @@ void SVRandomizerWindow::MonLimiterSection(QVBoxLayout *OuterBox, QGroupBox *Lim
         GenLegendsSetting->addWidget(GenLegendslist[i]);
     connect(GenLegendslist[i], &QCheckBox::toggled, this, [=]() { saveLimiterState(Details, "L" + QString::number(i));});
     }
+}
+
+bool SVRandomizerWindow::Combobox_listfill(QComboBox *Combobox, QList<QString> List){
+    for (int i = 0; i < int (List.count()); ++i) {
+            Combobox->addItem(List[i]); // Add items from List to the dropdown
+    }
+    return true;
 }
 
 // Work on these for now
@@ -389,34 +396,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     startersRow_Q1->addWidget(pokeball_s1);
 
     starters_pokeball.append(new QComboBox());
-    starters_pokeball[0]->addItem("Poke Ball"); // Added
-    starters_pokeball[0]->addItem("Great Ball"); // Added
-    starters_pokeball[0]->addItem("Ultra Ball"); // Added
-    starters_pokeball[0]->addItem("Master Ball"); // Added
-    starters_pokeball[0]->addItem("Beast Ball"); // Added
-    starters_pokeball[0]->addItem("Cherish Ball"); // Added
-
-    starters_pokeball[0]->addItem("Luxury Ball"); // Added
-    starters_pokeball[0]->addItem("Timer Ball"); // Added
-    starters_pokeball[0]->addItem("Net Ball"); // Added
-    starters_pokeball[0]->addItem("Nest Ball"); // Added
-    starters_pokeball[0]->addItem("Dive Ball"); // Added
-    starters_pokeball[0]->addItem("Dusk Ball"); // Added
-    starters_pokeball[0]->addItem("Repeat Ball"); // Added
-    starters_pokeball[0]->addItem("Premier Ball"); //Added
-    starters_pokeball[0]->addItem("Heal Ball"); //Added
-    starters_pokeball[0]->addItem("Quick Ball"); // Added
-
-    starters_pokeball[0]->addItem("Fast Ball"); //Added
-    starters_pokeball[0]->addItem("Level Ball"); //Added
-    starters_pokeball[0]->addItem("Lure Ball"); //Added
-    starters_pokeball[0]->addItem("Heavy Ball"); //Added
-    starters_pokeball[0]->addItem("Love Ball"); //Added
-    starters_pokeball[0]->addItem("Friend Ball"); //Added
-    starters_pokeball[0]->addItem("Moon Ball"); //Added
-    starters_pokeball[0]->addItem("Sport Ball"); //Added
-    starters_pokeball[0]->addItem("Safari Ball"); //Added
-    starters_pokeball[0]->addItem("Dream Ball"); //Added
+    Combobox_listfill(starters_pokeball[0],  Pokeball_Names);
     starters_pokeball[0]->setFixedSize(100, 25);
     connect(starters_pokeball[0], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
@@ -473,34 +453,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
 
     startersRow_Q2->addWidget(pokeball_s2);
     starters_pokeball.append(new QComboBox());
-    starters_pokeball[1]->addItem("Poke Ball"); // Added
-    starters_pokeball[1]->addItem("Great Ball"); // Added
-    starters_pokeball[1]->addItem("Ultra Ball"); // Added
-    starters_pokeball[1]->addItem("Master Ball"); // Added
-    starters_pokeball[1]->addItem("Beast Ball"); // Added
-    starters_pokeball[1]->addItem("Cherish Ball"); // Added
-
-    starters_pokeball[1]->addItem("Luxury Ball"); // Added
-    starters_pokeball[1]->addItem("Timer Ball"); // Added
-    starters_pokeball[1]->addItem("Net Ball"); // Added
-    starters_pokeball[1]->addItem("Nest Ball"); // Added
-    starters_pokeball[1]->addItem("Dive Ball"); // Added
-    starters_pokeball[1]->addItem("Dusk Ball"); // Added
-    starters_pokeball[1]->addItem("Repeat Ball"); // Added
-    starters_pokeball[1]->addItem("Premier Ball"); //Added
-    starters_pokeball[1]->addItem("Heal Ball"); //Added
-    starters_pokeball[1]->addItem("Quick Ball"); // Added
-
-    starters_pokeball[1]->addItem("Fast Ball"); //Added
-    starters_pokeball[1]->addItem("Level Ball"); //Added
-    starters_pokeball[1]->addItem("Lure Ball"); //Added
-    starters_pokeball[1]->addItem("Heavy Ball"); //Added
-    starters_pokeball[1]->addItem("Love Ball"); //Added
-    starters_pokeball[1]->addItem("Friend Ball"); //Added
-    starters_pokeball[1]->addItem("Moon Ball"); //Added
-    starters_pokeball[1]->addItem("Sport Ball"); //Added
-    starters_pokeball[1]->addItem("Safari Ball"); //Added
-    starters_pokeball[1]->addItem("Dream Ball"); //Added
+    Combobox_listfill(starters_pokeball[1],  Pokeball_Names);
     starters_pokeball[1]->setFixedSize(100, 25);
     connect(starters_pokeball[1], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
@@ -557,34 +510,7 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
 
     startersRow_Q3->addWidget(pokeball_s3);
     starters_pokeball.append(new QComboBox());
-    starters_pokeball[2]->addItem("Poke Ball"); // Added
-    starters_pokeball[2]->addItem("Great Ball"); // Added
-    starters_pokeball[2]->addItem("Ultra Ball"); // Added
-    starters_pokeball[2]->addItem("Master Ball"); // Added
-    starters_pokeball[2]->addItem("Beast Ball"); // Added
-    starters_pokeball[2]->addItem("Cherish Ball"); // Added
-
-    starters_pokeball[2]->addItem("Luxury Ball"); // Added
-    starters_pokeball[2]->addItem("Timer Ball"); // Added
-    starters_pokeball[2]->addItem("Net Ball"); // Added
-    starters_pokeball[2]->addItem("Nest Ball"); // Added
-    starters_pokeball[2]->addItem("Dive Ball"); // Added
-    starters_pokeball[2]->addItem("Dusk Ball"); // Added
-    starters_pokeball[2]->addItem("Repeat Ball"); // Added
-    starters_pokeball[2]->addItem("Premier Ball"); //Added
-    starters_pokeball[2]->addItem("Heal Ball"); //Added
-    starters_pokeball[2]->addItem("Quick Ball"); // Added
-
-    starters_pokeball[2]->addItem("Fast Ball"); //Added
-    starters_pokeball[2]->addItem("Level Ball"); //Added
-    starters_pokeball[2]->addItem("Lure Ball"); //Added
-    starters_pokeball[2]->addItem("Heavy Ball"); //Added
-    starters_pokeball[2]->addItem("Love Ball"); //Added
-    starters_pokeball[2]->addItem("Friend Ball"); //Added
-    starters_pokeball[2]->addItem("Moon Ball"); //Added
-    starters_pokeball[2]->addItem("Sport Ball"); //Added
-    starters_pokeball[2]->addItem("Safari Ball"); //Added
-    starters_pokeball[2]->addItem("Dream Ball"); //Added
+    Combobox_listfill(starters_pokeball[2],  Pokeball_Names);
     starters_pokeball[2]->setFixedSize(100, 25);
     connect(starters_pokeball[2], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
