@@ -91,11 +91,6 @@ bool SVRaids::randomize_paldean_raids(std::string fileName){
     file >> wildPokemonInfo;
     file.close();
 
-
-    QList<int> wildPaldeanPokemon = {};
-    QList<int> wildLegendMons_Useless = {};
-    getUsablePokemon(praidsgeneratio, praids_onlyLegends, praids_onlyParadox, praids_onlyLegendsandParadox, wildPaldeanPokemon, wildLegendMons_Useless);
-    getBannedPokemon(praids_BanStage1, praids_BanStage2, praids_BanStage3, praids_Ban1Stage, wildPaldeanPokemon);
     int banned = getBannedLength(praidsgeneratio);
     std::string ogName = fileName;
 
@@ -118,14 +113,14 @@ bool SVRaids::randomize_paldean_raids(std::string fileName){
         unsigned long long counter = 0;
         QList<int> usedPokemon;
         QList<QMap<QString, int>> usedForms = {{{"id", 0}, {"form", 0}}};
-        wildPaldeanPokemon.removeOne(1024);
+        RaidsPaldeaAllowed.removeOne(1024);
         QSet<int> indexesChanged;
 
         for(unsigned long long j =0; j<paldeaRaidJSON["values"].size(); j++){
-            if(usedPokemon.length() - wildPaldeanPokemon.length() == 0){
+            if(usedPokemon.length() - RaidsPaldeaAllowed.length() == 0){
                 break;
             }
-            else if(usedPokemon.length() - wildPaldeanPokemon.length() == banned){
+            else if(usedPokemon.length() - RaidsPaldeaAllowed.length() == banned){
                 break;
             }
             QMap<QString, int> checkDict;
@@ -134,7 +129,7 @@ bool SVRaids::randomize_paldean_raids(std::string fileName){
             bool check_loop = true;
             do{
                 random = 1+std::rand()%1025;
-                while(!wildPaldeanPokemon.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
+                while(!RaidsPaldeaAllowed.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
                     random = 1+std::rand()%1025;
 
                 formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
@@ -273,11 +268,6 @@ bool SVRaids::randomize_kitakami_raids(std::string fileName){
     file >> wildPokemonInfo;
     file.close();
 
-
-    QList<int> wildPaldeanPokemon = {};
-    QList<int> wildLegendMons_Useless = {};
-    getUsablePokemon(kraidsgeneration, kraids_onlyLegends, kraids_onlyParadox, kraids_onlyLegendsandParadox, wildPaldeanPokemon, wildLegendMons_Useless);
-    getBannedPokemon(kraids_BanStage1, kraids_BanStage2, kraids_BanStage3, kraids_Ban1Stage, wildPaldeanPokemon);
     int banned = getBannedLength(kraidsgeneration);
     std::string ogName = fileName;
 
@@ -300,14 +290,14 @@ bool SVRaids::randomize_kitakami_raids(std::string fileName){
         unsigned long long counter = 0;
         QList<int> usedPokemon;
         QList<QMap<QString, int>> usedForms = {{{"id", 0}, {"form", 0}}};
-        wildPaldeanPokemon.removeOne(1024);
+        RaidsKitakamiAllowed.removeOne(1024);
         QSet<int> indexesChanged;
 
         for(unsigned long long j =0; j<paldeaRaidJSON["values"].size(); j++){
-            if(usedPokemon.length() - wildPaldeanPokemon.length() == 0){
+            if(usedPokemon.length() - RaidsKitakamiAllowed.length() == 0){
                 break;
             }
-            else if(usedPokemon.length() - wildPaldeanPokemon.length() == banned){
+            else if(usedPokemon.length() - RaidsKitakamiAllowed.length() == banned){
                 break;
             }
             QMap<QString, int> checkDict;
@@ -316,7 +306,7 @@ bool SVRaids::randomize_kitakami_raids(std::string fileName){
             bool check_loop = true;
             do{
                 random = 1+std::rand()%1025;
-                while(!wildPaldeanPokemon.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
+                while(!RaidsKitakamiAllowed.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
                     random = 1+std::rand()%1025;
 
                 formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
@@ -437,10 +427,6 @@ bool SVRaids::randomize_blueberry_raids(std::string fileName){
     file >> wildPokemonInfo;
     file.close();
 
-    QList<int> wildPaldeanPokemon = {};
-    QList<int> wildLegendMons_Useless = {};
-    getUsablePokemon(braidsgeneration, braids_onlyLegends, braids_onlyParadox, braids_onlyLegendsandParadox, wildPaldeanPokemon, wildLegendMons_Useless);
-    getBannedPokemon(braids_BanStage1, braids_BanStage2, braids_BanStage3, braids_Ban1Stage, wildPaldeanPokemon);
     int banned = getBannedLength(braidsgeneration);
     std::string ogName = fileName;
 
@@ -463,14 +449,14 @@ bool SVRaids::randomize_blueberry_raids(std::string fileName){
         unsigned long long counter = 0;
         QList<int> usedPokemon;
         QList<QMap<QString, int>> usedForms = {{{"id", 0}, {"form", 0}}};
-        wildPaldeanPokemon.removeOne(1024);
+        RaidsBlueberryAllowed.removeOne(1024);
         QSet<int> indexesChanged;
 
         for(unsigned long long j =0; j<paldeaRaidJSON["values"].size(); j++){
-            if(usedPokemon.length() - wildPaldeanPokemon.length() == 0){
+            if(usedPokemon.length() - RaidsBlueberryAllowed.length() == 0){
                 break;
             }
-            else if(usedPokemon.length() - wildPaldeanPokemon.length() == banned){
+            else if(usedPokemon.length() - RaidsBlueberryAllowed.length() == banned){
                 break;
             }
             QMap<QString, int> checkDict;
@@ -479,7 +465,7 @@ bool SVRaids::randomize_blueberry_raids(std::string fileName){
             bool check_loop = true;
             do{
                 random = 1+std::rand()%1025;
-                while(!wildPaldeanPokemon.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
+                while(!RaidsBlueberryAllowed.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
                     random = 1+std::rand()%1025;
 
                 formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());

@@ -11,8 +11,6 @@
 using json = nlohmann::json;
 namespace fs = std::filesystem;
 
-QVector<int> allowedPokemonBoss;
-QVector<int> allowedLegendsBoss;
 json cleanBossData;
 json bossMappingInfo;
 json trainerInfo;
@@ -60,7 +58,7 @@ void SVBoss::savePokemonFromTrainer(int index, std::string& pokeKey, std::vector
 
 void SVBoss::obtainPokemonScene(int &dev, int &form, int& gender, int &rare){
     dev = 1+std::rand()%1025;
-    while(!allowedPokemonBoss.contains(bossMappingInfo["pokemons"][dev]["natdex"]))
+    while(!BossAllowedPokemon.contains(bossMappingInfo["pokemons"][dev]["natdex"]))
         dev = 1+std::rand()%1025;
 
     form = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][dev]["forms"].size());
@@ -949,7 +947,7 @@ void SVBoss::copyFight(unsigned long long indexSet, unsigned long long indexCopy
 
 void SVBoss::randomizeFight(unsigned long long index){
     int random = 1+std::rand()%1025;
-    while(!allowedPokemonBoss.contains(bossMappingInfo["pokemons"][random]["natdex"]))
+    while(!BossAllowedPokemon.contains(bossMappingInfo["pokemons"][random]["natdex"]))
         random = 1+std::rand()%1025;
 
     int formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
@@ -1014,9 +1012,7 @@ void SVBoss::randomizeFight(unsigned long long index){
 }
 
 void SVBoss::randomizeBosses(QDir baseDir){
-    getUsablePokemon(boss_generation, boss_settings[0], boss_settings[1], boss_settings[2], allowedPokemonBoss, allowedLegendsBoss);
-    getBannedPokemon(boss_settings[3],boss_settings[4],boss_settings[5],boss_settings[6], allowedPokemonBoss);
-
+    
     std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
     QString QBaseAddress = QString::fromStdString(filePath);
     QDir qBaseDir(QBaseAddress);

@@ -17,6 +17,10 @@ class SVBoss: public SVShared{
         QVector<bool> boss_settings = {false, false, false, false, false, false, false};
         QVector<bool> boss_generation= {false, false, false, false, false, false, false, false, false};
 
+
+		LimiterDetails BossLimiter;
+        QList<int> BossAllowedPokemon;
+
         void randomizeBosses(QDir dir);
         void randomizeFight(unsigned long long index);
         void copyFight(unsigned long long indexSet, unsigned long long indexCopy);
