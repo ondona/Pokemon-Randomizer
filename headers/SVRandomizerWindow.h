@@ -321,6 +321,8 @@ private slots:
     void updateComboBoxImport(QComboBox *comboBox, const QString& key, QJsonObject &listOfChanges, int index);
     void updateCheckboxArrayImportGenerations(QVector<QCheckBox*> t, QJsonObject &listOfChanges);
     void updateSpinBoxImport(QSpinBox* spinBox, const QString& key, QJsonObject &listOfChanges);
+    void updateAllowedPokemonImport(QJsonObject &listOfChanges, LimiterDetails& limitsChange);
 };
+
 
 #endif // SVRANDOMIZERWINDOW_H
