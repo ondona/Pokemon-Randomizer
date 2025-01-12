@@ -6,8 +6,7 @@
 #include <QDir>
 #include <QDebug>
 #include <fstream>
-#include <iostream>
-#include "headers/SVRandomizerWindow.h"
+#include <QStringListModel>
 #include "thirdparty/nlohmann/json.hpp"
 
 // Look into QSharedData in the future
@@ -38,39 +37,6 @@ int SVStarters::getTeraTypeInt(std::string teraType){
     }
 
     return 0;
-}
-
-void printJsonValues(const json& jsonData) {
-    if (jsonData.is_object()) {
-        for (auto it = jsonData.begin(); it != jsonData.end(); ++it) {
-            QString key = QString::fromStdString(it.key());
-            qDebug() << "Key:" << key;
-
-            if (it->is_object()) {
-                qDebug() << "Value: Object";
-                printJsonValues(*it); // Recursive call for nested objects
-            } else if (it->is_array()) {
-                qDebug() << "Value: Array";
-                for (const auto& item : *it) {
-                    QString value = QString::fromStdString(item.dump());
-                    qDebug() << " -" << value;
-                }
-            } else {
-                QString value = QString::fromStdString(it->dump());
-                qDebug() << "Value:" << value;
-            }
-            qDebug() << "--------------";
-        }
-    } else if (jsonData.is_array()) {
-        qDebug() << "Value: Array";
-        for (const auto& item : jsonData) {
-            QString value = QString::fromStdString(item.dump());
-            qDebug() << " -" << value << '\n';
-        }
-    } else {
-        QString value = QString::fromStdString(jsonData.dump());
-        qDebug() << "Value:" << value;
-    }
 }
 
 void SVStarters::get_selected_starter(int index, QString starterName, int form, QString gender, bool shiny, QString ball){
@@ -124,8 +90,8 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
                 genderStd = "FEMALE";
             }
         }else{
-            int rand_gender = std::rand()%50;
-            if(rand_gender < 24){
+            int rand_gender = 1+std::rand()%100;
+            if(rand_gender > int(pokemonDataCleanRatios["entry"][int(pokemonMaps["pokemons"][random]["devid"])]["gender"]["ratio"])){
                 ::gender.push_back(0);
                 genderNum = 0;
                 genderStd = "MALE";
@@ -134,6 +100,7 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
                 genderNum = 1;
                 genderStd = "FEMALE";
             }
+            qDebug()<<"Here 2";
         }
         cleanStarterData["values"][index]["pokeData"]["sex"] = genderStd;
 
@@ -215,8 +182,8 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
                 genderStd = "FEMALE";
             }
         }else{
-            int rand_gender = std::rand()%50;
-            if(rand_gender < 24){
+            int rand_gender = 1+std::rand()%100;
+            if(rand_gender < int(pokemonDataCleanRatios["entry"][int(pokemonMaps["pokemons_name"][starterNameStd]["devid"])]["gender"]["ratio"])){
                 ::gender.push_back(0);
                 genderNum = 0;
                 genderStd = "MALE";
@@ -283,7 +250,7 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
 
 bool SVStarters::randomize_starters(){
     // Logic to Setup combinations of settings for pokemon starters
-
+    obtainCleanRatios();
     //getUsablePokemon(generations_starters, only_legendary_pokemon_starters, only_paradox_pokemon_starters, only_legends_and_paradox_starters, allowedPokemon, allowedLegends);
     //getBannedPokemon(ban_stage_1_pokemon_starters, ban_stage_2_pokemon_starters, ban_stage_3_pokemon_starters, ban_single_stage_pokemon_starters, allowedPokemon);
 
@@ -295,11 +262,11 @@ bool SVStarters::randomize_starters(){
 
     // Load the JSON file
     if (!file.is_open()) {
-        qDebug() << "Error: Could not open data_clean.json!";
+        qFatal() << "Error: Could not open data_clean.json!";
         return false;
     }
     if (!fileInfo.is_open()) {
-        qDebug() << "Error: Could not open pokemon_mapping.json!";
+        qFatal() << "Error: Could not open pokemon_mapping.json!";
         return false;
     }
 
@@ -366,6 +333,7 @@ bool SVStarters::randomize_gifts(){
 
     //getUsablePokemon(generation_gifts, false, false, false, allowedPokemon_gifts, allowedLegends_gifts);
     //getBannedPokemon(ban_stage_1_pokemon_starters, ban_stage_2_pokemon_starters, ban_stage_3_pokemon_starters, ban_single_stage_pokemon_starters, allowedPokemon_gifts);
+    obtainCleanRatios();
 
     std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
     QString QBaseAddress = QString::fromStdString(filePath);
@@ -379,11 +347,11 @@ bool SVStarters::randomize_gifts(){
 
     // Load the JSON file
     if (!file.is_open()) {
-        qDebug() << "Error: Could not open data_clean.json!";
+        qFatal() << "Error: Could not open data_clean.json!";
         return false;
     }
     if (!fileInfo.is_open()) {
-        qDebug() << "Error: Could not open pokemon_mapping.json!";
+        qFatal() << "Error: Could not open pokemon_mapping.json!";
         return false;
     }
 

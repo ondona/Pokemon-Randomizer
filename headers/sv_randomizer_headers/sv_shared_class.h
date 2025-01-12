@@ -44,6 +44,8 @@ public:
     QList <QMap<QString, int>> exitAbilitiesPokemon = {{{"id", 767}, {"form", 0}},
                                                       {{"id", 768}, {"form", 0}},
                                                       };
+    nlohmann::json pokemonDataCleanRatios;
+    nlohmann::json pokemonSharedMaps;
 
     QList<int> pokemonFormsWithItems = {483, 484, 487, 493, 888, 889, 1017};
     QMap<QString, QStringList> pokemonFormsInGame = {
@@ -2485,6 +2487,13 @@ public:
         "Oinkologne"
     };
 
+    QMap<QString,QList<int>> formsMaleOnly{
+        {"Pikachu", {1,2,3,4,5,6,7,9}},
+        {"Greninja", {1}},
+        {"Ursaluna", {1}}
+
+    };
+
     QMap<QString, QStringList> pokeballDevNames = {
         {"Poke Ball",{"MONSUTAABOORU", "ITEMID_MONSUTAABOORU"}},
         {"Great Ball",{"SUUPAABOORU", "ITEMID_SUUPAABOORU"}},
@@ -3674,6 +3683,9 @@ public:
     std::string getItemForPokemon(int pokemon, int form);
     std::string getPokemonItemId(int index, int form);
     int getPokemonItemValue(int index, int form);
+    void obtainCleanRatios();
+    template <typename T>
+    void printSceneTables(T table);
 
     struct LimiterDetails {
         QList<bool> Gens = {/*1*/true, /*2*/true, /*3*/true, /*4*/true, /*5*/true, /*6*/true, /*7*/true, /*8*/true, /*9*/true};
@@ -3715,5 +3727,52 @@ private:
     void recursiveFindOfPokemonSceneTable(nlohmann::json& test, std::vector<int> devId, std::vector<int> formId,std::vector<int> gender, std::vector<bool> rare);
 
 };
+
+template <typename T>
+void SVShared::printSceneTables(T table){
+    std::string name = pokemonSharedMaps["pokemons_devid"][table->DevId()]["name"];
+    QString pokemonName = QString::fromUtf8(name.c_str());
+    qDebug() << "  DevId: " << pokemonName;
+    qDebug() << "  FormId: " << static_cast<int>(table->FormId());
+
+    QString textForPokemon = "MALE";
+    if(femaleOnlyPokemon.contains(pokemonName)){
+        textForPokemon = "FEMALE";
+    }else if(genderlessPokemon.contains(pokemonName)){
+        textForPokemon = "GENDERLESS";
+    }else if(genderForms.contains(pokemonName)){
+        if(static_cast<int>(table->FormId()) == 1){
+            textForPokemon = "FEMALE";
+        }
+    }else if(formsMaleOnly[pokemonName].contains(table->FormId())){
+        textForPokemon = "MALE";
+    }else{
+        if(static_cast<int>(table->Sex()) == 1){
+            textForPokemon = "FEMALE";
+        }
+    }
+    qDebug() << "  Sex: " << textForPokemon;
+
+    QString value = "False";
+    if(static_cast<int>(table->Rare())  != 0){
+        value = "True";
+    }
+    qDebug() << "  Rare: " << value;
+
+    if(static_cast<int>(table->Field_04()) != 0){
+        value = "True";
+    }
+    qDebug() << "  IsEgg: " << value;
+    qDebug() << "  Scale: "<< static_cast<int>(table->Field_05());
+    qDebug() << "  Field06: " << static_cast<int>(table->Field_06());
+    qDebug() << "  Field07: " << static_cast<int>(table->Field_07());
+
+    value = "False";
+    if(table->Field_08() != false){
+        value = "True";
+    }
+    qDebug() << "  IsVisible: " << value;
+}
+
 
 #endif // SV_SHARED_CLASS_H

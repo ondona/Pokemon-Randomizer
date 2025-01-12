@@ -199,14 +199,14 @@ void SVBoss::patchMultiBattle(){
 
 
     // 6 6 5 6 6 7 6 5 - 1170
-    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(5, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(7, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(5, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
     filePairs = {
         {"SV_AZ/WayHome/common_1170_always_0_clean.json", "SV_AZ/WayHome/common_1170_always_0.json"},
@@ -222,13 +222,13 @@ void SVBoss::patchMultiBattle(){
     filePairs.clear();
 
     // 9 9 8 9 9 10 8 9 -- 1170
-    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(8, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(10, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(8, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
     filePairs = {
@@ -981,8 +981,8 @@ void SVBoss::randomizeFight(unsigned long long index){
             genderStd = "FEMALE";
         }
     }else{
-        int rand_gender = std::rand()%50;
-        if(rand_gender < 24){
+        int rand_gender = 1+std::rand()%100;
+        if(rand_gender > int(pokemonDataCleanRatios["entry"][int(bossMappingInfo["pokemons"][random]["devid"])]["gender"]["ratio"])){
             genderStd = "MALE";
         }else{
 
@@ -1012,7 +1012,7 @@ void SVBoss::randomizeFight(unsigned long long index){
 }
 
 void SVBoss::randomizeBosses(QDir baseDir){
-    
+    obtainCleanRatios();
     std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
     QString QBaseAddress = QString::fromStdString(filePath);
     QDir qBaseDir(QBaseAddress);

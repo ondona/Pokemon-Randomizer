@@ -191,6 +191,8 @@ void SVTrainers::openFiles(){
     std::ifstream raidFile(qBaseDir.filePath("SV_TRAINERS/trdata_array_clean.json").toStdString());
     raidFile >> cleanTrainerInfo;
     raidFile.close();
+
+    obtainCleanRatios();
 }
 
 void SVTrainers::closeFiles(){

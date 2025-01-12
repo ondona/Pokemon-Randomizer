@@ -28,6 +28,7 @@ SVRandomizerWindow::SVRandomizerWindow(QWidget *parent)
     : QWidget(parent)
 {
     createLayout();  // This function creates the UI layout and adds widgets
+    randomizer.obtainCleanRatios();
 }
 
 SVRandomizerWindow::~SVRandomizerWindow()
@@ -385,7 +386,10 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     startersRow_Q1->addWidget(starters_gender[0]);
 
     connect(starters[0], &QLineEdit::textChanged, this, [=](const QString &text) {
-        updateComboBoxGender(starters_gender[0], text);
+        updateComboBoxGender(starters_gender[0], text, 0);
+    });
+    connect(starters_form[0], QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=]() {
+        updateComboBoxGender(starters_gender[0], randomizer.svRandomizerStarters.starters[0], randomizer.svRandomizerStarters.starters_forms[0]);
     });
     connect(starters_gender[0], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
@@ -442,7 +446,10 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     startersRow_Q2->addWidget(starters_gender[1]);
 
     connect(starters[1], &QLineEdit::textChanged, this, [=](const QString &text) {
-        updateComboBoxGender(starters_gender[1], text);
+        updateComboBoxGender(starters_gender[1], text, 0);
+    });
+    connect(starters_form[1], QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=]() {
+        updateComboBoxGender(starters_gender[1], randomizer.svRandomizerStarters.starters[1], randomizer.svRandomizerStarters.starters_forms[1]);
     });
     connect(starters_gender[1], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
@@ -499,7 +506,10 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     startersRow_Q3->addWidget(starters_gender[2]);
 
     connect(starters[2], &QLineEdit::textChanged, this, [=](const QString &text) {
-        updateComboBoxGender(starters_gender[2], text);
+        updateComboBoxGender(starters_gender[2], text, 0);
+    });
+    connect(starters_form[2], QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=]() {
+        updateComboBoxGender(starters_gender[2], randomizer.svRandomizerStarters.starters[2], randomizer.svRandomizerStarters.starters_forms[2]);
     });
     connect(starters_gender[2], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
@@ -4031,13 +4041,13 @@ void SVRandomizerWindow::updateComboBoxForms(QComboBox *comboBox, const QString 
     }
 }
 
-void SVRandomizerWindow::updateComboBoxGender(QComboBox *comboBox, const QString &text) {
+void SVRandomizerWindow::updateComboBoxGender(QComboBox *comboBox, QString text, int form) {
     comboBox->clear();
     if(randomizer.genderForms.contains(text)){
         comboBox->addItem("DEFAULT");
     }else if(randomizer.femaleOnlyPokemon.contains(text)){
         comboBox->addItem("FEMALE");
-    }else if(randomizer.maleOnlyPokemon.contains(text)){
+    }else if(randomizer.maleOnlyPokemon.contains(text) || randomizer.formsMaleOnly[text].contains(form)){
         comboBox->addItem("MALE");
     } else if(randomizer.genderlessPokemon.contains(text)){
             comboBox->addItem("GENDERLESS");
