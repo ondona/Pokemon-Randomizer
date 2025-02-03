@@ -3628,6 +3628,9 @@ void SVRandomizerWindow::saveComboInput() {
             for(int i =0; i< randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]].size(); i++){
                 if(comboBox->currentText() == randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]][i]){
                     setForm = i;
+                    if(randomizer.svRandomizerStarters.starters[index] == "Pikachu" && setForm == 8){
+                        setForm = 9;
+                    }
                 }
             }
 

@@ -1026,17 +1026,12 @@ void SVBoss::randomizeFight(unsigned long long index){
 
         cleanBossData["values"][index]["pokeData"]["wazaType"] = "MANUAL";
         cleanBossData["values"][index]["pokeData"]["waza1"]["wazaId"] = "WAZA_TURUGINOMAI";
-        cleanBossData["values"][index]["pokeData"]["waza1"]["pointUp"] = 3;
         cleanBossData["values"][index]["pokeData"]["waza2"]["wazaId"] = "WAZA_WARUDAKUMI";
-        cleanBossData["values"][index]["pokeData"]["waza2"]["pointUp"] = 3;
         cleanBossData["values"][index]["pokeData"]["waza3"]["wazaId"] = "WAZA_ONIKANABOO";
-        cleanBossData["values"][index]["pokeData"]["waza3"]["pointUp"] = 3;
         if(random == 1024){
             cleanBossData["values"][index]["pokeData"]["waza4"]["wazaId"] = "WAZA_TERAKURASUTAA";
-            cleanBossData["values"][index]["pokeData"]["waza4"]["pointUp"] = 3;
         }else{
             cleanBossData["values"][index]["pokeData"]["waza4"]["wazaId"] = "WAZA_TERABAASUTO";
-            cleanBossData["values"][index]["pokeData"]["waza4"]["pointUp"] = 3;
         }
 
         if(random != 1017){
