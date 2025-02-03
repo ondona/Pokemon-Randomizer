@@ -63,6 +63,14 @@ void SVTrainers::randomizeTrainerFights(QList<int> FightLists, QVector<bool> set
                 }
             }
         }
+        if(cleanTrainerInfo["values"][FightLists[i]]["trid"] == "sister_01_01" || cleanTrainerInfo["values"][FightLists[i]]["trid"] == "sister_01_01_strong"){
+            cleanTrainerInfo["values"][FightLists[i]]["aiDouble"] = false;
+            cleanTrainerInfo["values"][FightLists[i]]["battleType"] = "_1vs1";
+        }
+        if(FightLists[i] >= 585 && FightLists[i] <= 594){
+            cleanTrainerInfo["values"][FightLists[i]]["aiDouble"] = false;
+            cleanTrainerInfo["values"][FightLists[i]]["battleType"] = "_1vs1";
+        }
 
         // ----------Start Changing Pokemon Settings
         if(settings[0] == true){
@@ -73,6 +81,8 @@ void SVTrainers::randomizeTrainerFights(QList<int> FightLists, QVector<bool> set
                 cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_hono_boss_01" ||
                 cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_kakutou_boss_01"){
                 maxNum = 5;
+                cleanTrainerInfo["values"][FightLists[i]]["aiDouble"] = false;
+                cleanTrainerInfo["values"][FightLists[i]]["battleType"] = "_1vs1";
             }
         }else if(settings[1] == true){
             if(maxNum < 6){
@@ -88,6 +98,8 @@ void SVTrainers::randomizeTrainerFights(QList<int> FightLists, QVector<bool> set
                     cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_hono_boss_01" ||
                     cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_kakutou_boss_01"){
                     maxNum = 5;
+                    cleanTrainerInfo["values"][FightLists[i]]["aiDouble"] = false;
+                    cleanTrainerInfo["values"][FightLists[i]]["battleType"] = "_1vs1";
                 }
             }
 
@@ -96,8 +108,10 @@ void SVTrainers::randomizeTrainerFights(QList<int> FightLists, QVector<bool> set
                     cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_doku_boss_01" ||
                     cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_fairy_boss_01" ||
                     cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_hono_boss_01" ||
-                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_kakutou_boss_01"){
+                    cleanTrainerInfo["values"][FightLists[i]]["trid"] == "dan_kakutou_boss_01" || FightLists[i] == 681){
                     maxNum = 5;
+                    cleanTrainerInfo["values"][FightLists[i]]["aiDouble"] = false;
+                    cleanTrainerInfo["values"][FightLists[i]]["battleType"] = "_1vs1";
                 }
             }
         }
@@ -106,7 +120,7 @@ void SVTrainers::randomizeTrainerFights(QList<int> FightLists, QVector<bool> set
 
         if(cleanTrainerInfo["values"][FightLists[i]]["trid"] == "rival_01_hono" ||
            cleanTrainerInfo["values"][FightLists[i]]["trid"] == "rival_01_kusa" ||
-            cleanTrainerInfo["values"][FightLists[i]]["trid"] == "rival_01_mizu"){
+            cleanTrainerInfo["values"][FightLists[i]]["trid"] == "rival_01_mizu" || FightLists[i] == 711){
             cleanTrainerInfo["values"][FightLists[i]]["aiDouble"] = false;
             cleanTrainerInfo["values"][FightLists[i]]["battleType"] = "_1vs1";
             cleanTrainerInfo["values"][FightLists[i]]["changeGem"] = false;
@@ -201,6 +215,54 @@ void SVTrainers::closeFiles(){
     std::ofstream fileSave(filePath+"/SV_TRAINERS/trdata_array.json");
     fileSave<<cleanTrainerInfo.dump(4);
     fileSave.close();
+}
+
+void SVTrainers::noSoftlockParadise(QList<int> AllowedMons){
+    QList<int> protocol = {437, 439};
+    for(int i = 0; i< protocol.length(); i++){
+        QMap<QString, int> checkDict = {{"id", 0}, {"form", 0}};
+
+        while(wonderGuardPokemon.contains(checkDict)){
+            int random = 1+std::rand()%1025;
+
+            while(!AllowedMons.contains(int(wildPokemonInfo["pokemons"][random]["natdex"])))
+                random = 1+std::rand()%1025;
+
+            int formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
+            while(wildPokemonInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
+                formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
+            }
+
+            checkDict={{"id", int(random)}, {"form",int(formRandom)}};
+        }
+
+        cleanTrainerInfo["values"][protocol[i]]["poke1"]["devId"] = wildPokemonInfo["pokemons"][int(checkDict["id"])]["devName"];
+        cleanTrainerInfo["values"][protocol[i]]["poke1"]["formId"] = int(checkDict["form"]);
+    }
+}
+
+void SVTrainers::noSoftlockTerapagos(QList<int> AllowedMons){
+    QList<int> protocol = {680};
+    for(int i = 0; i< protocol.length(); i++){
+        QMap<QString, int> checkDict = {{"id", 0}, {"form", 0}};
+
+        while(wonderGuardPokemon.contains(checkDict)){
+            int random = 1+std::rand()%1025;
+
+            while(!AllowedMons.contains(int(wildPokemonInfo["pokemons"][random]["natdex"])))
+                random = 1+std::rand()%1025;
+
+            int formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
+            while(wildPokemonInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
+                formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
+            }
+
+            checkDict={{"id", int(random)}, {"form",int(formRandom)}};
+        }
+
+        cleanTrainerInfo["values"][protocol[i]]["poke1"]["devId"] = wildPokemonInfo["pokemons"][int(checkDict["id"])]["devName"];
+        cleanTrainerInfo["values"][protocol[i]]["poke1"]["formId"] = int(checkDict["form"]);
+    }
 }
 
 /*

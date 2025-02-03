@@ -2662,6 +2662,13 @@ void SVRandomizerWindow::runRandomizer()
             randomizer.svRandomizeStarters(randomizer.svRandomizerStarters);
 
             randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/d030_0.json").toStdString(),
+                                      "world/scene/parts/demo/ev/d030_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/d030_1.json").toStdString(),
+                                      "world/scene/parts/demo/ev/d030_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
                                       qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.json").toStdString(),
                                       "world/scene/parts/event/event_scenario/main_scenario/common_0060_/", true);
             randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
@@ -2697,6 +2704,12 @@ void SVRandomizerWindow::runRandomizer()
                                       "world/scene/parts/event/event_scenario/main_scenario/common_0090_/", true);
 
             try {
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d030_/d030_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d030_/d030_0.trscn").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d030_/d030_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d030_/d030_1.trscn").string());
+
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_0.bin").string(),
                 fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_0.trsog").string());
 
@@ -3137,9 +3150,9 @@ void SVRandomizerWindow::runRandomizer()
 
                 // Sunflora
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.bin").string(),
-                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.trsot").string());
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.trsog").string());
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_1.bin").string(),
-                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_1.trsot").string());
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_1.trsog").string());
 
                 // Houndoom
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0150_/common_0150_main_0.bin").string(),
@@ -3315,6 +3328,51 @@ void SVRandomizerWindow::runRandomizer()
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/sub_039_pre_start_0.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_0.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/d610_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0105_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0130_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0160_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0370_post_end_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0390_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0430_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0440_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0460_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0480_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_a_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_b_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_c_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Okidogi/sdc01_3gods_a_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Okidogi/s1_sub_011_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Monkidori/sdc01_3gods_b_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Monkidori/s1_sub_012_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/sdc01_3gods_c_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/sdc01_3gods_c_before_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/s1_sub_016_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0330_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0360_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0400_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0410_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0420_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/sdc01_0300_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/s1_side02_0030_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/s1_side02_0050_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/s2_sub_005_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0262_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0263_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0267_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0265_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Legends/s2_side02_0010_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Legends/s2_side02_0020_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Terapagos/d730_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Terapagos/sdc02_0320_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Pecharunt/s2_side01_0160_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Pecharunt/s2_side01_0180_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Meloetta/s2_sub_003_pop_0.json").toStdString());
+            for(int z = 13; z<=37; z++){
+                std::string fileName = "s2_sub_0"+std::to_string(z)+"_pre_start_0";
+                QString fileName0 = QString::fromStdString(fileName);
+                checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Snacksworth/"+fileName0+".json").toStdString());
+            }
 
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/HikoNushi_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_1.json").toStdString());
@@ -3348,6 +3406,51 @@ void SVRandomizerWindow::runRandomizer()
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/sub_039_pre_start_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/d610_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0105_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0130_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0160_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0370_post_end_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0390_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0430_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0440_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0460_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0480_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_a_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_b_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_c_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Okidogi/sdc01_3gods_a_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Okidogi/s1_sub_011_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Monkidori/sdc01_3gods_b_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Monkidori/s1_sub_012_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/sdc01_3gods_c_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/sdc01_3gods_c_before_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/s1_sub_016_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0330_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0360_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0400_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0410_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0420_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/sdc01_0300_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/s1_side02_0030_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/s1_side02_0050_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/s2_sub_005_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0262_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0263_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0267_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0265_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Legends/s2_side02_0010_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Legends/s2_side02_0020_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Terapagos/d730_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Terapagos/sdc02_0320_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Pecharunt/s2_side01_0160_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Pecharunt/s2_side01_0180_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Meloetta/s2_sub_003_pop_1.json").toStdString());
+            for(int z = 13; z<=37; z++){
+                std::string fileName = "s2_sub_0"+std::to_string(z)+"_pre_start_1";
+                QString fileName0 = QString::fromStdString(fileName);
+                checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Snacksworth/"+fileName0+".json").toStdString());
+            }
         // Delete Output file (again)
         if(fs::exists(dirPath)){
             fs::remove_all(dirPath);

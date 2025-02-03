@@ -298,6 +298,8 @@ bool SVStarters::randomize_starters(){
 
     if(show_starters_in_overworld == true){
         std::vector<std::pair<std::string, std::string>> filePairs = {
+            {"SV_STARTERS_SCENES/d030_0_clean.json","SV_STARTERS_SCENES/d030_0.json"},
+            {"SV_STARTERS_SCENES/d030_1_clean.json","SV_STARTERS_SCENES/d030_1.json"},
             {"SV_STARTERS_SCENES/common_0060_always_0_clean.json", "SV_STARTERS_SCENES/common_0060_always_0.json"},
             {"SV_STARTERS_SCENES/common_0060_always_1_clean.json", "SV_STARTERS_SCENES/common_0060_always_1.json"},
             {"SV_STARTERS_SCENES/common_0060_main_0_clean.json", "SV_STARTERS_SCENES/common_0060_main_0.json"},
