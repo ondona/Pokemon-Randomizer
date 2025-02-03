@@ -336,7 +336,10 @@ bool SVStarters::randomize_gifts(){
     //getUsablePokemon(generation_gifts, false, false, false, allowedPokemon_gifts, allowedLegends_gifts);
     //getBannedPokemon(ban_stage_1_pokemon_starters, ban_stage_2_pokemon_starters, ban_stage_3_pokemon_starters, ban_single_stage_pokemon_starters, allowedPokemon_gifts);
     obtainCleanRatios();
-
+    std::vector<int> devIdGift  = {};
+    std::vector<int> formIdGift  = {};
+    std::vector<int> genderGift  = {};
+    std::vector<bool> rareGift  = {};
     std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
     QString QBaseAddress = QString::fromStdString(filePath);
     QDir qBaseDir(QBaseAddress);
@@ -373,9 +376,6 @@ bool SVStarters::randomize_gifts(){
             formRandom = std::rand()%static_cast<int>(pokemonMaps["pokemons"][random]["forms"].size());
         }
 
-        devId.push_back(random);
-        formId.push_back(formRandom);
-
         cleanGiftData["values"][i]["pokeData"]["devId"] = pokemonMaps["pokemons"][random]["devName"];
 
         // Set Starter Form
@@ -386,9 +386,19 @@ bool SVStarters::randomize_gifts(){
             int val = 1+std::rand()%shiny_static_rate; // range is [1, shiny_starter_rate)
             if(val == 1){
                 cleanGiftData["values"][i]["pokeData"]["rareType"] = "RARE";
+                if(i==8){
+                    rareGift.push_back(true);
+                }
             }
             else{
                 cleanGiftData["values"][i]["pokeData"]["rareType"] = "NO_RARE";
+                if(i==8){
+                    rareGift.push_back(false);
+                }
+            }
+        }else{
+            if(i==8){
+                rareGift.push_back(true);
             }
         }
 
@@ -401,6 +411,31 @@ bool SVStarters::randomize_gifts(){
         if(set_tera_type_pokemon.contains(random))
             cleanGiftData["values"][i]["pokeData"]["gemType"] = selectTeraTypes(random, formRandom);
 
+        if(i==8){
+            devIdGift.push_back(int(pokemonMaps["pokemons"][random]["devid"]));
+            formIdGift.push_back(formRandom);
+            genderGift.push_back(0);
+        }
+
+    }
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_Kitakami/Growlithe/s1_side02_0000_always_0_clean.json","SV_Kitakami/Growlithe/s1_side02_0000_always_0.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0000_always_1_clean.json","SV_Kitakami/Growlithe/s1_side02_0000_always_1.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0030_always_0_clean.json", "SV_Kitakami/Growlithe/s1_side02_0030_always_0.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0030_always_1_clean.json", "SV_Kitakami/Growlithe/s1_side02_0030_always_1.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0060_pre_start_0_clean.json", "SV_Kitakami/Growlithe/s1_side02_0060_pre_start_0.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0060_pre_start_1_clean.json", "SV_Kitakami/Growlithe/s1_side02_0060_pre_start_1.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0000_pre_start_0_clean.json", "SV_Kitakami/Growlithe/s2_side02_0000_pre_start_0.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0000_pre_start_1_clean.json", "SV_Kitakami/Growlithe/s2_side02_0000_pre_start_1.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0005_pre_start_0_clean.json", "SV_Kitakami/Growlithe/s2_side02_0005_pre_start_0.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0005_pre_start_1_clean.json", "SV_Kitakami/Growlithe/s2_side02_0005_pre_start_1.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0030_always_0_clean.json", "SV_Kitakami/Growlithe/s2_side02_0030_always_0.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0030_always_1_clean.json", "SV_Kitakami/Growlithe/s2_side02_0030_always_1.json"}
+    };
+
+    for (const auto& filePair : filePairs) {
+        modifyPokemonScene(devIdGift, formIdGift, genderGift, rareGift, filePair.first, filePair.second);
     }
 
     std::ofstream fileSave(filePath+"/SV_STARTERS_FLATBUFFERS/eventAddPokemon_array.json");

@@ -2633,6 +2633,14 @@ void SVRandomizerWindow::runRandomizer()
     }else{
         hash = randomizer.seed.toUInt();
     }
+
+    std::string copiedDir = "RandomizersAll";
+    if(fs::exists(copiedDir)){
+        fs::remove_all(copiedDir);
+    }
+
+    randomizer.createFolderHierarchy(fs::absolute(copiedDir).string());
+
     for(unsigned int i = 1; i< randomizer.bulk_amount+1; i++){
         if(hash == 0){
             std::random_device rd;
@@ -2748,6 +2756,84 @@ void SVRandomizerWindow::runRandomizer()
 
         if(randomizer.svRandomizerStarters.enable_gifts == true){
             randomizer.svRandomizeGifts(randomizer.svRandomizerStarters);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0000_always_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0000_always_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0030_always_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0030_always_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0060_pre_start_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0060_pre_start_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0000_pre_start_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0000_pre_start_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0005_pre_start_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0005_pre_start_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0030_always_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0030_always_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/", true);
+
+            try{
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/s2_side02_0030_always_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/s2_side02_0030_always_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/s2_side02_0030_always_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/s2_side02_0030_always_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/s2_side02_0005_pre_start_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/s2_side02_0005_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/s2_side02_0005_pre_start_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/s2_side02_0005_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/s2_side02_0000_pre_start_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/s2_side02_0000_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/s2_side02_0000_pre_start_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/s2_side02_0000_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/s1_side02_0060_pre_start_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/s1_side02_0060_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/s1_side02_0060_pre_start_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/s1_side02_0060_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_s1_side02_0030_always_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_always_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_always_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_always_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/s1_side02_0000_always_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/s1_side02_0000_always_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/s1_side02_0000_always_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/s1_side02_0000_always_1.trsog").string());
+
+            } catch (const fs::filesystem_error& e) {
+                qDebug() << "Error renaming file: " << e.what();
+            }
+
         }
 
         if(randomizer.svRandomizerStarters.enable_starters == true || randomizer.svRandomizerStarters.enable_gifts == true){
@@ -3214,12 +3300,12 @@ void SVRandomizerWindow::runRandomizer()
         }
 
         try {
-            std::string copiedDir = "Randomizer-" + std::to_string(i);
-            if(fs::exists(copiedDir)){
-                fs::remove_all(copiedDir);
+            std::string copiedDirSpecific = "RandomizersAll/Randomizer-" + std::to_string(i);
+            if(fs::exists(copiedDirSpecific)){
+                fs::remove_all(copiedDirSpecific);
             }
 
-            fs::copy(fs::absolute(outputKey).string(), fs::absolute(copiedDir).string(), fs::copy_options::recursive);
+            fs::copy(fs::absolute(outputKey).string(), fs::absolute(copiedDirSpecific).string(), fs::copy_options::recursive);
             qDebug() << "Directory copied successfully.";
         } catch (const fs::filesystem_error& e) {
             std::cerr << "Error copying directory: " << e.what() << std::endl;
@@ -3244,6 +3330,7 @@ void SVRandomizerWindow::runRandomizer()
                 checkAndDeleteFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(ogName)).toStdString());
             }
             checkAndDeleteFile(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_SCENES/eventBattlePokemon_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_TRAINERS/trdata_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su2_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su1_array.json").toStdString());
@@ -3373,6 +3460,13 @@ void SVRandomizerWindow::runRandomizer()
                 QString fileName0 = QString::fromStdString(fileName);
                 checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Snacksworth/"+fileName0+".json").toStdString());
             }
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/d030_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0000_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0030_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0060_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0000_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0005_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0030_always_0.json").toStdString());
 
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/HikoNushi_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_1.json").toStdString());
@@ -3451,6 +3545,13 @@ void SVRandomizerWindow::runRandomizer()
                 QString fileName0 = QString::fromStdString(fileName);
                 checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Snacksworth/"+fileName0+".json").toStdString());
             }
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/d030_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0000_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0030_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0060_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0000_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0005_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0030_always_1.json").toStdString());
         // Delete Output file (again)
         if(fs::exists(dirPath)){
             fs::remove_all(dirPath);
