@@ -25,6 +25,31 @@ using json = nlohmann::json;
 
 json cleanSceneJSON;
 
+void SVShared::obtainCleanRatios(){
+    std::string filePath = fs::absolute("SV_FLATBUFFERS/SV_PERSONAL/personal_array_clean.json").string();
+    std::ifstream fileName(filePath);
+
+    if(!fileName.is_open()){
+        qFatal()<<"Could not load personal_array_clean.json";
+    }
+
+    fileName >> pokemonDataCleanRatios;
+    fileName.close();
+
+    filePath = fs::absolute("SV_FLATBUFFERS/pokemon_mapping.json").string();
+    fileName.open(filePath);
+
+    if(!fileName.is_open()){
+        qFatal()<<"Could not load pokemon_mapping.json";
+    }
+
+    fileName >> pokemonSharedMaps;
+    fileName.close();
+
+    qDebug() << "obtainCleanRatios called on instance:" << this;
+    qDebug()<< QStringLiteral("Size - 2: %1").arg(pokemonDataCleanRatios["entry"].size());
+}
+
 std::string SVShared::getPokemonItemId(int index, int form){
     if (paradox.contains(index) && index != 1007 && index != 1008 && index != 1024) {
         return "ITEMID_BUUSUTOENAJII";
@@ -799,6 +824,7 @@ void SVShared::patchFileDescriptor() {
 
 int modelCount = 0;
 int fieldCount = 0;
+
 void SVShared::recursiveFindOfPokemonSceneTable(nlohmann::json& sceneObject, std::vector<int> devId, std::vector<int> formId,std::vector<int> gender, std::vector<bool> rare){
     if (!sceneObject.is_array()) {
         return;
@@ -822,11 +848,8 @@ void SVShared::recursiveFindOfPokemonSceneTable(nlohmann::json& sceneObject, std
                     pkNX::Structures::FlatBuffers::SV::Trinity::TIPokemonModelComponent>(
                     data.data());
 
-                 qDebug() << "TIPokemonModelComponent:";
-                 qDebug() << "  DevId: " << originalTable->DevId();
-                 qDebug() << "  FormId: " << originalTable->FormId();
-                 qDebug() << "  Sex: " << static_cast<int>(originalTable->Sex());
-                 qDebug() << "  Rare: " << static_cast<int>(originalTable->Rare());
+                qDebug() << "TIPokemonModelComponent:";
+                printSceneTables(originalTable);
 
                 flatbuffers::FlatBufferBuilder builder;
                 uint16_t dev_id = devId[modelCount];
@@ -867,10 +890,7 @@ void SVShared::recursiveFindOfPokemonSceneTable(nlohmann::json& sceneObject, std
                     data.data());
 
                 qDebug() << "TIPokemonModelComponent (Updated)";
-                qDebug() << "  DevId: " << modifiedTale->DevId();
-                qDebug() << "  FormId: " << modifiedTale->FormId();
-                qDebug() << "  Sex: " << static_cast<int>(modifiedTale->Sex());
-                qDebug() << "  Rare: " << static_cast<int>(modifiedTale->Rare());
+                printSceneTables(modifiedTale);
 
 
             }else if(sceneObject[i]["Type"] == "ti_FieldPokemonComponent"){
@@ -880,10 +900,7 @@ void SVShared::recursiveFindOfPokemonSceneTable(nlohmann::json& sceneObject, std
                     data.data());
 
                 qDebug() << "TIFieldPokemonComponent:\n";
-                qDebug() << "  DevId: " << originalTable->DevId();
-                qDebug() << "  FormId: " << originalTable->FormId();
-                qDebug() << "  Sex: " << static_cast<int>(originalTable->Sex());
-                qDebug() << "  Rare: " << static_cast<int>(originalTable->Rare());
+                printSceneTables(originalTable);
 
                 flatbuffers::FlatBufferBuilder builder;
                 uint16_t dev_id = devId[fieldCount];
@@ -924,11 +941,7 @@ void SVShared::recursiveFindOfPokemonSceneTable(nlohmann::json& sceneObject, std
                     data.data());
 
                 qDebug() << "TIFieldPokemonComponent (Updated):";
-                qDebug() << "  DevId: " << modifiedTale->DevId();
-                qDebug() << "  FormId: " << modifiedTale->FormId();
-                qDebug() << "  Sex: " << static_cast<int>(modifiedTale->Sex());
-                qDebug() << "  Rare: " << static_cast<int>(modifiedTale->Rare());
-
+                printSceneTables(modifiedTale);
             }
         }
         recursiveFindOfPokemonSceneTable(sceneObject[i]["SubObjects"], devId, formId, gender, rare);

@@ -112,6 +112,8 @@ class SVTrainers: public SVShared
         
 		void openFiles();
         void closeFiles();
+        void noSoftlockParadise(QList<int> AllowedMons);
+        void noSoftlockTerapagos(QList<int> AllowedMons);
         QList<int> randomize_penny = {356, 357, 358, 677, 678};
         QList<int> randomize_geeta = {359, 360, 361};
         QList<int> randomize_clavell = {362, 363, 364, 365, 366, 367, 368};

@@ -28,6 +28,7 @@ SVRandomizerWindow::SVRandomizerWindow(QWidget *parent)
     : QWidget(parent)
 {
     createLayout();  // This function creates the UI layout and adds widgets
+    randomizer.obtainCleanRatios();
 }
 
 SVRandomizerWindow::~SVRandomizerWindow()
@@ -385,7 +386,10 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     startersRow_Q1->addWidget(starters_gender[0]);
 
     connect(starters[0], &QLineEdit::textChanged, this, [=](const QString &text) {
-        updateComboBoxGender(starters_gender[0], text);
+        updateComboBoxGender(starters_gender[0], text, 0);
+    });
+    connect(starters_form[0], QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=]() {
+        updateComboBoxGender(starters_gender[0], randomizer.svRandomizerStarters.starters[0], randomizer.svRandomizerStarters.starters_forms[0]);
     });
     connect(starters_gender[0], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
@@ -442,7 +446,10 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     startersRow_Q2->addWidget(starters_gender[1]);
 
     connect(starters[1], &QLineEdit::textChanged, this, [=](const QString &text) {
-        updateComboBoxGender(starters_gender[1], text);
+        updateComboBoxGender(starters_gender[1], text, 0);
+    });
+    connect(starters_form[1], QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=]() {
+        updateComboBoxGender(starters_gender[1], randomizer.svRandomizerStarters.starters[1], randomizer.svRandomizerStarters.starters_forms[1]);
     });
     connect(starters_gender[1], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
@@ -499,7 +506,10 @@ QWidget* SVRandomizerWindow::setupGiftWidget(){
     startersRow_Q3->addWidget(starters_gender[2]);
 
     connect(starters[2], &QLineEdit::textChanged, this, [=](const QString &text) {
-        updateComboBoxGender(starters_gender[2], text);
+        updateComboBoxGender(starters_gender[2], text, 0);
+    });
+    connect(starters_form[2], QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=]() {
+        updateComboBoxGender(starters_gender[2], randomizer.svRandomizerStarters.starters[2], randomizer.svRandomizerStarters.starters_forms[2]);
     });
     connect(starters_gender[2], QOverload<int>::of(&QComboBox::currentIndexChanged), this, &SVRandomizerWindow::saveComboInput);
 
@@ -2623,6 +2633,14 @@ void SVRandomizerWindow::runRandomizer()
     }else{
         hash = randomizer.seed.toUInt();
     }
+
+    std::string copiedDir = "RandomizersAll";
+    if(fs::exists(copiedDir)){
+        fs::remove_all(copiedDir);
+    }
+
+    randomizer.createFolderHierarchy(fs::absolute(copiedDir).string());
+
     for(unsigned int i = 1; i< randomizer.bulk_amount+1; i++){
         if(hash == 0){
             std::random_device rd;
@@ -2650,6 +2668,13 @@ void SVRandomizerWindow::runRandomizer()
 
         if(randomizer.svRandomizerStarters.enable_starters == true){
             randomizer.svRandomizeStarters(randomizer.svRandomizerStarters);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/d030_0.json").toStdString(),
+                                      "world/scene/parts/demo/ev/d030_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/d030_1.json").toStdString(),
+                                      "world/scene/parts/demo/ev/d030_/", true);
 
             randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
                                       qBaseDir.filePath(+"SV_SCENES/SV_STARTERS_SCENES/common_0060_always_0.json").toStdString(),
@@ -2687,6 +2712,12 @@ void SVRandomizerWindow::runRandomizer()
                                       "world/scene/parts/event/event_scenario/main_scenario/common_0090_/", true);
 
             try {
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d030_/d030_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d030_/d030_0.trscn").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d030_/d030_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d030_/d030_1.trscn").string());
+
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_0.bin").string(),
                 fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0060_/common_0060_always_0.trsog").string());
 
@@ -2725,6 +2756,84 @@ void SVRandomizerWindow::runRandomizer()
 
         if(randomizer.svRandomizerStarters.enable_gifts == true){
             randomizer.svRandomizeGifts(randomizer.svRandomizerStarters);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0000_always_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0000_always_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0030_always_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0030_always_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0060_pre_start_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0060_pre_start_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0000_pre_start_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0000_pre_start_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0005_pre_start_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0005_pre_start_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/", true);
+
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0030_always_0.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/", true);
+            randomizer.generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                                      qBaseDir.filePath(+"SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0030_always_1.json").toStdString(),
+                                      "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/", true);
+
+            try{
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/s2_side02_0030_always_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/s2_side02_0030_always_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/s2_side02_0030_always_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0030_/s2_side02_0030_always_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/s2_side02_0005_pre_start_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/s2_side02_0005_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/s2_side02_0005_pre_start_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0005_/s2_side02_0005_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/s2_side02_0000_pre_start_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/s2_side02_0000_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/s2_side02_0000_pre_start_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0000_/s2_side02_0000_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/s1_side02_0060_pre_start_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/s1_side02_0060_pre_start_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/s1_side02_0060_pre_start_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0060_/s1_side02_0060_pre_start_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_s1_side02_0030_always_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_always_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_always_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_always_1.trsog").string());
+
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/s1_side02_0000_always_0.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/s1_side02_0000_always_0.trsog").string());
+                fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/s1_side02_0000_always_1.bin").string(),
+                fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0000_/s1_side02_0000_always_1.trsog").string());
+
+            } catch (const fs::filesystem_error& e) {
+                qDebug() << "Error renaming file: " << e.what();
+            }
+
         }
 
         if(randomizer.svRandomizerStarters.enable_starters == true || randomizer.svRandomizerStarters.enable_gifts == true){
@@ -3127,9 +3236,9 @@ void SVRandomizerWindow::runRandomizer()
 
                 // Sunflora
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.bin").string(),
-                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.trsot").string());
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_0.trsog").string());
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_1.bin").string(),
-                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_1.trsot").string());
+                           fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/gym_kusa_poke_finding_/pokes_1.trsog").string());
 
                 // Houndoom
                 fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/common_0150_/common_0150_main_0.bin").string(),
@@ -3191,12 +3300,12 @@ void SVRandomizerWindow::runRandomizer()
         }
 
         try {
-            std::string copiedDir = "Randomizer-" + std::to_string(i);
-            if(fs::exists(copiedDir)){
-                fs::remove_all(copiedDir);
+            std::string copiedDirSpecific = "RandomizersAll/Randomizer-" + std::to_string(i);
+            if(fs::exists(copiedDirSpecific)){
+                fs::remove_all(copiedDirSpecific);
             }
 
-            fs::copy(fs::absolute(outputKey).string(), fs::absolute(copiedDir).string(), fs::copy_options::recursive);
+            fs::copy(fs::absolute(outputKey).string(), fs::absolute(copiedDirSpecific).string(), fs::copy_options::recursive);
             qDebug() << "Directory copied successfully.";
         } catch (const fs::filesystem_error& e) {
             std::cerr << "Error copying directory: " << e.what() << std::endl;
@@ -3221,6 +3330,7 @@ void SVRandomizerWindow::runRandomizer()
                 checkAndDeleteFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(ogName)).toStdString());
             }
             checkAndDeleteFile(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath(+"SV_SCENES/eventBattlePokemon_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_TRAINERS/trdata_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su2_array.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath(+"SV_WILDS/pokedata_su1_array.json").toStdString());
@@ -3305,6 +3415,58 @@ void SVRandomizerWindow::runRandomizer()
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/sub_039_pre_start_0.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_0.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/d610_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0105_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0130_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0160_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0370_post_end_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0390_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0430_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0440_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0460_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0480_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_a_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_b_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_c_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Okidogi/sdc01_3gods_a_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Okidogi/s1_sub_011_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Monkidori/sdc01_3gods_b_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Monkidori/s1_sub_012_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/sdc01_3gods_c_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/sdc01_3gods_c_before_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/s1_sub_016_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0330_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0360_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0400_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0410_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0420_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/sdc01_0300_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/s1_side02_0030_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/s1_side02_0050_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/s2_sub_005_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0262_main_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0263_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0267_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0265_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Legends/s2_side02_0010_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Legends/s2_side02_0020_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Terapagos/d730_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Terapagos/sdc02_0320_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Pecharunt/s2_side01_0160_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Pecharunt/s2_side01_0180_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Meloetta/s2_sub_003_pop_0.json").toStdString());
+            for(int z = 13; z<=37; z++){
+                std::string fileName = "s2_sub_0"+std::to_string(z)+"_pre_start_0";
+                QString fileName0 = QString::fromStdString(fileName);
+                checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Snacksworth/"+fileName0+".json").toStdString());
+            }
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/d030_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0000_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0030_always_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0060_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0000_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0005_pre_start_0.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0030_always_0.json").toStdString());
 
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/HikoNushi_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Bombirdier/nushi_hiko_fp_1063_010_1.json").toStdString());
@@ -3338,6 +3500,58 @@ void SVRandomizerWindow::runRandomizer()
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Orthworm/sub_039_pre_start_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_020_pre_start_1.json").toStdString());
             checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/d610_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0105_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0130_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0160_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0370_post_end_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0390_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0430_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0440_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0460_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_0480_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_a_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_b_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Ogerpon/sdc01_3gods_c_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Okidogi/sdc01_3gods_a_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Okidogi/s1_sub_011_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Monkidori/sdc01_3gods_b_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Monkidori/s1_sub_012_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/sdc01_3gods_c_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/sdc01_3gods_c_before_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Fezandipiti/s1_sub_016_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0330_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0360_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0400_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0410_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/LoyalThree/sdc01_0420_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/sdc01_0300_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/s1_side02_0030_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Other/s1_side02_0050_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/s2_sub_005_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0262_main_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0263_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0267_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Underdepths/sdc02_0265_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Legends/s2_side02_0010_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Legends/s2_side02_0020_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Terapagos/d730_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_AZ/Terapagos/sdc02_0320_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Pecharunt/s2_side01_0160_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Pecharunt/s2_side01_0180_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Meloetta/s2_sub_003_pop_1.json").toStdString());
+            for(int z = 13; z<=37; z++){
+                std::string fileName = "s2_sub_0"+std::to_string(z)+"_pre_start_1";
+                QString fileName0 = QString::fromStdString(fileName);
+                checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_LEGENDS/Snacksworth/"+fileName0+".json").toStdString());
+            }
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_STARTERS_SCENES/d030_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0000_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0030_always_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s1_side02_0060_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0000_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0005_pre_start_1.json").toStdString());
+            checkAndDeleteFile(qBaseDir.filePath("SV_SCENES/SV_Kitakami/Growlithe/s2_side02_0030_always_1.json").toStdString());
         // Delete Output file (again)
         if(fs::exists(dirPath)){
             fs::remove_all(dirPath);
@@ -3414,6 +3628,9 @@ void SVRandomizerWindow::saveComboInput() {
             for(int i =0; i< randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]].size(); i++){
                 if(comboBox->currentText() == randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]][i]){
                     setForm = i;
+                    if(randomizer.svRandomizerStarters.starters[index] == "Pikachu" && setForm == 8){
+                        setForm = 9;
+                    }
                 }
             }
 
@@ -4031,13 +4248,13 @@ void SVRandomizerWindow::updateComboBoxForms(QComboBox *comboBox, const QString 
     }
 }
 
-void SVRandomizerWindow::updateComboBoxGender(QComboBox *comboBox, const QString &text) {
+void SVRandomizerWindow::updateComboBoxGender(QComboBox *comboBox, QString text, int form) {
     comboBox->clear();
     if(randomizer.genderForms.contains(text)){
         comboBox->addItem("DEFAULT");
     }else if(randomizer.femaleOnlyPokemon.contains(text)){
         comboBox->addItem("FEMALE");
-    }else if(randomizer.maleOnlyPokemon.contains(text)){
+    }else if(randomizer.maleOnlyPokemon.contains(text) || randomizer.formsMaleOnly[text].contains(form)){
         comboBox->addItem("MALE");
     } else if(randomizer.genderlessPokemon.contains(text)){
             comboBox->addItem("GENDERLESS");
