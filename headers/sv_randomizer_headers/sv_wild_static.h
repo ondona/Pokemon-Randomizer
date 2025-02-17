@@ -8,7 +8,7 @@
 class SVWilds: public SVShared{
     public:
 	
-		LimiterDetails PaldeaLimiter;
+        allowedPokemonLimiter PaldeaLimiter;
 		QList<int> WildPaldeaAllowed = {};
         bool randomize_paldea_wild = false;
         bool paldea_ExcludeLegends = false;
@@ -27,7 +27,7 @@ class SVWilds: public SVShared{
                                                 false, false, false,
                                                 false, false, false};
 												
-		LimiterDetails KitakamiLimiter;
+        allowedPokemonLimiter KitakamiLimiter;
 		QList<int> WildKitakamiAllowed = {};
         bool randomize_kitakami_wild = false;
         bool kitakami_ExcludeLegends = false;
@@ -43,7 +43,7 @@ class SVWilds: public SVShared{
                                                   false, false, false,
                                                   false, false, false};
 												  
-		LimiterDetails BlueberryLimiter;
+        allowedPokemonLimiter BlueberryLimiter;
 		QList<int> WildBlueberryAllowed = {};
         bool randomize_blueberry_wild = false;
         bool blueberry_ExcludeLegends = false;
@@ -59,7 +59,7 @@ class SVWilds: public SVShared{
                                                    false, false, false,
                                                    false, false, false};
 	  
-		LimiterDetails FixedSymbolLimiter;
+        allowedPokemonLimiter FixedSymbolLimiter;
 		QList<int> FixedSymbolAllowed = {};
         bool statics_ExcludeLegends = false;
         bool statics_OnlyLegends = false;

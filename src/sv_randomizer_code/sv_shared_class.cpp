@@ -333,7 +333,7 @@ bool SVShared::CheckAllowedMons(QList<int>& allowedPokemon){
     return true;
 }
 
-int SVShared::GenerateAllowedMons(LimiterDetails Limiter, QList<int>& allowedPokemon){
+int SVShared::GenerateAllowedMons(allowedPokemonLimiter Limiter, QList<int>& allowedPokemon){
     // Logic for Poke Limiter
     QList<int> RemoveList;
     QList<int> AllowList;

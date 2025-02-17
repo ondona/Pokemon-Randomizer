@@ -11,19 +11,17 @@
 #include <QPushButton>
 #include <QVector>
 #include <QStackedWidget>
-#include <QStackedWidget>
-#include "SVRandomizerWindow.h"
+#include "../sv_randomizer_headers/SVRandomizerWindow.h"
 
 class AlternateWindow : public QWidget {
     Q_OBJECT
 
 public:
     AlternateWindow(int id, QWidget *parent = nullptr);
-
+    SVRandomizerWindow *svrandomizer;
 private:
     QLabel *label;
     int windowId;
-    SVRandomizerWindow *svrandomizer;
     QStackedWidget *stackedWidget;
 };
 

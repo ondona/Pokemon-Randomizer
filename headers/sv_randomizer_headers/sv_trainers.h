@@ -141,35 +141,35 @@ class SVTrainers: public SVShared
         QList<int> randomize_billy_onare = {596, 597, 598};
 		
 		
-		LimiterDetails PRivalLimiter;
+        allowedPokemonLimiter PRivalLimiter;
         QList<int> PRivalAllowedPokemon;
-		LimiterDetails PRouteLimiter;
+        allowedPokemonLimiter PRouteLimiter;
         QList<int> PRouteAllowedPokemon;
-		LimiterDetails PGymLimiter;
+        allowedPokemonLimiter PGymLimiter;
         QList<int> PGymAllowedPokemon;
-		LimiterDetails PE4Limiter;
+        allowedPokemonLimiter PE4Limiter;
         QList<int> PE4AllowedPokemon;
-		LimiterDetails PRaidLimiter;
+        allowedPokemonLimiter PRaidLimiter;
         QList<int> PRaidAllowedPokemon;
-		LimiterDetails PChampionLimiter;
+        allowedPokemonLimiter PChampionLimiter;
         QList<int> PChampionAllowedPokemon;
 		
-		LimiterDetails KRivalLimiter;
+        allowedPokemonLimiter KRivalLimiter;
         QList<int> KRivalAllowedPokemon;
-		LimiterDetails KRouteLimiter;
+        allowedPokemonLimiter KRouteLimiter;
         QList<int> KRouteAllowedPokemon;
-		LimiterDetails KOCLimiter;
+        allowedPokemonLimiter KOCLimiter;
         QList<int> KOCAllowedPokemon;
-		LimiterDetails KRaidLimiter;
+        allowedPokemonLimiter KRaidLimiter;
         QList<int> KRaidAllowedPokemon;
 		
-		LimiterDetails BRivalLimiter;
+        allowedPokemonLimiter BRivalLimiter;
         QList<int> BRivalAllowedPokemon;
-		LimiterDetails BRouteLimiter;
+        allowedPokemonLimiter BRouteLimiter;
         QList<int> BRouteAllowedPokemon;
-		LimiterDetails BBB4Limiter;
+        allowedPokemonLimiter BBB4Limiter;
         QList<int> BBB4AllowedPokemon;
-		LimiterDetails BRaidLimiter;
+        allowedPokemonLimiter BRaidLimiter;
         QList<int> BRaidAllowedPokemon;
 		
 };

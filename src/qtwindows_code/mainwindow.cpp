@@ -1,4 +1,4 @@
-#include "headers/mainwindow.h"
+#include "headers/qtwindows_headers/mainwindow.h"
 // #include "GameEditWindow.h"
 // #include "RandomizerWindow.h"
 // #include "VGCWindow.h"
@@ -114,7 +114,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     addDockWidget(Qt::LeftDockWidgetArea, dockSidebar);
 
     // Sample images in grid for demonstration
-    QString imageFolderPath = QString::fromStdString(fs::absolute("images").string());  // Path to the local images folder
+    QString imageFolderPath = QString::fromStdString(fs::absolute("assets/Supported Games").string());  // Path to the local images folder
 
     for (int i = 0; i < 1; ++i) {
         QLabel *imageLabel = new QLabel(this);

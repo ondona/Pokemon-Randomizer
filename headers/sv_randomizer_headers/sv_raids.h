@@ -6,9 +6,9 @@
 #include "headers/sv_randomizer_headers/sv_shared_class.h"
 
 class SVRaids: public SVShared{
-    public:    
+    public:
 	
-		LimiterDetails RaidsPaldeaLimiter;
+        allowedPokemonLimiter RaidsPaldeaLimiter;
 		QList<int> RaidsPaldeaAllowed = {};
         bool praids_randomize = false;
         bool praids_randomize_per_star = false;
@@ -27,7 +27,7 @@ class SVRaids: public SVShared{
                                          false, false, false,
                                          false, false, false};
 
-		LimiterDetails RaidsKitakamiLimiter;
+        allowedPokemonLimiter RaidsKitakamiLimiter;
 		QList<int> RaidsKitakamiAllowed = {};
         bool kraids_randomize = false;
         bool kraids_randomize_per_star = false;
@@ -45,7 +45,7 @@ class SVRaids: public SVShared{
                                           false, false, false,
                                           false, false, false};
 
-		LimiterDetails RaidsBlueberryLimiter;
+        allowedPokemonLimiter RaidsBlueberryLimiter;
 		QList<int> RaidsBlueberryAllowed = {};
         bool braids_randomize = false;
         bool braids_randomize_per_star = false;

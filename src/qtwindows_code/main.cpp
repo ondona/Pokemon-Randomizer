@@ -2,7 +2,7 @@
 #include <QScreen>
 #include <QMutex>
 #include <QSettings>
-#include "headers/mainwindow.h"
+#include "headers/qtwindows_headers/mainwindow.h"
 
 // Global file, mutex, and settings
 QFile logFile;
@@ -79,21 +79,22 @@ int main(int argc, char *argv[]) {
     // Move the window to the center
     mainWindow.move(x, y);
 
-    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
-    // Open log file
+    // Creates log file
     QString logFilePath = "logs/logs.log";
     logFile.setFileName(logFilePath);
     if (!logFile.open(QIODevice::Append | QIODevice::Text)) {
         qCritical() << "Failed to open log file!";
     }
 
+    // Creates Buffer of qDebugs/qCriticals/qFatals into logs folder for debug and release.
     qInstallMessageHandler(customMessageHandler);
 
+    // Creates settings for Randomizer Options (things to be remember between launches)
     QSettings settings("Pokemon Randomizer", "Main");
 
     // Default to true for "Always on Top"
     bool alwaysOnTopValue = settings.value("AlwaysOnTop", true).toBool();
-
     mainWindow.alwaysOnTop(alwaysOnTopValue);
+
     return app.exec();
 }

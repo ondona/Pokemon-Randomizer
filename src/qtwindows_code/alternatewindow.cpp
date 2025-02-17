@@ -1,5 +1,5 @@
-#include "headers/AlternateWindow.h"
-#include "headers/SVRandomizerWindow.h"
+#include "headers/qtwindows_headers/AlternateWindow.h"
+#include "headers/sv_randomizer_headers/SVRandomizerWindow.h"
 #include <QApplication>
 #include <QScreen>
 #include <QStackedWidget>
@@ -13,6 +13,7 @@ AlternateWindow::AlternateWindow(int id, QWidget *parent) : QWidget(parent), win
     switch(id){
         case 0:
             svrandomizer = new SVRandomizerWindow();
+            svrandomizer->createLayout();
             stackedWidget->addWidget(svrandomizer);
             break;
         case 1:

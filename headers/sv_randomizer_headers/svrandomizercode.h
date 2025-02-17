@@ -12,7 +12,7 @@
 #include "sv_boss.h"
 
 
-class SVRandomizerCode : public SVShared
+class SVRandomizerCode: public SVShared
 {
 public:
     SVRandomizerCode();
