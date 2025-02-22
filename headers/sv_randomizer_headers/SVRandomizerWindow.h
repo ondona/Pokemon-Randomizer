@@ -1,7 +1,7 @@
 #ifndef SVRANDOMIZERWINDOW_H
 #define SVRANDOMIZERWINDOW_H
 
-#include "../qtwindows_headers/sharedRandomizerClass.h"
+#include "../qtwindows_headers/sharedRandomizerWindow.h"
 #include "../sv_randomizer_headers/svrandomizercode.h"
 
 class SVRandomizerWindow : public QWidget, SharedRandomizerWindow

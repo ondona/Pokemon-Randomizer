@@ -1,77 +1,1209 @@
 #ifndef SHAREDRANDOMIZERCLASS_H
 #define SHAREDRANDOMIZERCLASS_H
 
-#include <QWidget>
-#include <QMap>
-#include <QVariant>
-#include <QMessageBox>
-#include <QStackedWidget>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QComboBox>
-#include <QCheckBox>
-#include <QSpinBox>
-#include <QJsonObject>
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QGroupBox>
-#include <QStringListModel>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QTabBar>
-#include <QLineEdit>
-#include <QScrollArea>
-#include <QFormLayout>
-#include <QCompleter>
-#include <QFileDialog>
 #include <nlohmann/json.hpp>
-#include "../sv_randomizer_headers/sv_shared_class.h"
+#include <QMap>
+#include <QVector>
+#include <QString>
+#include <QSet>
+#include <QDebug>
+#include <QFile>
+#include <flatbuffers/flatbuffers.h>
+#include <flatbuffers/verifier.h>
+#include <TrinitySceneObject_generated.h>
+#include <QProcess>
+#include <QStringListModel>
 
-class SharedRandomizerWindow: public SVShared{
-protected:
-    // Variables - uninitialized
-    QMap<QString, QVariant> settings;
-    QStringList starterNames;
-    QMessageBox* progressBar = nullptr;
+using json = nlohmann::json;
 
-    // Protected Functions
-    // virtual int obtainPokemonGenderRatios(QString pokemonStatsFilePath);
-    // virtual QMap<QString, QVariant> setUpSettings(QMap<QString, QVariant> s);
-    virtual QScrollArea* setupStartersWidget() = 0;
-    virtual QScrollArea* setupPersonalWidget() = 0;
-    virtual QScrollArea* setupWildWidget() = 0;
-    virtual QScrollArea* setupTrainersWidget() = 0;
-    virtual QScrollArea* setupBossWidget() = 0;
-    // virtual QScrollArea* setupShopWidget();
-    virtual void initializeSettings() =0;
-    virtual void setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokemonLimiter details)=0;
+/*
+    normal = normal
+    kakutou = fightning
+    hikou = flying
+    doku = poison
+    jimen = ground
+    iwa = rock
+    mushi = bug
+    ghost = ghost
+    hagane = steel
+    honoo = fire
+    mizu = water
+    kusa = grass
+    denki = electric
+    esper = psychic
+    koori = ice
+    dragon = dragon
+    aku = dark
+    fairy = fairy (yousei everywhere else)
+    niji = stellar
+*/
 
-public:
-    // Functions - Not Overloaded
-    // virtual bool checkAndDeleteFiles(QString fileToCheck);
-    // virtual void createFolderHierarchy(const QString& folder);
-    // virtual QString getItemForPokemon(int pokemon, int form);
-    // virtual QString getPokemonItemId(int index, int form);
-    // virtual int getPokemonItemValue(int index, int form);
+class sharedRandomizerClass{
+    public:
+        // Global Structs
+        struct allowedPokemonLimiter{
+            QList<bool> Gens = {true, true, true,
+                                true, true, true,
+                                true, true, true};
+            QList<bool> GenLegends = {true, true, true,
+                                      true, true, true,
+                                      true, true, true};
+            bool Stage1 = true;
+            bool Stage2 = true;
+            bool Stage3 = true;
+            bool SingleStage = true;
+            bool Paradox = true;
+            bool UltraBeast = true;
 
-    // Functions Overloaded
-    // virtual QList<int> getDevIdsOfAllowedPokemon(allowedPokemonLimiter limiterCheck);
-    // virtual QList<int> getDevIdsOfAllowedPokemon(allowedPokemonLimiter limiterCheck, QList<int> &allowedLegends);
+            // toString() method
+            QString toString() const {
+                QStringList gensList;
+                for (bool gen : Gens) {
+                    gensList.append(gen ? "true" : "false");
+                }
+                QStringList GenLegendsList;
+                for (bool gen : GenLegends) {
+                    GenLegendsList.append(gen ? "true" : "false");
+                }
 
-//     // TODO
-    virtual QJsonDocument exportSettings(QMap<QString, QVariant> map) =0;
-//     // void runRandomizer();
-//     // void switchTabs(QStackedWidget* sw, int i =0);
-//     // void sendMessageOfConfirmation(QString message);
+                return QString("Gens: [%1], Legends: [%8], Stage1: %2, Stage2: %3, Stage3: %4, SingleStage: %5, Paradox: %6, UltraBeast: %7")
+                    .arg(gensList.join(", "))
+                    .arg(Stage1 ? "true" : "false")
+                    .arg(Stage2 ? "true" : "false")
+                    .arg(Stage3 ? "true" : "false")
+                    .arg(SingleStage ? "true" : "false")
+                    .arg(Paradox ? "true" : "false")
+                    .arg(UltraBeast ? "true" : "false")
+                    .arg(GenLegendsList.join(", "));
+            }
+        };
 
-    virtual void importSettings() =0;
+        // Uninitialized Data
+        nlohmann::json pokemonPersonalData;
+        nlohmann::json pokemonMapping;
+        QList<int> regionalStage1;
+        QList<int> regionalStage2;
+        QList<int> regionalStage3;
+        QList<int> regionalSingleStage;
+        QList<int> allowedMoves;
+        QList<int> bannedItems;
+        QList<int> bannedPokemon;
+        QStringList pokeballNames;
+        int totalFiles = 0;
+        int maxGeneration = 9;
+        int maxAllowedId = 1025;
+        bool nationalDexMode = false; // Adding for future compatability for potential nationaldex mods
+        QString personalFilePath;
+        QStringList pokemonInGame;
+        QMap<QString, QList<int>> pokemonFormsIntsInGame;
+        QMap<QString, QList<int>> selectedStarters = {
+            {"", {0}},
+        };
 
-private:
-    // TODO
+        /*
+            1) All IDs are in national dex order
+            2) List Includes national dex information
+            3) Lists will be national lists (not fully national as of this github push)
+        */
 
+        QList<int> maxIdPerGeneration = {0, 151, 251, 386, 493, 649, 721, 809, 905, 1025};
 
+        QList <QMap<QString, int>> exitAbilitiesPokemon = {{{"id", 767}, {"form", 0}},
+                                                          {{"id", 768}, {"form", 0}},
+                                                          };
+
+        QList<int> pokemonFormsWithItems = {483, 484, 487, 493, 888, 889, 1017};
+
+        QStringList maleOnlyPokemon = {
+            "NidoranM",
+            "Nidorino",
+            "Nidoking",
+            "Hitmonlee",
+            "Hitmonchan",
+            "Tauros",
+            "Hitmontop",
+            "Volbeat",
+            "Mothim",
+            "Gallade",
+            "Throh",
+            "Sawk",
+            "Rufflet",
+            "Braviary",
+            "Impidimp",
+            "Morgrem",
+            "Grimmsnarl",
+            "Tyrogue",
+            "Latios",
+            "Tornadus",
+            "Thundurus",
+            "Landorus",
+            "Okidogi",
+            "Munkidori",
+            "Fezandipiti"
+        };
+
+        QStringList femaleOnlyPokemon = {
+            "NidoranF",
+            "Nidorina",
+            "Nidoqueen",
+            "Chansey",
+            "Kangaskhan",
+            "Jynx",
+            "Miltank",
+            "Blissey",
+            "Illumise",
+            "Wormadam",
+            "Vespiquen",
+            "Froslass",
+            "Petilil",
+            "Lilligant",
+            "Vullaby",
+            "Mandibuzz",
+            "Flabébé",
+            "Floette",
+            "Florges",
+            "Salazzle",
+            "Bounsweet",
+            "Steenee",
+            "Tsareena",
+            "Hatenna",
+            "Hattrem",
+            "Hatterene",
+            "Milcery",
+            "Alcremie",
+            "Tinkatink",
+            "Tinkatuff",
+            "Tinkaton",
+            "Smoochum",
+            "Latias",
+            "Happiny",
+            "Cresselia",
+            "Enamorus",
+            "Ogerpon"
+        };
+
+        QStringList genderlessPokemon = {
+            "Magnemite",
+            "Magneton",
+            "Voltorb",
+            "Electrode",
+            "Staryu",
+            "Starmie",
+            "Porygon",
+            "Porygon2",
+            "Shedinja",
+            "Lunatone",
+            "Solrock",
+            "Baltoy",
+            "Claydol",
+            "Beldum",
+            "Metang",
+            "Metagross",
+            "Bronzor",
+            "Bronzong",
+            "Magnezone",
+            "Porygon-Z",
+            "Rotom",
+            "Phione",
+            "Manaphy",
+            "Klink",
+            "Klang",
+            "Klinklang",
+            "Cryogonal",
+            "Golett",
+            "Golurk",
+            "Carbink",
+            "Minior",
+            "Dhelmise",
+            "Sinistea",
+            "Polteageist",
+            "Falinks",
+            "Tandemaus",
+            "Maushold",
+            "Poltchageist",
+            "Sinistcha",
+            "Ditto",
+            "Articuno",
+            "Zapdos",
+            "Moltres",
+            "Mewtwo",
+            "Mew",
+            "Unown",
+            "Raikou",
+            "Entei",
+            "Suicune",
+            "Lugia",
+            "Ho-oh",
+            "Celebi",
+            "Regirock",
+            "Regice",
+            "Registeel",
+            "Kyogre",
+            "Groudon",
+            "Rayquaza",
+            "Jirachi",
+            "Deoxys",
+            "Uxie",
+            "Mesprit",
+            "Azelf",
+            "Dialga",
+            "Palkia",
+            "Regigigas",
+            "Giratina",
+            "Darkrai",
+            "Shaymin",
+            "Arceus",
+            "Victini",
+            "Cobalion",
+            "Terrakion",
+            "Virizion",
+            "Reshiram",
+            "Zekrom",
+            "Kyurem",
+            "Keldeo",
+            "Meloetta",
+            "Genesect",
+            "Xerneas",
+            "Yveltal",
+            "Zygarde",
+            "Diancie",
+            "Hoopa",
+            "Volcanion",
+            "Type: Null",
+            "Silvally",
+            "Tapu Koko",
+            "Tapu Lele",
+            "Tapu Bulu",
+            "Tapu Fini",
+            "Cosmog",
+            "Cosmoem",
+            "Solgaleo",
+            "Lunala",
+            "Nihilego",
+            "Buzzwole",
+            "Pheromosa",
+            "Xurkitree",
+            "Celesteela",
+            "Kartana",
+            "Guzzlord",
+            "Necrozma",
+            "Magearna",
+            "Marshadow",
+            "Poipole",
+            "Naganadel",
+            "Stakataka",
+            "Blacephalon",
+            "Zeraora",
+            "Meltan",
+            "Melmetal",
+            "Dracozolt",
+            "Arctozolt",
+            "Dracovish",
+            "Arctovish",
+            "Zacian",
+            "Zamazenta",
+            "Eternatus",
+            "Zarude",
+            "Regieleki",
+            "Regidrago",
+            "Glastrier",
+            "Spectrier",
+            "Calyrex",
+            "Great Tusk",
+            "Scream Tail",
+            "Brute Bonnet",
+            "Flutter Mane",
+            "Slither Wing",
+            "Sandy Shocks",
+            "Iron Treads",
+            "Iron Bundle",
+            "Iron Hands",
+            "Iron Jugulis",
+            "Iron Moth",
+            "Iron Thorns",
+            "Gimmighoul",
+            "Gholdengo",
+            "Wo-Chien",
+            "Chien-Pao",
+            "Ting-Lu",
+            "Chi-Yu",
+            "Roaring Moon",
+            "Iron Valiant",
+            "Koraidon",
+            "Miraidon",
+            "Walking Wake",
+            "Iron Leaves",
+            "Gouging Fire",
+            "Raging Bolt",
+            "Iron Boulder",
+            "Iron Crown",
+            "Pecharunt"
+        };
+
+        QStringList genderForms{
+            "Meowstic",
+            "Indeedee",
+            "Oinkologne"
+        };
+
+        QStringList teraTypes = {
+            "NORMAL", "KAKUTOU", "HIKOU", "DOKU", "JIMEN", "IWA", "MUSHI", "GHOST",
+            "HAGANE", "HONOO", "MIZU", "KUSA", "DENKI", "ESPER", "KOORI", "DRAGON",
+            "AKU", "FAIRY", "NIJI"
+        }; // NIJI == STELLAR TERA TYPE
+
+        QMap<QString,QList<int>> formsMaleOnly{
+            {"Pikachu", {1,2,3,4,5,6,7,9}},
+            {"Greninja", {1}},
+            {"Ursaluna", {1}}
+        };
+
+        QMap<QString, QList<int>> formsFemaleOnly{
+
+        };
+
+        QMap<QString, QStringList> pokeballDevNames = {
+            {"Poke Ball",{"MONSUTAABOORU", "ITEMID_MONSUTAABOORU"}},
+            {"Great Ball",{"SUUPAABOORU", "ITEMID_SUUPAABOORU"}},
+            {"Ultra Ball",{"HAIPAABOORU", "ITEMID_HAIPAABOORU"}},
+            {"Master Ball",{"MASUTAABOORU", "ITEMID_MASUTAABOORU"}},
+            {"Beast Ball",{"URUTORABOORU", "ITEMID_URUTORABOORU"}},
+            {"Cherish Ball", {"PURESYASUBOORU", "ITEMID_PURESYASUBOORU"}},
+            {"Luxury Ball",{"GOOZYASUBOORU", "ITEMID_GOOZYASUBOORU"}},
+            {"Timer Ball",{"TAIMAABOORU", "ITEMID_TAIMAABOORU"}},
+            {"Net Ball",{"NETTOBOORU", "ITEMID_NETTOBOORU"}},
+            {"Nest Ball",{"NESUTOBOORU", "ITEMID_NESUTOBOORU"}},
+            {"Repeat Ball",{"RIPIITOBOORU", "ITEMID_RIPIITOBOORU"}},
+            {"Dive Ball",{"DAIBUBOORU", "ITEMID_DAIBUBOORU"}},
+            {"Dusk Ball",{"DAAKUBOORU", "ITEMID_DAAKUBOORU"}},
+            {"Heal Ball", {"HIIRUBOORU", "ITEMID_HIIRUBOORU"}},
+            {"Quick Ball",{"KUIKKUBOORU", "ITEMID_KUIKKUBOORU"}},
+            {"Premier Ball",{"PUREMIABOORU", "ITEMID_PUREMIABOORU"}},
+            {"Safari Ball", {"SAFARIBOORU", "ITEMID_SAFARIBOORU"}},
+            {"Fast Ball", {"SUPIIDOBOORU", "ITEMID_SUPIIDOBOORU"}},
+            {"Level Ball",{"REBERUBOORU", "ITEMID_REBERUBOORU"}},
+            {"Lure Ball", {"RUAABOORU", "ITEMID_RUAABOORU"}},
+            {"Heavy Ball",{"HEBIIBOORU", "ITEMID_HEBIIBOORU"}},
+            {"Love Ball", {"RABURABUBOORU", "ITEMID_RABURABUBOORU"}},
+            {"Friend Ball",{"HURENDOBOORU", "ITEMID_HURENDOBOORU"}},
+            {"Moon Ball", {"MUUNBOORU", "ITEMID_MUUNBOORU"}},
+            {"Sport Ball",{"KONPEBOORU", "ITEMID_KONPEBOORU"}},
+            {"Dream Ball",{"DORIIMUBOORU", "ITEMID_DORIIMUBOORU"}}
+        };
+
+        QMap<int, QList<int>> gen1_legends = {
+            {144, {0}},
+            {145, {0}},
+            {146, {0}},
+            {150, {0, 1, 2}},
+            {151, {0}}
+        };
+        QList<int> gen2_legends = {243, 244, 245, 249, 250, 251};
+        QList<int> gen3_legends = {377, 378, 379, 380, 381, 382, 383, 384, 385, 386};
+        QList<int> gen4_legends = {480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493};
+        QList<int> gen5_legends = {494, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649};
+        QList<int> gen6_legends = {716, 717, 718, 719, 720, 721};
+        QList<int> gen7_legends = {772, 773, 785, 786, 787, 788, 789, 790, 791, 792, 800, 801, 802, 807, 808, 809};
+        QList<int> UB = {793, 794, 795, 796, 797, 798, 799, 803, 804, 805, 806};
+        QList<int> gen8_legends = {888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898, 905};
+        QList<int> gen9_legends = {1001, 1002, 1003, 1004, 1007, 1008, 1009, 1010, 1014, 1015, 1016, 1017, 1020, 1021, 1022, 1023, 1024, 1025};
+        QList<int> paradox = {984, 985, 986, 987, 988, 989, 990, 991, 992, 993, 994, 995, 1005, 1006, 1007, 1008, 1009, 1010, 1020, 1021,
+                              1022, 1023};
+        QList<int> set_tera_type_pokemon = {1017, 1024};
+    protected:
+        // Functions
+        void recursiveFindOfPokemonSceneTable(json& sceneFile, QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare);
+        int getPokemonItemValue(int index, int form);
+        void obtainCleanRatios();
+        std::string getItemForPokemon(int pokemon, int form);
+        std::string getPokemonItemId(int index, int form);
+        void getAllowedPokemon(allowedPokemonLimiter limiter, QList<int> & allowedList);
+        void modifyPokemonScene(QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare, QString input, QString output);
+        void createFolderHierarchy(const QString& folder);
+
+        // Variables
+        QList<int> pokemon_with_regional_evolutions = {
+            25,   // Pikachu [1]
+            102,  // Exeggcute [1]
+            104,  // Cubone [1]
+            109,  // Koffing [1]
+            156,  // Quilava [1]
+            439,  // Mime Jr. [1]
+            123,  // Scyther [1]
+            217,  // Ursaring [0] [1]
+            234,  // Stantler [1]
+            502,  // Dewott [1]
+            548,  // Petilil [1]
+            627,  // Rufflet [1]
+            704,  // Goomy [1]
+            712,  // Bergmite [1]
+            723,  // Dartrix [1]
+        };
+
+        QList<int> pokemon_with_multiplayer_evolutions = {
+            61,   // Poliwhirl [1]
+            64,   // Kadabra [0]
+            67,   // Machoke [0]
+            75,   // Graveler [0]
+            79,   // Slowpoke [1]
+            93,   // Haunter [0]
+            95,   // Onix [0]
+            117,  // Seadra [0]
+            123,  // Scyther [0]
+            137,  // Porygon [0]
+            366,  // Clamperl [0] [1]
+            112,  // Rhydon [0]
+            125,  // Electabuzz [0]
+            126,  // Magma [0]
+            233,  // Porygon2 [0]
+            356,  // Dusclops [0]
+            349,  // Feebas [0]
+            525,  // Boldore [0]
+            533,  // Gurdurr [0]
+            588,  // Karrablast [0]
+            616,  // SHelmet [0]
+            682,  // Spritzee [0]
+            684,  // Swirlix [0]
+            708,  // Phantump [0]
+            710,  // Pumpkaboo [0]
+            933,  // Finizen [0]
+        };
+
+        QMap<QString, QStringList> nationalDexPokemonNamesAndForms = {
+            {"Bulbasaur", {"—"}},
+            {"Ivysaur", {"—"}},
+            {"Venusaur", {"—"}},
+            {"Charmander", {"—"}},
+            {"Charmeleon", {"—"}},
+            {"Charizard", {"—"}},
+            {"Squirtle", {"—"}},
+            {"Wartortle", {"—"}},
+            {"Blastoise", {"—"}},
+            {"Ekans", {"—"}},
+            {"Arbok", {"—"}},
+            {"Pikachu", {"Normal","Original","Hoenn","Sinnoh","Unova","Kalos","Alola","Partner","World"}},
+            {"Raichu", {"Normal","Alolan"}},
+            {"Sandshrew", {"Normal","Alolan"}},
+            {"Sandslash", {"Normal","Alolan"}},
+            {"Clefairy", {"—"}},
+            {"Clefable", {"—"}},
+            {"Vulpix", {"Normal","Alolan"}},
+            {"Ninetales", {"Normal","Alolan"}},
+            {"Jigglypuff", {"—"}},
+            {"Wigglytuff", {"—"}},
+            {"Oddish", {"—"}},
+            {"Gloom", {"—"}},
+            {"Vileplume", {"—"}},
+            {"Venonat", {"—"}},
+            {"Venomoth", {"—"}},
+            {"Diglett", {"Normal","Alolan"}},
+            {"Dugtrio", {"Normal","Alolan"}},
+            {"Meowth", {"Normal","Alolan","Galarian"}},
+            {"Persian", {"Normal","Alolan"}},
+            {"Psyduck", {"—"}},
+            {"Golduck", {"—"}},
+            {"Mankey", {"—"}},
+            {"Primeape", {"—"}},
+            {"Growlithe", {"Normal","Hisuian"}},
+            {"Arcanine", {"Normal","Hisuian"}},
+            {"Poliwag", {"—"}},
+            {"Poliwhirl", {"—"}},
+            {"Poliwrath", {"—"}},
+            {"Bellsprout", {"—"}},
+            {"Weepinbell", {"—"}},
+            {"Victreebel", {"—"}},
+            {"Tentacool", {"—"}},
+            {"Tentacruel", {"—"}},
+            {"Geodude", {"Normal","Alolan"}},
+            {"Graveler", {"Normal","Alolan"}},
+            {"Golem", {"Normal","Alolan"}},
+            {"Slowpoke", {"Normal","Galarian"}},
+            {"Slowbro", {"Normal","Galarian"}},
+            {"Magnemite", {"—"}},
+            {"Magneton", {"—"}},
+            {"Doduo", {"—"}},
+            {"Dodrio", {"—"}},
+            {"Seel", {"—"}},
+            {"Dewgong", {"—"}},
+            {"Grimer", {"Normal","Alolan"}},
+            {"Muk", {"Normal","Alolan"}},
+            {"Shellder", {"—"}},
+            {"Cloyster", {"—"}},
+            {"Gastly", {"—"}},
+            {"Haunter", {"—"}},
+            {"Gengar", {"—"}},
+            {"Drowzee", {"—"}},
+            {"Hypno", {"—"}},
+            {"Voltorb", {"Normal","Hisuian"}},
+            {"Electrode", {"Normal","Hisuian"}},
+            {"Exeggcute", {"—"}},
+            {"Exeggutor", {"Normal","Alolan"}},
+            {"Hitmonlee", {"—"}},
+            {"Hitmonchan", {"—"}},
+            {"Koffing", {"—"}},
+            {"Weezing", {"Normal","Galarian"}},
+            {"Rhyhorn", {"—"}},
+            {"Rhydon", {"—"}},
+            {"Chansey", {"—"}},
+            {"Horsea", {"—"}},
+            {"Seadra", {"—"}},
+            {"Scyther", {"—"}},
+            {"Electabuzz", {"—"}},
+            {"Magmar", {"—"}},
+            {"Tauros", {"Normal","Paldean (Combat)","Paldean (Blaze)","Paldean (Aqua)"}},
+            {"Magikarp", {"—"}},
+            {"Gyarados", {"—"}},
+            {"Lapras", {"—"}},
+            {"Ditto", {"—"}},
+            {"Eevee", {"—"}},
+            {"Vaporeon", {"—"}},
+            {"Jolteon", {"—"}},
+            {"Flareon", {"—"}},
+            {"Porygon", {"—"}},
+            {"Snorlax", {"—"}},
+            {"Articuno", {"Normal","Galarian"}},
+            {"Zapdos", {"Normal","Galarian"}},
+            {"Moltres", {"Normal","Galarian"}},
+            {"Dratini", {"—"}},
+            {"Dragonair", {"—"}},
+            {"Dragonite", {"—"}},
+            {"Mewtwo", {"—"}},
+            {"Mew", {"—"}},
+            {"Chikorita", {"—"}},
+            {"Bayleef", {"—"}},
+            {"Meganium", {"—"}},
+            {"Cyndaquil", {"—"}},
+            {"Quilava", {"—"}},
+            {"Typhlosion", {"Normal","Hisuian"}},
+            {"Totodile", {"—"}},
+            {"Croconaw", {"—"}},
+            {"Feraligatr", {"—"}},
+            {"Sentret", {"—"}},
+            {"Furret", {"—"}},
+            {"Hoothoot", {"—"}},
+            {"Noctowl", {"—"}},
+            {"Spinarak", {"—"}},
+            {"Ariados", {"—"}},
+            {"Chinchou", {"—"}},
+            {"Lanturn", {"—"}},
+            {"Pichu", {"—"}},
+            {"Cleffa", {"—"}},
+            {"Igglybuff", {"—"}},
+            {"Mareep", {"—"}},
+            {"Flaaffy", {"—"}},
+            {"Ampharos", {"—"}},
+            {"Bellossom", {"—"}},
+            {"Marill", {"—"}},
+            {"Azumarill", {"—"}},
+            {"Sudowoodo", {"—"}},
+            {"Politoed", {"—"}},
+            {"Hoppip", {"—"}},
+            {"Skiploom", {"—"}},
+            {"Jumpluff", {"—"}},
+            {"Aipom", {"—"}},
+            {"Sunkern", {"—"}},
+            {"Sunflora", {"—"}},
+            {"Yanma", {"—"}},
+            {"Wooper", {"Normal","Paldean"}},
+            {"Quagsire", {"—"}},
+            {"Espeon", {"—"}},
+            {"Umbreon", {"—"}},
+            {"Murkrow", {"—"}},
+            {"Slowking", {"Normal","Galarian"}},
+            {"Misdreavus", {"—"}},
+            {"Girafarig", {"—"}},
+            {"Pineco", {"—"}},
+            {"Forretress", {"—"}},
+            {"Dunsparce", {"—"}},
+            {"Gligar", {"—"}},
+            {"Snubbull", {"—"}},
+            {"Granbull", {"—"}},
+            {"Qwilfish", {"Normal","Hisuian"}},
+            {"Scizor", {"—"}},
+            {"Heracross", {"—"}},
+            {"Sneasel", {"Normal","Hisuian"}},
+            {"Teddiursa", {"—"}},
+            {"Ursaring", {"—"}},
+            {"Slugma", {"—"}},
+            {"Magcargo", {"—"}},
+            {"Swinub", {"—"}},
+            {"Piloswine", {"—"}},
+            {"Delibird", {"—"}},
+            {"Skarmory", {"—"}},
+            {"Houndour", {"—"}},
+            {"Houndoom", {"—"}},
+            {"Kingdra", {"—"}},
+            {"Phanpy", {"—"}},
+            {"Donphan", {"—"}},
+            {"Porygon2", {"—"}},
+            {"Stantler", {"—"}},
+            {"Smeargle", {"—"}},
+            {"Tyrogue", {"—"}},
+            {"Hitmontop", {"—"}},
+            {"Elekid", {"—"}},
+            {"Magby", {"—"}},
+            {"Blissey", {"—"}},
+            {"Raikou", {"—"}},
+            {"Entei", {"—"}},
+            {"Suicune", {"—"}},
+            {"Larvitar", {"—"}},
+            {"Pupitar", {"—"}},
+            {"Tyranitar", {"—"}},
+            {"Lugia", {"—"}},
+            {"Ho-Oh", {"—"}},
+            {"Treecko", {"—"}},
+            {"Grovyle", {"—"}},
+            {"Sceptile", {"—"}},
+            {"Torchic", {"—"}},
+            {"Combusken", {"—"}},
+            {"Blaziken", {"—"}},
+            {"Mudkip", {"—"}},
+            {"Marshtomp", {"—"}},
+            {"Swampert", {"—"}},
+            {"Poochyena", {"—"}},
+            {"Mightyena", {"—"}},
+            {"Lotad", {"—"}},
+            {"Lombre", {"—"}},
+            {"Ludicolo", {"—"}},
+            {"Seedot", {"—"}},
+            {"Nuzleaf", {"—"}},
+            {"Shiftry", {"—"}},
+            {"Wingull", {"—"}},
+            {"Pelipper", {"—"}},
+            {"Ralts", {"—"}},
+            {"Kirlia", {"—"}},
+            {"Gardevoir", {"—"}},
+            {"Surskit", {"—"}},
+            {"Masquerain", {"—"}},
+            {"Shroomish", {"—"}},
+            {"Breloom", {"—"}},
+            {"Slakoth", {"—"}},
+            {"Vigoroth", {"—"}},
+            {"Slaking", {"—"}},
+            {"Makuhita", {"—"}},
+            {"Hariyama", {"—"}},
+            {"Azurill", {"—"}},
+            {"Nosepass", {"—"}},
+            {"Sableye", {"—"}},
+            {"Meditite", {"—"}},
+            {"Medicham", {"—"}},
+            {"Plusle", {"—"}},
+            {"Minun", {"—"}},
+            {"Volbeat", {"—"}},
+            {"Illumise", {"—"}},
+            {"Gulpin", {"—"}},
+            {"Swalot", {"—"}},
+            {"Numel", {"—"}},
+            {"Camerupt", {"—"}},
+            {"Torkoal", {"—"}},
+            {"Spoink", {"—"}},
+            {"Grumpig", {"—"}},
+            {"Trapinch", {"—"}},
+            {"Vibrava", {"—"}},
+            {"Flygon", {"—"}},
+            {"Cacnea", {"—"}},
+            {"Cacturne", {"—"}},
+            {"Swablu", {"—"}},
+            {"Altaria", {"—"}},
+            {"Zangoose", {"—"}},
+            {"Seviper", {"—"}},
+            {"Barboach", {"—"}},
+            {"Whiscash", {"—"}},
+            {"Corphish", {"—"}},
+            {"Crawdaunt", {"—"}},
+            {"Feebas", {"—"}},
+            {"Milotic", {"—"}},
+            {"Shuppet", {"—"}},
+            {"Banette", {"—"}},
+            {"Duskull", {"—"}},
+            {"Dusclops", {"—"}},
+            {"Tropius", {"—"}},
+            {"Chimecho", {"—"}},
+            {"Snorunt", {"—"}},
+            {"Glalie", {"—"}},
+            {"Luvdisc", {"—"}},
+            {"Bagon", {"—"}},
+            {"Shelgon", {"—"}},
+            {"Salamence", {"—"}},
+            {"Beldum", {"—"}},
+            {"Metang", {"—"}},
+            {"Metagross", {"—"}},
+            {"Regirock", {"—"}},
+            {"Regice", {"—"}},
+            {"Registeel", {"—"}},
+            {"Latias", {"—"}},
+            {"Latios", {"—"}},
+            {"Kyogre", {"—"}},
+            {"Groudon", {"—"}},
+            {"Rayquaza", {"—"}},
+            {"Jirachi", {"—"}},
+            {"Deoxys", {"Normal","Attack","Defense","Speed"}},
+            {"Turtwig", {"—"}},
+            {"Grotle", {"—"}},
+            {"Torterra", {"—"}},
+            {"Chimchar", {"—"}},
+            {"Monferno", {"—"}},
+            {"Infernape", {"—"}},
+            {"Piplup", {"—"}},
+            {"Prinplup", {"—"}},
+            {"Empoleon", {"—"}},
+            {"Starly", {"—"}},
+            {"Staravia", {"—"}},
+            {"Staraptor", {"—"}},
+            {"Kricketot", {"—"}},
+            {"Kricketune", {"—"}},
+            {"Shinx", {"—"}},
+            {"Luxio", {"—"}},
+            {"Luxray", {"—"}},
+            {"Cranidos", {"—"}},
+            {"Rampardos", {"—"}},
+            {"Shieldon", {"—"}},
+            {"Bastiodon", {"—"}},
+            {"Combee", {"—"}},
+            {"Vespiquen", {"—"}},
+            {"Pachirisu", {"—"}},
+            {"Buizel", {"—"}},
+            {"Floatzel", {"—"}},
+            {"Shellos", {"West","East"}},
+            {"Gastrodon", {"West","East"}},
+            {"Ambipom", {"—"}},
+            {"Drifloon", {"—"}},
+            {"Drifblim", {"—"}},
+            {"Mismagius", {"—"}},
+            {"Honchkrow", {"—"}},
+            {"Chingling", {"—"}},
+            {"Stunky", {"—"}},
+            {"Skuntank", {"—"}},
+            {"Bronzor", {"—"}},
+            {"Bronzong", {"—"}},
+            {"Bonsly", {"—"}},
+            {"Happiny", {"—"}},
+            {"Spiritomb", {"—"}},
+            {"Gible", {"—"}},
+            {"Gabite", {"—"}},
+            {"Garchomp", {"—"}},
+            {"Munchlax", {"—"}},
+            {"Riolu", {"—"}},
+            {"Lucario", {"—"}},
+            {"Hippopotas", {"—"}},
+            {"Hippowdon", {"—"}},
+            {"Croagunk", {"—"}},
+            {"Toxicroak", {"—"}},
+            {"Finneon", {"—"}},
+            {"Lumineon", {"—"}},
+            {"Snover", {"—"}},
+            {"Abomasnow", {"—"}},
+            {"Weavile", {"—"}},
+            {"Magnezone", {"—"}},
+            {"Rhyperior", {"—"}},
+            {"Electivire", {"—"}},
+            {"Magmortar", {"—"}},
+            {"Yanmega", {"—"}},
+            {"Leafeon", {"—"}},
+            {"Glaceon", {"—"}},
+            {"Gliscor", {"—"}},
+            {"Mamoswine", {"—"}},
+            {"Porygon-Z", {"—"}},
+            {"Gallade", {"—"}},
+            {"Probopass", {"—"}},
+            {"Dusknoir", {"—"}},
+            {"Froslass", {"—"}},
+            {"Rotom", {"Normal","Heat","Wash","Frost","Fan","Mow"}},
+            {"Uxie", {"—"}},
+            {"Mesprit", {"—"}},
+            {"Azelf", {"—"}},
+            {"Dialga", {"Normal","Origin"}},
+            {"Palkia", {"Normal","Origin"}},
+            {"Heatran", {"—"}},
+            {"Regigigas", {"—"}},
+            {"Giratina", {"Altered","Origin"}},
+            {"Cresselia", {"—"}},
+            {"Phione", {"—"}},
+            {"Manaphy", {"—"}},
+            {"Darkrai", {"—"}},
+            {"Shaymin", {"Land","Sky"}},
+            {"Arceus", {"Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"}},
+            {"Snivy", {"—"}},
+            {"Servine", {"—"}},
+            {"Serperior", {"—"}},
+            {"Tepig", {"—"}},
+            {"Pignite", {"—"}},
+            {"Emboar", {"—"}},
+            {"Oshawott", {"—"}},
+            {"Dewott", {"—"}},
+            {"Samurott", {"Normal","Hisuian"}},
+            {"Blitzle", {"—"}},
+            {"Zebstrika", {"—"}},
+            {"Drilbur", {"—"}},
+            {"Excadrill", {"—"}},
+            {"Timburr", {"—"}},
+            {"Gurdurr", {"—"}},
+            {"Conkeldurr", {"—"}},
+            {"Sewaddle", {"—"}},
+            {"Swadloon", {"—"}},
+            {"Leavanny", {"—"}},
+            {"Cottonee", {"—"}},
+            {"Whimsicott", {"—"}},
+            {"Petilil", {"—"}},
+            {"Lilligant", {"Normal","Hisuian"}},
+            {"Basculin", {"Red","Blue","White"}},
+            {"Sandile", {"—"}},
+            {"Krokorok", {"—"}},
+            {"Krookodile", {"—"}},
+            {"Scraggy", {"—"}},
+            {"Scrafty", {"—"}},
+            {"Zorua", {"Normal","Hisuian"}},
+            {"Zoroark", {"Normal","Hisuian"}},
+            {"Minccino", {"—"}},
+            {"Cinccino", {"—"}},
+            {"Gothita", {"—"}},
+            {"Gothorita", {"—"}},
+            {"Gothitelle", {"—"}},
+            {"Solosis", {"—"}},
+            {"Duosion", {"—"}},
+            {"Reuniclus", {"—"}},
+            {"Ducklett", {"—"}},
+            {"Swanna", {"—"}},
+            {"Deerling", {"Spring","Summer","Autumn","Winter"}},
+            {"Sawsbuck", {"Spring","Summer","Autumn","Winter"}},
+            {"Foongus", {"—"}},
+            {"Amoonguss", {"—"}},
+            {"Alomomola", {"—"}},
+            {"Joltik", {"—"}},
+            {"Galvantula", {"—"}},
+            {"Tynamo", {"—"}},
+            {"Eelektrik", {"—"}},
+            {"Eelektross", {"—"}},
+            {"Litwick", {"—"}},
+            {"Lampent", {"—"}},
+            {"Chandelure", {"—"}},
+            {"Axew", {"—"}},
+            {"Fraxure", {"—"}},
+            {"Haxorus", {"—"}},
+            {"Cubchoo", {"—"}},
+            {"Beartic", {"—"}},
+            {"Cryogonal", {"—"}},
+            {"Mienfoo", {"—"}},
+            {"Mienshao", {"—"}},
+            {"Golett", {"—"}},
+            {"Golurk", {"—"}},
+            {"Pawniard", {"—"}},
+            {"Bisharp", {"—"}},
+            {"Rufflet", {"—"}},
+            {"Braviary", {"Normal","Hisuian"}},
+            {"Vullaby", {"—"}},
+            {"Mandibuzz", {"—"}},
+            {"Deino", {"—"}},
+            {"Zweilous", {"—"}},
+            {"Hydreigon", {"—"}},
+            {"Larvesta", {"—"}},
+            {"Volcarona", {"—"}},
+            {"Cobalion", {"—"}},
+            {"Terrakion", {"—"}},
+            {"Virizion", {"—"}},
+            {"Tornadus", {"Incarnate","Therian"}},
+            {"Thundurus", {"Incarnate","Therian"}},
+            {"Reshiram", {"—"}},
+            {"Zekrom", {"—"}},
+            {"Landorus", {"Incarnate","Therian"}},
+            {"Kyurem", {"Normal","White","Black"}},
+            {"Keldeo", {"Ordinary","Resolute"}},
+            {"Meloetta", {"Aria","Pirouette"}},
+            {"Chespin", {"—"}},
+            {"Quilladin", {"—"}},
+            {"Chesnaught", {"—"}},
+            {"Fennekin", {"—"}},
+            {"Braixen", {"—"}},
+            {"Delphox", {"—"}},
+            {"Froakie", {"—"}},
+            {"Frogadier", {"—"}},
+            {"Greninja", {"Normal","Battle Bond"}},
+            {"Fletchling", {"—"}},
+            {"Fletchinder", {"—"}},
+            {"Talonflame", {"—"}},
+            {"Scatterbug", {"Icy Snow","Polar","Tundra","Continental","Garden","Elegant","Meadow","Modern","Marine","Archipelago","High Plains","Sandstorm","River","Monsoon","Savanna","Sun","Ocean","Jungle","Fancy","Poké Ball"}},
+            {"Spewpa", {"Icy Snow","Polar","Tundra","Continental","Garden","Elegant","Meadow","Modern","Marine","Archipelago","High Plains","Sandstorm","River","Monsoon","Savanna","Sun","Ocean","Jungle","Fancy","Poké Ball"}},
+            {"Vivillon", {"Icy Snow","Polar","Tundra","Continental","Garden","Elegant","Meadow","Modern","Marine","Archipelago","High Plains","Sandstorm","River","Monsoon","Savanna","Sun","Ocean","Jungle","Fancy","Poké Ball"}},
+            {"Litleo", {"—"}},
+            {"Pyroar", {"—"}},
+            {"Flabébé", {"Red","Yellow","Orange","Blue","White"}},
+            {"Floette", {"Red","Yellow","Orange","Blue","White","Eternal"}},
+            {"Florges", {"Red","Yellow","Orange","Blue","White"}},
+            {"Skiddo", {"—"}},
+            {"Gogoat", {"—"}},
+            {"Espurr", {"—"}},
+            {"Meowstic", {"Male","Female"}},
+            {"Inkay", {"—"}},
+            {"Malamar", {"—"}},
+            {"Skrelp", {"—"}},
+            {"Dragalge", {"—"}},
+            {"Clauncher", {"—"}},
+            {"Clawitzer", {"—"}},
+            {"Sylveon", {"—"}},
+            {"Hawlucha", {"—"}},
+            {"Dedenne", {"—"}},
+            {"Carbink", {"—"}},
+            {"Goomy", {"—"}},
+            {"Sliggoo", {"Normal","Hisuian"}},
+            {"Goodra", {"Normal","Hisuian"}},
+            {"Klefki", {"—"}},
+            {"Phantump", {"—"}},
+            {"Trevenant", {"—"}},
+            {"Bergmite", {"—"}},
+            {"Avalugg", {"Normal","Hisuian"}},
+            {"Noibat", {"—"}},
+            {"Noivern", {"—"}},
+            {"Diancie", {"—"}},
+            {"Hoopa", {"Confined","Unbound"}},
+            {"Volcanion", {"—"}},
+            {"Rowlet", {"—"}},
+            {"Dartrix", {"—"}},
+            {"Decidueye", {"Normal","Hisuian"}},
+            {"Litten", {"—"}},
+            {"Torracat", {"—"}},
+            {"Incineroar", {"—"}},
+            {"Popplio", {"—"}},
+            {"Brionne", {"—"}},
+            {"Primarina", {"—"}},
+            {"Pikipek", {"—"}},
+            {"Trumbeak", {"—"}},
+            {"Toucannon", {"—"}},
+            {"Yungoos", {"—"}},
+            {"Gumshoos", {"—"}},
+            {"Grubbin", {"—"}},
+            {"Charjabug", {"—"}},
+            {"Vikavolt", {"—"}},
+            {"Crabrawler", {"—"}},
+            {"Crabominable", {"—"}},
+            {"Oricorio", {"Baile","Pom-Pom","Pa’u","Sensu"}},
+            {"Cutiefly", {"—"}},
+            {"Ribombee", {"—"}},
+            {"Rockruff", {"Normal","Own Tempo"}},
+            {"Lycanroc", {"Midday","Midnight","Dusk"}},
+            {"Mareanie", {"—"}},
+            {"Toxapex", {"—"}},
+            {"Mudbray", {"—"}},
+            {"Mudsdale", {"—"}},
+            {"Dewpider", {"—"}},
+            {"Araquanid", {"—"}},
+            {"Fomantis", {"—"}},
+            {"Lurantis", {"—"}},
+            {"Salandit", {"—"}},
+            {"Salazzle", {"—"}},
+            {"Bounsweet", {"—"}},
+            {"Steenee", {"—"}},
+            {"Tsareena", {"—"}},
+            {"Comfey", {"—"}},
+            {"Oranguru", {"—"}},
+            {"Passimian", {"—"}},
+            {"Sandygast", {"—"}},
+            {"Palossand", {"—"}},
+            {"Minior", {"M-Red","M-Orange","M-Yellow","M-Green","M-Blue","M-Indigo","M-Violet","C-Red","C-Orange","C-Yellow","C-Green","C-Blue","C-Indigo","C-Violet"}},
+            {"Komala", {"—"}},
+            {"Mimikyu", {"Disguised","Busted"}},
+            {"Bruxish", {"—"}},
+            {"Jangmo-o", {"—"}},
+            {"Hakamo-o", {"—"}},
+            {"Kommo-o", {"—"}},
+            {"Cosmog", {"—"}},
+            {"Cosmoem", {"—"}},
+            {"Solgaleo", {"—"}},
+            {"Lunala", {"—"}},
+            {"Necrozma", {"Normal","Dusk Mane","Dawn Wings"}},
+            {"Magearna", {"Normal","Original"}},
+            {"Grookey", {"—"}},
+            {"Thwackey", {"—"}},
+            {"Rillaboom", {"—"}},
+            {"Scorbunny", {"—"}},
+            {"Raboot", {"—"}},
+            {"Cinderace", {"—"}},
+            {"Sobble", {"—"}},
+            {"Drizzile", {"—"}},
+            {"Inteleon", {"—"}},
+            {"Skwovet", {"—"}},
+            {"Greedent", {"—"}},
+            {"Rookidee", {"—"}},
+            {"Corvisquire", {"—"}},
+            {"Corviknight", {"—"}},
+            {"Chewtle", {"—"}},
+            {"Drednaw", {"—"}},
+            {"Rolycoly", {"—"}},
+            {"Carkol", {"—"}},
+            {"Coalossal", {"—"}},
+            {"Applin", {"—"}},
+            {"Flapple", {"—"}},
+            {"Appletun", {"—"}},
+            {"Silicobra", {"—"}},
+            {"Sandaconda", {"—"}},
+            {"Cramorant", {"Normal","Gulping","Gorging"}},
+            {"Arrokuda", {"—"}},
+            {"Barraskewda", {"—"}},
+            {"Toxel", {"—"}},
+            {"Toxtricity", {"Amped","Low Key"}},
+            {"Sinistea", {"Phony","Antique"}},
+            {"Polteageist", {"Phony","Antique"}},
+            {"Hatenna", {"—"}},
+            {"Hattrem", {"—"}},
+            {"Hatterene", {"—"}},
+            {"Impidimp", {"—"}},
+            {"Morgrem", {"—"}},
+            {"Grimmsnarl", {"—"}},
+            {"Perrserker", {"—"}},
+            {"Milcery", {"—"}},
+            {"Alcremie", {"Vanilla Cream","Ruby Cream","Matcha Cream","Mint Cream","Lemon Cream","Salted Cream","Ruby Swirl","Caramel Swirl","Rainbow Swirl"}},
+            {"Falinks", {"—"}},
+            {"Pincurchin", {"—"}},
+            {"Snom", {"—"}},
+            {"Frosmoth", {"—"}},
+            {"Stonjourner", {"—"}},
+            {"Eiscue", {"Ice Face","Noice Face"}},
+            {"Indeedee", {"Male","Female"}},
+            {"Morpeko", {"Full Belly","Hangry"}},
+            {"Cufant", {"—"}},
+            {"Copperajah", {"—"}},
+            {"Duraludon", {"—"}},
+            {"Dreepy", {"—"}},
+            {"Drakloak", {"—"}},
+            {"Dragapult", {"—"}},
+            {"Zacian", {"Hero","Crowned"}},
+            {"Zamazenta", {"Hero","Crowned"}},
+            {"Eternatus", {"—"}},
+            {"Kubfu", {"—"}},
+            {"Urshifu", {"Single","Rapid"}},
+            {"Zarude", {"Normal","Dada"}},
+            {"Regieleki", {"—"}},
+            {"Regidrago", {"—"}},
+            {"Glastrier", {"—"}},
+            {"Spectrier", {"—"}},
+            {"Calyrex", {"Normal","Ice","Shadow"}},
+            {"Wyrdeer", {"—"}},
+            {"Kleavor", {"—"}},
+            {"Ursaluna", {"Normal","Bloodmoon"}},
+            {"Basculegion", {"Male","Female"}},
+            {"Sneasler", {"—"}},
+            {"Overqwil", {"—"}},
+            {"Enamorus", {"Incarnate","Therian"}},
+            {"Sprigatito", {"—"}},
+            {"Floragato", {"—"}},
+            {"Meowscarada", {"—"}},
+            {"Fuecoco", {"—"}},
+            {"Crocalor", {"—"}},
+            {"Skeledirge", {"—"}},
+            {"Quaxly", {"—"}},
+            {"Quaxwell", {"—"}},
+            {"Quaquaval", {"—"}},
+            {"Lechonk", {"—"}},
+            {"Oinkologne", {"Male","Female"}},
+            {"Tarountula", {"—"}},
+            {"Spidops", {"—"}},
+            {"Nymble", {"—"}},
+            {"Lokix", {"—"}},
+            {"Pawmi", {"—"}},
+            {"Pawmo", {"—"}},
+            {"Pawmot", {"—"}},
+            {"Tandemaus", {"—"}},
+            {"Maushold", {"Three","Four"}},
+            {"Fidough", {"—"}},
+            {"Dachsbun", {"—"}},
+            {"Smoliv", {"—"}},
+            {"Dolliv", {"—"}},
+            {"Arboliva", {"—"}},
+            {"Squawkabilly", {"Green","Blue","Yellow","White"}},
+            {"Nacli", {"—"}},
+            {"Naclstack", {"—"}},
+            {"Garganacl", {"—"}},
+            {"Charcadet", {"—"}},
+            {"Armarouge", {"—"}},
+            {"Ceruledge", {"—"}},
+            {"Tadbulb", {"—"}},
+            {"Bellibolt", {"—"}},
+            {"Wattrel", {"—"}},
+            {"Kilowattrel", {"—"}},
+            {"Maschiff", {"—"}},
+            {"Mabosstiff", {"—"}},
+            {"Shroodle", {"—"}},
+            {"Grafaiai", {"—"}},
+            {"Bramblin", {"—"}},
+            {"Brambleghast", {"—"}},
+            {"Toedscool", {"—"}},
+            {"Toedscruel", {"—"}},
+            {"Klawf", {"—"}},
+            {"Capsakid", {"—"}},
+            {"Scovillain", {"—"}},
+            {"Rellor", {"—"}},
+            {"Rabsca", {"—"}},
+            {"Flittle", {"—"}},
+            {"Espathra", {"—"}},
+            {"Tinkatink", {"—"}},
+            {"Tinkatuff", {"—"}},
+            {"Tinkaton", {"—"}},
+            {"Wiglett", {"—"}},
+            {"Wugtrio", {"—"}},
+            {"Bombirdier", {"—"}},
+            {"Finizen", {"—"}},
+            {"Palafin", {"Zero","Hero"}},
+            {"Varoom", {"—"}},
+            {"Revavroom", {"—"}},
+            {"Cyclizar", {"—"}},
+            {"Orthworm", {"—"}},
+            {"Glimmet", {"—"}},
+            {"Glimmora", {"—"}},
+            {"Greavard", {"—"}},
+            {"Houndstone", {"—"}},
+            {"Flamigo", {"—"}},
+            {"Cetoddle", {"—"}},
+            {"Cetitan", {"—"}},
+            {"Veluza", {"—"}},
+            {"Dondozo", {"—"}},
+            {"Tatsugiri", {"Curly","Droopy","Stretchy"}},
+            {"Annihilape", {"—"}},
+            {"Clodsire", {"—"}},
+            {"Farigiraf", {"—"}},
+            {"Dudunsparce", {"Two","Three"}},
+            {"Kingambit", {"—"}},
+            {"Great Tusk", {"—"}},
+            {"Scream Tail", {"—"}},
+            {"Brute Bonnet", {"—"}},
+            {"Flutter Mane", {"—"}},
+            {"Slither Wing", {"—"}},
+            {"Sandy Shocks", {"—"}},
+            {"Iron Treads", {"—"}},
+            {"Iron Bundle", {"—"}},
+            {"Iron Hands", {"—"}},
+            {"Iron Jugulis", {"—"}},
+            {"Iron Moth", {"—"}},
+            {"Iron Thorns", {"—"}},
+            {"Frigibax", {"—"}},
+            {"Arctibax", {"—"}},
+            {"Baxcalibur", {"—"}},
+            {"Gimmighoul", {"Chest","Roaming"}},
+            {"Gholdengo", {"—"}},
+            {"Wo-Chien", {"—"}},
+            {"Chien-Pao", {"—"}},
+            {"Ting-Lu", {"—"}},
+            {"Chi-Yu", {"—"}},
+            {"Roaring Moon", {"—"}},
+            {"Iron Valiant", {"—"}},
+            {"Koraidon", {"Apex","Limited","Sprinting","Swimming","Gliding"}},
+            {"Miraidon", {"Ultimate","Low-Power","Drive","Aquatic","Glide"}},
+            {"Walking Wake", {"—"}},
+            {"Iron Leaves", {"—"}},
+            {"Dipplin", {"—"}},
+            {"Poltchageist", {"Counterfeit","Artisan"}},
+            {"Sinistcha", {"Unremarkable","Masterpiece"}},
+            {"Okidogi", {"—"}},
+            {"Munkidori", {"—"}},
+            {"Fezandipiti", {"—"}},
+            {"Ogerpon", {"Teal","Wellspring","Hearthflame","Cornerstone"}},
+            {"Archaludon", {"—"}},
+            {"Hydrapple", {"—"}},
+            {"Gouging Fire", {"—"}},
+            {"Raging Bolt", {"—"}},
+            {"Iron Boulder", {"—"}},
+            {"Iron Crown", {"—"}},
+            {"Terapagos", {"Normal","Terastal","Stellar"}},
+            {"Pecharunt", {"—"}},
+        };
 };
-
 
 #endif // SHAREDRANDOMIZERCLASS_H
