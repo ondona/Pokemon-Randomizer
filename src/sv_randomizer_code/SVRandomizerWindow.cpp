@@ -111,7 +111,7 @@ void SVRandomizerWindow::createLayout()
     topBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // Expand horizontally
     topBar->addTab("Starter/Gift Pokemon");
     topBar->addTab("Stats/TMs/Items");
-    topBar->addTab("Wild/Static Pokemon");
+    topBar->addTab("Wild/Fixed Pokemon");
     topBar->addTab("Raids");
     topBar->addTab("Trainers");
     topBar->addTab("Bosses");
@@ -131,9 +131,9 @@ void SVRandomizerWindow::createLayout()
     stackedWidget->addWidget(setupStartersWidget());
     stackedWidget->addWidget(setupPersonalWidget());
     stackedWidget->addWidget(setupWildWidget());
-    // stackedWidget->addWidget(setupRaidsWidget());
-    // stackedWidget->addWidget(setupTrainersWidget());
-    // stackedWidget->addWidget(setupScenesWidget());
+    stackedWidget->addWidget(setupRaidsWidget());
+    stackedWidget->addWidget(setupTrainersWidget());
+    stackedWidget->addWidget(setupBossWidget());
     // //stackedWidget->addWidget(setupShopWidget());
 
     connect(topBar, &QTabBar::currentChanged, this, [=, this](int index) {
@@ -147,268 +147,6 @@ void SVRandomizerWindow::createLayout()
     // Apply the main layout to RandomizerWindow
     setLayout(mainLayout);
 }
-
-// Helper Functions
-QJsonDocument SVRandomizerWindow::exportSettings(QMap<QString, QVariant> map){
-    QJsonObject jsonObj;
-    for (auto it = map.begin(); it != map.end(); ++it) {
-        const QString &key = it.key();
-        const QVariant &value = it.value();
-
-        // Convert QVariant to appropriate QJsonValue
-        if (value.typeId() == QMetaType::Bool) {
-            jsonObj.insert(key, value.toBool());
-        } else if (value.typeId() == QMetaType::Int) {
-            jsonObj.insert(key, value.toInt());
-        } else if (value.typeId() == QMetaType::Double) {
-            jsonObj.insert(key, value.toDouble());
-        } else if (value.typeId() == QMetaType::QString) {
-            jsonObj.insert(key, value.toString());
-        } else if (value.typeId() == QMetaType::QVariantList) {
-            jsonObj.insert(key, QJsonArray::fromVariantList(value.toList()));
-        } else if (value.typeId() == QMetaType::QVariantMap) {
-            jsonObj.insert(key, exportSettings(value.toMap()).object()); // Recursive call for nested maps
-        } else {
-            qDebug() << "Unsupported QVariant type for key:" << key << "with type:" << value.typeName();
-        }
-    }
-
-    return QJsonDocument(jsonObj);
-};
-
-void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringList allowedPokemon,
-                                                               QStringList allowedPokeballs, QGroupBox* groupToAdd,
-                                                               QHBoxLayout* rowToAdd, QVBoxLayout* layoutToAdd, int index){
-
-    QCheckBox* starters_shiny = new QCheckBox("Shiny ", groupToAdd);
-    rowToAdd->addWidget(starters_shiny);
-    connect(starters_shiny, &QCheckBox::toggled, this, [this, index, starter](bool checked) mutable{
-        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
-        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
-
-        startersSettings["Shiny"] = checked;
-        randomizer.svRandomizerStarters.starters_shiny[index] = checked;
-        localSettings[starter] = startersSettings;
-        settings["Starters"] = localSettings;
-    });
-
-    QLabel *starterLabel = new QLabel(starter, groupToAdd);
-    starterLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    rowToAdd->addWidget(starterLabel);
-
-    QLineEdit* starters = new QLineEdit(groupToAdd);
-
-    // Sample list of suggestions
-    QCompleter *completer = new QCompleter(allowedPokemon, starters);
-    completer->setCaseSensitivity(Qt::CaseInsensitive);
-    completer->setFilterMode(Qt::MatchContains);
-    starters->setCompleter(completer);
-    // Connect to save pokemon
-    connect(starters, &QLineEdit::textChanged, this, [this, index, starter](const QString &text) mutable{
-        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
-        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
-
-        startersSettings["Name"] = text;
-        randomizer.svRandomizerStarters.starters[index] = text;
-        localSettings[starter] = startersSettings;
-        settings["Starters"] = localSettings;
-    });
-
-    starters->setFixedWidth(175);
-    starters->setPlaceholderText("Leave Blank for Random...");
-    rowToAdd->addWidget(starters);
-
-    QLabel *form_s1 = new QLabel("Form ", groupToAdd);
-    form_s1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    rowToAdd->addWidget(form_s1);
-
-    QComboBox* starters_form = new QComboBox(groupToAdd);
-    starters_form->addItem("---");
-    starters_form->setFixedSize(100, 25);
-
-    rowToAdd->addWidget(starters_form);
-
-    // Double connect to change forms based on pokemon selected
-    connect(starters, &QLineEdit::textChanged, this, [=, this](const QString &text) mutable {
-        starters_form->clear();
-        for(int i = 0; i< randomizer.pokemonFormsInGame[text].size(); i++){
-            starters_form->addItem(randomizer.pokemonFormsInGame[text][i]);
-        }
-
-    });
-    connect(starters_form, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=, this]() mutable{
-        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
-        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
-
-        int setForm = 0;
-        for(int i =0; i< randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]].size(); i++){
-            if(starters_form->currentText() == randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]][i]){
-                setForm = i;
-                if(randomizer.svRandomizerStarters.starters[index] == "Pikachu" && setForm == 8){
-                    setForm = 9;
-                }
-            }
-        }
-        startersSettings["Form"] = setForm;
-        randomizer.svRandomizerStarters.starters_forms[index] = setForm;
-        localSettings[starter] = startersSettings;
-        settings["Starters"] = localSettings;
-    });
-
-    QLabel *gender_s1 = new QLabel("Gender ", groupToAdd);
-    gender_s1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    rowToAdd->addWidget(gender_s1);
-
-    QComboBox* starters_gender = new QComboBox(groupToAdd);
-    starters_gender->addItem("---");
-    starters_gender->setFixedSize(100, 25);
-
-    rowToAdd->addWidget(starters_gender);
-
-    // Triple connect to adjust for a pokemon's gender varying based on form and the last one is to save it.
-    connect(starters, &QLineEdit::textChanged, this, [=, this](const QString &text) mutable{
-        starters_gender->clear();
-        if(randomizer.genderForms.contains(text)){
-            starters_gender->addItem("DEFAULT");
-        }else if(randomizer.femaleOnlyPokemon.contains(text)){
-            starters_gender->addItem("FEMALE");
-        }else if(randomizer.maleOnlyPokemon.contains(text) || randomizer.formsMaleOnly[text].contains(index)){
-            starters_gender->addItem("MALE");
-        } else if(randomizer.genderlessPokemon.contains(text)){
-            starters_gender->addItem("GENDERLESS");
-        } else{
-            starters_gender->addItem("MALE");
-            starters_gender->addItem("FEMALE");
-        }
-    });
-    connect(starters_form, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=, this]() mutable{
-        starters_gender->clear();
-        if(randomizer.genderForms.contains(randomizer.svRandomizerStarters.starters[index])){
-            starters_gender->addItem("DEFAULT");
-        }else if(randomizer.femaleOnlyPokemon.contains(randomizer.svRandomizerStarters.starters[index])){
-            starters_gender->addItem("FEMALE");
-        }else if(randomizer.maleOnlyPokemon.contains(randomizer.svRandomizerStarters.starters[index]) || randomizer.formsMaleOnly[randomizer.svRandomizerStarters.starters[index]].contains(randomizer.svRandomizerStarters.starters_forms[index])){
-            starters_gender->addItem("MALE");
-        } else if(randomizer.genderlessPokemon.contains(randomizer.svRandomizerStarters.starters[index])){
-            starters_gender->addItem("GENDERLESS");
-        } else{
-            starters_gender->addItem("MALE");
-            starters_gender->addItem("FEMALE");
-        }
-    });
-    connect(starters_gender, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=, this]() mutable{
-        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
-        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
-
-        startersSettings["Gender"] = starters_gender->currentText();
-        randomizer.svRandomizerStarters.starters_gender[index] = starters_gender->currentText();
-        localSettings[starter] = startersSettings;
-        settings["Starters"] = localSettings;
-    });
-
-    QLabel *pokeball_s1 = new QLabel("Pokeball ", groupToAdd);
-    pokeball_s1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    rowToAdd->addWidget(pokeball_s1);
-
-    // Update the combobox to match allowed pokeballs
-    QComboBox* starters_pokeball = new QComboBox(groupToAdd);
-    for(int i = 0; i<allowedPokeballs.length(); i++){
-        starters_pokeball->addItem(allowedPokeballs[i]);
-    }
-    starters_pokeball->setFixedSize(100, 25);
-    // Connect to save the pokeball
-    connect(starters_pokeball, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, &starters_pokeball, starter, index]() mutable{
-        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
-        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
-
-        startersSettings["Pokeball"] = starters_pokeball->currentText();
-        randomizer.svRandomizerStarters.starters_pokeball[index] = starters_pokeball->currentText();
-        localSettings[starter] = startersSettings;
-        settings["Starters"] = localSettings;
-    });
-
-    rowToAdd->addWidget(starters_pokeball);
-
-    layoutToAdd->addLayout(rowToAdd);
-    rowToAdd->addStretch(1);
-
-    // Connect based on imports
-    connect(this, &SVRandomizerWindow::importSettings, this, [=, this]() mutable{
-        qDebug()<<"Here";
-    });
-}
-
-void SVRandomizerWindow::setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokemonLimiter limiter){
-    QGroupBox* limiterGroup = new QGroupBox("Pokemon Limiter", this);
-    outerBox->addWidget(limiterGroup);
-
-    QVBoxLayout* limiterSetUp = new QVBoxLayout(limiterGroup);
-    QHBoxLayout* generations = new QHBoxLayout();
-    QHBoxLayout* legendaries = new QHBoxLayout();
-    QHBoxLayout* stages = new QHBoxLayout();
-    QHBoxLayout* special = new QHBoxLayout();
-
-    QVector<QCheckBox*> generationslist;
-
-    QLabel *generationsHeader = new QLabel("Allowed Generations", limiterGroup);
-    generationsHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
-    generations->addWidget(generationsHeader);
-
-    for(int i =0; i<9; i++){
-        generationslist.append(new QCheckBox(QStringLiteral("%1").arg(i+1), limiterGroup));
-        generationslist[i]->setChecked(true);
-        generationslist[i]->setFixedSize(60, 20);
-        generations->addWidget(generationslist[i]);
-        // Connects Here
-    }
-    limiterSetUp->addLayout(generations);
-
-    //-------------------------------------------------------------------------------------------
-
-    QVector<QCheckBox*> legendariesList;
-
-    QLabel *legendsHeader = new QLabel("Allowed Legendaries", limiterGroup);
-    legendsHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
-    legendaries->addWidget(legendsHeader);
-
-    for(int i =0; i<9; i++){
-        legendariesList.append(new QCheckBox(QStringLiteral("%1").arg(i+1), limiterGroup));
-        legendariesList[i]->setChecked(true);
-        legendariesList[i]->setFixedSize(60, 20);
-        legendaries->addWidget(legendariesList[i]);
-        // Connects Here
-    }
-    limiterSetUp->addLayout(legendaries);
-
-    //-------------------------------------------------------------------------------------------
-
-    QCheckBox *stage_1 = new QCheckBox("Stage 1", limiterGroup);
-    stage_1->setChecked(true);
-    stages->addWidget(stage_1);
-
-    QCheckBox *stage_2 = new QCheckBox("Stage 2", limiterGroup);
-    stage_2->setChecked(true);
-    stages->addWidget(stage_2);
-
-    QCheckBox *stage_3 = new QCheckBox("Stage 3", limiterGroup);
-    stage_3->setChecked(true);
-    stages->addWidget(stage_3);
-
-    QCheckBox *single_stage = new QCheckBox("Single stage", limiterGroup);
-    single_stage->setChecked(true);
-    stages->addWidget(single_stage);
-
-    limiterSetUp->addLayout(stages);
-
-    //-------------------------------------------------------------------------------------------
-
-    QCheckBox *paradox = new QCheckBox("Paradox", limiterGroup);
-    paradox->setChecked(true);
-    special->addWidget(paradox);
-    limiterSetUp->addLayout(special);
-
-}
-
 
 // Specific Widgets Codes
 QScrollArea* SVRandomizerWindow::setupStartersWidget(){
@@ -483,16 +221,560 @@ QScrollArea* SVRandomizerWindow::setupWildWidget(){
     formLayout->setSpacing(2);
     formLayout->setContentsMargins(2, 2, 2, 2);
 
-    // Add Actual Buttons
-    // formLayout->addRow(createStartersWidget());
-    // formLayout->addRow(createGiftsWidget());
+    // Configure the tab bar
+    QTabBar *innerWildBar = new QTabBar(this);
+    innerWildBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // Expand horizontally
+    innerWildBar->addTab("Fixed Encounters");
+    innerWildBar->addTab("Paldea Wilds");
+    innerWildBar->addTab("Kitakami Wilds");
+    innerWildBar->addTab("Blueberry Academy Wilds");
+
+    // Adjust the minimum width to a specific value to ensure it expands
+    innerWildBar->setMinimumWidth(750); // Set a minimum width (adjust as necessary)
+
+    mainLayout->addWidget(innerWildBar); // Add the tab bar to the layout
+
+    // Configure the stacked widget
+    QStackedWidget* innerWildStackWidget = new QStackedWidget(this);
+    innerWildStackWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding); // Allow full expansion
+    mainLayout->addWidget(innerWildStackWidget);
+
+    // Add each widget to the stacked widget
+    innerWildStackWidget->addWidget(createFixedEncountersWidget());
+    innerWildStackWidget->addWidget(createPaldeaWildWidget());
+    innerWildStackWidget->addWidget(createKitakamiWildWidget());
+    innerWildStackWidget->addWidget(createBlueberryWildWidget());
+
+    connect(innerWildBar, &QTabBar::currentChanged, this, [=, this](int index) {
+        switchTabs(innerWildStackWidget, index);
+    });
+
+    // Set the stretch factors
+    mainLayout->setStretch(2, 0); // Prevent tab bar from expanding vertically
+    mainLayout->setStretch(3, 1); // Make the stacked widget take up the remaining space
 
     // Create Layouts
     mainLayout->addLayout(formLayout);
     scrollArea->setWidget(wildsWidget);
 
     return scrollArea;
+}
 
+QWidget* SVRandomizerWindow::createFixedEncountersWidget(){
+    QWidget *fixedWildWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(fixedWildWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createFixedEncounters());
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(fixedWildWidget);
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createPaldeaWildWidget(){
+    QWidget *paldeaWildWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(paldeaWildWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createPaldeaWild());
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(paldeaWildWidget);
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createKitakamiWildWidget(){
+    QWidget *kitakamiWildWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(kitakamiWildWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createKitakamiWild());
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(kitakamiWildWidget);
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createBlueberryWildWidget(){
+    QWidget *blueberryWildWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(blueberryWildWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createBlueberryWild());
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(blueberryWildWidget);
+    return scrollArea;
+}
+
+QScrollArea* SVRandomizerWindow::setupRaidsWidget(){
+    QWidget *raidsWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(raidsWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    // Configure the tab bar
+    QTabBar *innerRaidBar = new QTabBar(this);
+    innerRaidBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // Expand horizontally
+    innerRaidBar->addTab("Paldea Raids");
+    innerRaidBar->addTab("Kitakami Raids");
+    innerRaidBar->addTab("Blueberry Academy Raids");
+
+    // Adjust the minimum width to a specific value to ensure it expands
+    innerRaidBar->setMinimumWidth(750); // Set a minimum width (adjust as necessary)
+
+    mainLayout->addWidget(innerRaidBar); // Add the tab bar to the layout
+
+    // Configure the stacked widget
+    QStackedWidget* innerRaidStackWidget = new QStackedWidget(this);
+    innerRaidStackWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding); // Allow full expansion
+    mainLayout->addWidget(innerRaidStackWidget);
+
+    // Add each widget to the stacked widget
+    innerRaidStackWidget->addWidget(createPaldeaRaidWidget());
+    innerRaidStackWidget->addWidget(createKitakamiRaidWidget());
+    innerRaidStackWidget->addWidget(createBlueberryRaidWidget());
+
+    connect(innerRaidBar, &QTabBar::currentChanged, this, [=, this](int index) {
+        switchTabs(innerRaidStackWidget, index);
+    });
+
+    // Set the stretch factors
+    mainLayout->setStretch(2, 0); // Prevent tab bar from expanding vertically
+    mainLayout->setStretch(3, 1); // Make the stacked widget take up the remaining space
+
+    // Create Layouts
+    mainLayout->addLayout(formLayout);
+    scrollArea->setWidget(raidsWidget);
+
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createPaldeaRaidWidget(){
+    QWidget *paldeaRaidWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(paldeaRaidWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createPaldeaRaid());
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(paldeaRaidWidget);
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createKitakamiRaidWidget(){
+    QWidget *kitakamiRaidWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(kitakamiRaidWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createKitakamiRaid());
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(kitakamiRaidWidget);
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createBlueberryRaidWidget(){
+    QWidget *blueberryRaidWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(blueberryRaidWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createBlueberryRaid());
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(blueberryRaidWidget);
+    return scrollArea;
+}
+
+QScrollArea* SVRandomizerWindow::setupTrainersWidget(){
+    QWidget *trainersWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(trainersWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    // Configure the tab bar
+    QTabBar *innerTrainersBar = new QTabBar(this);
+    innerTrainersBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // Expand horizontally
+    innerTrainersBar->addTab("Paldea Trainers");
+    innerTrainersBar->addTab("Kitakami Trainers");
+    innerTrainersBar->addTab("Blueberry Academy Trainers");
+
+    // Adjust the minimum width to a specific value to ensure it expands
+    innerTrainersBar->setMinimumWidth(750); // Set a minimum width (adjust as necessary)
+
+    mainLayout->addWidget(innerTrainersBar); // Add the tab bar to the layout
+
+    // Configure the stacked widget
+    QStackedWidget* innerTrainerStackWidget = new QStackedWidget(this);
+    innerTrainerStackWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding); // Allow full expansion
+    mainLayout->addWidget(innerTrainerStackWidget);
+
+    // Add each widget to the stacked widget
+    innerTrainerStackWidget->addWidget(createPaldeaTrainersWidget());
+    innerTrainerStackWidget->addWidget(createKitakamiTrainersWidget());
+    innerTrainerStackWidget->addWidget(createBlueberryTrainersWidget());
+
+    connect(innerTrainersBar, &QTabBar::currentChanged, this, [=, this](int index) {
+        switchTabs(innerTrainerStackWidget, index);
+    });
+
+    // Set the stretch factors
+    mainLayout->setStretch(2, 0); // Prevent tab bar from expanding vertically
+    mainLayout->setStretch(3, 1); // Make the stacked widget take up the remaining space
+
+    // Create Layouts
+    mainLayout->addLayout(formLayout);
+    scrollArea->setWidget(trainersWidget);
+
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createPaldeaTrainersWidget(){
+    QWidget *paldeaTrainersWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(paldeaTrainersWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createTrainerSettings("Paldea", "All", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRivalLimiter, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Rival", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRivalLimiter, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Gym", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PGymLimiter, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Elite 4", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PE4Limiter, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Champion", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PChampionLimiter, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Route", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRouteLimiter, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Raid", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRaidLimiter, true));
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(paldeaTrainersWidget);
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createKitakamiTrainersWidget(){
+    QWidget *kitakamiTrainersWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(kitakamiTrainersWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createTrainerSettings("Kitakami", "All", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRivalLimiter, false));
+    formLayout->addRow(createTrainerSettings("Kitakami", "Rival", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRivalLimiter, false));
+    formLayout->addRow(createTrainerSettings("Kitakami", "Ogre Clan", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KOCLimiter, false));
+    formLayout->addRow(createTrainerSettings("Kitakami", "Route", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRouteLimiter, false));
+    formLayout->addRow(createTrainerSettings("Kitakami", "Raid", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRaidLimiter, false));
+
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(kitakamiTrainersWidget);
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createBlueberryTrainersWidget(){
+    QWidget *blueberryTrainersWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(blueberryTrainersWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createTrainerSettings("Blueberry", "All", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRivalLimiter, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "Rival", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRivalLimiter, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "BB4", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BBB4Limiter, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "Route", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRouteLimiter, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "Raid", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRaidLimiter, false));
+
+
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(blueberryTrainersWidget);
+    return scrollArea;
+}
+
+QScrollArea* SVRandomizerWindow::setupBossWidget(){
+    QWidget *bossWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(bossWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    // Configure the tab bar
+    QTabBar *innerTrainersBar = new QTabBar(this);
+    innerTrainersBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // Expand horizontally
+    innerTrainersBar->addTab("Paldea Trainers");
+    innerTrainersBar->addTab("Kitakami Trainers");
+    innerTrainersBar->addTab("Blueberry Academy Trainers");
+
+    // Adjust the minimum width to a specific value to ensure it expands
+    innerTrainersBar->setMinimumWidth(750); // Set a minimum width (adjust as necessary)
+
+    mainLayout->addWidget(innerTrainersBar); // Add the tab bar to the layout
+
+    // Configure the stacked widget
+    QStackedWidget* innerTrainerStackWidget = new QStackedWidget(this);
+    innerTrainerStackWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding); // Allow full expansion
+    mainLayout->addWidget(innerTrainerStackWidget);
+
+    // Add each widget to the stacked widget
+    innerTrainerStackWidget->addWidget(createPaldeaBossWidget());
+    innerTrainerStackWidget->addWidget(createKitakamiBossWidget());
+    innerTrainerStackWidget->addWidget(createBlueberryBossWidget());
+
+    connect(innerTrainersBar, &QTabBar::currentChanged, this, [=, this](int index) {
+        switchTabs(innerTrainerStackWidget, index);
+    });
+
+    // Set the stretch factors
+    mainLayout->setStretch(2, 0); // Prevent tab bar from expanding vertically
+    mainLayout->setStretch(3, 1); // Make the stacked widget take up the remaining space
+
+    // Create Layouts
+    mainLayout->addLayout(formLayout);
+    scrollArea->setWidget(bossWidget);
+
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createPaldeaBossWidget(){
+    QWidget *paldeaTrainersWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(paldeaTrainersWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,true));
+    formLayout->addRow(createBossSettings("Koraidon/Miraidon (Not Recommended)", randomizer.svRandomizerBoss.BossLimiter,true));
+    formLayout->addRow(createBossSettings("LeChonk", randomizer.svRandomizerBoss.BossLimiter,true));
+    formLayout->addRow(createBossSettings("Houndoom", randomizer.svRandomizerBoss.BossLimiter,true));
+    formLayout->addRow(createBossSettings("Sunflora", randomizer.svRandomizerBoss.BossLimiter,true));
+    formLayout->addRow(createBossSettings("Gimmighoul", randomizer.svRandomizerBoss.BossLimiter,true));
+    formLayout->addRow(createBossSettings("Titans", randomizer.svRandomizerBoss.BossLimiter,true));
+    formLayout->addRow(createBossSettings("Treasure of Ruin", randomizer.svRandomizerBoss.BossLimiter,true));
+    formLayout->addRow(createBossSettings("Area Zero", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Snacksworth", randomizer.svRandomizerBoss.BossLimiter,true));
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(paldeaTrainersWidget);
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createKitakamiBossWidget(){
+    QWidget *kitakamiTrainersWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(kitakamiTrainersWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Ogerpon", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Loyal Three", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Milotic", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Ariados", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Ursaluna", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Pecharunt", randomizer.svRandomizerBoss.BossLimiter,false));
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(kitakamiTrainersWidget);
+    return scrollArea;
+}
+
+QWidget* SVRandomizerWindow::createBlueberryBossWidget(){
+    QWidget *blueberryTrainersWidget = new QWidget();
+
+    // Main layout with no extra margins or spacing
+    QVBoxLayout *mainLayout = new QVBoxLayout(blueberryTrainersWidget);
+
+    // Create scroll area and set properties
+    QScrollArea *scrollArea = new QScrollArea();
+    scrollArea->setWidgetResizable(true);  // Enable resizing with the window
+
+    // Create form layout
+    QFormLayout *formLayout = new QFormLayout();
+    formLayout->setSpacing(2);
+    formLayout->setContentsMargins(2, 2, 2, 2);
+
+    //add rows to formLayout
+    formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Area Zero (Underdepths)", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Terapagos", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Meloetta", randomizer.svRandomizerBoss.BossLimiter,false));
+    formLayout->addRow(createBossSettings("Paradox Legends", randomizer.svRandomizerBoss.BossLimiter,false));
+
+    // Set form layout to main layout
+    mainLayout->addLayout(formLayout);
+    // Add giftWidget to scroll area and set scrollArea as the widget
+    scrollArea->setWidget(blueberryTrainersWidget);
+    return scrollArea;
 }
 
 // Creation of Widget
@@ -953,6 +1235,557 @@ QVBoxLayout* SVRandomizerWindow::createItemWidget(){
     return itemSettingLayout;
 }
 
+QVBoxLayout* SVRandomizerWindow::createFixedEncounters(){
+    QVBoxLayout *fixedWildSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> fixedWildSettings;
+
+    // Creates the Main Button
+    QCheckBox* enable_fixed = new QCheckBox("Randomize Fixed Encounters");
+    fixedWildSettingLayout->addWidget(enable_fixed);
+    // Connect for Setting the values
+    connect(enable_fixed, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *fixedWildGroupSettings= new QGroupBox("Fixed Encounter Settings Section");
+    QVBoxLayout *fixedWildSettingsLayout = new QVBoxLayout(fixedWildGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    fixedWildGroupSettings->setVisible(false);
+    connect(enable_fixed, &QCheckBox::toggled, fixedWildGroupSettings, &QGroupBox::setVisible);
+
+    fixedWildSettingLayout->addWidget(fixedWildGroupSettings);
+
+    // Row 0
+    QCheckBox* bst_balance = new QCheckBox("Balance Encounter on BST", fixedWildGroupSettings);
+    row0->addWidget(bst_balance);
+    // Connect for Setting the values
+    connect(bst_balance, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    fixedWildSettingsLayout->addLayout(row0);
+
+    setupAllowedPokemon(fixedWildSettingsLayout, randomizer.svRandomizerWilds.FixedSymbolLimiter);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return fixedWildSettingLayout;
+}
+
+QVBoxLayout* SVRandomizerWindow::createPaldeaWild(){
+    QVBoxLayout *paldeaWildSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> paldeaWildSettings;
+
+    // Creates the Main Button
+    QCheckBox* enable_paldea_wild = new QCheckBox("Randomize Paldea's Wild");
+    paldeaWildSettingLayout->addWidget(enable_paldea_wild);
+    // Connect for Setting the values
+    connect(enable_paldea_wild, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *paldeaWildGroupSettings= new QGroupBox("Paldea's Wild Settings Section");
+    QVBoxLayout *paldeaWildSettingsLayout = new QVBoxLayout(paldeaWildGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+    QHBoxLayout *row1 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    paldeaWildGroupSettings->setVisible(false);
+    connect(enable_paldea_wild, &QCheckBox::toggled, paldeaWildGroupSettings, &QGroupBox::setVisible);
+
+    paldeaWildSettingLayout->addWidget(paldeaWildGroupSettings);
+
+    // Row 0
+    QCheckBox* ogerpone_and_terapagos = new QCheckBox("Let Ogerpon and Terapagos Spawn (Do not Tera if caught)", paldeaWildGroupSettings);
+    row0->addWidget(ogerpone_and_terapagos);
+    // Connect for Setting the values
+    connect(ogerpone_and_terapagos, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    QCheckBox* balance_bst_area = new QCheckBox("Balace Area per BST (Useless for now)", paldeaWildGroupSettings);
+    row0->addWidget(balance_bst_area);
+    // Connect for Setting the values
+    connect(balance_bst_area, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    paldeaWildSettingsLayout->addLayout(row0);
+
+
+    QCheckBox* paldea_wild_for_all = new QCheckBox("Use Paldea Wild Settings for All", paldeaWildGroupSettings);
+    row1->addWidget(paldea_wild_for_all);
+    // Connect for Setting the values
+    connect(paldea_wild_for_all, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    paldeaWildSettingsLayout->addLayout(row1);
+
+    setupAllowedPokemon(paldeaWildSettingsLayout, randomizer.svRandomizerWilds.PaldeaLimiter);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return paldeaWildSettingLayout;
+}
+
+QVBoxLayout* SVRandomizerWindow::createKitakamiWild(){
+    QVBoxLayout *kitakamiWildSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> kitakamiWildSettings;
+
+    // Creates the Main Button
+    QCheckBox* enable_kitakami_wild = new QCheckBox("Randomize Kitakami's Wild");
+    kitakamiWildSettingLayout->addWidget(enable_kitakami_wild);
+    // Connect for Setting the values
+    connect(enable_kitakami_wild, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *kitakamiWildGroupSettings= new QGroupBox("Kitakami Wild Settings Section");
+    QVBoxLayout *kitakamiWildSettingsLayout = new QVBoxLayout(kitakamiWildGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    kitakamiWildGroupSettings->setVisible(false);
+    connect(enable_kitakami_wild, &QCheckBox::toggled, kitakamiWildGroupSettings, &QGroupBox::setVisible);
+
+    kitakamiWildSettingLayout->addWidget(kitakamiWildGroupSettings);
+
+    // Row 0
+    QCheckBox* ogerpone_and_terapagos = new QCheckBox("Let Ogerpon and Terapagos Spawn (Do not Tera if caught)", kitakamiWildGroupSettings);
+    row0->addWidget(ogerpone_and_terapagos);
+    // Connect for Setting the values
+    connect(ogerpone_and_terapagos, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    QCheckBox* bst_balance = new QCheckBox("Balance Area on BST (Useless for now)", kitakamiWildGroupSettings);
+    row0->addWidget(bst_balance);
+    // Connect for Setting the values
+    connect(bst_balance, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    kitakamiWildSettingsLayout->addLayout(row0);
+
+    setupAllowedPokemon(kitakamiWildSettingsLayout, randomizer.svRandomizerWilds.KitakamiLimiter);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return kitakamiWildSettingLayout;
+}
+
+QVBoxLayout* SVRandomizerWindow::createBlueberryWild(){
+    QVBoxLayout *blueberryWildSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> blueberryWildSettings;
+
+    // Creates the Main Button
+    QCheckBox* enable_blueberry_wild = new QCheckBox("Randomize Blueberry's Wild");
+    blueberryWildSettingLayout->addWidget(enable_blueberry_wild);
+    // Connect for Setting the values
+    connect(enable_blueberry_wild, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *blueberryWildGroupSettings= new QGroupBox("Blueberry Wild Settings Section");
+    QVBoxLayout *blueberryWildSettingsLayout = new QVBoxLayout(blueberryWildGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    blueberryWildGroupSettings->setVisible(false);
+    connect(enable_blueberry_wild, &QCheckBox::toggled, blueberryWildGroupSettings, &QGroupBox::setVisible);
+
+    blueberryWildSettingLayout->addWidget(blueberryWildGroupSettings);
+
+    // Row 0
+    QCheckBox* ogerpone_and_terapagos = new QCheckBox("Let Ogerpon and Terapagos Spawn (Do not Tera if caught)", blueberryWildGroupSettings);
+    row0->addWidget(ogerpone_and_terapagos);
+    // Connect for Setting the values
+    connect(ogerpone_and_terapagos, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    QCheckBox* bst_balance = new QCheckBox("Balance Area on BST (Useless for now)", blueberryWildGroupSettings);
+    row0->addWidget(bst_balance);
+    // Connect for Setting the values
+    connect(bst_balance, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    blueberryWildSettingsLayout->addLayout(row0);
+
+    setupAllowedPokemon(blueberryWildSettingsLayout, randomizer.svRandomizerWilds.BlueberryLimiter);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return blueberryWildSettingLayout;
+}
+
+QVBoxLayout* SVRandomizerWindow::createPaldeaRaid(){
+    QVBoxLayout *paldeaRaidSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> paldeaRaidSettings;
+
+    // Creates the Main Button
+    QCheckBox* enable_paldea_raid = new QCheckBox("Randomize All Paldea's Raid");
+    paldeaRaidSettingLayout->addWidget(enable_paldea_raid);
+    // Connect for Setting the values
+    connect(enable_paldea_raid, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *paldeaRaidGroupSettings= new QGroupBox("All Paldea's Raids Settings Section");
+    QVBoxLayout *paldeaRaidSettingsLayout = new QVBoxLayout(paldeaRaidGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+    QHBoxLayout *row1 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    paldeaRaidGroupSettings->setVisible(false);
+    connect(enable_paldea_raid, &QCheckBox::toggled, paldeaRaidGroupSettings, &QGroupBox::setVisible);
+
+    paldeaRaidSettingLayout->addWidget(paldeaRaidGroupSettings);
+
+    // Row 0
+    QCheckBox* shiny_raids = new QCheckBox("Force Shiny Raids", paldeaRaidGroupSettings);
+    row0->addWidget(shiny_raids);
+    // Connect for Setting the values
+    connect(shiny_raids, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    QCheckBox* balance_bst_area = new QCheckBox("Balace Raid per BST (Useless for now)", paldeaRaidGroupSettings);
+    row0->addWidget(balance_bst_area);
+    // Connect for Setting the values
+    connect(balance_bst_area, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    paldeaRaidSettingsLayout->addLayout(row0);
+
+
+    QCheckBox* paldea_raid_for_all = new QCheckBox("Use Paldea Raid Settings for All", paldeaRaidGroupSettings);
+    row1->addWidget(paldea_raid_for_all);
+    // Connect for Setting the values
+    connect(paldea_raid_for_all, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    paldeaRaidSettingsLayout->addLayout(row1);
+
+    setupAllowedPokemon(paldeaRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsPaldeaLimiter);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return paldeaRaidSettingLayout;
+}
+
+QVBoxLayout* SVRandomizerWindow::createKitakamiRaid(){
+    QVBoxLayout *kitakamiRaidSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> kitakamiRaidSettings;
+
+    // Creates the Main Button
+    QCheckBox* enable_kitakami_raid = new QCheckBox("Randomize All Kitakami's Raid");
+    kitakamiRaidSettingLayout->addWidget(enable_kitakami_raid);
+    // Connect for Setting the values
+    connect(enable_kitakami_raid, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *kitakamiRaidGroupSettings= new QGroupBox("All Kitakami's Raids Settings Section");
+    QVBoxLayout *kitakamiRaidSettingsLayout = new QVBoxLayout(kitakamiRaidGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    kitakamiRaidGroupSettings->setVisible(false);
+    connect(enable_kitakami_raid, &QCheckBox::toggled, kitakamiRaidGroupSettings, &QGroupBox::setVisible);
+
+    kitakamiRaidSettingLayout->addWidget(kitakamiRaidGroupSettings);
+
+    // Row 0
+    QCheckBox* shiny_raids = new QCheckBox("Force Shiny Raids", kitakamiRaidGroupSettings);
+    row0->addWidget(shiny_raids);
+    // Connect for Setting the values
+    connect(shiny_raids, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    QCheckBox* balance_bst_area = new QCheckBox("Balace Raid per BST (Useless for now)", kitakamiRaidGroupSettings);
+    row0->addWidget(balance_bst_area);
+    // Connect for Setting the values
+    connect(balance_bst_area, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    kitakamiRaidSettingsLayout->addLayout(row0);
+
+    setupAllowedPokemon(kitakamiRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsKitakamiLimiter);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return kitakamiRaidSettingLayout;
+}
+
+QVBoxLayout* SVRandomizerWindow::createBlueberryRaid(){
+    QVBoxLayout *blueberryRaidSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> blueberryRaidSettings;
+
+    // Creates the Main Button
+    QCheckBox* enable_blueberry_raid = new QCheckBox("Randomize All Blueberry's Raid");
+    blueberryRaidSettingLayout->addWidget(enable_blueberry_raid);
+    // Connect for Setting the values
+    connect(enable_blueberry_raid, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *blueberryRaidGroupSettings= new QGroupBox("All Blueberry's Raids Settings Section");
+    QVBoxLayout *blueberryRaidSettingsLayout = new QVBoxLayout(blueberryRaidGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    blueberryRaidGroupSettings->setVisible(false);
+    connect(enable_blueberry_raid, &QCheckBox::toggled, blueberryRaidGroupSettings, &QGroupBox::setVisible);
+
+    blueberryRaidSettingLayout->addWidget(blueberryRaidGroupSettings);
+
+    // Row 0
+    QCheckBox* shiny_raids = new QCheckBox("Force Shiny Raids", blueberryRaidGroupSettings);
+    row0->addWidget(shiny_raids);
+    // Connect for Setting the values
+    connect(shiny_raids, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    QCheckBox* balance_bst_area = new QCheckBox("Balace Raid per BST (Useless for now)", blueberryRaidGroupSettings);
+    row0->addWidget(balance_bst_area);
+    // Connect for Setting the values
+    connect(balance_bst_area, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    blueberryRaidSettingsLayout->addLayout(row0);
+
+    setupAllowedPokemon(blueberryRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsBlueberryLimiter);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return blueberryRaidSettingLayout;
+}
+
+QVBoxLayout* SVRandomizerWindow::createTrainerSettings(QString region, QString trainerType, QVector<bool> allowedSettings, allowedPokemonLimiter limiter, bool paldea){
+    QVBoxLayout *globalTrainerSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> globalTrainerSettings;
+
+    // Creates the Main Button
+    QCheckBox* enable_trainers_global = new QCheckBox(QStringLiteral("Randomize %1 %2's Trainers").arg(trainerType).arg(region));
+    globalTrainerSettingLayout->addWidget(enable_trainers_global);
+    // Connect for Setting the values
+    connect(enable_trainers_global, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *paldeaRaidGroupSettings= new QGroupBox(QStringLiteral("%1's Trainers Settings Section").arg(region));
+    QVBoxLayout *paldeaRaidSettingsLayout = new QVBoxLayout(paldeaRaidGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+    QHBoxLayout *row1 = new QHBoxLayout();
+    QHBoxLayout *row2 = new QHBoxLayout();
+    QHBoxLayout *row3 = new QHBoxLayout();
+    QHBoxLayout *row4 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    paldeaRaidGroupSettings->setVisible(false);
+    connect(enable_trainers_global, &QCheckBox::toggled, paldeaRaidGroupSettings, &QGroupBox::setVisible);
+
+    globalTrainerSettingLayout->addWidget(paldeaRaidGroupSettings);
+
+    // Row 0
+    QCheckBox* paldea_all_regions;
+    if(paldea == true && trainerType == "All"){
+        paldea_all_regions = new QCheckBox("Use Paldea Settings for all Regions", paldeaRaidGroupSettings);
+        row0->addWidget(paldea_all_regions);
+        // Connect for Setting the values
+        connect(paldea_all_regions, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+        });
+    }
+
+    QCheckBox* tera_trainers = new QCheckBox(QStringLiteral("Allow %1 to Tera").arg(trainerType), paldeaRaidGroupSettings);
+    row0->addWidget(tera_trainers);
+    // Connect for Setting the values
+    connect(tera_trainers, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    QCheckBox* randomize_tera_types = new QCheckBox("Randomize Tera Types", paldeaRaidGroupSettings);
+    row0->addWidget(randomize_tera_types);
+    // Connect for Setting the values
+    connect(randomize_tera_types, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    paldeaRaidSettingsLayout->addLayout(row0);
+
+    QCheckBox* shiny_trainers = new QCheckBox("Allow Shiny Pokemon", paldeaRaidGroupSettings);
+    row1->addWidget(shiny_trainers);
+    // Connect for Setting the values
+    connect(shiny_trainers, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    paldeaRaidSettingsLayout->addLayout(row1);
+    QCheckBox* singles_or_doubles;
+    QCheckBox* all_doubles;
+    if(trainerType != "Raid"){
+        singles_or_doubles = new QCheckBox("Randomnly Choose between Singles/Double Battles", paldeaRaidGroupSettings);
+        row2->addWidget(singles_or_doubles);
+        // Connect for Setting the values
+        connect(singles_or_doubles, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+        });
+
+        all_doubles = new QCheckBox("All Double Battles (where possible)", paldeaRaidGroupSettings);
+        row2->addWidget(all_doubles);
+        // Connect for Setting the values
+        connect(all_doubles, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+        });
+
+        paldeaRaidSettingsLayout->addLayout(row2);
+    }
+
+    QCheckBox* force_6 = new QCheckBox("Force 6 Pokemons", paldeaRaidGroupSettings);
+    row3->addWidget(force_6);
+    // Connect for Setting the values
+    connect(force_6, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    QCheckBox* give_extra = new QCheckBox("Give Extra Pokemon", paldeaRaidGroupSettings);
+    row3->addWidget(give_extra);
+    // Connect for Setting the values
+    connect(give_extra, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    QCheckBox* force_perfect = new QCheckBox("Force Perfect IVs", paldeaRaidGroupSettings);
+    row3->addWidget(force_perfect);
+    // Connect for Setting the values
+    connect(force_perfect, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    paldeaRaidSettingsLayout->addLayout(row3);
+
+    QCheckBox* make_ai_smart = new QCheckBox("Make AI Smart", paldeaRaidGroupSettings);
+    row4->addWidget(make_ai_smart);
+    // Connect for Setting the values
+    connect(make_ai_smart, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    paldeaRaidSettingsLayout->addLayout(row4);
+
+    setupAllowedPokemon(paldeaRaidSettingsLayout, limiter);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return globalTrainerSettingLayout;
+}
+
+QVBoxLayout* SVRandomizerWindow::createBossSettings(QString boss, allowedPokemonLimiter limiter, bool paldea){
+    QVBoxLayout *bossSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> bossSettings;
+
+    // Creates the Main Button
+    QCheckBox* enable_boss = new QCheckBox(QStringLiteral("Randomize %1").arg(boss));
+    bossSettingLayout->addWidget(enable_boss);
+    // Connect for Setting the values
+    connect(enable_boss, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *paldeaRaidGroupSettings= new QGroupBox(QStringLiteral("%1's Settings Section").arg(boss));
+    QVBoxLayout *paldeaRaidSettingsLayout = new QVBoxLayout(paldeaRaidGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    paldeaRaidGroupSettings->setVisible(false);
+    connect(enable_boss, &QCheckBox::toggled, paldeaRaidGroupSettings, &QGroupBox::setVisible);
+
+    bossSettingLayout->addWidget(paldeaRaidGroupSettings);
+
+    // Row 0
+    QCheckBox* paldea_all_regions;
+    if(paldea == true && boss == "All"){
+        paldea_all_regions = new QCheckBox("Use Paldea Settings for all Regions", paldeaRaidGroupSettings);
+        row0->addWidget(paldea_all_regions);
+        // Connect for Setting the values
+        connect(paldea_all_regions, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+        });
+    }
+
+    QCheckBox* force_shiny = new QCheckBox("Force Shiny", paldeaRaidGroupSettings);
+    row0->addWidget(force_shiny);
+    // Connect for Setting the values
+    connect(force_shiny, &QCheckBox::toggled, this, [this](bool checked) mutable{
+
+    });
+
+    paldeaRaidSettingsLayout->addLayout(row0);
+
+    setupAllowedPokemon(paldeaRaidSettingsLayout, limiter);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return bossSettingLayout;
+}
+
 // Helpers
 void SVRandomizerWindow::switchTabs(QStackedWidget * stackedWidget, int index) {
     if (index >= 0 && index < stackedWidget->count()) {
@@ -960,6 +1793,266 @@ void SVRandomizerWindow::switchTabs(QStackedWidget * stackedWidget, int index) {
     } else {
         qWarning() << "Invalid tab index:" << index;
     }
+}
+
+QJsonDocument SVRandomizerWindow::exportSettings(QMap<QString, QVariant> map){
+    QJsonObject jsonObj;
+    for (auto it = map.begin(); it != map.end(); ++it) {
+        const QString &key = it.key();
+        const QVariant &value = it.value();
+
+        // Convert QVariant to appropriate QJsonValue
+        if (value.typeId() == QMetaType::Bool) {
+            jsonObj.insert(key, value.toBool());
+        } else if (value.typeId() == QMetaType::Int) {
+            jsonObj.insert(key, value.toInt());
+        } else if (value.typeId() == QMetaType::Double) {
+            jsonObj.insert(key, value.toDouble());
+        } else if (value.typeId() == QMetaType::QString) {
+            jsonObj.insert(key, value.toString());
+        } else if (value.typeId() == QMetaType::QVariantList) {
+            jsonObj.insert(key, QJsonArray::fromVariantList(value.toList()));
+        } else if (value.typeId() == QMetaType::QVariantMap) {
+            jsonObj.insert(key, exportSettings(value.toMap()).object()); // Recursive call for nested maps
+        } else {
+            qDebug() << "Unsupported QVariant type for key:" << key << "with type:" << value.typeName();
+        }
+    }
+
+    return QJsonDocument(jsonObj);
+};
+
+void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringList allowedPokemon,
+                                                       QStringList allowedPokeballs, QGroupBox* groupToAdd,
+                                                       QHBoxLayout* rowToAdd, QVBoxLayout* layoutToAdd, int index){
+
+    QCheckBox* starters_shiny = new QCheckBox("Shiny ", groupToAdd);
+    rowToAdd->addWidget(starters_shiny);
+    connect(starters_shiny, &QCheckBox::toggled, this, [this, index, starter](bool checked) mutable{
+        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
+        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
+
+        startersSettings["Shiny"] = checked;
+        randomizer.svRandomizerStarters.starters_shiny[index] = checked;
+        localSettings[starter] = startersSettings;
+        settings["Starters"] = localSettings;
+    });
+
+    QLabel *starterLabel = new QLabel(starter, groupToAdd);
+    starterLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    rowToAdd->addWidget(starterLabel);
+
+    QLineEdit* starters = new QLineEdit(groupToAdd);
+
+    // Sample list of suggestions
+    QCompleter *completer = new QCompleter(allowedPokemon, starters);
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
+    completer->setFilterMode(Qt::MatchContains);
+    starters->setCompleter(completer);
+    // Connect to save pokemon
+    connect(starters, &QLineEdit::textChanged, this, [this, index, starter](const QString &text) mutable{
+        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
+        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
+
+        startersSettings["Name"] = text;
+        randomizer.svRandomizerStarters.starters[index] = text;
+        localSettings[starter] = startersSettings;
+        settings["Starters"] = localSettings;
+    });
+
+    starters->setFixedWidth(175);
+    starters->setPlaceholderText("Leave Blank for Random...");
+    rowToAdd->addWidget(starters);
+
+    QLabel *form_s1 = new QLabel("Form ", groupToAdd);
+    form_s1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    rowToAdd->addWidget(form_s1);
+
+    QComboBox* starters_form = new QComboBox(groupToAdd);
+    starters_form->addItem("---");
+    starters_form->setFixedSize(100, 25);
+
+    rowToAdd->addWidget(starters_form);
+
+    // Double connect to change forms based on pokemon selected
+    connect(starters, &QLineEdit::textChanged, this, [=, this](const QString &text) mutable {
+        starters_form->clear();
+        for(int i = 0; i< randomizer.pokemonFormsInGame[text].size(); i++){
+            starters_form->addItem(randomizer.pokemonFormsInGame[text][i]);
+        }
+
+    });
+    connect(starters_form, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=, this]() mutable{
+        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
+        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
+
+        int setForm = 0;
+        for(int i =0; i< randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]].size(); i++){
+            if(starters_form->currentText() == randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]][i]){
+                setForm = i;
+                if(randomizer.svRandomizerStarters.starters[index] == "Pikachu" && setForm == 8){
+                    setForm = 9;
+                }
+            }
+        }
+        startersSettings["Form"] = setForm;
+        randomizer.svRandomizerStarters.starters_forms[index] = setForm;
+        localSettings[starter] = startersSettings;
+        settings["Starters"] = localSettings;
+    });
+
+    QLabel *gender_s1 = new QLabel("Gender ", groupToAdd);
+    gender_s1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    rowToAdd->addWidget(gender_s1);
+
+    QComboBox* starters_gender = new QComboBox(groupToAdd);
+    starters_gender->addItem("---");
+    starters_gender->setFixedSize(100, 25);
+
+    rowToAdd->addWidget(starters_gender);
+
+    // Triple connect to adjust for a pokemon's gender varying based on form and the last one is to save it.
+    connect(starters, &QLineEdit::textChanged, this, [=, this](const QString &text) mutable{
+        starters_gender->clear();
+        if(randomizer.genderForms.contains(text)){
+            starters_gender->addItem("DEFAULT");
+        }else if(randomizer.femaleOnlyPokemon.contains(text)){
+            starters_gender->addItem("FEMALE");
+        }else if(randomizer.maleOnlyPokemon.contains(text) || randomizer.formsMaleOnly[text].contains(index)){
+            starters_gender->addItem("MALE");
+        } else if(randomizer.genderlessPokemon.contains(text)){
+            starters_gender->addItem("GENDERLESS");
+        } else{
+            starters_gender->addItem("MALE");
+            starters_gender->addItem("FEMALE");
+        }
+    });
+    connect(starters_form, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=, this]() mutable{
+        starters_gender->clear();
+        if(randomizer.genderForms.contains(randomizer.svRandomizerStarters.starters[index])){
+            starters_gender->addItem("DEFAULT");
+        }else if(randomizer.femaleOnlyPokemon.contains(randomizer.svRandomizerStarters.starters[index])){
+            starters_gender->addItem("FEMALE");
+        }else if(randomizer.maleOnlyPokemon.contains(randomizer.svRandomizerStarters.starters[index]) || randomizer.formsMaleOnly[randomizer.svRandomizerStarters.starters[index]].contains(randomizer.svRandomizerStarters.starters_forms[index])){
+            starters_gender->addItem("MALE");
+        } else if(randomizer.genderlessPokemon.contains(randomizer.svRandomizerStarters.starters[index])){
+            starters_gender->addItem("GENDERLESS");
+        } else{
+            starters_gender->addItem("MALE");
+            starters_gender->addItem("FEMALE");
+        }
+    });
+    connect(starters_gender, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [=, this]() mutable{
+        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
+        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
+
+        startersSettings["Gender"] = starters_gender->currentText();
+        randomizer.svRandomizerStarters.starters_gender[index] = starters_gender->currentText();
+        localSettings[starter] = startersSettings;
+        settings["Starters"] = localSettings;
+    });
+
+    QLabel *pokeball_s1 = new QLabel("Pokeball ", groupToAdd);
+    pokeball_s1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    rowToAdd->addWidget(pokeball_s1);
+
+    // Update the combobox to match allowed pokeballs
+    QComboBox* starters_pokeball = new QComboBox(groupToAdd);
+    for(int i = 0; i<allowedPokeballs.length(); i++){
+        starters_pokeball->addItem(allowedPokeballs[i]);
+    }
+    starters_pokeball->setFixedSize(100, 25);
+    // Connect to save the pokeball
+    connect(starters_pokeball, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, &starters_pokeball, starter, index]() mutable{
+        QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
+        QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
+
+        startersSettings["Pokeball"] = starters_pokeball->currentText();
+        randomizer.svRandomizerStarters.starters_pokeball[index] = starters_pokeball->currentText();
+        localSettings[starter] = startersSettings;
+        settings["Starters"] = localSettings;
+    });
+
+    rowToAdd->addWidget(starters_pokeball);
+
+    layoutToAdd->addLayout(rowToAdd);
+    rowToAdd->addStretch(1);
+
+    // Connect based on imports
+    connect(this, &SVRandomizerWindow::importSettings, this, [=, this]() mutable{
+        qDebug()<<"Here";
+    });
+}
+
+void SVRandomizerWindow::setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokemonLimiter limiter){
+    QGroupBox* limiterGroup = new QGroupBox("Pokemon Limiter", this);
+    outerBox->addWidget(limiterGroup);
+
+    QVBoxLayout* limiterSetUp = new QVBoxLayout(limiterGroup);
+    QHBoxLayout* generations = new QHBoxLayout();
+    QHBoxLayout* legendaries = new QHBoxLayout();
+    QHBoxLayout* stages = new QHBoxLayout();
+    QHBoxLayout* special = new QHBoxLayout();
+
+    QVector<QCheckBox*> generationslist;
+
+    QLabel *generationsHeader = new QLabel("Allowed Generations", limiterGroup);
+    generationsHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
+    generations->addWidget(generationsHeader);
+
+    for(int i =0; i<9; i++){
+        generationslist.append(new QCheckBox(QStringLiteral("%1").arg(i+1), limiterGroup));
+        generationslist[i]->setChecked(true);
+        generationslist[i]->setFixedSize(60, 20);
+        generations->addWidget(generationslist[i]);
+        // Connects Here
+    }
+    limiterSetUp->addLayout(generations);
+
+    //-------------------------------------------------------------------------------------------
+
+    QVector<QCheckBox*> legendariesList;
+
+    QLabel *legendsHeader = new QLabel("Allowed Legendaries", limiterGroup);
+    legendsHeader->setStyleSheet("font-weight: bold; padding: 0px 0;");
+    legendaries->addWidget(legendsHeader);
+
+    for(int i =0; i<9; i++){
+        legendariesList.append(new QCheckBox(QStringLiteral("%1").arg(i+1), limiterGroup));
+        legendariesList[i]->setChecked(true);
+        legendariesList[i]->setFixedSize(60, 20);
+        legendaries->addWidget(legendariesList[i]);
+        // Connects Here
+    }
+    limiterSetUp->addLayout(legendaries);
+
+    //-------------------------------------------------------------------------------------------
+
+    QCheckBox *stage_1 = new QCheckBox("Stage 1", limiterGroup);
+    stage_1->setChecked(true);
+    stages->addWidget(stage_1);
+
+    QCheckBox *stage_2 = new QCheckBox("Stage 2", limiterGroup);
+    stage_2->setChecked(true);
+    stages->addWidget(stage_2);
+
+    QCheckBox *stage_3 = new QCheckBox("Stage 3", limiterGroup);
+    stage_3->setChecked(true);
+    stages->addWidget(stage_3);
+
+    QCheckBox *single_stage = new QCheckBox("Single stage", limiterGroup);
+    single_stage->setChecked(true);
+    stages->addWidget(single_stage);
+
+    limiterSetUp->addLayout(stages);
+
+    //-------------------------------------------------------------------------------------------
+
+    QCheckBox *paradox = new QCheckBox("Paradox", limiterGroup);
+    paradox->setChecked(true);
+    special->addWidget(paradox);
+    limiterSetUp->addLayout(special);
+
 }
 
 // Intializers

@@ -36,16 +36,14 @@ protected:
     QMessageBox* progressBar = nullptr;
 
     // Protected Functions
-    // virtual void setUpVariablesForSpecificRandomizer();
-    // virtual allowedPokemonLimiter initinalizeAllowedPokemon(allowedPokemonLimiter limiterCheck);
     // virtual int obtainPokemonGenderRatios(QString pokemonStatsFilePath);
     // virtual QMap<QString, QVariant> setUpSettings(QMap<QString, QVariant> s);
-    virtual QScrollArea* setupStartersWidget() =0;
+    virtual QScrollArea* setupStartersWidget() = 0;
+    virtual QScrollArea* setupPersonalWidget() = 0;
     virtual QScrollArea* setupWildWidget() = 0;
-    // virtual QScrollArea* setupBossWidget();
+    virtual QScrollArea* setupTrainersWidget() = 0;
+    virtual QScrollArea* setupBossWidget() = 0;
     // virtual QScrollArea* setupShopWidget();
-    // virtual QScrollArea* setupTrainersWidget();
-    virtual QScrollArea* setupPersonalWidget() =0;
     virtual void initializeSettings() =0;
     virtual void setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokemonLimiter details)=0;
 
