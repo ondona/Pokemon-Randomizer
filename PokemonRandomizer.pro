@@ -87,6 +87,10 @@ win32 {
 }
 
 macx {
+    QMAKE_CXXFLAGS += -arch arm64
+    QMAKE_LFLAGS += -arch arm64
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 11.0
+    CONFIG -= x86_64
     CONFIG += macx
     contains(QMAKE_CXXFLAGS, -arch\\s*x86_64): DEFINES += MAC_INTEL
     contains(QMAKE_CXXFLAGS, -arch\\s*arm64): DEFINES += MAC_ARM
@@ -104,23 +108,23 @@ macx {
     LOGS_SRC = $$PWD/logs
 
     # Custom command to copy the include folder
-    copy_include.commands = mkdir -p $$INCLUDE_DEST && cp -r $$INCLUDE_SRC/. $$INCLUDE_DEST
+    copy_include.commands = mkdir -p $$INCLUDE_DEST && rsync -a $$INCLUDE_SRC/. $$INCLUDE_DEST
     QMAKE_EXTRA_TARGETS += copy_include
 
     # Custom command to copy the images folder
-    copy_images.commands = mkdir -p $$IMAGES_DEST && cp -r $$IMAGES_SRC/. $$IMAGES_DEST
+    copy_images.commands = mkdir -p $$IMAGES_DEST && rsync -a $$IMAGES_SRC/. $$IMAGES_DEST
     QMAKE_EXTRA_TARGETS += copy_images
 
     # Custom command to copy the thirdparty folder
-    copy_thirdparty.commands = mkdir -p $$THIRDPARTY_DEST && cp -r $$THIRDPARTY_SRC/. $$THIRDPARTY_DEST
+    copy_thirdparty.commands = mkdir -p $$THIRDPARTY_DEST && rsync -a $$THIRDPARTY_SRC/. $$THIRDPARTY_DEST
     QMAKE_EXTRA_TARGETS += copy_thirdparty
 
     # Custom command to copy the SV_FLATBUFFERS folder
-    copy_sv_flatbuffers.commands = mkdir -p $$SV_FLATBUFFERS_DEST && cp -r $$SV_FLATBUFFERS_SRC/. $$SV_FLATBUFFERS_DEST
+    copy_sv_flatbuffers.commands = mkdir -p $$SV_FLATBUFFERS_DEST && rsync -a $$SV_FLATBUFFERS_SRC/. $$SV_FLATBUFFERS_DEST
     QMAKE_EXTRA_TARGETS += copy_sv_flatbuffers
 
     # Custom command to copy the logs folder
-    copy_logs.commands = mkdir -p $$LOGS_DEST && cp -r $$LOGS_SRC/. $$LOGS_DEST
+    copy_logs.commands = mkdir -p $$LOGS_DEST && rsync -a $$LOGS_SRC/. $$LOGS_DEST
     QMAKE_EXTRA_TARGETS += copy_logs
 
     # Ensure the copy commands are executed before building

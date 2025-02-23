@@ -13,6 +13,8 @@
 #include <TrinitySceneObject_generated.h>
 #include <QProcess>
 #include <QStringListModel>
+#include <QSet>
+#include <QDebug>
 
 using json = nlohmann::json;
 
@@ -79,8 +81,8 @@ class sharedRandomizerClass{
         };
 
         // Uninitialized Data
-        nlohmann::json pokemonPersonalData;
-        nlohmann::json pokemonMapping;
+        json pokemonPersonalData;
+        json pokemonMapping;
         QList<int> regionalStage1;
         QList<int> regionalStage2;
         QList<int> regionalStage3;
@@ -93,7 +95,6 @@ class sharedRandomizerClass{
         int maxGeneration = 9;
         int maxAllowedId = 1025;
         bool nationalDexMode = false; // Adding for future compatability for potential nationaldex mods
-        QString personalFilePath;
         QStringList pokemonInGame;
         QMap<QString, QList<int>> pokemonFormsIntsInGame;
         QMap<QString, QList<int>> selectedStarters = {
@@ -395,7 +396,7 @@ class sharedRandomizerClass{
             {144, {0}},
             {145, {0}},
             {146, {0}},
-            {150, {0, 1, 2}},
+            {150, {0}},
             {151, {0}}
         };
         QList<int> gen2_legends = {243, 244, 245, 249, 250, 251};
@@ -403,6 +404,9 @@ class sharedRandomizerClass{
         QList<int> gen4_legends = {480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493};
         QList<int> gen5_legends = {494, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649};
         QList<int> gen6_legends = {716, 717, 718, 719, 720, 721};
+        QMap<int, QList<int>> megas = {
+            {150, {1,2}},
+        };
         QList<int> gen7_legends = {772, 773, 785, 786, 787, 788, 789, 790, 791, 792, 800, 801, 802, 807, 808, 809};
         QList<int> UB = {793, 794, 795, 796, 797, 798, 799, 803, 804, 805, 806};
         QList<int> gen8_legends = {888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898, 905};
@@ -414,12 +418,12 @@ class sharedRandomizerClass{
         // Functions
         void recursiveFindOfPokemonSceneTable(json& sceneFile, QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare);
         int getPokemonItemValue(int index, int form);
-        void obtainCleanRatios();
         std::string getItemForPokemon(int pokemon, int form);
         std::string getPokemonItemId(int index, int form);
         void getAllowedPokemon(allowedPokemonLimiter limiter, QList<int> & allowedList);
         void modifyPokemonScene(QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare, QString input, QString output);
         void createFolderHierarchy(const QString& folder);
+        json readJsonQFile(const QString& filePath);
 
         // Variables
         QList<int> pokemon_with_regional_evolutions = {
@@ -1204,6 +1208,29 @@ class sharedRandomizerClass{
             {"Terapagos", {"Normal","Terastal","Stellar"}},
             {"Pecharunt", {"—"}},
         };
+
+        QMap<int, int> devIdToNationalDex;
 };
 
 #endif // SHAREDRANDOMIZERCLASS_H
+
+json sharedRandomizerClass::readJsonQFile(const QString& filePath){
+    QFile file(filePath);
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qFatal() << "Could not open file:" << filePath;
+    }
+
+    QTextStream in(&file);
+    QString fileContent = in.readAll();  // Read entire file into a QString
+    file.close();  // Close file after reading
+
+    // Convert QString to std::string and parse JSON
+    try {
+        return json::parse(fileContent.toStdString());
+    } catch (const json::parse_error& e) {
+        qFatal() << "JSON parsing error:" << e.what();
+    }
+
+    return json();  // Return empty JSON object in case of failure
+}
