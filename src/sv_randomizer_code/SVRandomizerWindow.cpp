@@ -97,7 +97,7 @@ void SVRandomizerWindow::createLayout()
         seedSettings->addWidget(seed);
 
         QPushButton * startRandomizer = new QPushButton("Start Randomizing", generalGroup);
-       // connect(startRandomizer, &QPushButton::clicked, this, &SVRandomizerWindow::runRandomizer);
+        connect(startRandomizer, &QPushButton::clicked, this, &SVRandomizerWindow::runRandomizer);
         seedSettings->addWidget(startRandomizer);
 
         generalSettings->addLayout(mainSettings);
@@ -146,6 +146,19 @@ void SVRandomizerWindow::createLayout()
 
     // Apply the main layout to RandomizerWindow
     setLayout(mainLayout);
+}
+
+void SVRandomizerWindow::runRandomizer(){
+    // setup randNum and seed
+    qDebug()<<"Running Randomizer";
+    randomizer.svRandomizerStarters.randomize();
+    randomizer.patchFileDescriptor();
+
+    generateBinary(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.fbs").toStdString(),
+                   qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString(),
+                   "arc/", true);
+
+    QDir().remove(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json"));
 }
 
 // Specific Widgets Codes
@@ -555,13 +568,13 @@ QWidget* SVRandomizerWindow::createPaldeaTrainersWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    formLayout->addRow(createTrainerSettings("Paldea", "All", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRivalLimiter, true));
-    formLayout->addRow(createTrainerSettings("Paldea", "Rival", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRivalLimiter, true));
-    formLayout->addRow(createTrainerSettings("Paldea", "Gym", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PGymLimiter, true));
-    formLayout->addRow(createTrainerSettings("Paldea", "Elite 4", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PE4Limiter, true));
-    formLayout->addRow(createTrainerSettings("Paldea", "Champion", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PChampionLimiter, true));
-    formLayout->addRow(createTrainerSettings("Paldea", "Route", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRouteLimiter, true));
-    formLayout->addRow(createTrainerSettings("Paldea", "Raid", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRaidLimiter, true));
+    // formLayout->addRow(createTrainerSettings("Paldea", "All", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRivalLimiter, true));
+    // formLayout->addRow(createTrainerSettings("Paldea", "Rival", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRivalLimiter, true));
+    // formLayout->addRow(createTrainerSettings("Paldea", "Gym", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PGymLimiter, true));
+    // formLayout->addRow(createTrainerSettings("Paldea", "Elite 4", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PE4Limiter, true));
+    // formLayout->addRow(createTrainerSettings("Paldea", "Champion", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PChampionLimiter, true));
+    // formLayout->addRow(createTrainerSettings("Paldea", "Route", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRouteLimiter, true));
+    // formLayout->addRow(createTrainerSettings("Paldea", "Raid", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRaidLimiter, true));
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
@@ -586,12 +599,11 @@ QWidget* SVRandomizerWindow::createKitakamiTrainersWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    formLayout->addRow(createTrainerSettings("Kitakami", "All", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRivalLimiter, false));
-    formLayout->addRow(createTrainerSettings("Kitakami", "Rival", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRivalLimiter, false));
-    formLayout->addRow(createTrainerSettings("Kitakami", "Ogre Clan", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KOCLimiter, false));
-    formLayout->addRow(createTrainerSettings("Kitakami", "Route", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRouteLimiter, false));
-    formLayout->addRow(createTrainerSettings("Kitakami", "Raid", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRaidLimiter, false));
-
+    // formLayout->addRow(createTrainerSettings("Kitakami", "All", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRivalLimiter, false));
+    // formLayout->addRow(createTrainerSettings("Kitakami", "Rival", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRivalLimiter, false));
+    // formLayout->addRow(createTrainerSettings("Kitakami", "Ogre Clan", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KOCLimiter, false));
+    // formLayout->addRow(createTrainerSettings("Kitakami", "Route", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRouteLimiter, false));
+    // formLayout->addRow(createTrainerSettings("Kitakami", "Raid", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRaidLimiter, false));
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
@@ -616,13 +628,11 @@ QWidget* SVRandomizerWindow::createBlueberryTrainersWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    formLayout->addRow(createTrainerSettings("Blueberry", "All", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRivalLimiter, false));
-    formLayout->addRow(createTrainerSettings("Blueberry", "Rival", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRivalLimiter, false));
-    formLayout->addRow(createTrainerSettings("Blueberry", "BB4", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BBB4Limiter, false));
-    formLayout->addRow(createTrainerSettings("Blueberry", "Route", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRouteLimiter, false));
-    formLayout->addRow(createTrainerSettings("Blueberry", "Raid", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRaidLimiter, false));
-
-
+    // formLayout->addRow(createTrainerSettings("Blueberry", "All", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRivalLimiter, false));
+    // formLayout->addRow(createTrainerSettings("Blueberry", "Rival", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRivalLimiter, false));
+    // formLayout->addRow(createTrainerSettings("Blueberry", "BB4", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BBB4Limiter, false));
+    // formLayout->addRow(createTrainerSettings("Blueberry", "Route", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRouteLimiter, false));
+    // formLayout->addRow(createTrainerSettings("Blueberry", "Raid", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRaidLimiter, false));
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
@@ -649,9 +659,9 @@ QScrollArea* SVRandomizerWindow::setupBossWidget(){
     // Configure the tab bar
     QTabBar *innerTrainersBar = new QTabBar(this);
     innerTrainersBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // Expand horizontally
-    innerTrainersBar->addTab("Paldea Trainers");
-    innerTrainersBar->addTab("Kitakami Trainers");
-    innerTrainersBar->addTab("Blueberry Academy Trainers");
+    innerTrainersBar->addTab("Paldea Boss");
+    innerTrainersBar->addTab("Kitakami Boss");
+    innerTrainersBar->addTab("Blueberry Academy Boss");
 
     // Adjust the minimum width to a specific value to ensure it expands
     innerTrainersBar->setMinimumWidth(750); // Set a minimum width (adjust as necessary)
@@ -699,16 +709,16 @@ QWidget* SVRandomizerWindow::createPaldeaBossWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,true));
-    formLayout->addRow(createBossSettings("Koraidon/Miraidon (Not Recommended)", randomizer.svRandomizerBoss.BossLimiter,true));
-    formLayout->addRow(createBossSettings("LeChonk", randomizer.svRandomizerBoss.BossLimiter,true));
-    formLayout->addRow(createBossSettings("Houndoom", randomizer.svRandomizerBoss.BossLimiter,true));
-    formLayout->addRow(createBossSettings("Sunflora", randomizer.svRandomizerBoss.BossLimiter,true));
-    formLayout->addRow(createBossSettings("Gimmighoul", randomizer.svRandomizerBoss.BossLimiter,true));
-    formLayout->addRow(createBossSettings("Titans", randomizer.svRandomizerBoss.BossLimiter,true));
-    formLayout->addRow(createBossSettings("Treasure of Ruin", randomizer.svRandomizerBoss.BossLimiter,true));
-    formLayout->addRow(createBossSettings("Area Zero", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Snacksworth", randomizer.svRandomizerBoss.BossLimiter,true));
+    // formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,true));
+    // formLayout->addRow(createBossSettings("Koraidon/Miraidon (Not Recommended)", randomizer.svRandomizerBoss.BossLimiter,true));
+    // formLayout->addRow(createBossSettings("LeChonk", randomizer.svRandomizerBoss.BossLimiter,true));
+    // formLayout->addRow(createBossSettings("Houndoom", randomizer.svRandomizerBoss.BossLimiter,true));
+    // formLayout->addRow(createBossSettings("Sunflora", randomizer.svRandomizerBoss.BossLimiter,true));
+    // formLayout->addRow(createBossSettings("Gimmighoul", randomizer.svRandomizerBoss.BossLimiter,true));
+    // formLayout->addRow(createBossSettings("Titans", randomizer.svRandomizerBoss.BossLimiter,true));
+    // formLayout->addRow(createBossSettings("Treasure of Ruin", randomizer.svRandomizerBoss.BossLimiter,true));
+    // formLayout->addRow(createBossSettings("Area Zero", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Snacksworth", randomizer.svRandomizerBoss.BossLimiter,true));
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
@@ -733,13 +743,13 @@ QWidget* SVRandomizerWindow::createKitakamiBossWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Ogerpon", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Loyal Three", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Milotic", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Ariados", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Ursaluna", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Pecharunt", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Ogerpon", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Loyal Three", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Milotic", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Ariados", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Ursaluna", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Pecharunt", randomizer.svRandomizerBoss.BossLimiter,false));
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
@@ -764,11 +774,11 @@ QWidget* SVRandomizerWindow::createBlueberryBossWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Area Zero (Underdepths)", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Terapagos", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Meloetta", randomizer.svRandomizerBoss.BossLimiter,false));
-    formLayout->addRow(createBossSettings("Paradox Legends", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Area Zero (Underdepths)", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Terapagos", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Meloetta", randomizer.svRandomizerBoss.BossLimiter,false));
+    // formLayout->addRow(createBossSettings("Paradox Legends", randomizer.svRandomizerBoss.BossLimiter,false));
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
@@ -789,7 +799,7 @@ QVBoxLayout* SVRandomizerWindow::createStartersWidget(){
         QMap<QString, QVariant> startersSettings = settings["Starters"].toMap();
 
         startersSettings["Randomize"] = checked;
-        randomizer.svRandomizerStarters.enable_starters = checked;
+        randomizer.svRandomizerStarters.randomizeStarters = checked;
         settings["Starters"] = startersSettings;
     });
 
@@ -815,7 +825,7 @@ QVBoxLayout* SVRandomizerWindow::createStartersWidget(){
         QMap<QString, QVariant> startersSettings = settings["Starters"].toMap();
 
         startersSettings["Tera Types"] = checked;
-        randomizer.svRandomizerStarters.randomize_tera_types = checked;
+        randomizer.svRandomizerStarters.randomizeStartersTeraTypes = checked;
         settings["Starters"] = startersSettings;
     });
 
@@ -826,7 +836,7 @@ QVBoxLayout* SVRandomizerWindow::createStartersWidget(){
         QMap<QString, QVariant> startersSettings = settings["Starters"].toMap();
 
         startersSettings["All Shiny"] = checked;
-        randomizer.svRandomizerStarters.all_starters_shiny = checked;
+        randomizer.svRandomizerStarters.allStartersShiny = checked;
         settings["Starters"] = startersSettings;
     });
 
@@ -836,18 +846,18 @@ QVBoxLayout* SVRandomizerWindow::createStartersWidget(){
         QMap<QString, QVariant> startersSettings = settings["Starters"].toMap();
 
         startersSettings["One Shiny"] = checked;
-        randomizer.svRandomizerStarters.force_shiny_starter = checked;
+        randomizer.svRandomizerStarters.forceShinyStarter = checked; // connected
         settings["Starters"] = startersSettings;
     });
 
     startersSettingsLayout->addLayout(startersRow_Q0);
 
-    createStarterPokemonSelection("Sprigatito", randomizer.pokemonInGame, Pokeball_Names, startersGroupSettings, startersRow_Q1, startersSettingsLayout, 0);
-    createStarterPokemonSelection("Fuecoco", randomizer.pokemonInGame, Pokeball_Names, startersGroupSettings, startersRow_Q2, startersSettingsLayout, 1);
-    createStarterPokemonSelection("Quaxly", randomizer.pokemonInGame, Pokeball_Names, startersGroupSettings, startersRow_Q3, startersSettingsLayout, 2);
+    createStarterPokemonSelection("Sprigatito", randomizer.pokemonInGame, randomizer.pokeballNames, startersGroupSettings, startersRow_Q1, startersSettingsLayout, 0);
+    createStarterPokemonSelection("Fuecoco", randomizer.pokemonInGame, randomizer.pokeballNames, startersGroupSettings, startersRow_Q2, startersSettingsLayout, 1);
+    createStarterPokemonSelection("Quaxly", randomizer.pokemonInGame, randomizer.pokeballNames, startersGroupSettings, startersRow_Q3, startersSettingsLayout, 2);
 
     // Pokemon Limiter
-    setupAllowedPokemon(startersSettingsLayout, randomizer.svRandomizerStarters.StartersLimiter);
+    setupAllowedPokemon(startersSettingsLayout, randomizer.svRandomizerStarters.startersPokemon);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -867,7 +877,7 @@ QVBoxLayout* SVRandomizerWindow::createGiftsWidget(){
     giftsSettingLayout->addWidget(enable_gifts);
     // Connect for Setting the values
     connect(enable_gifts, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerStarters.randomizeGifts = checked;
     });
 
     // Creates Hidden Group based on button
@@ -886,13 +896,13 @@ QVBoxLayout* SVRandomizerWindow::createGiftsWidget(){
     row0->addWidget(randomize_gifts_tera_types);
     // Connect for Setting the values
     connect(randomize_gifts_tera_types, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerStarters.randomizeGiftsTeraTypes = checked;
     });
 
     giftSettingsLayout->addLayout(row0);
 
     // Pokemon Limiter
-    setupAllowedPokemon(giftSettingsLayout, randomizer.svRandomizerStarters.GiftsLimiter);
+    setupAllowedPokemon(giftSettingsLayout, randomizer.svRandomizerStarters.giftsPokemon);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1269,7 +1279,7 @@ QVBoxLayout* SVRandomizerWindow::createFixedEncounters(){
 
     fixedWildSettingsLayout->addLayout(row0);
 
-    setupAllowedPokemon(fixedWildSettingsLayout, randomizer.svRandomizerWilds.FixedSymbolLimiter);
+    // setupAllowedPokemon(fixedWildSettingsLayout, randomizer.svRandomizerWilds.FixedSymbolLimiter);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1331,7 +1341,7 @@ QVBoxLayout* SVRandomizerWindow::createPaldeaWild(){
 
     paldeaWildSettingsLayout->addLayout(row1);
 
-    setupAllowedPokemon(paldeaWildSettingsLayout, randomizer.svRandomizerWilds.PaldeaLimiter);
+    // setupAllowedPokemon(paldeaWildSettingsLayout, randomizer.svRandomizerWilds.PaldeaLimiter);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1382,7 +1392,7 @@ QVBoxLayout* SVRandomizerWindow::createKitakamiWild(){
 
     kitakamiWildSettingsLayout->addLayout(row0);
 
-    setupAllowedPokemon(kitakamiWildSettingsLayout, randomizer.svRandomizerWilds.KitakamiLimiter);
+    // setupAllowedPokemon(kitakamiWildSettingsLayout, randomizer.svRandomizerWilds.KitakamiLimiter);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1433,7 +1443,7 @@ QVBoxLayout* SVRandomizerWindow::createBlueberryWild(){
 
     blueberryWildSettingsLayout->addLayout(row0);
 
-    setupAllowedPokemon(blueberryWildSettingsLayout, randomizer.svRandomizerWilds.BlueberryLimiter);
+    // setupAllowedPokemon(blueberryWildSettingsLayout, randomizer.svRandomizerWilds.BlueberryLimiter);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1495,7 +1505,7 @@ QVBoxLayout* SVRandomizerWindow::createPaldeaRaid(){
 
     paldeaRaidSettingsLayout->addLayout(row1);
 
-    setupAllowedPokemon(paldeaRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsPaldeaLimiter);
+    // setupAllowedPokemon(paldeaRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsPaldeaLimiter);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1546,7 +1556,7 @@ QVBoxLayout* SVRandomizerWindow::createKitakamiRaid(){
 
     kitakamiRaidSettingsLayout->addLayout(row0);
 
-    setupAllowedPokemon(kitakamiRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsKitakamiLimiter);
+    // setupAllowedPokemon(kitakamiRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsKitakamiLimiter);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1597,7 +1607,7 @@ QVBoxLayout* SVRandomizerWindow::createBlueberryRaid(){
 
     blueberryRaidSettingsLayout->addLayout(row0);
 
-    setupAllowedPokemon(blueberryRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsBlueberryLimiter);
+    // setupAllowedPokemon(blueberryRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsBlueberryLimiter);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1833,7 +1843,7 @@ void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringL
         QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
 
         startersSettings["Shiny"] = checked;
-        randomizer.svRandomizerStarters.starters_shiny[index] = checked;
+        randomizer.svRandomizerStarters.startersShiny[index] = checked;
         localSettings[starter] = startersSettings;
         settings["Starters"] = localSettings;
     });
@@ -1877,8 +1887,8 @@ void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringL
     // Double connect to change forms based on pokemon selected
     connect(starters, &QLineEdit::textChanged, this, [=, this](const QString &text) mutable {
         starters_form->clear();
-        for(int i = 0; i< randomizer.pokemonFormsInGame[text].size(); i++){
-            starters_form->addItem(randomizer.pokemonFormsInGame[text][i]);
+        for(int i = 0; i< randomizer.nationalDexPokemonNamesAndForms[text].size(); i++){
+            starters_form->addItem(randomizer.nationalDexPokemonNamesAndForms[text][i]);
         }
 
     });
@@ -1887,8 +1897,8 @@ void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringL
         QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
 
         int setForm = 0;
-        for(int i =0; i< randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]].size(); i++){
-            if(starters_form->currentText() == randomizer.pokemonFormsInGame[randomizer.svRandomizerStarters.starters[index]][i]){
+        for(int i =0; i< randomizer.nationalDexPokemonNamesAndForms[randomizer.svRandomizerStarters.starters[index]].size(); i++){
+            if(starters_form->currentText() == randomizer.nationalDexPokemonNamesAndForms[randomizer.svRandomizerStarters.starters[index]][i]){
                 setForm = i;
                 if(randomizer.svRandomizerStarters.starters[index] == "Pikachu" && setForm == 8){
                     setForm = 9;
@@ -1896,7 +1906,7 @@ void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringL
             }
         }
         startersSettings["Form"] = setForm;
-        randomizer.svRandomizerStarters.starters_forms[index] = setForm;
+        randomizer.svRandomizerStarters.startersForms[index] = setForm;
         localSettings[starter] = startersSettings;
         settings["Starters"] = localSettings;
     });
@@ -1933,7 +1943,7 @@ void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringL
             starters_gender->addItem("DEFAULT");
         }else if(randomizer.femaleOnlyPokemon.contains(randomizer.svRandomizerStarters.starters[index])){
             starters_gender->addItem("FEMALE");
-        }else if(randomizer.maleOnlyPokemon.contains(randomizer.svRandomizerStarters.starters[index]) || randomizer.formsMaleOnly[randomizer.svRandomizerStarters.starters[index]].contains(randomizer.svRandomizerStarters.starters_forms[index])){
+        }else if(randomizer.maleOnlyPokemon.contains(randomizer.svRandomizerStarters.starters[index]) || randomizer.formsMaleOnly[randomizer.svRandomizerStarters.starters[index]].contains(randomizer.svRandomizerStarters.startersForms[index])){
             starters_gender->addItem("MALE");
         } else if(randomizer.genderlessPokemon.contains(randomizer.svRandomizerStarters.starters[index])){
             starters_gender->addItem("GENDERLESS");
@@ -1947,7 +1957,7 @@ void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringL
         QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
 
         startersSettings["Gender"] = starters_gender->currentText();
-        randomizer.svRandomizerStarters.starters_gender[index] = starters_gender->currentText();
+        randomizer.svRandomizerStarters.startersGenders[index] = starters_gender->currentText();
         localSettings[starter] = startersSettings;
         settings["Starters"] = localSettings;
     });
@@ -1962,13 +1972,14 @@ void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringL
         starters_pokeball->addItem(allowedPokeballs[i]);
     }
     starters_pokeball->setFixedSize(100, 25);
+
     // Connect to save the pokeball
-    connect(starters_pokeball, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, &starters_pokeball, starter, index]() mutable{
+    connect(starters_pokeball, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, starters_pokeball, starter, index]() mutable{
         QMap<QString, QVariant> localSettings = settings["Starters"].toMap();
         QMap<QString, QVariant> startersSettings = localSettings[starter].toMap();
 
         startersSettings["Pokeball"] = starters_pokeball->currentText();
-        randomizer.svRandomizerStarters.starters_pokeball[index] = starters_pokeball->currentText();
+        randomizer.svRandomizerStarters.startersPokeballs[index] = starters_pokeball->currentText(); // connected
         localSettings[starter] = startersSettings;
         settings["Starters"] = localSettings;
     });
@@ -1984,7 +1995,7 @@ void SVRandomizerWindow::createStarterPokemonSelection(QString starter, QStringL
     });
 }
 
-void SVRandomizerWindow::setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokemonLimiter limiter){
+void SVRandomizerWindow::setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokemonLimiter& limiter){
     QGroupBox* limiterGroup = new QGroupBox("Pokemon Limiter", this);
     outerBox->addWidget(limiterGroup);
 
@@ -2006,6 +2017,10 @@ void SVRandomizerWindow::setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokem
         generationslist[i]->setFixedSize(60, 20);
         generations->addWidget(generationslist[i]);
         // Connects Here
+        connect(generationslist[i], &QCheckBox::toggled, this, [&limiter, i](bool checked) mutable{
+           // add settings changes
+            limiter.gens[i] = checked;
+        });
     }
     limiterSetUp->addLayout(generations);
 
@@ -2023,6 +2038,10 @@ void SVRandomizerWindow::setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokem
         legendariesList[i]->setFixedSize(60, 20);
         legendaries->addWidget(legendariesList[i]);
         // Connects Here
+        connect(legendariesList[i], &QCheckBox::toggled, this, [&limiter, i](bool checked) mutable{
+            // add settings changes
+            limiter.genLegends[i] = checked;
+        });
     }
     limiterSetUp->addLayout(legendaries);
 
@@ -2031,18 +2050,34 @@ void SVRandomizerWindow::setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokem
     QCheckBox *stage_1 = new QCheckBox("Stage 1", limiterGroup);
     stage_1->setChecked(true);
     stages->addWidget(stage_1);
+    connect(stage_1, &QCheckBox::toggled, this, [&limiter](bool checked) mutable{
+        // add settings changes
+        limiter.stage1 = checked;
+    });
 
     QCheckBox *stage_2 = new QCheckBox("Stage 2", limiterGroup);
     stage_2->setChecked(true);
     stages->addWidget(stage_2);
+    connect(stage_2, &QCheckBox::toggled, this, [&limiter](bool checked) mutable{
+        // add settings changes
+        limiter.stage2 = checked;
+    });
 
     QCheckBox *stage_3 = new QCheckBox("Stage 3", limiterGroup);
     stage_3->setChecked(true);
     stages->addWidget(stage_3);
+    connect(stage_3, &QCheckBox::toggled, this, [&limiter](bool checked) mutable{
+        // add settings changes
+        limiter.stage3 = checked;
+    });
 
     QCheckBox *single_stage = new QCheckBox("Single stage", limiterGroup);
     single_stage->setChecked(true);
     stages->addWidget(single_stage);
+    connect(single_stage, &QCheckBox::toggled, this, [&limiter](bool checked) mutable{
+        // add settings changes
+        limiter.singleStage = checked;
+    });
 
     limiterSetUp->addLayout(stages);
 
@@ -2052,6 +2087,10 @@ void SVRandomizerWindow::setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokem
     paradox->setChecked(true);
     special->addWidget(paradox);
     limiterSetUp->addLayout(special);
+    connect(paradox, &QCheckBox::toggled, this, [&limiter](bool checked) mutable{
+        // add settings changes
+        limiter.paradox = checked;
+    });
 
 }
 

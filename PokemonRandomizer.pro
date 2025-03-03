@@ -201,8 +201,7 @@ VPATH += $$unique($$dirname($$files(headers/*, true)))
 # Recursively include all .cpp and .h files from src and headers directories
 SOURCES += $$files(src/*.cpp, true)
 
-HEADERS += $$files(headers/*.h, true) \
-    headers/qtwindows_headers/sharedRandomizerClass.h
+HEADERS += $$files(headers/*.h, true)
 
 FORMS +=
 

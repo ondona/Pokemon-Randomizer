@@ -92,11 +92,12 @@ private:
     // redefinition of virtual functions - override is needed
     // to showcase that it is from the virtual function and not a new one
     void initializeSettings() override;
-    void setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokemonLimiter details) override;
+    void setupAllowedPokemon(QVBoxLayout *outerBox, allowedPokemonLimiter& details) override;
 
 public slots:
     QJsonDocument exportSettings(QMap<QString, QVariant> map) override;
     void switchTabs(QStackedWidget * stackedWidget, int i = 0);
+    void runRandomizer() override;
 
 signals:
     void importSettings() override;
