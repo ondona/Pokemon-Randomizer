@@ -51,6 +51,7 @@ protected:
     QVBoxLayout* createTypesWidget();
     QVBoxLayout* createMovesetWidget();
     QVBoxLayout* createBSTWidget();
+    QVBoxLayout* fixEvolutionsWidget();
     QVBoxLayout* createEvolutionsWidget();
     QVBoxLayout* createTMWidget();
     QVBoxLayout* createItemWidget();

@@ -2256,6 +2256,7 @@ public:
     void randomizeTeraType(json& checkFile, bool randomizeTeraType, int devId, int formId);
     std::string getTeraType();
     int getTeraTypeInt(std::string teraType);
+    inline void closeFileAndDelete(QString path, QString schema, QString outputFile, json& maps, bool deleteFile=true);
 
     template <typename T>
     void printSceneTables(T table);
@@ -2264,6 +2265,26 @@ private:
     void modifyPokemonScene(QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare, QString input, QString output) override;
     void recursiveFindOfPokemonSceneTable(json& sceneFile, QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare) override;
 };
+
+inline void SVShared::closeFileAndDelete(QString path, QString schema, QString outputFile, json& maps, bool deleteFile){
+    // Write the modified JSON back to the output file
+    QFile outFile(qBaseDir.filePath(path));
+    if (!outFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qFatal() << "Error: Could not open output file for writing!";
+        return;
+    }
+
+    QTextStream outStream(&outFile);
+    outStream << QString::fromStdString(maps.dump(2)); // Pretty print JSON
+    outFile.close();
+
+    generateBinary(qBaseDir.filePath(schema).toStdString(),
+                   qBaseDir.filePath(path).toStdString(),
+                   outputFile.toStdString(), true);
+
+    if(deleteFile == true)
+        QDir().remove(qBaseDir.filePath(path));
+}
 
 template <typename T>
 void SVShared::printSceneTables(T table){

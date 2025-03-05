@@ -19,6 +19,8 @@
 #include <QDebug>
 #include <QRandomGenerator>
 #include <QPair>
+#include <QtConcurrent>
+#include <QFuture>
 
 using json = nlohmann::json;
 
@@ -112,11 +114,13 @@ class sharedRandomizerClass{
 
         QList<int> maxIdPerGeneration = {0, 151, 251, 386, 493, 649, 721, 809, 905, 1025};
 
-        QList <QMap<QString, int>> exitAbilitiesPokemon = {{{"id", 767}, {"form", 0}},
-                                                          {{"id", 768}, {"form", 0}},
-                                                          };
+        QList <QMap<QString, int>> exitAbilitiesPokemon = {
+            {{"id", 0}, {"form", 0}},
+        };
 
-        QList <QMap<QString, int>> wonderGuardPokemon = {{{"id", 0}, {"form", 0}}};
+        QList <QMap<QString, int>> wonderGuardPokemon = {
+            {{"id", 0}, {"form", 0}}
+        };
 
         QList<int> pokemonFormsWithItems = {483, 484, 487, 493, 888, 889, 1017};
 
@@ -689,6 +693,62 @@ class sharedRandomizerClass{
 
         QMap<int, QList<int>> singleStage;
 
+        // Currently only in Personals as it is unsure if it will come back in future pokemon games
+        // If it does - it won't change much in the code
+        // List obtained from serebii: https://www.serebii.net/scarletviolet/swim.shtml#fly
+        //                             https://www.serebii.net/scarletviolet/swim.shtml#swim
+
+        QMap<int, QList<int>> pokemonFly = {
+            {6, {0}}, {26, {1}}, {39, {0}}, {40, {0}}, {49, {0}}, {70, {0}}, {71, {0}}, {74, {0, 1}}, {81, {0}},
+            {82, {0}}, {92, {0}}, {93, {0}}, {94, {0}}, {109, {0}}, {110, {0, 1}}, {123, {0}}, {137, {0}},
+            {144, {0, 1}}, {145, {0}}, {146, {0, 1}}, {149, {0}}, {150, {0}}, {151, {0}}, // End of Gen 1
+            {163, {0}}, {164, {0}}, {174, {0}}, {182, {0}}, {187, {0}}, {188, {0}}, {189, {0}}, {193, {0}},
+            {198, {0}}, {200, {0}}, {205, {0}}, {207, {0}}, {214, {0}}, {225, {0}}, {227, {0}}, {233, {0}}, {250, {0}}, // End of Gen 2
+            {278, {0}}, {279, {0}}, {284, {0}}, {313, {0}}, {314, {0}}, {329, {0}}, {330, {0}}, {333, {0}}, {334, {0}},
+            {353, {0}}, {355, {0}}, {357, {0}}, {358, {0}}, {362, {0}}, {373, {0}}, {374, {0}}, {375, {0}}, {376, {0}},
+            {380, {0}}, {381, {0}}, {384, {0}}, {385, {0}}, {386, {0, 1, 2, 3}}, // End of Gen 3
+            {396, {0}}, {397, {0}}, {398, {0}}, {402, {0}}, {415, {0}}, {416, {0}}, {425, {0}}, {426, {0}}, {429, {0}},
+            {430, {0}}, {433, {0}}, {436, {0}}, {437, {0}}, {462, {0}}, {469, {0}}, {472, {0}}, {474, {0}}, {476, {0}},
+            {477, {0}}, {478, {0}}, {479, {0, 1, 2, 3, 4, 5}}, {480, {0}}, {481, {0}}, {482, {0}}, {483, {0, 1}},
+            {484, {0, 1}}, {487, {0, 1}}, {488, {0}}, {491, {0}}, {492, {1}}, {493, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17}}, // End of Gen 4
+            {546, {0}}, {547, {0}}, {577, {0}}, {578, {0}}, {579, {0}}, {608, {0}}, {609, {0}}, {615, {0}}, {627, {0}},
+            {628, {0, 1}}, {630, {0}}, {635, {0}}, {637, {0}}, {641, {0, 1}}, {642, {0, 1}}, {643, {0}}, {644, {0}},
+            {645, {0, 1}}, {646, {1, 2}}, {648, {0}}, // End of Gen 5
+            {661, {0}}, {662, {0}}, {663, {0}}, {666, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}},
+            {669, {0}}, {670, {0}}, {671, {0}}, {686, {0}}, {687, {0}}, {701, {0}}, {703, {0}}, {707, {0}}, {708, {0}},
+            {714, {0}}, {715, {0}}, {719, {0}}, {720, {0, 1}}, // End of Gen 6
+            {722, {0}}, {723, {0}}, {724, {0, 1}}, {731, {0}}, {732, {0}}, {733, {0}}, {738, {0}}, {741, {0, 1, 2, 3}},
+            {742, {0}}, {743, {0}}, {764, {0}}, {774, {0}}, {789, {0}}, {790, {0}}, {791, {0}}, {792, {0}}, {800, {0, 1, 2}}, // End of Gen 7
+            {821, {0}}, {822, {0}}, {823, {0}}, {841, {0}}, {854, {0, 1}}, {855, {0, 1}}, {868, {0}}, {873, {0}}, {885, {0}},
+            {886, {0}}, {887, {0}}, {890, {0}}, {895, {0}},{898, {0}}, {905, {0, 1}}, // End of Gen 8
+            {931, {0, 1, 2, 3}}, {938, {0}}, {940, {0}}, {941, {0}}, {954, {0}}, {955, {0}}, {962, {0}}, {965, {0}},
+            {966, {0}}, {969, {0}}, {970, {0}}, {973, {0}}, {985, {0}}, {987, {0}}, {993, {0}}, {994, {0}},
+            {1004, {0}}, {1005, {0}}, {1008, {0}}, {1012, {0}}, {1013, {0}}, {1016, {0}}, {1025, {0}}, // End of Gen 9
+        };
+
+        QMap<int, QList<int>> pokemonSwim = {
+            {7, {0}}, {8, {0}}, {9, {0}}, {25, {0, 1, 2, 3, 4, 5, 6, 7, 9}}, {26, {0}}, {54, {0}},
+            {55, {0}}, {60, {0}}, {61, {0}}, {62, {0}}, {72, {0}}, {73, {0}}, {79, {0, 1}}, {80, {1, 2}},
+            {86, {0}}, {87, {0}}, {90, {0}}, {91, {0}}, {116, {0}}, {117, {0}}, {128, {3}}, {129, {0}},
+            {130, {0}}, {131, {0}}, {133, {0}}, {134, {0}}, {135, {0}}, {147, {0}}, {148, {3}}, // End of Gen 1
+            {158, {0}}, {159, {0}}, {160, {0}}, {170, {0}}, {171, {0}}, {172, {0}}, {183, {0}}, {184, {0}},
+            {186, {0}}, {194, {0, 1}}, {195, {0}}, {196, {0}}, {197, {0}}, {199, {0, 1}}, {211, {0, 1}}, {230, {0}},
+            {245, {0}}, {249, {0}}, // End of Gen 2
+            {258, {0}}, {259, {0}}, {260, {0}}, {270, {0}}, {271, {0}}, {272, {0}}, {283, {0}}, {298, {0}},
+            {339, {0}}, {340, {0}}, {341, {0}}, {342, {0}}, {349, {0}}, {350, {0}}, {370, {0}}, {382, {0}}, // End of Gen 3
+            {393, {0}}, {394, {0}}, {395, {0}}, {418, {0}}, {419, {0}}, {456, {0}}, {457, {0}}, {470, {0}},
+            {471, {0}}, {489, {0}}, {490, {0}}, // End of Gen 4
+            {501, {0}}, {502, {0}}, {503, {0, 1}}, {550, {0, 1, 2}}, {580, {0}}, {581, {0}}, {594, {0}}, {602, {0}},
+            {603, {0}}, {604, {0}}, {647, {0, 1}}, // End of Gen 5
+            {656, {0}}, {657, {0}}, {658, {0, 1}}, {690, {0}}, {691, {0}}, {692, {0}}, {693, {0}}, {700, {0}},
+            {712, {0}}, {713, {0, 1}}, // End of Gen 6
+            {728, {0}}, {729, {0}}, {730, {0}}, {747, {0}}, {748, {0}}, {751, {0}}, {752, {0}}, {779, {0}}, // End of Gen 7
+            {816, {0}}, {817, {0}}, {818, {0}}, {833, {0}}, {834, {0}}, {845, {0, 1, 2}}, {846, {0}}, {847, {0}},
+            {875, {0, 1}}, {902, {0, 1}}, {904, {0}}, // End of Gen 8
+            {912, {0}}, {913, {0}}, {914, {0}}, {921, {0}}, {922, {0}}, {923, {0}}, {963, {0}}, {964, {0, 1}},
+            {976, {0}}, {977, {0}}, {978, {0, 1, 2}}, {980, {0}}, {1000, {0}}, {1007, {0}}, {1009, {0}}, // End of Gen 9
+        };
+
         // Functions
         inline int getPokemonItemValue(int pokemon, int form);
         inline std::string getPokemonItemId(int pokemon, int form);
@@ -701,6 +761,10 @@ class sharedRandomizerClass{
         inline QMap<int, QList<int>> removeValuesFromQMap(
             const QMap<int, QList<int>>& initialMap,
             const QMap<int, QList<int>>& mapToRemove);
+
+        inline bool allowedToLearnMove(int move, int pokemon, int form);
+        inline bool allowedTMMove(int move);
+
         // Virtual Functions
         virtual void recursiveFindOfPokemonSceneTable(json& sceneFile, QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare) = 0;
         virtual void modifyPokemonScene(QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare, QString input, QString output) = 0;
@@ -1075,4 +1139,49 @@ inline QMap<int, QList<int>> sharedRandomizerClass::removeValuesFromQMap(
     }
 
     return resultMap;
+}
+
+/*
+ * Checks if the pokemon can learn the specific move
+ */
+inline bool sharedRandomizerClass::allowedToLearnMove(int move, int pokemon, int form){
+    switch(move){
+    case 464:
+        if(pokemon != 491){
+            return false;
+        }
+        break;
+    case 621:
+        if(pokemon == 720){
+            if(form !=1){
+                return false;
+            }
+        }else{
+            return false;
+        }
+        break;
+    case 783:
+        if(pokemon != 877){
+            return false;
+        }
+        break;
+    }
+
+    return true;
+}
+
+/*
+ * Checks if the move can be a TM or Not
+ */
+inline bool sharedRandomizerClass::allowedTMMove(int move){
+    switch(move){
+    case 464:
+        return false;
+    case 621:
+        return false;
+    case 783:
+        return false;
+    }
+
+    return true;
 }

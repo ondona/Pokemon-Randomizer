@@ -1,4 +1,4 @@
-QT       += core gui network widgets
+QT       += core gui network widgets concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

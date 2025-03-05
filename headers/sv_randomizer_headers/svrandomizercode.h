@@ -8,7 +8,7 @@
 // #include "sv_raids.h"
 // #include "sv_wild_static.h"
 // #include "sv_items.h"
-// #include "sv_stats.h"
+#include "sv_personal.h"
 #include "sv_starters.h"
 // #include "sv_boss.h"
 
@@ -26,6 +26,7 @@ public:
 
     // //Starters and Gifts
     svStarters svRandomizerStarters;
+    svPersonal svRandomizerPersonal;
 
     // //Stats
     // SVStats svRandomizerStats;

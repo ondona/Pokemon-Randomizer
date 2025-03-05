@@ -152,6 +152,7 @@ void SVRandomizerWindow::runRandomizer(){
     // setup randNum and seed
     qDebug()<<"Running Randomizer";
     randomizer.svRandomizerStarters.randomize();
+    randomizer.svRandomizerPersonal.randomize();
     randomizer.patchFileDescriptor();
 
     generateBinary(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.fbs").toStdString(),
@@ -208,6 +209,7 @@ QScrollArea* SVRandomizerWindow::setupPersonalWidget(){
     formLayout->addRow(createTypesWidget());
     formLayout->addRow(createMovesetWidget());
     formLayout->addRow(createBSTWidget());
+    formLayout->addRow(fixEvolutionsWidget());
     formLayout->addRow(createEvolutionsWidget());
     formLayout->addRow(createTMWidget());
     formLayout->addRow(createItemWidget());
@@ -915,14 +917,14 @@ QVBoxLayout* SVRandomizerWindow::createGiftsWidget(){
 QVBoxLayout* SVRandomizerWindow::createAbilitiesWidget(){
     QVBoxLayout *abilitiesSettingLayout = new QVBoxLayout();
 
-    QMap<QString, QVariant> giftsSettings;
+    QMap<QString, QVariant> abilitiesSettings;
 
     // Creates the Main Button
     QCheckBox* enable_abilities = new QCheckBox("Randomize Abilities");
     abilitiesSettingLayout->addWidget(enable_abilities);
     // Connect for Setting the values
     connect(enable_abilities, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.randomizeAbilities = checked;
     });
 
     // Creates Hidden Group based on button
@@ -941,14 +943,14 @@ QVBoxLayout* SVRandomizerWindow::createAbilitiesWidget(){
     row0->addWidget(ban_wonder_guard);
     // Connect for Setting the values
     connect(ban_wonder_guard, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.banWonderGuard = checked;
     });
 
     QCheckBox* ban_exit_abilities = new QCheckBox("Ban Exit Abilities", abilitiesGroupSettings);
     row0->addWidget(ban_exit_abilities);
     // Connect for Setting the values
     connect(ban_exit_abilities, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.banExitAbilities = checked;
     });
 
     abilitiesSettingsLayout->addLayout(row0);
@@ -971,7 +973,7 @@ QVBoxLayout* SVRandomizerWindow::createTypesWidget(){
     typesSettingLayout->addWidget(enable_types);
     // Connect for Setting the values
     connect(enable_types, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.randomizeTypes = checked;
     });
 
     // Creates Hidden Group based on button
@@ -990,7 +992,7 @@ QVBoxLayout* SVRandomizerWindow::createTypesWidget(){
     row0->addWidget(extra_types);
     // Connect for Setting the values
     connect(extra_types, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.grantExtraTypes = checked;
     });
 
     typesSettingsLayout->addLayout(row0);
@@ -1013,7 +1015,7 @@ QVBoxLayout* SVRandomizerWindow::createMovesetWidget(){
     movesSettingLayout->addWidget(enable_moves);
     // Connect for Setting the values
     connect(enable_moves, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.randomizeMoveset = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1032,7 +1034,7 @@ QVBoxLayout* SVRandomizerWindow::createMovesetWidget(){
     row0->addWidget(same_moves_as_type);
     // Connect for Setting the values
     connect(same_moves_as_type, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.setSameMovesAsType = checked;
     });
 
     movesSettingsLayout->addLayout(row0);
@@ -1055,7 +1057,7 @@ QVBoxLayout* SVRandomizerWindow::createBSTWidget(){
     bstSettingLayout->addWidget(enable_bst);
     // Connect for Setting the values
     connect(enable_bst, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.randomizeBST = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1074,7 +1076,7 @@ QVBoxLayout* SVRandomizerWindow::createBSTWidget(){
     row0->addWidget(same_bst);
     // Connect for Setting the values
     connect(same_bst, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.keepSameBST = checked;
     });
 
     bstSettingsLayout->addLayout(row0);
@@ -1087,6 +1089,50 @@ QVBoxLayout* SVRandomizerWindow::createBSTWidget(){
     return bstSettingLayout;
 }
 
+QVBoxLayout* SVRandomizerWindow::fixEvolutionsWidget(){
+    QVBoxLayout *fixEvolutionsSettingLayout = new QVBoxLayout();
+
+    QMap<QString, QVariant> fixEvolutionsSettings;
+
+    // Creates the Main Button
+    QCheckBox* fix_evolutions = new QCheckBox("Fix Evolutions (Regional & Trade)");
+    fixEvolutionsSettingLayout->addWidget(fix_evolutions);
+    // Connect for Setting the values
+    connect(fix_evolutions, &QCheckBox::toggled, this, [this](bool checked) mutable{
+        randomizer.svRandomizerPersonal.fixEvolutions = checked;
+    });
+
+    // Creates Hidden Group based on button
+    QGroupBox *fixEvolutionsGroupSettings= new QGroupBox("Fix Evolutions Settings Section");
+    QVBoxLayout *fixEvolutionsSettingsLayout = new QVBoxLayout(fixEvolutionsGroupSettings);
+    QHBoxLayout *row0 = new QHBoxLayout();
+
+    // Connect Randomize Starters to visibility
+    fixEvolutionsGroupSettings->setVisible(false);
+    connect(fix_evolutions, &QCheckBox::toggled, fixEvolutionsGroupSettings, &QGroupBox::setVisible);
+
+    fixEvolutionsSettingLayout->addWidget(fixEvolutionsGroupSettings);
+
+    // Row 0
+    QLabel* explanation1 = new QLabel("All Regionals Evolutions Evolve At Nighttime - Level 36\n", fixEvolutionsGroupSettings);
+    row0->addWidget(explanation1);
+
+    QLabel* explanation2 = new QLabel("All Trade Evolutions Evolve At Level 36\n", fixEvolutionsGroupSettings);
+    row0->addWidget(explanation2);
+
+    QLabel* explanation3 = new QLabel("Split Trades/Regional Evolve At Level 36 in Day and Nighttime\n", fixEvolutionsGroupSettings);
+    row0->addWidget(explanation3);
+
+    fixEvolutionsSettingsLayout->addLayout(row0);
+
+    // Connection for importing settings
+    connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
+        qDebug()<<"Here";
+    });
+
+    return fixEvolutionsSettingLayout;
+}
+
 QVBoxLayout* SVRandomizerWindow::createEvolutionsWidget(){
     QVBoxLayout *evolutionsSettingLayout = new QVBoxLayout();
 
@@ -1097,7 +1143,7 @@ QVBoxLayout* SVRandomizerWindow::createEvolutionsWidget(){
     evolutionsSettingLayout->addWidget(enable_evos);
     // Connect for Setting the values
     connect(enable_evos, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.randomizeEvolutions = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1116,14 +1162,7 @@ QVBoxLayout* SVRandomizerWindow::createEvolutionsWidget(){
     row0->addWidget(evolve_every_level);
     // Connect for Setting the values
     connect(evolve_every_level, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
-    });
-
-    QCheckBox* fix_evolutions = new QCheckBox("Fix Evolutions (Regional & Trade)", evolutionsGroupSettings);
-    row0->addWidget(fix_evolutions);
-    // Connect for Setting the values
-    connect(fix_evolutions, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.evolveEveryLevel = checked;
     });
 
     evolutionsSettingsLayout->addLayout(row0);
@@ -1146,7 +1185,7 @@ QVBoxLayout* SVRandomizerWindow::createTMWidget(){
     tmSettingLayout->addWidget(enable_tms);
     // Connect for Setting the values
     connect(enable_tms, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.randomizeTMs = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1165,7 +1204,7 @@ QVBoxLayout* SVRandomizerWindow::createTMWidget(){
     row0->addWidget(moves_without_animation);
     // Connect for Setting the values
     connect(moves_without_animation, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerPersonal.noAnimationTMs = checked;
     });
 
     tmSettingsLayout->addLayout(row0);
