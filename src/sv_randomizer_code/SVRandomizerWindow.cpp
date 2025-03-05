@@ -37,11 +37,15 @@ void SVRandomizerWindow::createLayout()
         QCheckBox * auto_patch = new QCheckBox("Auto Patch Randomizer ", generalGroup);
         auto_patch->setChecked(true);
         mainSettings->addWidget(auto_patch);
-        //connect(auto_patch, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
+        connect(auto_patch, &QCheckBox::toggled, this, [this](bool checked) mutable{
+            randomizer.auto_patch = checked;
+        });
 
         QCheckBox *kaizo_mode = new QCheckBox("Kaizo Randomizer", generalGroup);
         mainSettings->addWidget(kaizo_mode);
-       // connect(kaizo_mode, &QCheckBox::toggled, this, &SVRandomizerWindow::saveCheckboxState);
+        connect(auto_patch, &QCheckBox::toggled, this, [this](bool checked) mutable{
+            randomizer.kaizo_mode = checked;
+        });
 
         QLabel *bulk_question = new QLabel("Randomizers to Create ", generalGroup);
         bulk_question->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -151,15 +155,36 @@ void SVRandomizerWindow::createLayout()
 void SVRandomizerWindow::runRandomizer(){
     // setup randNum and seed
     qDebug()<<"Running Randomizer";
-    randomizer.svRandomizerStarters.randomize();
-    randomizer.svRandomizerPersonal.randomize();
-    randomizer.patchFileDescriptor();
+    if(randomizer.svRandomizerStarters.randomizeStarters == true ||
+        randomizer.svRandomizerStarters.randomizeGifts == true){
 
-    generateBinary(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.fbs").toStdString(),
-                   qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString(),
-                   "arc/", true);
+        randomizer.svRandomizerStarters.randomize();
+    }
 
-    QDir().remove(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json"));
+    if(randomizer.svRandomizerPersonal.randomizeAbilities == true||
+        randomizer.svRandomizerPersonal.randomizeBST == true ||
+        randomizer.svRandomizerPersonal.randomizeEvolutions == true ||
+        randomizer.svRandomizerPersonal.randomizeMoveset == true ||
+        randomizer.svRandomizerPersonal.randomizeTypes == true ||
+        randomizer.svRandomizerPersonal.randomizeTMs == true){
+
+        randomizer.svRandomizerPersonal.randomize();
+    }
+
+    if(randomizer.svRandomizerItems.randomizeItems == true){
+        randomizer.svRandomizerItems.randomize();
+    }
+
+    if(randomizer.auto_patch == true){
+        qDebug()<<"Auto Patching Randomizer";
+        randomizer.patchFileDescriptor();
+
+        generateBinary(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.fbs").toStdString(),
+                       qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString(),
+                       "arc/", true);
+
+        QDir().remove(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json"));
+    }
 }
 
 // Specific Widgets Codes
@@ -1106,6 +1131,8 @@ QVBoxLayout* SVRandomizerWindow::fixEvolutionsWidget(){
     QGroupBox *fixEvolutionsGroupSettings= new QGroupBox("Fix Evolutions Settings Section");
     QVBoxLayout *fixEvolutionsSettingsLayout = new QVBoxLayout(fixEvolutionsGroupSettings);
     QHBoxLayout *row0 = new QHBoxLayout();
+    QHBoxLayout *row1 = new QHBoxLayout();
+    QHBoxLayout *row2 = new QHBoxLayout();
 
     // Connect Randomize Starters to visibility
     fixEvolutionsGroupSettings->setVisible(false);
@@ -1114,16 +1141,18 @@ QVBoxLayout* SVRandomizerWindow::fixEvolutionsWidget(){
     fixEvolutionsSettingLayout->addWidget(fixEvolutionsGroupSettings);
 
     // Row 0
-    QLabel* explanation1 = new QLabel("All Regionals Evolutions Evolve At Nighttime - Level 36\n", fixEvolutionsGroupSettings);
+    QLabel* explanation1 = new QLabel("All Regionals Evolutions Evolve At Nighttime - Level 36", fixEvolutionsGroupSettings);
     row0->addWidget(explanation1);
 
-    QLabel* explanation2 = new QLabel("All Trade Evolutions Evolve At Level 36\n", fixEvolutionsGroupSettings);
-    row0->addWidget(explanation2);
+    QLabel* explanation2 = new QLabel("All Trade Evolutions Evolve At Level 36", fixEvolutionsGroupSettings);
+    row1->addWidget(explanation2);
 
-    QLabel* explanation3 = new QLabel("Split Trades/Regional Evolve At Level 36 in Day and Nighttime\n", fixEvolutionsGroupSettings);
-    row0->addWidget(explanation3);
+    QLabel* explanation3 = new QLabel("Split Trades/Regional Evolve At Level 36 in Day and Nighttime", fixEvolutionsGroupSettings);
+    row2->addWidget(explanation3);
 
     fixEvolutionsSettingsLayout->addLayout(row0);
+    fixEvolutionsSettingsLayout->addLayout(row1);
+    fixEvolutionsSettingsLayout->addLayout(row2);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1227,7 +1256,7 @@ QVBoxLayout* SVRandomizerWindow::createItemWidget(){
     itemSettingLayout->addWidget(enable_items);
     // Connect for Setting the values
     connect(enable_items, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerItems.randomizeItems = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1247,14 +1276,14 @@ QVBoxLayout* SVRandomizerWindow::createItemWidget(){
     row0->addWidget(hidden_items);
     // Connect for Setting the values
     connect(hidden_items, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerItems.randomizeHiddenItems = checked;
     });
 
     QCheckBox* pickup_items = new QCheckBox("Randomize Pickup Items", itemGroupSettings);
     row0->addWidget(pickup_items);
     // Connect for Setting the values
     connect(pickup_items, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerItems.randomizePickUpItems = checked;
     });
 
     itemSettingsLayout->addLayout(row0);
@@ -1264,14 +1293,14 @@ QVBoxLayout* SVRandomizerWindow::createItemWidget(){
     row1->addWidget(drops);
     // Connect for Setting the values
     connect(drops, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerItems.randomizePokemonDrops = checked;
     });
 
     QCheckBox* synchro = new QCheckBox("Randomize Synchro Items", itemGroupSettings);
     row1->addWidget(synchro);
     // Connect for Setting the values
     connect(synchro, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerItems.randomizeLetsGoItems = checked;
     });
 
     itemSettingsLayout->addLayout(row1);

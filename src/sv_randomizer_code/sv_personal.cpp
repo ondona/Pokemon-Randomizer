@@ -9,7 +9,6 @@ svPersonal::~svPersonal(){
 }
 
 void svPersonal::randomizeStats(){
-
     auto entries = personalMaps["entry"].get<std::vector<json>>();
     QList<int> seeds;
     for(unsigned long long i = 0; i<personalMaps["entry"].size(); i++){
@@ -112,12 +111,12 @@ void svPersonal::randomize(){
     closeFileAndDelete("SV_PERSONAL/personal_array.json",
                        "SV_PERSONAL/personal_array.fbs",
                        "avalon/data/",
-                       personalMaps, false);
+                       personalMaps, true);
 
     closeFileAndDelete("SV_PERSONAL/waza_array.json",
                        "SV_PERSONAL/Waza.fbs",
                        "avalon/data/",
-                       movesMaps, false);
+                       movesMaps, true);
 }
 
 void svPersonal::addAllMoves(){
@@ -138,7 +137,6 @@ void svPersonal::addAllMoves(){
 
 void svPersonal::randomizeTM(bool allTMs){
     json itemMaps = readJsonQFile("SV_FLATBUFFERS/SV_PERSONAL/itemdata_array_clean.json");
-    sortedMoves = readJsonQFile("SV_FLATBUFFERS/SV_PERSONAL/sorted_move_list.json");
 
     for(unsigned long long i = 0; i<itemMaps["values"].size(); i++){
         if(itemMaps["values"][i]["ItemType"] == "ITEMTYPE_WAZA"){
@@ -164,7 +162,7 @@ void svPersonal::randomizeTM(bool allTMs){
     closeFileAndDelete("SV_PERSONAL/itemdata_array.json",
                        "SV_PERSONAL/itemdata_array.bfbs",
                        "world/data/item/itemdata/",
-                       itemMaps, false);
+                       itemMaps, true);
 }
 
 void svPersonal::randomizeAbility(json& pokemon, int speciesCheck, int formCheck, QRandomGenerator& rng){

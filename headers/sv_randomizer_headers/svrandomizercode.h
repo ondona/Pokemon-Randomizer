@@ -7,7 +7,7 @@
 // #include "sv_trainers.h"
 // #include "sv_raids.h"
 // #include "sv_wild_static.h"
-// #include "sv_items.h"
+#include "sv_items.h"
 #include "sv_personal.h"
 #include "sv_starters.h"
 // #include "sv_boss.h"
@@ -18,42 +18,19 @@ class SVRandomizerCode: public SVShared
 public:
     SVRandomizerCode();
     ~SVRandomizerCode();
+
     //General
     bool auto_patch = true; // Added
-    bool kaizo_mode;       // Added
+    bool kaizo_mode = false;       // Added
     unsigned int bulk_amount = 1;
     QString seed = "";
 
-    // //Starters and Gifts
     svStarters svRandomizerStarters;
     svPersonal svRandomizerPersonal;
+    svItems svRandomizerItems;
 
-    // //Stats
-    // SVStats svRandomizerStats;
+    //void setSeed
 
-    // //TMs and Items
-    // SVItems svRandomizerItems;
-
-    // // Wild and Static Encounters
-    // SVWilds svRandomizerWilds;
-
-    // // Raids
-    // SVRaids svRandomizerRaids;
-
-    // //Trainers
-    // SVTrainers svRandomizerTrainers;
-
-    // //Bosses
-    // SVBoss svRandomizerBoss;
-
-    // bool svRandomizeStarters(SVStarters svs);
-    // bool svRandomizeGifts(SVStarters svs);
-    // bool svRandomizeStats(SVStats stats);
-    // bool svRandomizeItem(SVItems items);
-    // bool svRandomizeWilds(SVWilds wild);
-    // bool svRandomizeRaids(SVRaids raids);
-    // bool svRandomizeTrainers(SVTrainers trainers);
-    // bool svRandomizeBoss(SVBoss boss, QDir dir);
 };
 
 #endif // SVRANDOMIZERCODE_H
