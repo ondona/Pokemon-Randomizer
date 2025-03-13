@@ -6,15 +6,18 @@
 #include "sv_shared_class.h"
 // #include "sv_trainers.h"
 // #include "sv_raids.h"
-// #include "sv_wild_static.h"
+#include "sv_wilds.h"
 #include "sv_items.h"
 #include "sv_personal.h"
 #include "sv_starters.h"
+#include "sv_fixed.h"
 // #include "sv_boss.h"
 
 
-class SVRandomizerCode: public SVShared
+class SVRandomizerCode: public QObject, public SVShared
 {
+    Q_OBJECT
+
 public:
     SVRandomizerCode();
     ~SVRandomizerCode();
@@ -28,6 +31,8 @@ public:
     svStarters svRandomizerStarters;
     svPersonal svRandomizerPersonal;
     svItems svRandomizerItems;
+    svWilds svRandomizerWilds;
+    svFixed svRandomizerFixed;
 
     //void setSeed
 

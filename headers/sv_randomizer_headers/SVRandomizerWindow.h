@@ -81,9 +81,8 @@ protected:
     QWidget* createKitakamiBossWidget();
     QWidget* createBlueberryBossWidget();
     QVBoxLayout* createBossSettings(QString boss, allowedPokemonLimiter limiter, bool paldea = false);
-
-private:
     SVRandomizerCode randomizer;
+private:
     unsigned int hash = 0;
 
     void createStarterPokemonSelection(QString starter, QStringList allowedPokemon,

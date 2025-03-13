@@ -4,6 +4,8 @@
 #include "sv_shared_class.h"
 
 class svItems: public QObject, SVShared{
+    Q_OBJECT
+
     public:
         svItems();
         ~svItems();

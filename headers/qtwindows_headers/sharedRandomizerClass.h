@@ -20,6 +20,8 @@
 #include <QRandomGenerator>
 #include <QPair>
 #include <QtConcurrent>
+#include <QCryptographicHash>
+#include <QDateTime>
 #include <QFuture>
 
 using json = nlohmann::json;

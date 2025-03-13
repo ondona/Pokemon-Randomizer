@@ -52,7 +52,9 @@ void SVRandomizerWindow::createLayout()
         QSpinBox * bulk_amount= new QSpinBox(generalGroup);  // Number input
         bulk_amount->setRange(1, 100);  // Set range for the number input
         bulk_amount->setValue(1);
-        //connect(bulk_amount, QOverload<int>::of(&QSpinBox::valueChanged), this, &SVRandomizerWindow::saveSpinBoxValue);
+        connect(bulk_amount, QOverload<int>::of(&QSpinBox::valueChanged), this, [this](int value) mutable{
+            randomizer.bulk_amount = static_cast<unsigned int>(value);
+        });
         bulk_amount->setMaximumWidth(100);
 
         extraSettings->addWidget(bulk_question);
@@ -155,35 +157,91 @@ void SVRandomizerWindow::createLayout()
 void SVRandomizerWindow::runRandomizer(){
     // setup randNum and seed
     qDebug()<<"Running Randomizer";
-    if(randomizer.svRandomizerStarters.randomizeStarters == true ||
-        randomizer.svRandomizerStarters.randomizeGifts == true){
+    qDebug()<<"Generating seed value for: "<<randomizer.seed;
 
-        randomizer.svRandomizerStarters.randomize();
+    quint64 seed;
+    QDir dir;
+
+    if(randomizer.seed.isEmpty()){
+        seed = static_cast<quint64>(QDateTime::currentMSecsSinceEpoch());
+    }else{
+        QByteArray seedArray = randomizer.seed.toUtf8();
+        QByteArray hash = QCryptographicHash::hash(seedArray, QCryptographicHash::Sha256);
+        seed = *reinterpret_cast<const quint64*>(hash.constData());
     }
 
-    if(randomizer.svRandomizerPersonal.randomizeAbilities == true||
-        randomizer.svRandomizerPersonal.randomizeBST == true ||
-        randomizer.svRandomizerPersonal.randomizeEvolutions == true ||
-        randomizer.svRandomizerPersonal.randomizeMoveset == true ||
-        randomizer.svRandomizerPersonal.randomizeTypes == true ||
-        randomizer.svRandomizerPersonal.randomizeTMs == true){
+    quint32 seed_low = static_cast<quint32>(seed & 0xFFFFFFFF);
+    quint32 seed_high = static_cast<quint32>(seed >> 32);
 
-        randomizer.svRandomizerPersonal.randomize();
+    // Initialize with a sequence of 32-bit values
+    std::seed_seq seq{ seed_low, seed_high };
+    randNum = QRandomGenerator(seq);
+
+    // If the parent folder exists, delete it first
+    if (dir.exists("Randomizers-Output")) {
+        if (!dir.removeRecursively()) {
+            qFatal() << "Failed to delete existing parent folder:" << "Randomizers-Output";
+        }
+        qDebug() << "Deleted existing parent folder:" << "Randomizers-Output";
     }
 
-    if(randomizer.svRandomizerItems.randomizeItems == true){
-        randomizer.svRandomizerItems.randomize();
+    // Recreate the parent folder
+    if (!dir.mkdir("Randomizers-Output")) {
+        qFatal() << "Failed to create directory:" << "Randomizers-Output";
     }
 
-    if(randomizer.auto_patch == true){
-        qDebug()<<"Auto Patching Randomizer";
-        randomizer.patchFileDescriptor();
+    for(unsigned int i = 0; i<randomizer.bulk_amount; i++){
+        QString newOutputFolder = QString("Randomizers-Output/Randomizer-%1").arg(i + 1);
 
-        generateBinary(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.fbs").toStdString(),
-                       qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString(),
-                       "arc/", true);
+        if(randomizer.svRandomizerStarters.randomizeStarters == true ||
+            randomizer.svRandomizerStarters.randomizeGifts == true){
 
-        QDir().remove(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json"));
+            randomizer.svRandomizerStarters.randomize();
+        }
+
+        if(randomizer.svRandomizerPersonal.randomizeAbilities == true||
+            randomizer.svRandomizerPersonal.randomizeBST == true ||
+            randomizer.svRandomizerPersonal.randomizeEvolutions == true ||
+            randomizer.svRandomizerPersonal.randomizeMoveset == true ||
+            randomizer.svRandomizerPersonal.randomizeTypes == true ||
+            randomizer.svRandomizerPersonal.randomizeTMs == true){
+
+            randomizer.svRandomizerPersonal.randomize();
+        }
+
+        if(randomizer.svRandomizerItems.randomizeItems == true){
+            randomizer.svRandomizerItems.randomize();
+        }
+
+        if(randomizer.svRandomizerFixed.randomizeFixedEncounters == true){
+            randomizer.svRandomizerFixed.randomize();
+        }
+
+        if(randomizer.svRandomizerWilds.randomizePaldeaWild == true ||
+            randomizer.svRandomizerWilds.randomizeKitakamiWild == true ||
+            randomizer.svRandomizerWilds.randomizeBlueberryWild == true){
+            randomizer.svRandomizerWilds.randomize();
+        }
+
+        if(randomizer.auto_patch == true){
+            qDebug()<<"Auto Patching Randomizer";
+            randomizer.patchFileDescriptor();
+
+            generateBinary(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.fbs").toStdString(),
+                           qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json").toStdString(),
+                           "arc/", true);
+
+            QDir().remove(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json"));
+        }
+
+        // Check if "output" folder exists before moving
+        if (dir.exists("output")) {
+            if (!dir.rename("output", newOutputFolder)) {
+                qFatal() << "Failed to move and rename output folder.";
+            }
+        } else {
+            qFatal() << "Output folder does not exist.";
+        }
     }
 }
 
@@ -999,6 +1057,7 @@ QVBoxLayout* SVRandomizerWindow::createTypesWidget(){
     // Connect for Setting the values
     connect(enable_types, &QCheckBox::toggled, this, [this](bool checked) mutable{
         randomizer.svRandomizerPersonal.randomizeTypes = checked;
+        randomizer.svRandomizerWilds.typesChanged = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1323,7 +1382,7 @@ QVBoxLayout* SVRandomizerWindow::createFixedEncounters(){
     fixedWildSettingLayout->addWidget(enable_fixed);
     // Connect for Setting the values
     connect(enable_fixed, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerFixed.randomizeFixedEncounters = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1342,12 +1401,19 @@ QVBoxLayout* SVRandomizerWindow::createFixedEncounters(){
     row0->addWidget(bst_balance);
     // Connect for Setting the values
     connect(bst_balance, &QCheckBox::toggled, this, [this](bool checked) mutable{
+        randomizer.svRandomizerFixed.similarBST = checked;
+    });
 
+    QCheckBox* sameTera = new QCheckBox("Keep Same Teras", fixedWildGroupSettings);
+    row0->addWidget(sameTera);
+    // Connect for Setting the values
+    connect(sameTera, &QCheckBox::toggled, this, [this](bool checked) mutable{
+        randomizer.svRandomizerFixed.keepSameTera = checked;
     });
 
     fixedWildSettingsLayout->addLayout(row0);
 
-    // setupAllowedPokemon(fixedWildSettingsLayout, randomizer.svRandomizerWilds.FixedSymbolLimiter);
+    setupAllowedPokemon(fixedWildSettingsLayout, randomizer.svRandomizerFixed.fixedEncountersPokemon);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1367,7 +1433,7 @@ QVBoxLayout* SVRandomizerWindow::createPaldeaWild(){
     paldeaWildSettingLayout->addWidget(enable_paldea_wild);
     // Connect for Setting the values
     connect(enable_paldea_wild, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.randomizePaldeaWild = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1387,14 +1453,14 @@ QVBoxLayout* SVRandomizerWindow::createPaldeaWild(){
     row0->addWidget(ogerpone_and_terapagos);
     // Connect for Setting the values
     connect(ogerpone_and_terapagos, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.ogerponTerapagosPaldea = checked;
     });
 
     QCheckBox* balance_bst_area = new QCheckBox("Balace Area per BST (Useless for now)", paldeaWildGroupSettings);
     row0->addWidget(balance_bst_area);
     // Connect for Setting the values
     connect(balance_bst_area, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.balanceBSTPaldea = checked;
     });
 
     paldeaWildSettingsLayout->addLayout(row0);
@@ -1404,12 +1470,12 @@ QVBoxLayout* SVRandomizerWindow::createPaldeaWild(){
     row1->addWidget(paldea_wild_for_all);
     // Connect for Setting the values
     connect(paldea_wild_for_all, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.paldeaForAll = checked;
     });
 
     paldeaWildSettingsLayout->addLayout(row1);
 
-    // setupAllowedPokemon(paldeaWildSettingsLayout, randomizer.svRandomizerWilds.PaldeaLimiter);
+    setupAllowedPokemon(paldeaWildSettingsLayout, randomizer.svRandomizerWilds.paldeaWilds);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1429,7 +1495,7 @@ QVBoxLayout* SVRandomizerWindow::createKitakamiWild(){
     kitakamiWildSettingLayout->addWidget(enable_kitakami_wild);
     // Connect for Setting the values
     connect(enable_kitakami_wild, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.randomizeKitakamiWild = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1448,19 +1514,19 @@ QVBoxLayout* SVRandomizerWindow::createKitakamiWild(){
     row0->addWidget(ogerpone_and_terapagos);
     // Connect for Setting the values
     connect(ogerpone_and_terapagos, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.ogerponTerapagosKitakami = checked;
     });
 
     QCheckBox* bst_balance = new QCheckBox("Balance Area on BST (Useless for now)", kitakamiWildGroupSettings);
     row0->addWidget(bst_balance);
     // Connect for Setting the values
     connect(bst_balance, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.balanceBSTKitakami = checked;
     });
 
     kitakamiWildSettingsLayout->addLayout(row0);
 
-    // setupAllowedPokemon(kitakamiWildSettingsLayout, randomizer.svRandomizerWilds.KitakamiLimiter);
+    setupAllowedPokemon(kitakamiWildSettingsLayout, randomizer.svRandomizerWilds.kitakamiWilds);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1480,7 +1546,7 @@ QVBoxLayout* SVRandomizerWindow::createBlueberryWild(){
     blueberryWildSettingLayout->addWidget(enable_blueberry_wild);
     // Connect for Setting the values
     connect(enable_blueberry_wild, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.randomizeBlueberryWild = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1499,19 +1565,19 @@ QVBoxLayout* SVRandomizerWindow::createBlueberryWild(){
     row0->addWidget(ogerpone_and_terapagos);
     // Connect for Setting the values
     connect(ogerpone_and_terapagos, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.ogerponTearapagosBlueberry = checked;
     });
 
     QCheckBox* bst_balance = new QCheckBox("Balance Area on BST (Useless for now)", blueberryWildGroupSettings);
     row0->addWidget(bst_balance);
     // Connect for Setting the values
     connect(bst_balance, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerWilds.balanceBSTBlueberry = checked;
     });
 
     blueberryWildSettingsLayout->addLayout(row0);
 
-    // setupAllowedPokemon(blueberryWildSettingsLayout, randomizer.svRandomizerWilds.BlueberryLimiter);
+    setupAllowedPokemon(blueberryWildSettingsLayout, randomizer.svRandomizerWilds.blueberrWilds);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -2198,6 +2264,84 @@ void SVRandomizerWindow::initializeSettings(){
         }
         startersSettings["Allowed Pokemon"] = QVariant::fromValue(allowedPokemonSettings);
         settings["Starters"] = QVariant::fromValue(startersSettings);
+
+    // Gift Settings
+        QMap<QString, QVariant> giftSettings;
+        giftSettings["Randomize"] = false;
+        giftSettings["Tera Types"] = false;
+        giftSettings["Allowed Pokemon"] = QVariant::fromValue(allowedPokemonSettings);
+        settings["Gifts"] = QVariant::fromValue(giftSettings);
+
+    // Stats Settings
+        QMap<QString, QVariant> abilitySettings;
+        abilitySettings["Randomize"] = false;
+        abilitySettings["Ban Wonder Guard"] = false;
+        abilitySettings["Ban Exit Abilities"] = false;
+        settings["Abilities"] = QVariant::fromValue(abilitySettings);
+
+    // Types Settings
+        QMap<QString, QVariant> typesSettings;
+        typesSettings["Randomize"] = false;
+        typesSettings["Grant Extra Types"] = false;
+        settings["Types"] = QVariant::fromValue(typesSettings);
+
+    // Moveset Settings
+        QMap<QString, QVariant> movesSettings;
+        movesSettings["Randomize"] = false;
+        movesSettings["Same Move Type"] = false;
+        settings["Moves"] = QVariant::fromValue(movesSettings);
+
+    // BST Settings
+        QMap<QString, QVariant> bstSettings;
+        bstSettings["Randomize"] = false;
+        bstSettings["Same BST"] = false;
+        settings["BST"] = QVariant::fromValue(bstSettings);
+
+    // Evolutions Settings
+        QMap<QString, QVariant> evolutionsSettings;
+        evolutionsSettings["Randomize"] = false;
+        evolutionsSettings["Fix Evolutions"] = false;
+        evolutionsSettings["Randomize Every Level"] = false;
+        settings["Evolutions"] = QVariant::fromValue(evolutionsSettings);
+
+    // TM Settings
+        QMap<QString, QVariant> tmSettings;
+        tmSettings["Randomize"] = false;
+        tmSettings["Moves Without Animations"] = false;
+        settings["TMs"] = QVariant::fromValue(tmSettings);
+
+    // Item Settings
+        QMap<QString, QVariant> itemSettings;
+        itemSettings["Randomize"] = false;
+        itemSettings["Let's Go"] = false;
+        itemSettings["Hidden"] = false;
+        itemSettings["Drops"] = false;
+        itemSettings["Pick Up"] = false;
+        settings["Items"] = QVariant::fromValue(itemSettings);
+
+    // Wild Settings
+        QStringList keys = {"Paldea", "Kitakami", "Blueberry"};
+        for(int i =0; i< keys.size(); i++){
+            QMap<QString, QVariant> wildSettings;
+            wildSettings["Randomizer"] = false;
+            wildSettings["Ogerpon/Terapagos"] = false;
+            wildSettings["Balance BST"] = false;
+            if(keys[i]=="Paldea"){
+                wildSettings["Paldea For All"] = false;
+            }
+            wildSettings["Allowed Pokemon"] = QVariant::fromValue(allowedPokemonSettings);
+            settings[keys[i]+"-Wilds"] = QVariant::fromValue(wildSettings);
+
+            QMap<QString, QVariant> raidSettings;
+            raidSettings["Randomize"] = false;
+            raidSettings["Shiny Raids"] = false;
+            raidSettings["Balance BST"] = false;
+            if(keys[i]=="Paldea"){
+                raidSettings["Paldea For All"] = false;
+            }
+            raidSettings["Allowed Pokemon"] = QVariant::fromValue(allowedPokemonSettings);
+            settings[keys[i]+"-Raids"] = QVariant::fromValue(raidSettings);
+        }
 }
 
 // Example for big button (kept for future things)

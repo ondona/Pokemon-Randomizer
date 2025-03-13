@@ -4,7 +4,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++20
 QMAKE_CXXFLAGS += -std=c++20
-QMAKE_CXXFLAGS += -O3
 
 # Include paths for thirdparty, SV_FLATBUFFERS, and images
 INCLUDEPATH += $$PWD/thirdparty
@@ -199,9 +198,9 @@ VPATH += $$unique($$dirname($$files(src/*, true)))
 VPATH += $$unique($$dirname($$files(headers/*, true)))
 
 # Recursively include all .cpp and .h files from src and headers directories
-SOURCES += $$files(src/*.cpp, true)
+SOURCES += $$files(src/*.cpp, true) \
 
-HEADERS += $$files(headers/*.h, true)
+HEADERS += $$files(headers/*.h, true) \
 
 FORMS +=
 

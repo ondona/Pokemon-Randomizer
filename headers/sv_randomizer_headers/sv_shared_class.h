@@ -31,6 +31,7 @@ public:
     SVShared();
     ~SVShared();
     QDir qBaseDir;
+    void patchFileDescriptor();
     QMap<QString, QStringList> nationalDexPokemonNamesAndForms = {
         {"Bulbasaur", {"—"}},
         {"Ivysaur", {"—"}},
@@ -2246,7 +2247,6 @@ public:
     int generateBinary(const std::string& schema, const std::string& jsonFile, const std::string& path, bool debug = false);
     int generateJson(const std::string& schema, const std::string& inputFile, const std::string& path, bool debug = false);
     uint64_t fnv1a_64(const std::string& str, uint64_t basis = 0xCBF29CE484222645);
-    void patchFileDescriptor();
     void patchScenes(const QList<QPair<QString, QString>>& jsonFile, QList<QString> outputs, QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare);
     void patchScenesOne(const QList<QPair<QString, QString>>& jsonFile, QList<QString> outputs, QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare);
 
