@@ -258,7 +258,7 @@ void MainWindow::updateFavorites() {
 }
 
 void MainWindow::checkForUpdates() {
-    QString currentVersion = "0.1.2";
+    QString currentVersion = "0.1.3";
 
     // Replace with actual owner and repo
     QString owner = "Gonzalooo";

@@ -121,6 +121,9 @@ void SVStats::randomize_pokemon(){
                     bool a1 = false;
                     bool a2 = false;
                     bool a3 = false;
+                    bool wg1 = false;
+                    bool wg2 = false;
+                    bool wg3 = false;
 
                     while(bannedAbilities.contains(ability_choice)){
                         ability_choice = 1+std::rand()%310;
@@ -128,6 +131,9 @@ void SVStats::randomize_pokemon(){
                     cleanPersonalData["entry"][i]["ability_1"] = ability_choice;
                     if(ability_choice == 193 || ability_choice == 194){
                         a1 = true;
+                    }
+                    if(ability_choice == 25){
+                        wg1 = true;
                     }
 
                     ability_choice = 1+std::rand()%310;
@@ -138,6 +144,9 @@ void SVStats::randomize_pokemon(){
                     if(ability_choice == 193 || ability_choice == 194){
                         a2 = true;
                     }
+                    if(ability_choice == 25){
+                        wg2 = true;
+                    }
 
                     ability_choice = 1+std::rand()%310;
                     while(bannedAbilities.contains(ability_choice)){
@@ -147,9 +156,15 @@ void SVStats::randomize_pokemon(){
                     if(ability_choice == 193 || ability_choice == 194){
                         a3 = true;
                     }
+                    if(ability_choice == 25){
+                        wg3 = true;
+                    }
 
                     if(a1 == true || a2 == true || a3 == true){
                         exitAbilitiesPokemon.append({{"id", cleanPersonalData["entry"][i]["species"]["model"]}, {"form", form_check}});
+                    }
+                    if(wg1 == true || wg2 == true || wg3 == true){
+                        wonderGuardPokemon.append({{"id", cleanPersonalData["entry"][i]["species"]["model"]}, {"form", form_check}});
                     }
                 }
             }

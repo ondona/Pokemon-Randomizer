@@ -44,6 +44,10 @@ public:
     QList <QMap<QString, int>> exitAbilitiesPokemon = {{{"id", 767}, {"form", 0}},
                                                       {{"id", 768}, {"form", 0}},
                                                       };
+    nlohmann::json pokemonDataCleanRatios;
+    nlohmann::json pokemonSharedMaps;
+
+    QList <QMap<QString, int>> wonderGuardPokemon = {{{"id", 0}, {"form", 0}}};
 
     QList<int> pokemonFormsWithItems = {483, 484, 487, 493, 888, 889, 1017};
     QMap<QString, QStringList> pokemonFormsInGame = {
@@ -2485,6 +2489,13 @@ public:
         "Oinkologne"
     };
 
+    QMap<QString,QList<int>> formsMaleOnly{
+        {"Pikachu", {1,2,3,4,5,6,7,9}},
+        {"Greninja", {1}},
+        {"Ursaluna", {1}}
+
+    };
+
     QMap<QString, QStringList> pokeballDevNames = {
         {"Poke Ball",{"MONSUTAABOORU", "ITEMID_MONSUTAABOORU"}},
         {"Great Ball",{"SUUPAABOORU", "ITEMID_SUUPAABOORU"}},
@@ -3431,8 +3442,8 @@ public:
            612, 613, 614, 615, 616, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695,
            696, 697, 698, 699, 700, 709, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723,
            724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741,
-           742, 743, 744, 745, 746, 423, 424, 425, 492, 526, 527, 747, 754, 755, 437, 439, 431, 432,
-           433, 434, 435, 680, 595, 596, 597, 598};
+           742, 743, 744, 745, 746, 423, 424, 425, 492, 526, 527, 747, 754, 755, 431, 432,
+           433, 434, 435, 595, 596, 597, 598};
     QList<int> wild_trainer_index = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
            28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
            52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75,
@@ -3460,7 +3471,7 @@ public:
     QList<int> raid_npc_index = {440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459,
            460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479,
            480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 751};
-    QList<int> multi_battles_index = {358, 430, 431, 432, 433, 434, 435, 701, 437, 439, 523, 524, 525, 680, 681, 682, 605, 606,
+    QList<int> multi_battles_index = {358, 430, 431, 432, 433, 434, 435, 701, 523, 524, 525, 681, 682, 605, 606,
            607, 608, 711, 694, 695, 745, 746};
 
     QStringList area_zero_locations = {"a_w23_d01", "a_w23_d02", "a_w23_d03", "a_w23_d04", "a_w23_field_1",
@@ -3674,6 +3685,9 @@ public:
     std::string getItemForPokemon(int pokemon, int form);
     std::string getPokemonItemId(int index, int form);
     int getPokemonItemValue(int index, int form);
+    void obtainCleanRatios();
+    template <typename T>
+    void printSceneTables(T table);
 
     struct LimiterDetails {
         QList<bool> Gens = {/*1*/true, /*2*/true, /*3*/true, /*4*/true, /*5*/true, /*6*/true, /*7*/true, /*8*/true, /*9*/true};
@@ -3715,5 +3729,52 @@ private:
     void recursiveFindOfPokemonSceneTable(nlohmann::json& test, std::vector<int> devId, std::vector<int> formId,std::vector<int> gender, std::vector<bool> rare);
 
 };
+
+template <typename T>
+void SVShared::printSceneTables(T table){
+    std::string name = pokemonSharedMaps["pokemons_devid"][table->DevId()]["name"];
+    QString pokemonName = QString::fromUtf8(name.c_str());
+    qDebug() << "  DevId: " << pokemonName;
+    qDebug() << "  FormId: " << static_cast<int>(table->FormId());
+
+    QString textForPokemon = "MALE";
+    if(femaleOnlyPokemon.contains(pokemonName)){
+        textForPokemon = "FEMALE";
+    }else if(genderlessPokemon.contains(pokemonName)){
+        textForPokemon = "GENDERLESS";
+    }else if(genderForms.contains(pokemonName)){
+        if(static_cast<int>(table->FormId()) == 1){
+            textForPokemon = "FEMALE";
+        }
+    }else if(formsMaleOnly[pokemonName].contains(table->FormId())){
+        textForPokemon = "MALE";
+    }else{
+        if(static_cast<int>(table->Sex()) == 1){
+            textForPokemon = "FEMALE";
+        }
+    }
+    qDebug() << "  Sex: " << textForPokemon;
+
+    QString value = "False";
+    if(static_cast<int>(table->Rare())  != 0){
+        value = "True";
+    }
+    qDebug() << "  Rare: " << value;
+
+    if(static_cast<int>(table->Field_04()) != 0){
+        value = "True";
+    }
+    qDebug() << "  IsEgg: " << value;
+    qDebug() << "  Scale: "<< static_cast<int>(table->Field_05());
+    qDebug() << "  Field06: " << static_cast<int>(table->Field_06());
+    qDebug() << "  Field07: " << static_cast<int>(table->Field_07());
+
+    value = "False";
+    if(table->Field_08() != false){
+        value = "True";
+    }
+    qDebug() << "  IsVisible: " << value;
+}
+
 
 #endif // SV_SHARED_CLASS_H

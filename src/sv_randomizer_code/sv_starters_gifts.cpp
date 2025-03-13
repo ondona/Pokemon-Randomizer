@@ -6,8 +6,7 @@
 #include <QDir>
 #include <QDebug>
 #include <fstream>
-#include <iostream>
-#include "headers/SVRandomizerWindow.h"
+#include <QStringListModel>
 #include "thirdparty/nlohmann/json.hpp"
 
 // Look into QSharedData in the future
@@ -38,39 +37,6 @@ int SVStarters::getTeraTypeInt(std::string teraType){
     }
 
     return 0;
-}
-
-void printJsonValues(const json& jsonData) {
-    if (jsonData.is_object()) {
-        for (auto it = jsonData.begin(); it != jsonData.end(); ++it) {
-            QString key = QString::fromStdString(it.key());
-            qDebug() << "Key:" << key;
-
-            if (it->is_object()) {
-                qDebug() << "Value: Object";
-                printJsonValues(*it); // Recursive call for nested objects
-            } else if (it->is_array()) {
-                qDebug() << "Value: Array";
-                for (const auto& item : *it) {
-                    QString value = QString::fromStdString(item.dump());
-                    qDebug() << " -" << value;
-                }
-            } else {
-                QString value = QString::fromStdString(it->dump());
-                qDebug() << "Value:" << value;
-            }
-            qDebug() << "--------------";
-        }
-    } else if (jsonData.is_array()) {
-        qDebug() << "Value: Array";
-        for (const auto& item : jsonData) {
-            QString value = QString::fromStdString(item.dump());
-            qDebug() << " -" << value << '\n';
-        }
-    } else {
-        QString value = QString::fromStdString(jsonData.dump());
-        qDebug() << "Value:" << value;
-    }
 }
 
 void SVStarters::get_selected_starter(int index, QString starterName, int form, QString gender, bool shiny, QString ball){
@@ -124,8 +90,8 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
                 genderStd = "FEMALE";
             }
         }else{
-            int rand_gender = std::rand()%50;
-            if(rand_gender < 24){
+            int rand_gender = 1+std::rand()%100;
+            if(rand_gender > int(pokemonDataCleanRatios["entry"][int(pokemonMaps["pokemons"][random]["devid"])]["gender"]["ratio"])){
                 ::gender.push_back(0);
                 genderNum = 0;
                 genderStd = "MALE";
@@ -134,6 +100,7 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
                 genderNum = 1;
                 genderStd = "FEMALE";
             }
+            qDebug()<<"Here 2";
         }
         cleanStarterData["values"][index]["pokeData"]["sex"] = genderStd;
 
@@ -215,8 +182,8 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
                 genderStd = "FEMALE";
             }
         }else{
-            int rand_gender = std::rand()%50;
-            if(rand_gender < 24){
+            int rand_gender = 1+std::rand()%100;
+            if(rand_gender < int(pokemonDataCleanRatios["entry"][int(pokemonMaps["pokemons_name"][starterNameStd]["devid"])]["gender"]["ratio"])){
                 ::gender.push_back(0);
                 genderNum = 0;
                 genderStd = "MALE";
@@ -283,7 +250,7 @@ void SVStarters::get_selected_starter(int index, QString starterName, int form, 
 
 bool SVStarters::randomize_starters(){
     // Logic to Setup combinations of settings for pokemon starters
-
+    obtainCleanRatios();
     //getUsablePokemon(generations_starters, only_legendary_pokemon_starters, only_paradox_pokemon_starters, only_legends_and_paradox_starters, allowedPokemon, allowedLegends);
     //getBannedPokemon(ban_stage_1_pokemon_starters, ban_stage_2_pokemon_starters, ban_stage_3_pokemon_starters, ban_single_stage_pokemon_starters, allowedPokemon);
 
@@ -295,11 +262,11 @@ bool SVStarters::randomize_starters(){
 
     // Load the JSON file
     if (!file.is_open()) {
-        qDebug() << "Error: Could not open data_clean.json!";
+        qFatal() << "Error: Could not open data_clean.json!";
         return false;
     }
     if (!fileInfo.is_open()) {
-        qDebug() << "Error: Could not open pokemon_mapping.json!";
+        qFatal() << "Error: Could not open pokemon_mapping.json!";
         return false;
     }
 
@@ -331,6 +298,8 @@ bool SVStarters::randomize_starters(){
 
     if(show_starters_in_overworld == true){
         std::vector<std::pair<std::string, std::string>> filePairs = {
+            {"SV_STARTERS_SCENES/d030_0_clean.json","SV_STARTERS_SCENES/d030_0.json"},
+            {"SV_STARTERS_SCENES/d030_1_clean.json","SV_STARTERS_SCENES/d030_1.json"},
             {"SV_STARTERS_SCENES/common_0060_always_0_clean.json", "SV_STARTERS_SCENES/common_0060_always_0.json"},
             {"SV_STARTERS_SCENES/common_0060_always_1_clean.json", "SV_STARTERS_SCENES/common_0060_always_1.json"},
             {"SV_STARTERS_SCENES/common_0060_main_0_clean.json", "SV_STARTERS_SCENES/common_0060_main_0.json"},
@@ -366,7 +335,11 @@ bool SVStarters::randomize_gifts(){
 
     //getUsablePokemon(generation_gifts, false, false, false, allowedPokemon_gifts, allowedLegends_gifts);
     //getBannedPokemon(ban_stage_1_pokemon_starters, ban_stage_2_pokemon_starters, ban_stage_3_pokemon_starters, ban_single_stage_pokemon_starters, allowedPokemon_gifts);
-
+    obtainCleanRatios();
+    std::vector<int> devIdGift  = {};
+    std::vector<int> formIdGift  = {};
+    std::vector<int> genderGift  = {};
+    std::vector<bool> rareGift  = {};
     std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
     QString QBaseAddress = QString::fromStdString(filePath);
     QDir qBaseDir(QBaseAddress);
@@ -379,11 +352,11 @@ bool SVStarters::randomize_gifts(){
 
     // Load the JSON file
     if (!file.is_open()) {
-        qDebug() << "Error: Could not open data_clean.json!";
+        qFatal() << "Error: Could not open data_clean.json!";
         return false;
     }
     if (!fileInfo.is_open()) {
-        qDebug() << "Error: Could not open pokemon_mapping.json!";
+        qFatal() << "Error: Could not open pokemon_mapping.json!";
         return false;
     }
 
@@ -403,9 +376,6 @@ bool SVStarters::randomize_gifts(){
             formRandom = std::rand()%static_cast<int>(pokemonMaps["pokemons"][random]["forms"].size());
         }
 
-        devId.push_back(random);
-        formId.push_back(formRandom);
-
         cleanGiftData["values"][i]["pokeData"]["devId"] = pokemonMaps["pokemons"][random]["devName"];
 
         // Set Starter Form
@@ -416,9 +386,19 @@ bool SVStarters::randomize_gifts(){
             int val = 1+std::rand()%shiny_static_rate; // range is [1, shiny_starter_rate)
             if(val == 1){
                 cleanGiftData["values"][i]["pokeData"]["rareType"] = "RARE";
+                if(i==8){
+                    rareGift.push_back(true);
+                }
             }
             else{
                 cleanGiftData["values"][i]["pokeData"]["rareType"] = "NO_RARE";
+                if(i==8){
+                    rareGift.push_back(false);
+                }
+            }
+        }else{
+            if(i==8){
+                rareGift.push_back(true);
             }
         }
 
@@ -431,6 +411,31 @@ bool SVStarters::randomize_gifts(){
         if(set_tera_type_pokemon.contains(random))
             cleanGiftData["values"][i]["pokeData"]["gemType"] = selectTeraTypes(random, formRandom);
 
+        if(i==8){
+            devIdGift.push_back(int(pokemonMaps["pokemons"][random]["devid"]));
+            formIdGift.push_back(formRandom);
+            genderGift.push_back(0);
+        }
+
+    }
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_Kitakami/Growlithe/s1_side02_0000_always_0_clean.json","SV_Kitakami/Growlithe/s1_side02_0000_always_0.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0000_always_1_clean.json","SV_Kitakami/Growlithe/s1_side02_0000_always_1.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0030_always_0_clean.json", "SV_Kitakami/Growlithe/s1_side02_0030_always_0.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0030_always_1_clean.json", "SV_Kitakami/Growlithe/s1_side02_0030_always_1.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0060_pre_start_0_clean.json", "SV_Kitakami/Growlithe/s1_side02_0060_pre_start_0.json"},
+        {"SV_Kitakami/Growlithe/s1_side02_0060_pre_start_1_clean.json", "SV_Kitakami/Growlithe/s1_side02_0060_pre_start_1.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0000_pre_start_0_clean.json", "SV_Kitakami/Growlithe/s2_side02_0000_pre_start_0.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0000_pre_start_1_clean.json", "SV_Kitakami/Growlithe/s2_side02_0000_pre_start_1.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0005_pre_start_0_clean.json", "SV_Kitakami/Growlithe/s2_side02_0005_pre_start_0.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0005_pre_start_1_clean.json", "SV_Kitakami/Growlithe/s2_side02_0005_pre_start_1.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0030_always_0_clean.json", "SV_Kitakami/Growlithe/s2_side02_0030_always_0.json"},
+        {"SV_Kitakami/Growlithe/s2_side02_0030_always_1_clean.json", "SV_Kitakami/Growlithe/s2_side02_0030_always_1.json"}
+    };
+
+    for (const auto& filePair : filePairs) {
+        modifyPokemonScene(devIdGift, formIdGift, genderGift, rareGift, filePair.first, filePair.second);
     }
 
     std::ofstream fileSave(filePath+"/SV_STARTERS_FLATBUFFERS/eventAddPokemon_array.json");

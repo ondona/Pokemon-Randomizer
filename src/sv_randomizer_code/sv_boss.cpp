@@ -14,6 +14,7 @@ namespace fs = std::filesystem;
 json cleanBossData;
 json bossMappingInfo;
 json trainerInfo;
+json trainerFiles;
 QDir BaseDir;
 
 void SVBoss::saveIndividualPokemon(int index, std::vector<int> &dev, std::vector<int> &form, std::vector<int> &genderV, std::vector<bool> &rareV){
@@ -85,8 +86,8 @@ void SVBoss::obtainPokemonScene(int &dev, int &form, int& gender, int &rare){
             gender = 1;
         }
     }else{
-        int rand_gender = std::rand()%50;
-        if(rand_gender < 24){
+        int rand_gender = 1+std::rand()%100;
+        if(rand_gender > int(pokemonDataCleanRatios["entry"][int(bossMappingInfo["pokemons"][dev]["devid"])]["gender"]["ratio"])){
             gender = 0;
         }else{
 
@@ -199,14 +200,14 @@ void SVBoss::patchMultiBattle(){
 
 
     // 6 6 5 6 6 7 6 5 - 1170
-    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(5, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(7, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(5, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(6, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
     filePairs = {
         {"SV_AZ/WayHome/common_1170_always_0_clean.json", "SV_AZ/WayHome/common_1170_always_0.json"},
@@ -222,13 +223,13 @@ void SVBoss::patchMultiBattle(){
     filePairs.clear();
 
     // 9 9 8 9 9 10 8 9 -- 1170
-    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(8, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(10, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(8, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(9, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
     filePairs = {
@@ -931,6 +932,19 @@ void SVBoss::patchChiYu(){
     filePairs.clear();
 }
 
+void SVBoss::copyStellarOgerpon(unsigned long long indexSet, unsigned long long indexCopy){
+    cleanBossData["values"][indexSet]["pokeData"]["devId"] = cleanBossData["values"][indexCopy]["pokeData"]["devId"];
+    cleanBossData["values"][indexSet]["pokeData"]["formId"] = cleanBossData["values"][indexCopy]["pokeData"]["formId"];
+    cleanBossData["values"][indexSet]["pokeData"]["sex"] = cleanBossData["values"][indexCopy]["pokeData"]["sex"];
+    cleanBossData["values"][indexSet]["pokeData"]["rareType"] = cleanBossData["values"][indexCopy]["pokeData"]["rareType"];
+    cleanBossData["values"][indexSet]["pokeData"]["item"] = cleanBossData["values"][indexCopy]["pokeData"]["item"];
+    cleanBossData["values"][indexSet]["pokeData"]["wazaType"] = "DEFAULT";
+    for(int i = 1; i<=4; i++){
+        std::string key = "waza"+std::to_string(i);
+        cleanBossData["values"][indexSet]["pokeData"][key]["wazaId"] = "WAZA_NULL";
+    }
+}
+
 void SVBoss::copyFight(unsigned long long indexSet, unsigned long long indexCopy){
     cleanBossData["values"][indexSet]["pokeData"]["devId"] = cleanBossData["values"][indexCopy]["pokeData"]["devId"];
     cleanBossData["values"][indexSet]["pokeData"]["formId"] = cleanBossData["values"][indexCopy]["pokeData"]["formId"];
@@ -946,6 +960,154 @@ void SVBoss::copyFight(unsigned long long indexSet, unsigned long long indexCopy
 }
 
 void SVBoss::randomizeFight(unsigned long long index){
+    if(index == 31 || index == 32 ||cleanBossData["values"][index]["label"] == "SDC02_0310_kodaikame" || cleanBossData["values"][index]["label"] == "SDC02_0330_kodaikame"){
+        int random = 1+std::rand()%1025;
+        while(!BossAllowedPokemon.contains(bossMappingInfo["pokemons"][random]["natdex"]))
+            random = 1+std::rand()%1025;
+
+        int formRandom = 0;
+
+        if(random != 1017){
+            formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
+            while(bossMappingInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
+                formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
+            }
+
+            cleanBossData["values"][index]["pokeData"]["devId"] = bossMappingInfo["pokemons"][random]["devName"];
+
+            // Set Starter Form
+            cleanBossData["values"][index]["pokeData"]["formId"] = formRandom;
+        }else{
+            cleanBossData["values"][index]["pokeData"]["devId"] = 1011;
+            cleanBossData["values"][index]["pokeData"]["formId"] = 3;
+        }
+
+        std::string genderStd = "";
+
+        QString form_Check = QString::fromUtf8(bossMappingInfo["pokemons"][random]["name"].get<std::string>().c_str());
+        if(maleOnlyPokemon.contains(form_Check) || genderlessPokemon.contains(form_Check)){
+
+            if(genderlessPokemon.contains(form_Check)){
+                genderStd = "DEFAULT";
+            }else{
+                genderStd = "MALE";
+            }
+        }else if(femaleOnlyPokemon.contains(form_Check)){
+            genderStd = "FEMALE";
+        } else if(genderForms.contains(form_Check)){
+            if(formRandom == 0){
+
+                genderStd = "MALE";
+            }else{
+
+                genderStd = "FEMALE";
+            }
+        }else{
+            int rand_gender = 1+std::rand()%100;
+            if(rand_gender > int(pokemonDataCleanRatios["entry"][int(bossMappingInfo["pokemons"][random]["devid"])]["gender"]["ratio"])){
+                genderStd = "MALE";
+            }else{
+
+                genderStd = "FEMALE";
+            }
+        }
+
+        cleanBossData["values"][index]["pokeData"]["sex"] = genderStd;
+        int val = 1+std::rand()%100; // range is [1, shiny_starter_rate)
+        if(val == 1){
+            cleanBossData["values"][index]["pokeData"]["rareType"] = "RARE";
+        }
+        else{
+            cleanBossData["values"][index]["pokeData"]["rareType"] = "NO_RARE";
+        }
+        std::string itemForPokemon = getPokemonItemId(bossMappingInfo["pokemons"][random]["natdex"], formRandom);
+        cleanBossData["values"][index]["pokeData"]["item"] = itemForPokemon;
+
+
+        cleanBossData["values"][index]["pokeData"]["wazaType"] = "MANUAL";
+        cleanBossData["values"][index]["pokeData"]["waza1"]["wazaId"] = "WAZA_TURUGINOMAI";
+        cleanBossData["values"][index]["pokeData"]["waza2"]["wazaId"] = "WAZA_WARUDAKUMI";
+        cleanBossData["values"][index]["pokeData"]["waza3"]["wazaId"] = "WAZA_ONIKANABOO";
+        if(random == 1024){
+            cleanBossData["values"][index]["pokeData"]["waza4"]["wazaId"] = "WAZA_TERAKURASUTAA";
+        }else{
+            cleanBossData["values"][index]["pokeData"]["waza4"]["wazaId"] = "WAZA_TERABAASUTO";
+        }
+
+        if(random != 1017){
+            cleanBossData["values"][index]["pokeData"]["gemType"] = "NIJI";
+        }else{
+            cleanBossData["values"][index]["pokeData"]["gemType"] = "IWA";
+        }
+    }
+    else{
+        int random = 1+std::rand()%1025;
+        while(!BossAllowedPokemon.contains(bossMappingInfo["pokemons"][random]["natdex"]))
+            random = 1+std::rand()%1025;
+
+        int formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
+        while(bossMappingInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
+            formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
+        }
+
+        cleanBossData["values"][index]["pokeData"]["devId"] = bossMappingInfo["pokemons"][random]["devName"];
+
+        // Set Starter Form
+        cleanBossData["values"][index]["pokeData"]["formId"] = formRandom;
+
+        std::string genderStd = "";
+
+        QString form_Check = QString::fromUtf8(bossMappingInfo["pokemons"][random]["name"].get<std::string>().c_str());
+        if(maleOnlyPokemon.contains(form_Check) || genderlessPokemon.contains(form_Check)){
+
+            if(genderlessPokemon.contains(form_Check)){
+                genderStd = "DEFAULT";
+            }else{
+                genderStd = "MALE";
+            }
+        }else if(femaleOnlyPokemon.contains(form_Check)){
+            genderStd = "FEMALE";
+        } else if(genderForms.contains(form_Check)){
+            if(formRandom == 0){
+
+                genderStd = "MALE";
+            }else{
+
+                genderStd = "FEMALE";
+            }
+        }else{
+            int rand_gender = 1+std::rand()%100;
+            if(rand_gender > int(pokemonDataCleanRatios["entry"][int(bossMappingInfo["pokemons"][random]["devid"])]["gender"]["ratio"])){
+                genderStd = "MALE";
+            }else{
+
+                genderStd = "FEMALE";
+            }
+        }
+
+        cleanBossData["values"][index]["pokeData"]["sex"] = genderStd;
+        int val = 1+std::rand()%100; // range is [1, shiny_starter_rate)
+        if(val == 1){
+            cleanBossData["values"][index]["pokeData"]["rareType"] = "RARE";
+        }
+        else{
+            cleanBossData["values"][index]["pokeData"]["rareType"] = "NO_RARE";
+        }
+        std::string itemForPokemon = getPokemonItemId(bossMappingInfo["pokemons"][random]["natdex"], formRandom);
+        cleanBossData["values"][index]["pokeData"]["item"] = itemForPokemon;
+
+
+        cleanBossData["values"][index]["pokeData"]["wazaType"] = "DEFAULT";
+        for(int i = 1; i<=4; i++){
+            std::string key = "waza"+std::to_string(i);
+            cleanBossData["values"][index]["pokeData"][key]["wazaId"] = "WAZA_NULL";
+        }
+
+        cleanBossData["values"][index]["pokeData"]["gemType"] = selectTeraTypes(random, formRandom);
+    }
+}
+
+void SVBoss::randomizeStellarOgerpon(unsigned long long index){
     int random = 1+std::rand()%1025;
     while(!BossAllowedPokemon.contains(bossMappingInfo["pokemons"][random]["natdex"]))
         random = 1+std::rand()%1025;
@@ -981,8 +1143,8 @@ void SVBoss::randomizeFight(unsigned long long index){
             genderStd = "FEMALE";
         }
     }else{
-        int rand_gender = std::rand()%50;
-        if(rand_gender < 24){
+        int rand_gender = 1+std::rand()%100;
+        if(rand_gender > int(pokemonDataCleanRatios["entry"][int(bossMappingInfo["pokemons"][random]["devid"])]["gender"]["ratio"])){
             genderStd = "MALE";
         }else{
 
@@ -1006,13 +1168,850 @@ void SVBoss::randomizeFight(unsigned long long index){
         std::string key = "waza"+std::to_string(i);
         cleanBossData["values"][index]["pokeData"][key]["wazaId"] = "WAZA_NULL";
     }
+}
 
-    cleanBossData["values"][index]["pokeData"]["gemType"] = selectTeraTypes(random, formRandom);
+void SVBoss::patchLoyalThreeOgerpon(){
+    std::string outputKey = "output";
+    // Ogerpon
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+
+    saveIndividualPokemon(58, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_Kitakami/Ogerpon/d610_0_clean.json", "SV_Kitakami/Ogerpon/d610_0.json"},
+        {"SV_Kitakami/Ogerpon/d610_1_clean.json", "SV_Kitakami/Ogerpon/d610_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/d610",
+                "world/scene/parts/demo/ev/d610_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d610_/d610_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d610_/d610_0.trscn").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d610_/d610_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d610_/d610_1.trscn").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_0105_main_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_0105_main_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_0105_main_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_0105_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_0105_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0105_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0105_/sdc01_0105_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0105_/sdc01_0105_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0105_/sdc01_0105_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0105_/sdc01_0105_main_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_0130_always_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_0130_always_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_0130_always_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_0130_always_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_0130_always",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0130_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0130_/sdc01_0130_always_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0130_/sdc01_0130_always_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0130_/sdc01_0130_always_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0130_/sdc01_0130_always_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_0160_always_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_0160_always_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_0160_always_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_0160_always_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_0160_always",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0160_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0160_/sdc01_0160_always_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0160_/sdc01_0160_always_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0160_/sdc01_0160_always_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0160_/sdc01_0160_always_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_0370_post_end_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_0370_post_end_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_0370_post_end_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_0370_post_end_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_0370_post_end",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0370_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0370_/sdc01_0370_post_end_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0370_/sdc01_0370_post_end_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0370_/sdc01_0370_post_end_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0370_/sdc01_0370_post_end_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_0390_main_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_0390_main_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_0390_main_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_0390_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_0390_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0390_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0390_/sdc01_0390_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0390_/sdc01_0390_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0390_/sdc01_0390_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0390_/sdc01_0390_main_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_0430_main_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_0430_main_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_0430_main_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_0430_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_0430_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0430_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0430_/sdc01_0430_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0430_/sdc01_0430_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0430_/sdc01_0430_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0430_/sdc01_0430_main_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_0440_always_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_0440_always_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_0440_always_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_0440_always_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_0440_always",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0440_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0440_/sdc01_0440_always_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0440_/sdc01_0440_always_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0440_/sdc01_0440_always_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0440_/sdc01_0440_always_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_0460_main_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_0460_main_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_0460_main_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_0460_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_0460_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0460_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0460_/sdc01_0460_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0460_/sdc01_0460_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0460_/sdc01_0460_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0460_/sdc01_0460_main_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_0480_main_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_0480_main_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_0480_main_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_0480_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_0480_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0480_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0480_/sdc01_0480_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0480_/sdc01_0480_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0480_/sdc01_0480_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0480_/sdc01_0480_main_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_3gods_a_main_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_3gods_a_main_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_3gods_a_main_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_3gods_a_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_3gods_a_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/sdc01_3gods_a_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/sdc01_3gods_a_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/sdc01_3gods_a_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/sdc01_3gods_a_main_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_3gods_b_main_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_3gods_b_main_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_3gods_b_main_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_3gods_b_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_3gods_b_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/sdc01_3gods_b_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/sdc01_3gods_b_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/sdc01_3gods_b_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/sdc01_3gods_b_main_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Ogerpon/sdc01_3gods_c_main_0_clean.json", "SV_Kitakami/Ogerpon/sdc01_3gods_c_main_0.json"},
+        {"SV_Kitakami/Ogerpon/sdc01_3gods_c_main_1_clean.json", "SV_Kitakami/Ogerpon/sdc01_3gods_c_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Ogerpon/sdc01_3gods_c_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/sdc01_3gods_c_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/sdc01_3gods_c_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/sdc01_3gods_c_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/sdc01_3gods_c_main_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    // Okidogi
+
+    saveIndividualPokemon(55, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+        {"SV_Kitakami/Okidogi/sdc01_3gods_a_pre_start_0_clean.json", "SV_Kitakami/Okidogi/sdc01_3gods_a_pre_start_0.json"},
+        {"SV_Kitakami/Okidogi/sdc01_3gods_a_pre_start_1_clean.json", "SV_Kitakami/Okidogi/sdc01_3gods_a_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Okidogi/sdc01_3gods_a_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/sdc01_3gods_a_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/sdc01_3gods_a_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/sdc01_3gods_a_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_a_/sdc01_3gods_a_pre_start_1.trsog").string());
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Okidogi/s1_sub_011_pre_start_0_clean.json", "SV_Kitakami/Okidogi/s1_sub_011_pre_start_0.json"},
+        {"SV_Kitakami/Okidogi/s1_sub_011_pre_start_1_clean.json", "SV_Kitakami/Okidogi/s1_sub_011_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Okidogi/s1_sub_011_pre_start",
+                "world/scene/parts/event/event_scenario/sub_scenario/s1_sub_011_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_011_/s1_sub_011_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_011_/s1_sub_011_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_011_/s1_sub_011_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_011_/s1_sub_011_pre_start_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    // Monkidori
+    saveIndividualPokemon(53, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    filePairs = {
+        {"SV_Kitakami/Monkidori/sdc01_3gods_b_pre_start_0_clean.json", "SV_Kitakami/Monkidori/sdc01_3gods_b_pre_start_0.json"},
+        {"SV_Kitakami/Monkidori/sdc01_3gods_b_pre_start_1_clean.json", "SV_Kitakami/Monkidori/sdc01_3gods_b_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Monkidori/sdc01_3gods_b_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/sdc01_3gods_b_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/sdc01_3gods_b_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/sdc01_3gods_b_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_b_/sdc01_3gods_b_pre_start_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Monkidori/s1_sub_012_pre_start_0_clean.json", "SV_Kitakami/Monkidori/s1_sub_012_pre_start_0.json"},
+        {"SV_Kitakami/Monkidori/s1_sub_012_pre_start_1_clean.json", "SV_Kitakami/Monkidori/s1_sub_012_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Monkidori/s1_sub_012_pre_start",
+                "world/scene/parts/event/event_scenario/sub_scenario/s1_sub_012_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_012_/s1_sub_012_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_012_/s1_sub_012_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_012_/s1_sub_012_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_012_/s1_sub_012_pre_start_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    // Fezandipiti
+    saveIndividualPokemon(56, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+        {"SV_Kitakami/Fezandipiti/sdc01_3gods_c_pre_start_0_clean.json", "SV_Kitakami/Fezandipiti/sdc01_3gods_c_pre_start_0.json"},
+        {"SV_Kitakami/Fezandipiti/sdc01_3gods_c_pre_start_1_clean.json", "SV_Kitakami/Fezandipiti/sdc01_3gods_c_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Fezandipiti/sdc01_3gods_c_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/sdc01_3gods_c_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/sdc01_3gods_c_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/sdc01_3gods_c_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_/sdc01_3gods_c_pre_start_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Fezandipiti/sdc01_3gods_c_before_pre_start_0_clean.json", "SV_Kitakami/Fezandipiti/sdc01_3gods_c_before_pre_start_0.json"},
+        {"SV_Kitakami/Fezandipiti/sdc01_3gods_c_before_pre_start_1_clean.json", "SV_Kitakami/Fezandipiti/sdc01_3gods_c_before_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Fezandipiti/sdc01_3gods_c_before_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_before_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_before_/sdc01_3gods_c_before_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_before_/sdc01_3gods_c_before_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_before_/sdc01_3gods_c_before_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_3gods_c_before_/sdc01_3gods_c_before_pre_start_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/Fezandipiti/s1_sub_016_pre_start_0_clean.json", "SV_Kitakami/Fezandipiti/s1_sub_016_pre_start_0.json"},
+        {"SV_Kitakami/Fezandipiti/s1_sub_016_pre_start_1_clean.json", "SV_Kitakami/Fezandipiti/s1_sub_016_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Fezandipiti/s1_sub_016_pre_start",
+                "world/scene/parts/event/event_scenario/sub_scenario/s1_sub_016_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_016_/s1_sub_016_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_016_/s1_sub_016_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_016_/s1_sub_016_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_sub_016_/s1_sub_016_pre_start_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    // Loyal Three
+    std::vector<int> devIdBoss_0;
+    std::vector<int> formIdBoss_0;
+    std::vector<int> genderBoss_0;
+    std::vector<bool> rareBoss_0;
+    saveIndividualPokemon(55, devIdBoss_0, formIdBoss_0, genderBoss_0, rareBoss_0);
+    saveIndividualPokemon(53, devIdBoss_0, formIdBoss_0, genderBoss_0, rareBoss_0);
+    saveIndividualPokemon(56, devIdBoss_0, formIdBoss_0, genderBoss_0, rareBoss_0);
+
+    filePairs = {
+        {"SV_Kitakami/LoyalThree/sdc01_0330_always_0_clean.json", "SV_Kitakami/LoyalThree/sdc01_0330_always_0.json"},
+        {"SV_Kitakami/LoyalThree/sdc01_0330_always_1_clean.json", "SV_Kitakami/LoyalThree/sdc01_0330_always_1.json"}
+    };
+
+    changeScene(filePairs, devIdBoss_0, formIdBoss_0, genderBoss_0, rareBoss_0,
+                "SV_Kitakami/LoyalThree/sdc01_0330_always",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0330_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0330_/sdc01_0330_always_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0330_/sdc01_0330_always_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0330_/sdc01_0330_always_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0330_/sdc01_0330_always_1.trsog").string());
+
+    filePairs.clear();
+
+    std::vector<int> devIdBoss_1;
+    std::vector<int> formIdBoss_1;
+    std::vector<int> genderBoss_1;
+    std::vector<bool> rareBoss_1;
+    saveIndividualPokemon(58, devIdBoss_1, formIdBoss_1, genderBoss_1, rareBoss_1);
+    saveIndividualPokemon(55, devIdBoss_1, formIdBoss_1, genderBoss_1, rareBoss_1);
+    saveIndividualPokemon(53, devIdBoss_1, formIdBoss_1, genderBoss_1, rareBoss_1);
+    saveIndividualPokemon(56, devIdBoss_1, formIdBoss_1, genderBoss_1, rareBoss_1);
+
+    filePairs = {
+        {"SV_Kitakami/LoyalThree/sdc01_0360_pre_start_0_clean.json", "SV_Kitakami/LoyalThree/sdc01_0360_pre_start_0.json"},
+        {"SV_Kitakami/LoyalThree/sdc01_0360_pre_start_1_clean.json", "SV_Kitakami/LoyalThree/sdc01_0360_pre_start_1.json"}
+    };
+
+    changeScene(filePairs, devIdBoss_1, formIdBoss_1, genderBoss_1, rareBoss_1,
+                "SV_Kitakami/LoyalThree/sdc01_0360_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0360_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0360_/sdc01_0360_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0360_/sdc01_0360_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0360_/sdc01_0360_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0360_/sdc01_0360_pre_start_1.trsog").string());
+
+    filePairs.clear();
+
+    std::vector<int> devIdBoss_2;
+    std::vector<int> formIdBoss_2;
+    std::vector<int> genderBoss_2;
+    std::vector<bool> rareBoss_2;
+    saveIndividualPokemon(58, devIdBoss_2, formIdBoss_2, genderBoss_2, rareBoss_2);
+    saveIndividualPokemon(53, devIdBoss_2, formIdBoss_2, genderBoss_2, rareBoss_2);
+    saveIndividualPokemon(56, devIdBoss_2, formIdBoss_2, genderBoss_2, rareBoss_2);
+
+    filePairs = {
+        {"SV_Kitakami/LoyalThree/sdc01_0400_main_0_clean.json", "SV_Kitakami/LoyalThree/sdc01_0400_main_0.json"},
+        {"SV_Kitakami/LoyalThree/sdc01_0400_main_1_clean.json", "SV_Kitakami/LoyalThree/sdc01_0400_main_1.json"}
+    };
+
+    changeScene(filePairs, devIdBoss_2, formIdBoss_2, genderBoss_2, rareBoss_2,
+                "SV_Kitakami/LoyalThree/sdc01_0400_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0400_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0400_/sdc01_0400_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0400_/sdc01_0400_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0400_/sdc01_0400_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0400_/sdc01_0400_main_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/LoyalThree/sdc01_0410_main_0_clean.json", "SV_Kitakami/LoyalThree/sdc01_0410_main_0.json"},
+        {"SV_Kitakami/LoyalThree/sdc01_0410_main_1_clean.json", "SV_Kitakami/LoyalThree/sdc01_0410_main_1.json"}
+    };
+
+    changeScene(filePairs, devIdBoss_2, formIdBoss_2, genderBoss_2, rareBoss_2,
+                "SV_Kitakami/LoyalThree/sdc01_0410_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0410_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0410_/sdc01_0410_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0410_/sdc01_0410_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0410_/sdc01_0410_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0410_/sdc01_0410_main_1.trsog").string());
+
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_Kitakami/LoyalThree/sdc01_0420_main_0_clean.json", "SV_Kitakami/LoyalThree/sdc01_0420_main_0.json"},
+        {"SV_Kitakami/LoyalThree/sdc01_0420_main_1_clean.json", "SV_Kitakami/LoyalThree/sdc01_0420_main_1.json"}
+    };
+
+    changeScene(filePairs, devIdBoss_2, formIdBoss_2, genderBoss_2, rareBoss_2,
+                "SV_Kitakami/LoyalThree/sdc01_0420_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0420_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0420_/sdc01_0420_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0420_/sdc01_0420_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0420_/sdc01_0420_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0420_/sdc01_0420_main_1.trsog").string());
+
+
+    filePairs.clear();
+}
+
+void SVBoss::patchKitakami(){
+    std::string outputKey = "output";
+    // Ogerpon
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+
+    saveIndividualPokemon(67, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_Kitakami/Other/sdc01_0300_main_0_clean.json", "SV_Kitakami/Other/sdc01_0300_main_0.json"},
+        {"SV_Kitakami/Other/sdc01_0300_main_1_clean.json", "SV_Kitakami/Other/sdc01_0300_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Other/sdc01_0300_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc01_0300_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0300_/sdc01_0300_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0300_/sdc01_0300_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0300_/sdc01_0300_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc01_0300_/sdc01_0300_main_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(74, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+        {"SV_Kitakami/Other/s1_side02_0030_main_0_clean.json", "SV_Kitakami/Other/s1_side02_0030_main_0.json"},
+        {"SV_Kitakami/Other/s1_side02_0030_main_1_clean.json", "SV_Kitakami/Other/s1_side02_0030_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Other/s1_side02_0030_main",
+                "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0030_/s1_side02_0030_main_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(75, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+        {"SV_Kitakami/Other/s1_side02_0050_main_0_clean.json", "SV_Kitakami/Other/s1_side02_0050_main_0.json"},
+        {"SV_Kitakami/Other/s1_side02_0050_main_1_clean.json", "SV_Kitakami/Other/s1_side02_0050_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_Kitakami/Other/s1_side02_0050_main",
+                "world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0050_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0050_/s1_side02_0050_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0050_/s1_side02_0050_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0050_/s1_side02_0050_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s1_side02_0050_/s1_side02_0050_main_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
 
 }
 
+void SVBoss::patchStellarUnderdeepths(){
+    std::string outputKey = "output";
+    // Ogerpon
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+
+    saveIndividualPokemon(78, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_AZ/Underdepths/s2_sub_005_pre_start_0_clean.json", "SV_AZ/Underdepths/s2_sub_005_pre_start_0.json"},
+        {"SV_AZ/Underdepths/s2_sub_005_pre_start_1_clean.json", "SV_AZ/Underdepths/s2_sub_005_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/Underdepths/s2_sub_005_pre_start",
+                "world/scene/parts/event/event_scenario/sub_scenario/s2_sub_005_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_sub_005_/s2_sub_005_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_sub_005_/s2_sub_005_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_sub_005_/s2_sub_005_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_sub_005_/s2_sub_005_pre_start_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(79, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+        {"SV_AZ/Underdepths/sdc02_0262_main_0_clean.json", "SV_AZ/Underdepths/sdc02_0262_main_0.json"},
+        {"SV_AZ/Underdepths/sdc02_0262_main_1_clean.json", "SV_AZ/Underdepths/sdc02_0262_main_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/Underdepths/sdc02_0262_main",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc02_0262_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0262_/sdc02_0262_main_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0262_/sdc02_0262_main_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0262_/sdc02_0262_main_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0262_/sdc02_0262_main_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(80, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+        {"SV_AZ/Underdepths/sdc02_0263_pre_start_0_clean.json", "SV_AZ/Underdepths/sdc02_0263_pre_start_0.json"},
+        {"SV_AZ/Underdepths/sdc02_0263_pre_start_1_clean.json", "SV_AZ/Underdepths/sdc02_0263_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/Underdepths/sdc02_0263_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc02_0263_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0263_/sdc02_0263_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0263_/sdc02_0263_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0263_/sdc02_0263_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0263_/sdc02_0263_pre_start_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(81, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+        {"SV_AZ/Underdepths/sdc02_0267_pre_start_0_clean.json", "SV_AZ/Underdepths/sdc02_0267_pre_start_0.json"},
+        {"SV_AZ/Underdepths/sdc02_0267_pre_start_1_clean.json", "SV_AZ/Underdepths/sdc02_0267_pre_start_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/Underdepths/sdc02_0267_pre_start",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc02_0267_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0267_/sdc02_0267_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0267_/sdc02_0267_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0267_/sdc02_0267_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0267_/sdc02_0267_pre_start_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(82, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+                 {"SV_AZ/Underdepths/sdc02_0265_pre_start_0_clean.json", "SV_AZ/Underdepths/sdc02_0265_pre_start_0.json"},
+                 };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                   "SV_AZ/Underdepths/sdc02_0265_pre_start_0.json",
+                   "world/scene/parts/event/event_scenario/main_scenario/sdc02_0265_/");
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(83, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+                 {"SV_AZ/Underdepths/sdc02_0265_pre_start_1_clean.json", "SV_AZ/Underdepths/sdc02_0265_pre_start_1.json"},
+                 };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                   "SV_AZ/Underdepths/sdc02_0265_pre_start_1.json",
+                   "world/scene/parts/event/event_scenario/main_scenario/sdc02_0265_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0265_/sdc02_0265_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0265_/sdc02_0265_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0265_/sdc02_0265_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0265_/sdc02_0265_pre_start_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+}
+
+void SVBoss::patchAreaZeroLegends(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+    std::string outputKey = "output";
+
+    saveIndividualPokemon(76, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+                 {"SV_AZ/Legends/s2_side02_0010_pre_start_0_clean.json", "SV_AZ/Legends/s2_side02_0010_pre_start_0.json"},
+                 };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                   "SV_AZ/Legends/s2_side02_0010_pre_start_0.json",
+                   "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0010_/");
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(84, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+                 {"SV_AZ/Legends/s2_side02_0010_pre_start_1_clean.json", "SV_AZ/Legends/s2_side02_0010_pre_start_1.json"},
+                 };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                   "SV_AZ/Legends/s2_side02_0010_pre_start_1.json",
+                   "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0010_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0010_/s2_side02_0010_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0010_/s2_side02_0010_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0010_/s2_side02_0010_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0010_/s2_side02_0010_pre_start_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(77, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+                 {"SV_AZ/Legends/s2_side02_0020_pre_start_0_clean.json", "SV_AZ/Legends/s2_side02_0020_pre_start_0.json"},
+                 };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                   "SV_AZ/Legends/s2_side02_0020_pre_start_0.json",
+                   "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0020_/");
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    saveIndividualPokemon(85, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+                 {"SV_AZ/Legends/s2_side02_0020_pre_start_1_clean.json", "SV_AZ/Legends/s2_side02_0020_pre_start_1.json"},
+                 };
+    changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                   "SV_AZ/Legends/s2_side02_0020_pre_start_1.json",
+                   "world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0020_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0020_/s2_side02_0020_pre_start_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0020_/s2_side02_0020_pre_start_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0020_/s2_side02_0020_pre_start_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side02_0020_/s2_side02_0020_pre_start_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+}
+
+void SVBoss::patchTerapagos(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+    std::string outputKey = "output";
+
+    saveIndividualPokemon(88, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_AZ/Terapagos/d730_0_clean.json", "SV_AZ/Terapagos/d730_0.json"},
+        {"SV_AZ/Terapagos/d730_1_clean.json", "SV_AZ/Terapagos/d730_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/Terapagos/d730",
+                "world/scene/parts/demo/ev/d730_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d730_/d730_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d730_/d730_0.trscn").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d730_/d730_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/demo/ev/d730_/d730_1.trscn").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_AZ/Terapagos/sdc02_0320_always_0_clean.json", "SV_AZ/Terapagos/sdc02_0320_always_0.json"},
+        {"SV_AZ/Terapagos/sdc02_0320_always_1_clean.json", "SV_AZ/Terapagos/sdc02_0320_always_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_AZ/Terapagos/sdc02_0320_always",
+                "world/scene/parts/event/event_scenario/main_scenario/sdc02_0320_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0320_/sdc02_0320_always_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0320_/sdc02_0320_always_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0320_/sdc02_0320_always_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/main_scenario/sdc02_0320_/sdc02_0320_always_1.trsog").string());
+
+}
+
+void SVBoss::patchSnacksworths(){
+    std::vector<int> devIdBoss;
+    std::vector<int> formIdBoss;
+    std::vector<int> genderBoss;
+    std::vector<bool> rareBoss;
+    std::string outputKey = "output";
+
+    saveIndividualPokemon(86, devIdBoss, formIdBoss, genderBoss, rareBoss);
+
+    // Pecharunt
+    std::vector<std::pair<std::string, std::string>> filePairs = {
+        {"SV_LEGENDS/Pecharunt/s2_side01_0160_always_0_clean.json", "SV_LEGENDS/Pecharunt/s2_side01_0160_always_0.json"},
+        {"SV_LEGENDS/Pecharunt/s2_side01_0160_always_1_clean.json", "SV_LEGENDS/Pecharunt/s2_side01_0160_always_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_LEGENDS/Pecharunt/s2_side01_0160_always",
+                "world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0160_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0160_/s2_side01_0160_always_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0160_/s2_side01_0160_always_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0160_/s2_side01_0160_always_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0160_/s2_side01_0160_always_1.trsog").string());
+
+    filePairs.clear();
+
+    filePairs = {
+        {"SV_LEGENDS/Pecharunt/s2_side01_0180_always_0_clean.json", "SV_LEGENDS/Pecharunt/s2_side01_0180_always_0.json"},
+        {"SV_LEGENDS/Pecharunt/s2_side01_0180_always_1_clean.json", "SV_LEGENDS/Pecharunt/s2_side01_0180_always_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_LEGENDS/Pecharunt/s2_side01_0180_always",
+                "world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0180_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0180_/s2_side01_0180_always_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0180_/s2_side01_0180_always_0.trsog").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0180_/s2_side01_0180_always_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_side01_0180_/s2_side01_0180_always_1.trsog").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    // Meloetta
+    saveIndividualPokemon(114, devIdBoss, formIdBoss, genderBoss, rareBoss);
+    filePairs = {
+        {"SV_LEGENDS/Meloetta/s2_sub_003_pop_0_clean.json", "SV_LEGENDS/Meloetta/s2_sub_003_pop_0.json"},
+        {"SV_LEGENDS/Meloetta/s2_sub_003_pop_1_clean.json", "SV_LEGENDS/Meloetta/s2_sub_003_pop_1.json"}
+    };
+    changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                "SV_LEGENDS/Meloetta/s2_sub_003_pop",
+                "world/scene/parts/event/event_scenario/sub_scenario/s2_sub_003_pop_/");
+
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_sub_003_pop_/s2_sub_003_pop_0.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_sub_003_pop_/s2_sub_003_pop_0.trscn").string());
+    fs::rename(fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_sub_003_pop_/s2_sub_003_pop_1.bin").string(),
+               fs::absolute(outputKey+"/romfs/world/scene/parts/event/event_scenario/sub_scenario/s2_sub_003_pop_/s2_sub_003_pop_1.trscn").string());
+
+    filePairs.clear();
+    devIdBoss.clear();
+    formIdBoss.clear();
+    genderBoss.clear();
+    rareBoss.clear();
+
+    // Snacksworth in order
+    QList<int> snacksworthLegends = {92, 112, 102, 104, 91, 109, 100, 95, 98, 99, 96, 94, 105, 89, 110, 111, 106, 113, 97, 107, 101, 103, 90, 93, 108};
+    for(int i = 13, k=0; i<=37; i++, k++){
+        saveIndividualPokemon(snacksworthLegends[k], devIdBoss, formIdBoss, genderBoss, rareBoss);
+        std::string fileName = "s2_sub_0"+std::to_string(i)+"_pre_start";
+        std::string fileName0 = "s2_sub_0"+std::to_string(i)+"_pre_start_0";
+        std::string fileName1 = "s2_sub_0"+std::to_string(i)+"_pre_start_1";
+        std::string folderName = "world/scene/parts/event/event_scenario/sub_scenario/s2_sub_0"+std::to_string(i)+"_/";
+
+        filePairs = {
+            {"SV_LEGENDS/Snacksworth/"+fileName0+"_clean.json", "SV_LEGENDS/Snacksworth/"+fileName0+".json"},
+            {"SV_LEGENDS/Snacksworth/"+fileName1+"_clean.json", "SV_LEGENDS/Snacksworth/"+fileName1+".json"}
+        };
+
+        changeScene(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
+                    "SV_LEGENDS/Snacksworth/"+fileName,
+                    folderName);
+
+        filePairs.clear();
+        devIdBoss.clear();
+        formIdBoss.clear();
+        genderBoss.clear();
+        rareBoss.clear();
+
+        fs::rename(fs::absolute(outputKey+"/romfs/"+folderName+fileName0+".bin").string(),
+                   fs::absolute(outputKey+"/romfs/"+folderName+fileName0+".trsog").string());
+        fs::rename(fs::absolute(outputKey+"/romfs/"+folderName+fileName1+".bin").string(),
+                   fs::absolute(outputKey+"/romfs/"+folderName+fileName1+".trsog").string());
+    }
+}
+
 void SVBoss::randomizeBosses(QDir baseDir){
-    
+    obtainCleanRatios();
     std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
     QString QBaseAddress = QString::fromStdString(filePath);
     QDir qBaseDir(QBaseAddress);
@@ -1045,30 +2044,17 @@ void SVBoss::randomizeBosses(QDir baseDir){
     fileTrainer.close();
 
     for(unsigned long long i =0; i<cleanBossData["values"].size(); i++){
-        if(i > 52){
-            continue;
+        if(i == 115){
+            copyFight(i, 31);
+        }else if(i == 116){
+            copyFight(i, 32);
         }
-
-        else if(i == 31 || i == 32){
-            continue;
-        }
-
-        else if(i >= 58 && i<= 65){
-            continue;
-        }
-
-        else if(i == 87 || i == 88){
-            continue;
-        }
-
         else if (i >= 12 && i <= 23) {
             copyFight(i, 11);
         }
-
         else if (i >= 27 && i <= 30) {
             copyFight(i, 26);
         }
-
         else if (i >= 33 && i <= 48) {
             switch(i){
             case 34:
@@ -1098,11 +2084,30 @@ void SVBoss::randomizeBosses(QDir baseDir){
                 randomizeFight(i);
             }
         }
+        else if(i == 54 || i == 57 || i == 72 || i == 73){
+            copyFight(i, 53);
+        }
+        else if (i == 70 || i == 71){
+            copyFight(i, 56);
+        }
+        else if(i == 68 || i == 69){
+            copyFight(i, 55);
+        }
+        else if(i == 59 || i == 60 || i == 61 || i == 62 || i == 63 || i ==64 || i ==65){
+            copyStellarOgerpon(i, 58);
+        }
         else if(i == 67){
             copyFight(i, 66);
         }
+        else if(i == 88){
+            copyStellarOgerpon(i, 87);
+        }
         else{
-            randomizeFight(i);
+            if(i == 58 || i == 78 || i == 79 || i == 80 || i == 81 || i == 82 || i == 83 || i == 87){
+                randomizeStellarOgerpon(i);
+            }else{
+                randomizeFight(i);
+            }
         }
     }
     patchMultiBattle();
@@ -1119,6 +2124,12 @@ void SVBoss::randomizeBosses(QDir baseDir){
     patchChienPao();
     patchWoChien();
     patchChiYu();
+    patchLoyalThreeOgerpon();
+    patchKitakami();
+    patchStellarUnderdeepths();
+    patchAreaZeroLegends();
+    patchTerapagos();
+    patchSnacksworths();
 
     std::ofstream fileSave((qBaseDir.filePath("SV_SCENES/eventBattlePokemon_array.json").toStdString()));
     if(!fileSave.is_open()){

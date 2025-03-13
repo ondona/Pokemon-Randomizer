@@ -308,7 +308,7 @@ private slots:
     void saveStringInput();
     void saveComboInput();
     void updateComboBoxForms(QComboBox *c, const QString &t);
-    void updateComboBoxGender(QComboBox *c, const QString &t);
+    void updateComboBoxGender(QComboBox *c, QString t, int form);
     void updatePreview(const QString &text);
     bool checkAndDeleteFile(std::string filePath);
     void importSettings();

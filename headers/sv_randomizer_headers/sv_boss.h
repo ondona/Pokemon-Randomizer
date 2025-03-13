@@ -23,7 +23,9 @@ class SVBoss: public SVShared{
 
         void randomizeBosses(QDir dir);
         void randomizeFight(unsigned long long index);
+        void randomizeStellarOgerpon(unsigned long long index);
         void copyFight(unsigned long long indexSet, unsigned long long indexCopy);
+        void copyStellarOgerpon(unsigned long long indexSet, unsigned long long indexCopy);
         void patchMultiBattle();
         void patchGimmighoul();
         void patchLeChonk();
@@ -38,6 +40,12 @@ class SVBoss: public SVShared{
         void patchChienPao();
         void patchWoChien();
         void patchChiYu();
+        void patchLoyalThreeOgerpon();
+        void patchKitakami();
+        void patchStellarUnderdeepths();
+        void patchTerapagos();
+        void patchAreaZeroLegends();
+        void patchSnacksworths();
         void obtainPokemonScene(int &dev, int &form, int& gender, int &rare);
         void saveIndividualPokemon(int index, std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare);
         void changeScene(std::vector<std::pair<std::string, std::string>> filePairs,
