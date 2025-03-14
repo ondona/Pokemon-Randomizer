@@ -5,7 +5,7 @@
 #include <QMap>
 #include "sv_shared_class.h"
 // #include "sv_trainers.h"
-// #include "sv_raids.h"
+#include "sv_raids.h"
 #include "sv_wilds.h"
 #include "sv_items.h"
 #include "sv_personal.h"
@@ -33,6 +33,7 @@ public:
     svItems svRandomizerItems;
     svWilds svRandomizerWilds;
     svFixed svRandomizerFixed;
+    svRaids svRandomizerRaids;
 
     //void setSeed
 

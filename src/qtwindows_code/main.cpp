@@ -2,6 +2,7 @@
 #include <QScreen>
 #include <QMutex>
 #include <QSettings>
+#include <QIcon>
 #include "headers/qtwindows_headers/mainwindow.h"
 
 // Global file, mutex, and settings
@@ -44,12 +45,19 @@ void customMessageHandler(QtMsgType type, const QMessageLogContext &context, con
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
+
+    // Set application-wide icon
+    app.setWindowIcon(QIcon("assets/icons/main.ico"));
+
     #ifdef QT_DEBUG
         QCoreApplication::addLibraryPath(QCoreApplication::applicationDirPath() + "/../plugins");  // Development path
     #else
         QCoreApplication::addLibraryPath("./plugins");  // Deployment path
     #endif
+
     MainWindow mainWindow;
+    mainWindow.setWindowTitle("Universal Pokemon Tool");
+    mainWindow.setWindowIcon(QIcon("assets/icons/main.ico"));
 
     // Get the screen where the mouse is currently located
     QScreen *screen = nullptr;

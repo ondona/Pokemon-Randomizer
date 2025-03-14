@@ -31,6 +31,8 @@ win32 {
         message("Building for 32-bit Windows")
     }
 
+    RC_FILE = app_icon.rc
+
     # Paths for source and destination directories
 
     THIRDPARTY_SRC = $$PWD/thirdparty

@@ -122,10 +122,10 @@ void svStarters::randomize(){
         qDebug()<<"List of Allowed Pokemon for Starters: "<<startersPokemon.toString();
 
         qDebug()<<"Getting Allowed Pokemon for Starters";
-        qDebug()<<"List Before: "<<usableStarterPokemon;
-        getAllowedPokemon(startersPokemon, usableStarterPokemon, "Starters");
-        qDebug()<<"List After: "<<usableStarterPokemon;
-
+        bool sizeCheck = getAllowedPokemon(startersPokemon, usableStarterPokemon, "Starters");
+        if(sizeCheck == false){
+            qFatal()<<"Not Enough usable Pokemon for Starters";
+        }
         // Sprigattito
         qDebug()<<"Randomizing Sprigatito";
         obtainSelectedStarters(1, starters[0], pokemonFormsIntsInGame[starters[0]][startersForms[0]], startersGenders[0], startersShiny[0], startersPokeballs[0]);
@@ -170,9 +170,10 @@ void svStarters::randomize(){
         qDebug()<<"List of Allowed Pokemon for Gifts: "<<giftsPokemon.toString();
 
         qDebug()<<"Getting Allowed Pokemon for Gifts";
-        qDebug()<<"List Before: "<<usableGiftPokemon;
-        getAllowedPokemon(giftsPokemon, usableGiftPokemon, "Gifts");
-        qDebug()<<"List After: "<<usableGiftPokemon;
+        bool sizeCheck = getAllowedPokemon(giftsPokemon, usableGiftPokemon, "Gifts");
+        if(sizeCheck == false){
+            qFatal()<<"Not Enough usable Pokemon for Kitakami Wilds";
+        }
 
         int devid = 1;
         int formId = 0;

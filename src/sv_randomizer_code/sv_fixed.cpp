@@ -11,7 +11,10 @@ svFixed::~svFixed(){
 void svFixed::randomize(){
     fixedEncounters = readJsonQFile("SV_FLATBUFFERS/SV_WILDS/fixed_symbol_table_array_clean.json");
 
-    getAllowedPokemon(fixedEncountersPokemon, allowedPokemon, "fixedEncounters");
+    bool sizeCheck = getAllowedPokemon(fixedEncountersPokemon, allowedPokemon, "fixedEncounters");
+    if(sizeCheck == false){
+        qFatal()<<"Not Enough usable Pokemon for Fixed Encounters";
+    }
     int devid = 0;
     int form = 0;
     int gender = 0;

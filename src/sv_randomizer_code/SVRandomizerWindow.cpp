@@ -223,6 +223,14 @@ void SVRandomizerWindow::runRandomizer(){
             randomizer.svRandomizerWilds.randomize();
         }
 
+        // if(randomizer.svRandomizerRaids.randomizePaldea == true){
+        //     QStringList paths = {};
+        //     QStringList schemas = {};
+        //     QStringList folders = {};
+
+        //     randomizer.svRandomizerRaids.randomize(,"Paldea");
+        // }
+
         if(randomizer.auto_patch == true){
             qDebug()<<"Auto Patching Randomizer";
             randomizer.patchFileDescriptor();
@@ -1597,7 +1605,7 @@ QVBoxLayout* SVRandomizerWindow::createPaldeaRaid(){
     paldeaRaidSettingLayout->addWidget(enable_paldea_raid);
     // Connect for Setting the values
     connect(enable_paldea_raid, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.randomizePaldea = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1617,14 +1625,14 @@ QVBoxLayout* SVRandomizerWindow::createPaldeaRaid(){
     row0->addWidget(shiny_raids);
     // Connect for Setting the values
     connect(shiny_raids, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.forceShinyRaidsPaldea = checked;
     });
 
     QCheckBox* balance_bst_area = new QCheckBox("Balace Raid per BST (Useless for now)", paldeaRaidGroupSettings);
     row0->addWidget(balance_bst_area);
     // Connect for Setting the values
     connect(balance_bst_area, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.forNoWarning = checked;
     });
 
     paldeaRaidSettingsLayout->addLayout(row0);
@@ -1634,12 +1642,12 @@ QVBoxLayout* SVRandomizerWindow::createPaldeaRaid(){
     row1->addWidget(paldea_raid_for_all);
     // Connect for Setting the values
     connect(paldea_raid_for_all, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.paldeaForAll = checked;
     });
 
     paldeaRaidSettingsLayout->addLayout(row1);
 
-    // setupAllowedPokemon(paldeaRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsPaldeaLimiter);
+    setupAllowedPokemon(paldeaRaidSettingsLayout, randomizer.svRandomizerRaids.paldeaPokemon);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1659,7 +1667,7 @@ QVBoxLayout* SVRandomizerWindow::createKitakamiRaid(){
     kitakamiRaidSettingLayout->addWidget(enable_kitakami_raid);
     // Connect for Setting the values
     connect(enable_kitakami_raid, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.randomizeKitakami = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1678,19 +1686,19 @@ QVBoxLayout* SVRandomizerWindow::createKitakamiRaid(){
     row0->addWidget(shiny_raids);
     // Connect for Setting the values
     connect(shiny_raids, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.forceShinyRaidsKitakami = checked;
     });
 
     QCheckBox* balance_bst_area = new QCheckBox("Balace Raid per BST (Useless for now)", kitakamiRaidGroupSettings);
     row0->addWidget(balance_bst_area);
     // Connect for Setting the values
     connect(balance_bst_area, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.forNoWarning = checked;
     });
 
     kitakamiRaidSettingsLayout->addLayout(row0);
 
-    // setupAllowedPokemon(kitakamiRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsKitakamiLimiter);
+    setupAllowedPokemon(kitakamiRaidSettingsLayout, randomizer.svRandomizerRaids.kitakamiPokemon);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
@@ -1710,7 +1718,7 @@ QVBoxLayout* SVRandomizerWindow::createBlueberryRaid(){
     blueberryRaidSettingLayout->addWidget(enable_blueberry_raid);
     // Connect for Setting the values
     connect(enable_blueberry_raid, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.randomizeBlueberry = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1729,19 +1737,19 @@ QVBoxLayout* SVRandomizerWindow::createBlueberryRaid(){
     row0->addWidget(shiny_raids);
     // Connect for Setting the values
     connect(shiny_raids, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.forceShinyRaidsBlueberry = checked;
     });
 
     QCheckBox* balance_bst_area = new QCheckBox("Balace Raid per BST (Useless for now)", blueberryRaidGroupSettings);
     row0->addWidget(balance_bst_area);
     // Connect for Setting the values
     connect(balance_bst_area, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerRaids.forNoWarning = checked;
     });
 
     blueberryRaidSettingsLayout->addLayout(row0);
 
-    // setupAllowedPokemon(blueberryRaidSettingsLayout, randomizer.svRandomizerRaids.RaidsBlueberryLimiter);
+    setupAllowedPokemon(blueberryRaidSettingsLayout, randomizer.svRandomizerRaids.blueberryPokemon);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{

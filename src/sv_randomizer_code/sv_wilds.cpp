@@ -199,7 +199,11 @@ void svWilds::randomize(){
         schema = "SV_WILDS/pokedata_array.bfbs";
         output = "world/data/encount/pokedata/pokedata/";
 
-        getAllowedPokemon(paldeaWilds, usableWildPokemon, "Paldea Wilds");
+        bool sizeCheck = getAllowedPokemon(paldeaWilds, usableWildPokemon, "Paldea Wilds");
+        if(sizeCheck == false){
+            qFatal()<<"Not Enough usable Pokemon for Paldea Wilds";
+        }
+
         randomizeWilds(usableWildPokemon, ogerponTerapagosPaldea);
     }
     if(paldeaForAll == true){
@@ -207,14 +211,20 @@ void svWilds::randomize(){
         path = "SV_WILDS/pokedata_su1_array.json";
         schema = "SV_WILDS/pokedata_su1_array.bfbs";
         output = "world/data/encount/pokedata/pokedata_su1/";
-        getAllowedPokemon(paldeaWilds, usableWildPokemon, "Kitakami Wilds");
+        bool sizeCheck = getAllowedPokemon(paldeaWilds, usableWildPokemon, "Kitakami Wilds");
+        if(sizeCheck == false){
+            qFatal()<<"Not Enough usable Pokemon for Kitakami Wilds";
+        }
         randomizeWilds(usableWildPokemon, ogerponTerapagosPaldea);
 
         qDebug()<<"Using Paldea for all - Randomizing Blueberry Wilds";
         path = "SV_WILDS/pokedata_su2_array.json";
         schema = "SV_WILDS/pokedata_su2_array.bfbs";
         output = "world/data/encount/pokedata/pokedata_su2/";
-        getAllowedPokemon(paldeaWilds, usableWildPokemon, "Blueberry Wilds");
+        sizeCheck = getAllowedPokemon(paldeaWilds, usableWildPokemon, "Blueberry Wilds");
+        if(sizeCheck == false){
+            qFatal()<<"Not Enough usable Pokemon for Blueberry Wilds";
+        }
         randomizeWilds(usableWildPokemon, ogerponTerapagosPaldea);
     }else{
         if(randomizeKitakamiWild == true){
@@ -222,7 +232,10 @@ void svWilds::randomize(){
             path = "SV_WILDS/pokedata_su1_array.json";
             schema = "SV_WILDS/pokedata_su1_array.bfbs";
             output = "world/data/encount/pokedata/pokedata_su1/";
-            getAllowedPokemon(kitakamiWilds, usableWildPokemon, "Kitakami Wilds");
+            bool sizeCheck = getAllowedPokemon(kitakamiWilds, usableWildPokemon, "Kitakami Wilds");
+            if(sizeCheck == false){
+                qFatal()<<"Not Enough usable Pokemon for Kitakami Wilds";
+            }
             randomizeWilds(usableWildPokemon, ogerponTerapagosKitakami);
         }
 
@@ -231,7 +244,10 @@ void svWilds::randomize(){
             path = "SV_WILDS/pokedata_su2_array.json";
             schema = "SV_WILDS/pokedata_su2_array.bfbs";
             output = "world/data/encount/pokedata/pokedata_su2/";
-            getAllowedPokemon(blueberrWilds, usableWildPokemon, "Blueberry Wilds");
+            bool sizeCheck = getAllowedPokemon(blueberrWilds, usableWildPokemon, "Blueberry Wilds");
+            if(sizeCheck == false){
+                qFatal()<<"Not Enough usable Pokemon for Blueberry Wilds";
+            }
             randomizeWilds(usableWildPokemon, ogerponTearapagosBlueberry);
         }
     }
