@@ -75,7 +75,7 @@ protected:
     QWidget* createPaldeaTrainersWidget();
     QWidget* createKitakamiTrainersWidget();
     QWidget* createBlueberryTrainersWidget();
-    QVBoxLayout* createTrainerSettings(QString region, QString trainerType, QVector<bool> allowedSettings, allowedPokemonLimiter limiter, bool paldea = false);
+    QVBoxLayout* createTrainerSettings(QString region, QString trainerType, trainerSettings& settings, bool paldea = false);
     QScrollArea* setupBossWidget() override;
     QWidget* createPaldeaBossWidget();
     QWidget* createKitakamiBossWidget();

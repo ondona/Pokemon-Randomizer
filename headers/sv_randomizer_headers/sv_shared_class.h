@@ -32,6 +32,7 @@ public:
     ~SVShared();
     QDir qBaseDir;
     void patchFileDescriptor();
+
     QMap<QString, QStringList> nationalDexPokemonNamesAndForms = {
         {"Bulbasaur", {"—"}},
         {"Ivysaur", {"—"}},

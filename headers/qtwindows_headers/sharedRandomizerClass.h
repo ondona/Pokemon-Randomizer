@@ -91,6 +91,23 @@ class sharedRandomizerClass{
             }
         };
 
+        struct trainerSettings{
+            bool randomize = false;
+            bool allowTera = false;
+            bool randomizeTeras = false;
+            bool singlesOrDoubles = false;
+            bool allDoubles = false;
+            QList <int> randomizedIndex;
+
+            bool allowShinies = false;
+            bool force6Pokemon = false;
+            bool extraPokemon = false;
+            bool forcePerfectIV = false;
+            bool makeAISmart = false;
+
+            allowedPokemonLimiter allowedPokemons;
+        };
+
         // Uninitialized Data
         json pokemonPersonalData;
         json pokemonMapping;

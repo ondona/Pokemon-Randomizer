@@ -1,16 +1,10 @@
 #include "headers/sv_randomizer_headers/SVRandomizerWindow.h"
 
-SVRandomizerWindow::SVRandomizerWindow(QWidget *parent)
-    : QWidget(parent)
-{
-    // Things to initialize on constructor.
+SVRandomizerWindow::SVRandomizerWindow(QWidget *parent): QWidget(parent) {
     starterNames = {"Sprigatito", "Fuecoco", "Quaxly"};
 }
 
-SVRandomizerWindow::~SVRandomizerWindow()
-{
-    // Cleanup if needed
-}
+SVRandomizerWindow::~SVRandomizerWindow(){}
 
 // Main Layout
 void SVRandomizerWindow::createLayout()
@@ -160,7 +154,6 @@ void SVRandomizerWindow::runRandomizer(){
     qDebug()<<"Generating seed value for: "<<randomizer.seed;
 
     quint64 seed;
-    QDir dir;
 
     if(randomizer.seed.isEmpty()){
         seed = static_cast<quint64>(QDateTime::currentMSecsSinceEpoch());
@@ -177,17 +170,25 @@ void SVRandomizerWindow::runRandomizer(){
     std::seed_seq seq{ seed_low, seed_high };
     randNum = QRandomGenerator(seq);
 
-    // If the parent folder exists, delete it first
-    if (dir.exists("Randomizers-Output")) {
-        if (!dir.removeRecursively()) {
-            qFatal() << "Failed to delete existing parent folder:" << "Randomizers-Output";
+    QString outputFolderName = "Randomizers-Output";
+    QString outputFolderPath = QDir::current().filePath(outputFolderName);
+    QDir outputDir(outputFolderPath);
+
+    QString output = "output";
+    QString output2 = QDir::current().filePath(output);
+    QDir output3(output2);
+
+    // If the folder exists, delete it
+    if (outputDir.exists()) {
+        if (!outputDir.removeRecursively()) {
+            qFatal() << "Failed to delete existing folder:" << outputFolderPath;
         }
-        qDebug() << "Deleted existing parent folder:" << "Randomizers-Output";
+        qDebug() << "Deleted existing folder:" << outputFolderPath;
     }
 
-    // Recreate the parent folder
-    if (!dir.mkdir("Randomizers-Output")) {
-        qFatal() << "Failed to create directory:" << "Randomizers-Output";
+    // Recreate the folder
+    if (!QDir().mkdir(outputFolderPath)) {
+        qFatal() << "Failed to create directory:" << outputFolderPath;
     }
 
     for(unsigned int i = 0; i<randomizer.bulk_amount; i++){
@@ -223,13 +224,14 @@ void SVRandomizerWindow::runRandomizer(){
             randomizer.svRandomizerWilds.randomize();
         }
 
-        // if(randomizer.svRandomizerRaids.randomizePaldea == true){
-        //     QStringList paths = {};
-        //     QStringList schemas = {};
-        //     QStringList folders = {};
+        bool paldeaTrainers = false;
+        bool kitakamiTrainers = false;
+        bool blueberryTrainers = false;
 
-        //     randomizer.svRandomizerRaids.randomize(,"Paldea");
-        // }
+        bool randomizeTrainers = randomizer.svRandomizerTrainers.checkRandomization(paldeaTrainers, kitakamiTrainers, blueberryTrainers);
+        if(randomizeTrainers == true){
+            randomizer.svRandomizerTrainers.randomize(paldeaTrainers, kitakamiTrainers, blueberryTrainers);
+        }
 
         if(randomizer.auto_patch == true){
             qDebug()<<"Auto Patching Randomizer";
@@ -242,13 +244,15 @@ void SVRandomizerWindow::runRandomizer(){
             QDir().remove(qBaseDir.filePath("SV_DATA_FLATBUFFERS/data.json"));
         }
 
-        // Check if "output" folder exists before moving
-        if (dir.exists("output")) {
-            if (!dir.rename("output", newOutputFolder)) {
-                qFatal() << "Failed to move and rename output folder.";
+        QString basePath = QDir::currentPath();  // or use QCoreApplication::applicationDirPath()
+        QString outputFolder = basePath + "/output";
+
+        if (QDir(outputFolder).exists()) {
+            if (!QDir().rename(outputFolder, newOutputFolder)) {
+                qFatal() << "Failed to move and rename output folder from" << outputFolder << "to" << newOutputFolder;
             }
         } else {
-            qFatal() << "Output folder does not exist.";
+            qFatal() << "Output folder does not exist at" << outputFolder;
         }
     }
 }
@@ -661,13 +665,21 @@ QWidget* SVRandomizerWindow::createPaldeaTrainersWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    // formLayout->addRow(createTrainerSettings("Paldea", "All", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRivalLimiter, true));
-    // formLayout->addRow(createTrainerSettings("Paldea", "Rival", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRivalLimiter, true));
-    // formLayout->addRow(createTrainerSettings("Paldea", "Gym", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PGymLimiter, true));
-    // formLayout->addRow(createTrainerSettings("Paldea", "Elite 4", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PE4Limiter, true));
-    // formLayout->addRow(createTrainerSettings("Paldea", "Champion", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PChampionLimiter, true));
-    // formLayout->addRow(createTrainerSettings("Paldea", "Route", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRouteLimiter, true));
-    // formLayout->addRow(createTrainerSettings("Paldea", "Raid", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.PRaidLimiter, true));
+    QCheckBox* paldea_all_regions = new QCheckBox("Use Paldea Settings for all Regions");
+    formLayout->addWidget(paldea_all_regions);
+    // Connect for Setting the values
+    connect(paldea_all_regions, &QCheckBox::toggled, this, [this](bool checked) mutable{
+        randomizer.svRandomizerTrainers.paldeaForAll = checked;
+    });
+
+    formLayout->addRow(createTrainerSettings("Paldea", "All (excluding Koraidon/Miraidon)",  randomizer.svRandomizerTrainers.allTrainers, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Koraidon/Miraidon", randomizer.svRandomizerTrainers.paradisePokemon, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Rival", randomizer.svRandomizerTrainers.rivalTrainers, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Gym", randomizer.svRandomizerTrainers.gymTrainers, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Elite 4", randomizer.svRandomizerTrainers.e4Trainers, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Champion", randomizer.svRandomizerTrainers.championTrainers, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Route", randomizer.svRandomizerTrainers.routeTrainers, true));
+    formLayout->addRow(createTrainerSettings("Paldea", "Raid", randomizer.svRandomizerTrainers.raidTrainers, true));
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
@@ -692,11 +704,11 @@ QWidget* SVRandomizerWindow::createKitakamiTrainersWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    // formLayout->addRow(createTrainerSettings("Kitakami", "All", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRivalLimiter, false));
-    // formLayout->addRow(createTrainerSettings("Kitakami", "Rival", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRivalLimiter, false));
-    // formLayout->addRow(createTrainerSettings("Kitakami", "Ogre Clan", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KOCLimiter, false));
-    // formLayout->addRow(createTrainerSettings("Kitakami", "Route", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRouteLimiter, false));
-    // formLayout->addRow(createTrainerSettings("Kitakami", "Raid", randomizer.svRandomizerTrainers.kglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.KRaidLimiter, false));
+    formLayout->addRow(createTrainerSettings("Kitakami", "All", randomizer.svRandomizerTrainers.allKitakamiTrainers, false));
+    formLayout->addRow(createTrainerSettings("Kitakami", "Rival", randomizer.svRandomizerTrainers.kitakamiRivals, false));
+    formLayout->addRow(createTrainerSettings("Kitakami", "Ogre Clan", randomizer.svRandomizerTrainers.ogreClanTrainers, false));
+    formLayout->addRow(createTrainerSettings("Kitakami", "Route", randomizer.svRandomizerTrainers.kitakamiRouteTrainers, false));
+    formLayout->addRow(createTrainerSettings("Kitakami", "Raid", randomizer.svRandomizerTrainers.kitakamiRaidTrainers, false));
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
@@ -721,11 +733,12 @@ QWidget* SVRandomizerWindow::createBlueberryTrainersWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    // formLayout->addRow(createTrainerSettings("Blueberry", "All", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRivalLimiter, false));
-    // formLayout->addRow(createTrainerSettings("Blueberry", "Rival", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRivalLimiter, false));
-    // formLayout->addRow(createTrainerSettings("Blueberry", "BB4", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BBB4Limiter, false));
-    // formLayout->addRow(createTrainerSettings("Blueberry", "Route", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRouteLimiter, false));
-    // formLayout->addRow(createTrainerSettings("Blueberry", "Raid", randomizer.svRandomizerTrainers.bglobal_trainer_randomizer_settings, randomizer.svRandomizerTrainers.BRaidLimiter, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "All (excluding Terapagos)", randomizer.svRandomizerTrainers.allBlueberryTrainers, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "Terapagos", randomizer.svRandomizerTrainers.hiddenTreasure, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "Rival", randomizer.svRandomizerTrainers.blueberryRivals, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "BB4", randomizer.svRandomizerTrainers.bb4Trainers, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "Route", randomizer.svRandomizerTrainers.blueberryRouteTrainers, false));
+    formLayout->addRow(createTrainerSettings("Blueberry", "Raid", randomizer.svRandomizerTrainers.blueberryRaidTrainers, false));
 
     // Set form layout to main layout
     mainLayout->addLayout(formLayout);
@@ -1759,7 +1772,7 @@ QVBoxLayout* SVRandomizerWindow::createBlueberryRaid(){
     return blueberryRaidSettingLayout;
 }
 
-QVBoxLayout* SVRandomizerWindow::createTrainerSettings(QString region, QString trainerType, QVector<bool> allowedSettings, allowedPokemonLimiter limiter, bool paldea){
+QVBoxLayout* SVRandomizerWindow::createTrainerSettings(QString region, QString trainerType, trainerSettings& trainer, bool paldea){
     QVBoxLayout *globalTrainerSettingLayout = new QVBoxLayout();
 
     QMap<QString, QVariant> globalTrainerSettings;
@@ -1768,8 +1781,8 @@ QVBoxLayout* SVRandomizerWindow::createTrainerSettings(QString region, QString t
     QCheckBox* enable_trainers_global = new QCheckBox(QStringLiteral("Randomize %1 %2's Trainers").arg(trainerType).arg(region));
     globalTrainerSettingLayout->addWidget(enable_trainers_global);
     // Connect for Setting the values
-    connect(enable_trainers_global, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+    connect(enable_trainers_global, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+        trainer.randomize = checked;
     });
 
     // Creates Hidden Group based on button
@@ -1777,7 +1790,7 @@ QVBoxLayout* SVRandomizerWindow::createTrainerSettings(QString region, QString t
     QVBoxLayout *paldeaRaidSettingsLayout = new QVBoxLayout(paldeaRaidGroupSettings);
     QHBoxLayout *row0 = new QHBoxLayout();
     QHBoxLayout *row1 = new QHBoxLayout();
-    QHBoxLayout *row2 = new QHBoxLayout();
+    QHBoxLayout *row2;
     QHBoxLayout *row3 = new QHBoxLayout();
     QHBoxLayout *row4 = new QHBoxLayout();
 
@@ -1787,29 +1800,18 @@ QVBoxLayout* SVRandomizerWindow::createTrainerSettings(QString region, QString t
 
     globalTrainerSettingLayout->addWidget(paldeaRaidGroupSettings);
 
-    // Row 0
-    QCheckBox* paldea_all_regions;
-    if(paldea == true && trainerType == "All"){
-        paldea_all_regions = new QCheckBox("Use Paldea Settings for all Regions", paldeaRaidGroupSettings);
-        row0->addWidget(paldea_all_regions);
-        // Connect for Setting the values
-        connect(paldea_all_regions, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
-        });
-    }
-
     QCheckBox* tera_trainers = new QCheckBox(QStringLiteral("Allow %1 to Tera").arg(trainerType), paldeaRaidGroupSettings);
     row0->addWidget(tera_trainers);
     // Connect for Setting the values
-    connect(tera_trainers, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+    connect(tera_trainers, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+        trainer.allowTera = checked;
     });
 
     QCheckBox* randomize_tera_types = new QCheckBox("Randomize Tera Types", paldeaRaidGroupSettings);
     row0->addWidget(randomize_tera_types);
     // Connect for Setting the values
-    connect(randomize_tera_types, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+    connect(randomize_tera_types, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+        trainer.randomizeTeras = checked;
     });
 
     paldeaRaidSettingsLayout->addLayout(row0);
@@ -1817,26 +1819,27 @@ QVBoxLayout* SVRandomizerWindow::createTrainerSettings(QString region, QString t
     QCheckBox* shiny_trainers = new QCheckBox("Allow Shiny Pokemon", paldeaRaidGroupSettings);
     row1->addWidget(shiny_trainers);
     // Connect for Setting the values
-    connect(shiny_trainers, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+    connect(shiny_trainers, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+        trainer.allowShinies = checked;
     });
 
     paldeaRaidSettingsLayout->addLayout(row1);
     QCheckBox* singles_or_doubles;
     QCheckBox* all_doubles;
     if(trainerType != "Raid"){
+        row2 = new QHBoxLayout();
         singles_or_doubles = new QCheckBox("Randomnly Choose between Singles/Double Battles", paldeaRaidGroupSettings);
         row2->addWidget(singles_or_doubles);
         // Connect for Setting the values
-        connect(singles_or_doubles, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        connect(singles_or_doubles, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+            trainer.singlesOrDoubles = checked;
         });
 
         all_doubles = new QCheckBox("All Double Battles (where possible)", paldeaRaidGroupSettings);
         row2->addWidget(all_doubles);
         // Connect for Setting the values
-        connect(all_doubles, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        connect(all_doubles, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+            trainer.allDoubles = checked;
         });
 
         paldeaRaidSettingsLayout->addLayout(row2);
@@ -1845,22 +1848,22 @@ QVBoxLayout* SVRandomizerWindow::createTrainerSettings(QString region, QString t
     QCheckBox* force_6 = new QCheckBox("Force 6 Pokemons", paldeaRaidGroupSettings);
     row3->addWidget(force_6);
     // Connect for Setting the values
-    connect(force_6, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+    connect(force_6, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+        trainer.force6Pokemon = checked;
     });
 
     QCheckBox* give_extra = new QCheckBox("Give Extra Pokemon", paldeaRaidGroupSettings);
     row3->addWidget(give_extra);
     // Connect for Setting the values
-    connect(give_extra, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+    connect(give_extra, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+        trainer.extraPokemon = checked;
     });
 
     QCheckBox* force_perfect = new QCheckBox("Force Perfect IVs", paldeaRaidGroupSettings);
     row3->addWidget(force_perfect);
     // Connect for Setting the values
-    connect(force_perfect, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+    connect(force_perfect, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+        trainer.forcePerfectIV = checked;
     });
 
     paldeaRaidSettingsLayout->addLayout(row3);
@@ -1868,13 +1871,13 @@ QVBoxLayout* SVRandomizerWindow::createTrainerSettings(QString region, QString t
     QCheckBox* make_ai_smart = new QCheckBox("Make AI Smart", paldeaRaidGroupSettings);
     row4->addWidget(make_ai_smart);
     // Connect for Setting the values
-    connect(make_ai_smart, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+    connect(make_ai_smart, &QCheckBox::toggled, this, [&trainer](bool checked) mutable{
+        trainer.makeAISmart = checked;
     });
 
     paldeaRaidSettingsLayout->addLayout(row4);
 
-    setupAllowedPokemon(paldeaRaidSettingsLayout, limiter);
+    setupAllowedPokemon(paldeaRaidSettingsLayout, trainer.allowedPokemons);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{
