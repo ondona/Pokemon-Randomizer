@@ -36,15 +36,15 @@ class svBoss: public SVShared, public QObject{
         void patchAreaZeroLegends();
         void patchSnacksworths();
         void obtainPokemonScene(int &dev, int &form, int& gender, int &rare);
-        void saveIndividualPokemon(int index, std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare);
-        void changeScene(std::vector<std::pair<std::string, std::string>> filePairs,
-                         std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare,
-                         std::string output, std::string romAddress);
-        void changeSceneOne(std::vector<std::pair<std::string, std::string>> filePairs,
-                            std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare,
-                            std::string output, std::string romAddress);
-        void savePokemonFromTrainer(int id, std::string& pokeKey,
-                                    std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare);
+        void saveIndividualPokemon(int index, QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare);
+        void changeScene(QList<QPair<QString, QString>> filePairs,
+                         QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare,
+                         QString output, QString romAddress);
+        void changeSceneOne(QList<QPair<QString, QString>> filePairs,
+                            QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare,
+                            QString output, QString romAddress);
+        void savePokemonFromTrainer(int id, QString& pokeKey,
+                                    QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare);
 
 };
 

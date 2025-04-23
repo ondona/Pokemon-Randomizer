@@ -1,18 +1,9 @@
 #include "headers/sv_randomizer_headers/sv_boss.h"
-#include <filesystem>
-#include <fstream>
-namespace fs = std::filesystem;
 
-json cleanBossData;
-json bossMappingInfo;
-json trainerInfo;
-json trainerFiles;
-QDir BaseDir;
-
-void svBoss::saveIndividualPokemon(int index, std::vector<int> &dev, std::vector<int> &form, std::vector<int> &genderV, std::vector<bool> &rareV){
-    dev.push_back(bossMappingInfo["pokemons_dev"][cleanBossData["values"][index]["pokeData"]["devId"]]["devid"]);
+void svBoss::saveIndividualPokemon(int index, QVector<int> &dev, QVector<int> &form, QVector<int> &genderV, QVector<bool> &rareV){
+    dev.push_back(pokemonMapping["pokemons_dev"][cleanBossData["values"][index]["pokeData"]["devId"]]["devid"]);
     form.push_back(cleanBossData["values"][index]["pokeData"]["formId"]);
-    std::string gender = cleanBossData["values"][index]["pokeData"]["sex"];
+    QString gender = cleanBossData["values"][index]["pokeData"]["sex"];
     if(gender != "FEMALE"){
         genderV.push_back(0);
     }
@@ -20,7 +11,7 @@ void svBoss::saveIndividualPokemon(int index, std::vector<int> &dev, std::vector
         genderV.push_back(1);
     }
 
-    std::string rare = cleanBossData["values"][index]["pokeData"]["rareType"];
+    QString rare = cleanBossData["values"][index]["pokeData"]["rareType"];
     if(gender != "RARE"){
         rareV.push_back(0);
     }
@@ -29,10 +20,10 @@ void svBoss::saveIndividualPokemon(int index, std::vector<int> &dev, std::vector
     }
 }
 
-void svBoss::savePokemonFromTrainer(int index, std::string& pokeKey, std::vector<int> &dev, std::vector<int> &form, std::vector<int> &genderV, std::vector<bool> &rareV){
-    dev.push_back(bossMappingInfo["pokemons_dev"][trainerInfo["values"][index][pokeKey]["devId"].get<std::string>().c_str()]["devid"]);
+void svBoss::savePokemonFromTrainer(int index, QString& pokeKey, QVector<int> &dev, QVector<int> &form, QVector<int> &genderV, QVector<bool> &rareV){
+    dev.push_back(pokemonMapping["pokemons_dev"][trainerInfo["values"][index][pokeKey]["devId"].get<QString>().c_str()]["devid"]);
     form.push_back(trainerInfo["values"][index][pokeKey]["formId"]);
-    std::string gender = trainerInfo["values"][index][pokeKey]["sex"].get<std::string>().c_str();
+    QString gender = trainerInfo["values"][index][pokeKey]["sex"].get<QString>().c_str();
     if(gender != "FEMALE"){
         genderV.push_back(0);
     }
@@ -40,7 +31,7 @@ void svBoss::savePokemonFromTrainer(int index, std::string& pokeKey, std::vector
         genderV.push_back(1);
     }
 
-    std::string rare = trainerInfo["values"][index][pokeKey]["rareType"].get<std::string>().c_str();
+    QString rare = trainerInfo["values"][index][pokeKey]["rareType"].get<QString>().c_str();
     if(gender != "RARE"){
         rareV.push_back(0);
     }
@@ -51,15 +42,15 @@ void svBoss::savePokemonFromTrainer(int index, std::string& pokeKey, std::vector
 
 void svBoss::obtainPokemonScene(int &dev, int &form, int& gender, int &rare){
     dev = 1+std::rand()%1025;
-    while(!allowedPokemon.contains(bossMappingInfo["pokemons"][dev]["natdex"]))
+    while(!allowedPokemon.contains(pokemonMapping["pokemons"][dev]["natdex"]))
         dev = 1+std::rand()%1025;
 
-    form = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][dev]["forms"].size());
-    while(bossMappingInfo["pokemons"][dev]["forms"][form]["is_present"] == false){
-        form = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][dev]["forms"].size());
+    form = std::rand()%static_cast<int>(pokemonMapping["pokemons"][dev]["forms"].size());
+    while(pokemonMapping["pokemons"][dev]["forms"][form]["is_present"] == false){
+        form = std::rand()%static_cast<int>(pokemonMapping["pokemons"][dev]["forms"].size());
     }
 
-    QString form_Check = QString::fromUtf8(bossMappingInfo["pokemons"][dev]["name"].get<std::string>().c_str());
+    QString form_Check = QString::fromUtf8(pokemonMapping["pokemons"][dev]["name"].get<QString>().c_str());
     if(maleOnlyPokemon.contains(form_Check) || genderlessPokemon.contains(form_Check)){
 
         if(genderlessPokemon.contains(form_Check)){
@@ -79,7 +70,7 @@ void svBoss::obtainPokemonScene(int &dev, int &form, int& gender, int &rare){
         }
     }else{
         int rand_gender = 1+std::rand()%100;
-        if(rand_gender > int(pokemonMapping["entry"][int(bossMappingInfo["pokemons"][dev]["devid"])]["gender"]["ratio"])){
+        if(rand_gender > int(pokemonPersonalData["entry"][int(pokemonMapping["pokemons"][dev]["devid"])]["gender"]["ratio"])){
             gender = 0;
         }else{
 
@@ -96,37 +87,37 @@ void svBoss::obtainPokemonScene(int &dev, int &form, int& gender, int &rare){
     }
 
     //set dev to devid
-    dev = bossMappingInfo["pokemons"][dev]["devid"];
+    dev = pokemonMapping["pokemons"][dev]["devid"];
 
 }
 
-void svBoss::changeSceneOne(std::vector<std::pair<std::string, std::string>> filePairs,
-                            std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare,
-                            std::string output, std::string romAddress){
+void svBoss::changeSceneOne(QList<QPair<QString, QString>> filePairs,
+                            QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare,
+                            QString output, QString romAddress){
 
     for (const auto& filePair : filePairs) {
         this->modifyPokemonScene(dev, form, gender, rare, filePair.first, filePair.second);
     }
 
-    generateBinary(BaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
-                   BaseDir.filePath("SV_SCENES/"+QString::fromStdString(output)).toStdString(),
+    generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                   qBaseDir.filePath("SV_SCENES/"+QString::fromStdString(output)).toStdString(),
                    romAddress);
 }
 
-void svBoss::changeScene(std::vector<std::pair<std::string, std::string>> filePairs,
-                         std::vector<int> &dev, std::vector<int> &form, std::vector<int> &gender, std::vector<bool> &rare,
-                         std::string output, std::string romAddress){
+void svBoss::changeScene(QList<QPair<QString, QString>> filePairs,
+                         QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare,
+                         QString output, QString romAddress){
 
     for (const auto& filePair : filePairs) {
         this->modifyPokemonScene(dev, form, gender, rare, filePair.first, filePair.second);
     }
 
-    generateBinary(BaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
-                   BaseDir.filePath("SV_SCENES/"+QString::fromStdString(output)+"_0.json").toStdString(),
+    generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                   qBaseDir.filePath("SV_SCENES/"+QString::fromStdString(output)+"_0.json").toStdString(),
                    romAddress);
 
-    generateBinary(BaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
-                   BaseDir.filePath("SV_SCENES/"+QString::fromStdString(output)+"_1.json").toStdString(),
+    generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                   qBaseDir.filePath("SV_SCENES/"+QString::fromStdString(output)+"_1.json").toStdString(),
                    romAddress);
 }
 
@@ -281,9 +272,9 @@ void svBoss::patchLeChonk(){
 
     // Set Lechonk
     for(int i =0; i<=4; i++){
-        devIdBoss.push_back(bossMappingInfo["pokemons_dev"][cleanBossData["values"][24]["pokeData"]["devId"]]["devid"]);
+        devIdBoss.push_back(pokemonMapping["pokemons_dev"][cleanBossData["values"][24]["pokeData"]["devId"]]["devid"]);
         formIdBoss.push_back(cleanBossData["values"][24]["pokeData"]["formId"]);
-        std::string gender = cleanBossData["values"][24]["pokeData"]["sex"];
+        QString gender = cleanBossData["values"][24]["pokeData"]["sex"];
         if(gender != "FEMALE"){
             genderBoss.push_back(0);
         }
@@ -291,7 +282,7 @@ void svBoss::patchLeChonk(){
             genderBoss.push_back(1);
         }
 
-        std::string rare = cleanBossData["values"][24]["pokeData"]["rareType"];
+        QString rare = cleanBossData["values"][24]["pokeData"]["rareType"];
         if(gender != "RARE"){
             rareBoss.push_back(0);
         }
@@ -339,12 +330,12 @@ void svBoss::patchLeChonk(){
         this->modifyPokemonScene(devIdBoss, formIdBoss, genderBoss, rareBoss, filePair.first, filePair.second);
     }
 
-    generateBinary(BaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
-                   BaseDir.filePath(+"SV_SCENES/SV_FIRST_ROUTE/common_0100_main_0.json").toStdString(),
+    generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                   qBaseDir.filePath(+"SV_SCENES/SV_FIRST_ROUTE/common_0100_main_0.json").toStdString(),
                    "world/scene/parts/event/event_scenario/main_scenario/common_0100_/");
 
-    generateBinary(BaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
-                   BaseDir.filePath(+"SV_SCENES/SV_FIRST_ROUTE/common_0100_main_1.json").toStdString(),
+    generateBinary(qBaseDir.filePath("SV_SCENES/TrinitySceneObjectTemplate.fbs").toStdString(),
+                   qBaseDir.filePath(+"SV_SCENES/SV_FIRST_ROUTE/common_0100_main_1.json").toStdString(),
                    "world/scene/parts/event/event_scenario/main_scenario/common_0100_/");
 }
 
@@ -372,16 +363,16 @@ void svBoss::patchHoundoom(){
 }
 
 void svBoss::patchSunflora(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Sunflora - 26
     for(int i =0; i<=29; i ++)
         saveIndividualPokemon(26, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"MISC/Sunflora/pokes_0_clean.json", "MISC/Sunflora/pokes_0.json"},
         {"MISC/Sunflora/pokes_1_clean.json", "MISC/Sunflora/pokes_1.json"}
     };
@@ -398,15 +389,15 @@ void svBoss::patchSunflora(){
 }
 
 void svBoss::patchDonzoTitan(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Donzo - 33
     saveIndividualPokemon(33, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_0_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_0.json"},
         {"SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_1_clean.json", "SV_TITANS/Dondozo_Tatsu/nushi_dragon_010_always_1.json"}
     };
@@ -493,7 +484,7 @@ void svBoss::patchDonzoTitan(){
 
     saveIndividualPokemon(33, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(37, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    std::string pokeKy = "poke1";
+    QString pokeKy = "poke1";
     savePokemonFromTrainer(435, pokeKy, devIdBoss, formIdBoss, genderBoss, rareBoss);
     //saveIndividualPokemon(37, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
@@ -513,15 +504,15 @@ void svBoss::patchDonzoTitan(){
 }
 
 void svBoss::patchOrthwormTitan(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Orthworm - 35
     saveIndividualPokemon(35, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_TITANS/Orthworm/nushi_hagane_010_pre_start_0_clean.json", "SV_TITANS/Orthworm/nushi_hagane_010_pre_start_0.json"},
         {"SV_TITANS/Orthworm/nushi_hagane_010_pre_start_1_clean.json", "SV_TITANS/Orthworm/nushi_hagane_010_pre_start_1.json"}
     };
@@ -573,16 +564,16 @@ void svBoss::patchOrthwormTitan(){
 }
 
 void svBoss::patchBombariderTitan(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Bombardier - 41
     saveIndividualPokemon(41, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(41, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_TITANS/Bombirdier/HikoNushi_0_clean.json", "SV_TITANS/Bombirdier/HikoNushi_0.json"},
         {"SV_TITANS/Bombirdier/HikoNushi_1_clean.json", "SV_TITANS/Bombirdier/HikoNushi_1.json"}
     };
@@ -660,15 +651,15 @@ void svBoss::patchBombariderTitan(){
 }
 
 void svBoss::patchKlawfTitan(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Bombardier - 41
     saveIndividualPokemon(43, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_TITANS/Klawf/nushi_iwa_010_pre_start_0_clean.json", "SV_TITANS/Klawf/nushi_iwa_010_pre_start_0.json"},
         {"SV_TITANS/Klawf/nushi_iwa_010_pre_start_1_clean.json", "SV_TITANS/Klawf/nushi_iwa_010_pre_start_1.json"}
     };
@@ -720,17 +711,17 @@ void svBoss::patchKlawfTitan(){
 }
 
 void svBoss::patchGreatIronTitan(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Great Tusk - 45
     // Iron Treads - 47
     saveIndividualPokemon(47, devIdBoss, formIdBoss, genderBoss, rareBoss);
     saveIndividualPokemon(45, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_0_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_0.json"},
         {"SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_1_clean.json", "SV_TITANS/Great_Iron/nushi_jimen_010_pre_start_1.json"}
     };
@@ -829,14 +820,14 @@ void svBoss::patchGreatIronTitan(){
 }
 
 void svBoss::patchTingLu(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Bombardier - 49
     saveIndividualPokemon(49, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_LEGENDS/Treasures/sub_014_main_0_clean.json", "SV_LEGENDS/Treasures/sub_014_main_0.json"},
         {"SV_LEGENDS/Treasures/sub_014_main_1_clean.json", "SV_LEGENDS/Treasures/sub_014_main_1.json"}
     };
@@ -853,14 +844,14 @@ void svBoss::patchTingLu(){
 }
 
 void svBoss::patchChienPao(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Bombardier - 49
     saveIndividualPokemon(50, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_LEGENDS/Treasures/sub_015_main_0_clean.json", "SV_LEGENDS/Treasures/sub_015_main_0.json"},
         {"SV_LEGENDS/Treasures/sub_015_main_1_clean.json", "SV_LEGENDS/Treasures/sub_015_main_1.json"}
     };
@@ -877,14 +868,14 @@ void svBoss::patchChienPao(){
 }
 
 void svBoss::patchWoChien(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Bombardier - 49
     saveIndividualPokemon(51, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_LEGENDS/Treasures/sub_016_main_0_clean.json", "SV_LEGENDS/Treasures/sub_016_main_0.json"},
         {"SV_LEGENDS/Treasures/sub_016_main_1_clean.json", "SV_LEGENDS/Treasures/sub_016_main_1.json"}
     };
@@ -901,14 +892,14 @@ void svBoss::patchWoChien(){
 }
 
 void svBoss::patchChiYu(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     // Bombardier - 49
     saveIndividualPokemon(52, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_LEGENDS/Treasures/sub_017_main_0_clean.json", "SV_LEGENDS/Treasures/sub_017_main_0.json"},
         {"SV_LEGENDS/Treasures/sub_017_main_1_clean.json", "SV_LEGENDS/Treasures/sub_017_main_1.json"}
     };
@@ -932,7 +923,7 @@ void svBoss::copyStellarOgerpon(unsigned long long indexSet, unsigned long long 
     cleanBossData["values"][indexSet]["pokeData"]["item"] = cleanBossData["values"][indexCopy]["pokeData"]["item"];
     cleanBossData["values"][indexSet]["pokeData"]["wazaType"] = "DEFAULT";
     for(int i = 1; i<=4; i++){
-        std::string key = "waza"+std::to_string(i);
+        QString key = "waza"+std::to_string(i);
         cleanBossData["values"][indexSet]["pokeData"][key]["wazaId"] = "WAZA_NULL";
     }
 }
@@ -945,7 +936,7 @@ void svBoss::copyFight(unsigned long long indexSet, unsigned long long indexCopy
     cleanBossData["values"][indexSet]["pokeData"]["item"] = cleanBossData["values"][indexCopy]["pokeData"]["item"];
     cleanBossData["values"][indexSet]["pokeData"]["wazaType"] = "DEFAULT";
     for(int i = 1; i<=4; i++){
-        std::string key = "waza"+std::to_string(i);
+        QString key = "waza"+std::to_string(i);
         cleanBossData["values"][indexSet]["pokeData"][key]["wazaId"] = "WAZA_NULL";
     }
     cleanBossData["values"][indexSet]["pokeData"]["gemType"] = cleanBossData["values"][indexCopy]["pokeData"]["gemType"];
@@ -954,18 +945,18 @@ void svBoss::copyFight(unsigned long long indexSet, unsigned long long indexCopy
 void svBoss::randomizeFight(unsigned long long index){
     if(index == 31 || index == 32 ||cleanBossData["values"][index]["label"] == "SDC02_0310_kodaikame" || cleanBossData["values"][index]["label"] == "SDC02_0330_kodaikame"){
         int random = 1+std::rand()%1025;
-        while(!allowedPokemon.contains(bossMappingInfo["pokemons"][random]["natdex"]))
+        while(!allowedPokemon.contains(pokemonMapping["pokemons"][random]["natdex"]))
             random = 1+std::rand()%1025;
 
         int formRandom = 0;
 
         if(random != 1017){
-            formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
-            while(bossMappingInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
-                formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
+            formRandom = std::rand()%static_cast<int>(pokemonMapping["pokemons"][random]["forms"].size());
+            while(pokemonMapping["pokemons"][random]["forms"][formRandom]["is_present"] == false){
+                formRandom = std::rand()%static_cast<int>(pokemonMapping["pokemons"][random]["forms"].size());
             }
 
-            cleanBossData["values"][index]["pokeData"]["devId"] = bossMappingInfo["pokemons"][random]["devName"];
+            cleanBossData["values"][index]["pokeData"]["devId"] = pokemonMapping["pokemons"][random]["devName"];
 
             // Set Starter Form
             cleanBossData["values"][index]["pokeData"]["formId"] = formRandom;
@@ -974,9 +965,9 @@ void svBoss::randomizeFight(unsigned long long index){
             cleanBossData["values"][index]["pokeData"]["formId"] = 3;
         }
 
-        std::string genderStd = "";
+        QString genderStd = "";
 
-        QString form_Check = QString::fromUtf8(bossMappingInfo["pokemons"][random]["name"].get<std::string>().c_str());
+        QString form_Check = QString::fromUtf8(pokemonMapping["pokemons"][random]["name"].get<QString>().c_str());
         if(maleOnlyPokemon.contains(form_Check) || genderlessPokemon.contains(form_Check)){
 
             if(genderlessPokemon.contains(form_Check)){
@@ -996,7 +987,7 @@ void svBoss::randomizeFight(unsigned long long index){
             }
         }else{
             int rand_gender = 1+std::rand()%100;
-            if(rand_gender > int(pokemonMapping["entry"][int(bossMappingInfo["pokemons"][random]["devid"])]["gender"]["ratio"])){
+            if(rand_gender > int(pokemonPersonalData["entry"][int(pokemonMapping["pokemons"][random]["devid"])]["gender"]["ratio"])){
                 genderStd = "MALE";
             }else{
 
@@ -1012,7 +1003,7 @@ void svBoss::randomizeFight(unsigned long long index){
         else{
             cleanBossData["values"][index]["pokeData"]["rareType"] = "NO_RARE";
         }
-        std::string itemForPokemon = getPokemonItemId(bossMappingInfo["pokemons"][random]["natdex"], formRandom);
+        QString itemForPokemon = getPokemonItemId(pokemonMapping["pokemons"][random]["natdex"], formRandom);
         cleanBossData["values"][index]["pokeData"]["item"] = itemForPokemon;
 
 
@@ -1034,22 +1025,22 @@ void svBoss::randomizeFight(unsigned long long index){
     }
     else{
         int random = 1+std::rand()%1025;
-        while(!allowedPokemon.contains(bossMappingInfo["pokemons"][random]["natdex"]))
+        while(!allowedPokemon.contains(pokemonMapping["pokemons"][random]["natdex"]))
             random = 1+std::rand()%1025;
 
-        int formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
-        while(bossMappingInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
-            formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
+        int formRandom = std::rand()%static_cast<int>(pokemonMapping["pokemons"][random]["forms"].size());
+        while(pokemonMapping["pokemons"][random]["forms"][formRandom]["is_present"] == false){
+            formRandom = std::rand()%static_cast<int>(pokemonMapping["pokemons"][random]["forms"].size());
         }
 
-        cleanBossData["values"][index]["pokeData"]["devId"] = bossMappingInfo["pokemons"][random]["devName"];
+        cleanBossData["values"][index]["pokeData"]["devId"] = pokemonMapping["pokemons"][random]["devName"];
 
         // Set Starter Form
         cleanBossData["values"][index]["pokeData"]["formId"] = formRandom;
 
-        std::string genderStd = "";
+        QString genderStd = "";
 
-        QString form_Check = QString::fromUtf8(bossMappingInfo["pokemons"][random]["name"].get<std::string>().c_str());
+        QString form_Check = QString::fromUtf8(pokemonMapping["pokemons"][random]["name"].get<QString>().c_str());
         if(maleOnlyPokemon.contains(form_Check) || genderlessPokemon.contains(form_Check)){
 
             if(genderlessPokemon.contains(form_Check)){
@@ -1069,7 +1060,7 @@ void svBoss::randomizeFight(unsigned long long index){
             }
         }else{
             int rand_gender = 1+std::rand()%100;
-            if(rand_gender > int(pokemonMapping["entry"][int(bossMappingInfo["pokemons"][random]["devid"])]["gender"]["ratio"])){
+            if(rand_gender > int(pokemonPersonalData["entry"][int(pokemonMapping["pokemons"][random]["devid"])]["gender"]["ratio"])){
                 genderStd = "MALE";
             }else{
 
@@ -1085,13 +1076,13 @@ void svBoss::randomizeFight(unsigned long long index){
         else{
             cleanBossData["values"][index]["pokeData"]["rareType"] = "NO_RARE";
         }
-        std::string itemForPokemon = getPokemonItemId(bossMappingInfo["pokemons"][random]["natdex"], formRandom);
+        QString itemForPokemon = getPokemonItemId(pokemonMapping["pokemons"][random]["natdex"], formRandom);
         cleanBossData["values"][index]["pokeData"]["item"] = itemForPokemon;
 
 
         cleanBossData["values"][index]["pokeData"]["wazaType"] = "DEFAULT";
         for(int i = 1; i<=4; i++){
-            std::string key = "waza"+std::to_string(i);
+            QString key = "waza"+std::to_string(i);
             cleanBossData["values"][index]["pokeData"][key]["wazaId"] = "WAZA_NULL";
         }
 
@@ -1101,22 +1092,22 @@ void svBoss::randomizeFight(unsigned long long index){
 
 void svBoss::randomizeStellarOgerpon(unsigned long long index){
     int random = 1+std::rand()%1025;
-    while(!allowedPokemon.contains(bossMappingInfo["pokemons"][random]["natdex"]))
+    while(!allowedPokemon.contains(pokemonMapping["pokemons"][random]["natdex"]))
         random = 1+std::rand()%1025;
 
-    int formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
-    while(bossMappingInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
-        formRandom = std::rand()%static_cast<int>(bossMappingInfo["pokemons"][random]["forms"].size());
+    int formRandom = std::rand()%static_cast<int>(pokemonMapping["pokemons"][random]["forms"].size());
+    while(pokemonMapping["pokemons"][random]["forms"][formRandom]["is_present"] == false){
+        formRandom = std::rand()%static_cast<int>(pokemonMapping["pokemons"][random]["forms"].size());
     }
 
-    cleanBossData["values"][index]["pokeData"]["devId"] = bossMappingInfo["pokemons"][random]["devName"];
+    cleanBossData["values"][index]["pokeData"]["devId"] = pokemonMapping["pokemons"][random]["devName"];
 
     // Set Starter Form
     cleanBossData["values"][index]["pokeData"]["formId"] = formRandom;
 
-    std::string genderStd = "";
+    QString genderStd = "";
 
-    QString form_Check = QString::fromUtf8(bossMappingInfo["pokemons"][random]["name"].get<std::string>().c_str());
+    QString form_Check = QString::fromUtf8(pokemonMapping["pokemons"][random]["name"].get<QString>().c_str());
     if(maleOnlyPokemon.contains(form_Check) || genderlessPokemon.contains(form_Check)){
 
         if(genderlessPokemon.contains(form_Check)){
@@ -1136,7 +1127,7 @@ void svBoss::randomizeStellarOgerpon(unsigned long long index){
         }
     }else{
         int rand_gender = 1+std::rand()%100;
-        if(rand_gender > int(pokemonMapping["entry"][int(bossMappingInfo["pokemons"][random]["devid"])]["gender"]["ratio"])){
+        if(rand_gender > int(pokemonPersonalData["entry"][int(pokemonMapping["pokemons"][random]["devid"])]["gender"]["ratio"])){
             genderStd = "MALE";
         }else{
 
@@ -1152,26 +1143,26 @@ void svBoss::randomizeStellarOgerpon(unsigned long long index){
     else{
         cleanBossData["values"][index]["pokeData"]["rareType"] = "NO_RARE";
     }
-    std::string itemForPokemon = getPokemonItemId(bossMappingInfo["pokemons"][random]["natdex"], formRandom);
+    QString itemForPokemon = getPokemonItemId(pokemonMapping["pokemons"][random]["natdex"], formRandom);
     cleanBossData["values"][index]["pokeData"]["item"] = itemForPokemon;
 
     cleanBossData["values"][index]["pokeData"]["wazaType"] = "DEFAULT";
     for(int i = 1; i<=4; i++){
-        std::string key = "waza"+std::to_string(i);
+        QString key = "waza"+std::to_string(i);
         cleanBossData["values"][index]["pokeData"][key]["wazaId"] = "WAZA_NULL";
     }
 }
 
 void svBoss::patchLoyalThreeOgerpon(){
-    std::string outputKey = "output";
+    QString outputKey = "output";
     // Ogerpon
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     saveIndividualPokemon(58, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_Kitakami/Ogerpon/d610_0_clean.json", "SV_Kitakami/Ogerpon/d610_0.json"},
         {"SV_Kitakami/Ogerpon/d610_1_clean.json", "SV_Kitakami/Ogerpon/d610_1.json"}
     };
@@ -1495,10 +1486,10 @@ void svBoss::patchLoyalThreeOgerpon(){
     rareBoss.clear();
 
     // Loyal Three
-    std::vector<int> devIdBoss_0;
-    std::vector<int> formIdBoss_0;
-    std::vector<int> genderBoss_0;
-    std::vector<bool> rareBoss_0;
+    QVector<int> devIdBoss_0;
+    QVector<int> formIdBoss_0;
+    QVector<int> genderBoss_0;
+    QVector<bool> rareBoss_0;
     saveIndividualPokemon(55, devIdBoss_0, formIdBoss_0, genderBoss_0, rareBoss_0);
     saveIndividualPokemon(53, devIdBoss_0, formIdBoss_0, genderBoss_0, rareBoss_0);
     saveIndividualPokemon(56, devIdBoss_0, formIdBoss_0, genderBoss_0, rareBoss_0);
@@ -1519,10 +1510,10 @@ void svBoss::patchLoyalThreeOgerpon(){
 
     filePairs.clear();
 
-    std::vector<int> devIdBoss_1;
-    std::vector<int> formIdBoss_1;
-    std::vector<int> genderBoss_1;
-    std::vector<bool> rareBoss_1;
+    QVector<int> devIdBoss_1;
+    QVector<int> formIdBoss_1;
+    QVector<int> genderBoss_1;
+    QVector<bool> rareBoss_1;
     saveIndividualPokemon(58, devIdBoss_1, formIdBoss_1, genderBoss_1, rareBoss_1);
     saveIndividualPokemon(55, devIdBoss_1, formIdBoss_1, genderBoss_1, rareBoss_1);
     saveIndividualPokemon(53, devIdBoss_1, formIdBoss_1, genderBoss_1, rareBoss_1);
@@ -1544,10 +1535,10 @@ void svBoss::patchLoyalThreeOgerpon(){
 
     filePairs.clear();
 
-    std::vector<int> devIdBoss_2;
-    std::vector<int> formIdBoss_2;
-    std::vector<int> genderBoss_2;
-    std::vector<bool> rareBoss_2;
+    QVector<int> devIdBoss_2;
+    QVector<int> formIdBoss_2;
+    QVector<int> genderBoss_2;
+    QVector<bool> rareBoss_2;
     saveIndividualPokemon(58, devIdBoss_2, formIdBoss_2, genderBoss_2, rareBoss_2);
     saveIndividualPokemon(53, devIdBoss_2, formIdBoss_2, genderBoss_2, rareBoss_2);
     saveIndividualPokemon(56, devIdBoss_2, formIdBoss_2, genderBoss_2, rareBoss_2);
@@ -1604,15 +1595,15 @@ void svBoss::patchLoyalThreeOgerpon(){
 }
 
 void svBoss::patchKitakami(){
-    std::string outputKey = "output";
+    QString outputKey = "output";
     // Ogerpon
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     saveIndividualPokemon(67, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_Kitakami/Other/sdc01_0300_main_0_clean.json", "SV_Kitakami/Other/sdc01_0300_main_0.json"},
         {"SV_Kitakami/Other/sdc01_0300_main_1_clean.json", "SV_Kitakami/Other/sdc01_0300_main_1.json"}
     };
@@ -1674,15 +1665,15 @@ void svBoss::patchKitakami(){
 }
 
 void svBoss::patchStellarUnderdeepths(){
-    std::string outputKey = "output";
+    QString outputKey = "output";
     // Ogerpon
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
 
     saveIndividualPokemon(78, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_AZ/Underdepths/s2_sub_005_pre_start_0_clean.json", "SV_AZ/Underdepths/s2_sub_005_pre_start_0.json"},
         {"SV_AZ/Underdepths/s2_sub_005_pre_start_1_clean.json", "SV_AZ/Underdepths/s2_sub_005_pre_start_1.json"}
     };
@@ -1795,14 +1786,14 @@ void svBoss::patchStellarUnderdeepths(){
 }
 
 void svBoss::patchAreaZeroLegends(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
-    std::string outputKey = "output";
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
+    QString outputKey = "output";
 
     saveIndividualPokemon(76, devIdBoss, formIdBoss, genderBoss, rareBoss);
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
                                                                   {"SV_AZ/Legends/s2_side02_0010_pre_start_0_clean.json", "SV_AZ/Legends/s2_side02_0010_pre_start_0.json"},
                                                                   };
     changeSceneOne(filePairs, devIdBoss, formIdBoss, genderBoss, rareBoss,
@@ -1868,15 +1859,15 @@ void svBoss::patchAreaZeroLegends(){
 }
 
 void svBoss::patchTerapagos(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
-    std::string outputKey = "output";
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
+    QString outputKey = "output";
 
     saveIndividualPokemon(88, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_AZ/Terapagos/d730_0_clean.json", "SV_AZ/Terapagos/d730_0.json"},
         {"SV_AZ/Terapagos/d730_1_clean.json", "SV_AZ/Terapagos/d730_1.json"}
     };
@@ -1907,16 +1898,16 @@ void svBoss::patchTerapagos(){
 }
 
 void svBoss::patchSnacksworths(){
-    std::vector<int> devIdBoss;
-    std::vector<int> formIdBoss;
-    std::vector<int> genderBoss;
-    std::vector<bool> rareBoss;
-    std::string outputKey = "output";
+    QVector<int> devIdBoss;
+    QVector<int> formIdBoss;
+    QVector<int> genderBoss;
+    QVector<bool> rareBoss;
+    QString outputKey = "output";
 
     saveIndividualPokemon(86, devIdBoss, formIdBoss, genderBoss, rareBoss);
 
     // Pecharunt
-    std::vector<std::pair<std::string, std::string>> filePairs = {
+    QList<QPair<QString, QString>> filePairs = {
         {"SV_LEGENDS/Pecharunt/s2_side01_0160_always_0_clean.json", "SV_LEGENDS/Pecharunt/s2_side01_0160_always_0.json"},
         {"SV_LEGENDS/Pecharunt/s2_side01_0160_always_1_clean.json", "SV_LEGENDS/Pecharunt/s2_side01_0160_always_1.json"}
     };
@@ -1975,10 +1966,10 @@ void svBoss::patchSnacksworths(){
     QList<int> snacksworthLegends = {92, 112, 102, 104, 91, 109, 100, 95, 98, 99, 96, 94, 105, 89, 110, 111, 106, 113, 97, 107, 101, 103, 90, 93, 108};
     for(int i = 13, k=0; i<=37; i++, k++){
         saveIndividualPokemon(snacksworthLegends[k], devIdBoss, formIdBoss, genderBoss, rareBoss);
-        std::string fileName = "s2_sub_0"+std::to_string(i)+"_pre_start";
-        std::string fileName0 = "s2_sub_0"+std::to_string(i)+"_pre_start_0";
-        std::string fileName1 = "s2_sub_0"+std::to_string(i)+"_pre_start_1";
-        std::string folderName = "world/scene/parts/event/event_scenario/sub_scenario/s2_sub_0"+std::to_string(i)+"_/";
+        QString fileName = "s2_sub_0"+std::to_string(i)+"_pre_start";
+        QString fileName0 = "s2_sub_0"+std::to_string(i)+"_pre_start_0";
+        QString fileName1 = "s2_sub_0"+std::to_string(i)+"_pre_start_1";
+        QString folderName = "world/scene/parts/event/event_scenario/sub_scenario/s2_sub_0"+std::to_string(i)+"_/";
 
         filePairs = {
             {"SV_LEGENDS/Snacksworth/"+fileName0+"_clean.json", "SV_LEGENDS/Snacksworth/"+fileName0+".json"},
@@ -2002,38 +1993,7 @@ void svBoss::patchSnacksworths(){
     }
 }
 
-void svBoss::randomizeBosses(QDir baseDir){
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
-    QString QBaseAddress = QString::fromStdString(filePath);
-    QDir qBaseDir(QBaseAddress);
-    std::ifstream fileInfo(qBaseDir.filePath("pokemon_mapping.json").toStdString());
-    std::ifstream fileBoss(qBaseDir.filePath("SV_SCENES/eventBattlePokemon_array_clean.json").toStdString());
-    std::ifstream fileTrainer(qBaseDir.filePath("SV_TRAINERS/trdata_array.json").toStdString());
-
-    if(!fileTrainer.is_open()){
-        fileTrainer.open(qBaseDir.filePath("SV_TRAINERS/trdata_array_clean.json").toStdString());
-        if(!fileTrainer.is_open()){
-            qFatal()<<"Couldn't open any of the trdata_array jsons";
-        }
-    }
-
-    BaseDir = baseDir;
-
-    if(!fileBoss.is_open()){
-        qFatal()<<"eventBattlePokemon_array_clean.json did not open!";
-    }
-
-    if(!fileInfo.is_open()){
-        qFatal()<<"pokemon_mapping.json did not open!";
-    }
-
-    fileInfo >> bossMappingInfo;
-    fileInfo.close();
-    fileBoss >>cleanBossData;
-    fileBoss.close();
-    fileTrainer >> trainerInfo;
-    fileTrainer.close();
-
+void svBoss::randomizeBosses(QDir qBaseDir){
     for(unsigned long long i =0; i<cleanBossData["values"].size(); i++){
         if(i == 115){
             copyFight(i, 31);
@@ -2121,11 +2081,4 @@ void svBoss::randomizeBosses(QDir baseDir){
     patchAreaZeroLegends();
     patchTerapagos();
     patchSnacksworths();
-
-    std::ofstream fileSave((qBaseDir.filePath("SV_SCENES/eventBattlePokemon_array.json").toStdString()));
-    if(!fileSave.is_open()){
-        qFatal()<<"eventBattlePokemon_array.json did not open!";
-    }
-    fileSave<<cleanBossData.dump(4);
-    fileSave.close();
 }
