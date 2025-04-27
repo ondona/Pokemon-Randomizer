@@ -57,33 +57,33 @@ void SVRandomizerWindow::createLayout()
         // Add the horizontal layout to the group
         extraSettings->addStretch(1);  // Pushes widgets to the left
 
-        QPushButton * importButton = new QPushButton("Import Settings and Seed", generalGroup);
-        connect(importButton, &QPushButton::clicked, this, [=, this]() mutable{
-            emit importSettings();
-        });
+        // QPushButton * importButton = new QPushButton("Import Settings and Seed", generalGroup);
+        // connect(importButton, &QPushButton::clicked, this, [=, this]() mutable{
+        //     emit importSettings();
+        // });
 
-        settingsLocal->addWidget(importButton);
+        // settingsLocal->addWidget(importButton);
 
-        QPushButton * exportButton = new QPushButton("Export Settings and Seed", generalGroup);
-        connect(exportButton, &QPushButton::clicked, this, [=, this]() mutable{
-            QString defaultDir = QDir::currentPath();  // Get the current working directory
-            QString fileName = QFileDialog::getSaveFileName(nullptr,
-                                                            "Choose File Name",
-                                                            defaultDir + "/SVRandomizerSettings-Test.json",
-                                                            "JSON Files (*.json)");
+        // QPushButton * exportButton = new QPushButton("Export Settings and Seed", generalGroup);
+        // connect(exportButton, &QPushButton::clicked, this, [=, this]() mutable{
+        //     QString defaultDir = QDir::currentPath();  // Get the current working directory
+        //     QString fileName = QFileDialog::getSaveFileName(nullptr,
+        //                                                     "Choose File Name",
+        //                                                     defaultDir + "/SVRandomizerSettings-Test.json",
+        //                                                     "JSON Files (*.json)");
 
-            QJsonDocument settingsJson = exportSettings(settings);
+        //     QJsonDocument settingsJson = exportSettings(settings);
 
-            QFile file(fileName);
-            if (file.open(QIODevice::WriteOnly)) {
-                file.write(settingsJson.toJson());
-                file.close();
-            } else {
-                qDebug() << "Failed to open file for writing.";
-            }
-        });
+        //     QFile file(fileName);
+        //     if (file.open(QIODevice::WriteOnly)) {
+        //         file.write(settingsJson.toJson());
+        //         file.close();
+        //     } else {
+        //         qDebug() << "Failed to open file for writing.";
+        //     }
+        // });
 
-        settingsLocal->addWidget(exportButton);
+        // settingsLocal->addWidget(exportButton);
 
         QLineEdit *seed = new QLineEdit(generalGroup);
         //connect(seed, &QLineEdit::textChanged, this, &SVRandomizerWindow::saveStringInput);
@@ -174,10 +174,6 @@ void SVRandomizerWindow::runRandomizer(){
     QString outputFolderPath = QDir::current().filePath(outputFolderName);
     QDir outputDir(outputFolderPath);
 
-    QString output = "output";
-    QString output2 = QDir::current().filePath(output);
-    QDir output3(output2);
-
     // If the folder exists, delete it
     if (outputDir.exists()) {
         if (!outputDir.removeRecursively()) {
@@ -192,6 +188,10 @@ void SVRandomizerWindow::runRandomizer(){
     }
 
     for(unsigned int i = 0; i<randomizer.bulk_amount; i++){
+        QString currentRunMessage = "Doing Randomizer Run: " + QString::fromStdString(std::to_string(i+1)) + "/" + QString::fromStdString(std::to_string(randomizer.bulk_amount));
+        showMessage(currentRunMessage, i);
+        qDebug()<<"Starting Randomizer!";
+
         QString newOutputFolder = QString("Randomizers-Output/Randomizer-%1").arg(i + 1);
 
         if(randomizer.svRandomizerStarters.randomizeStarters == true ||
@@ -227,10 +227,15 @@ void SVRandomizerWindow::runRandomizer(){
         bool paldeaTrainers = false;
         bool kitakamiTrainers = false;
         bool blueberryTrainers = false;
-
+        bool trainerBosses = randomizer.svRandomizerBosses.randomize_bosses;
         bool randomizeTrainers = randomizer.svRandomizerTrainers.checkRandomization(paldeaTrainers, kitakamiTrainers, blueberryTrainers);
+
         if(randomizeTrainers == true){
-            randomizer.svRandomizerTrainers.randomize(paldeaTrainers, kitakamiTrainers, blueberryTrainers);
+            randomizer.svRandomizerTrainers.randomize(paldeaTrainers, kitakamiTrainers, blueberryTrainers, trainerBosses);
+        }
+
+        if (trainerBosses == true){
+            randomizer.svRandomizerBosses.randomizeBosses();
         }
 
         if(randomizer.auto_patch == true){
@@ -255,6 +260,40 @@ void SVRandomizerWindow::runRandomizer(){
             qFatal() << "Output folder does not exist at" << outputFolder;
         }
     }
+
+    QString currentRunMessage = "Finalized Randomizer! - Click Ok to be done";
+    showMessage(currentRunMessage, ENDRANDOMIZER);
+}
+
+void SVRandomizerWindow::showMessage(const QString &message, unsigned int id) {
+    static QMessageBox* msgBox = nullptr;
+
+    if (!msgBox) {
+        msgBox = new QMessageBox;
+        msgBox->setWindowTitle("Current Run Information");
+        msgBox->setAttribute(Qt::WA_DeleteOnClose, false); // Do not delete when closed
+    }
+
+    msgBox->setText(message);
+
+    // Set buttons based on id
+    if (id == ENDRANDOMIZER) {
+        msgBox->setStandardButtons(QMessageBox::Ok);
+    } else {
+        msgBox->setStandardButtons(QMessageBox::NoButton); // No buttons
+    }
+
+    // Bring to front
+    msgBox->raise();
+    msgBox->activateWindow();
+    QApplication::beep();
+
+    if (!msgBox->isVisible()) {
+        msgBox->show(); // Non-blocking
+    }
+
+    msgBox->update();
+    QApplication::processEvents();
 }
 
 // Specific Widgets Codes
@@ -766,8 +805,8 @@ QScrollArea* SVRandomizerWindow::setupBossWidget(){
     QTabBar *innerTrainersBar = new QTabBar(this);
     innerTrainersBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed); // Expand horizontally
     innerTrainersBar->addTab("Paldea Boss");
-    innerTrainersBar->addTab("Kitakami Boss");
-    innerTrainersBar->addTab("Blueberry Academy Boss");
+    // innerTrainersBar->addTab("Kitakami Boss");
+    // innerTrainersBar->addTab("Blueberry Academy Boss");
 
     // Adjust the minimum width to a specific value to ensure it expands
     innerTrainersBar->setMinimumWidth(750); // Set a minimum width (adjust as necessary)
@@ -781,8 +820,8 @@ QScrollArea* SVRandomizerWindow::setupBossWidget(){
 
     // Add each widget to the stacked widget
     innerTrainerStackWidget->addWidget(createPaldeaBossWidget());
-    innerTrainerStackWidget->addWidget(createKitakamiBossWidget());
-    innerTrainerStackWidget->addWidget(createBlueberryBossWidget());
+    // innerTrainerStackWidget->addWidget(createKitakamiBossWidget());
+    // innerTrainerStackWidget->addWidget(createBlueberryBossWidget());
 
     connect(innerTrainersBar, &QTabBar::currentChanged, this, [=, this](int index) {
         switchTabs(innerTrainerStackWidget, index);
@@ -815,7 +854,7 @@ QWidget* SVRandomizerWindow::createPaldeaBossWidget(){
     formLayout->setContentsMargins(2, 2, 2, 2);
 
     //add rows to formLayout
-    // formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBoss.BossLimiter,true));
+    formLayout->addRow(createBossSettings("All", randomizer.svRandomizerBosses.BossLimiter, true));
     // formLayout->addRow(createBossSettings("Koraidon/Miraidon (Not Recommended)", randomizer.svRandomizerBoss.BossLimiter,true));
     // formLayout->addRow(createBossSettings("LeChonk", randomizer.svRandomizerBoss.BossLimiter,true));
     // formLayout->addRow(createBossSettings("Houndoom", randomizer.svRandomizerBoss.BossLimiter,true));
@@ -1135,7 +1174,7 @@ QVBoxLayout* SVRandomizerWindow::createMovesetWidget(){
     movesSettingLayout->addWidget(movesGroupSettings);
 
     // Row 0
-    QCheckBox* same_moves_as_type = new QCheckBox("Same Moves as Type", movesGroupSettings);
+    QCheckBox* same_moves_as_type = new QCheckBox("Same Moves as Type (Useless)", movesGroupSettings);
     row0->addWidget(same_moves_as_type);
     // Connect for Setting the values
     connect(same_moves_as_type, &QCheckBox::toggled, this, [this](bool checked) mutable{
@@ -1418,7 +1457,7 @@ QVBoxLayout* SVRandomizerWindow::createFixedEncounters(){
     fixedWildSettingLayout->addWidget(fixedWildGroupSettings);
 
     // Row 0
-    QCheckBox* bst_balance = new QCheckBox("Balance Encounter on BST", fixedWildGroupSettings);
+    QCheckBox* bst_balance = new QCheckBox("Balance Encounter on BST (Useless)", fixedWildGroupSettings);
     row0->addWidget(bst_balance);
     // Connect for Setting the values
     connect(bst_balance, &QCheckBox::toggled, this, [this](bool checked) mutable{
@@ -1897,41 +1936,41 @@ QVBoxLayout* SVRandomizerWindow::createBossSettings(QString boss, allowedPokemon
     bossSettingLayout->addWidget(enable_boss);
     // Connect for Setting the values
     connect(enable_boss, &QCheckBox::toggled, this, [this](bool checked) mutable{
-
+        randomizer.svRandomizerBosses.randomize_bosses = checked;
     });
 
     // Creates Hidden Group based on button
-    QGroupBox *paldeaRaidGroupSettings= new QGroupBox(QStringLiteral("%1's Settings Section").arg(boss));
-    QVBoxLayout *paldeaRaidSettingsLayout = new QVBoxLayout(paldeaRaidGroupSettings);
-    QHBoxLayout *row0 = new QHBoxLayout();
+    QGroupBox *bossGroupSettings= new QGroupBox(QStringLiteral("%1's Settings Section").arg(boss));
+    QVBoxLayout *bossSettingsLayout = new QVBoxLayout(bossGroupSettings);
+    // QHBoxLayout *row0 = new QHBoxLayout();
 
-    // Connect Randomize Starters to visibility
-    paldeaRaidGroupSettings->setVisible(false);
-    connect(enable_boss, &QCheckBox::toggled, paldeaRaidGroupSettings, &QGroupBox::setVisible);
+    // // Connect Randomize Starters to visibility
+    // paldeaRaidGroupSettings->setVisible(false);
+    // connect(enable_boss, &QCheckBox::toggled, paldeaRaidGroupSettings, &QGroupBox::setVisible);
 
-    bossSettingLayout->addWidget(paldeaRaidGroupSettings);
+    // bossSettingLayout->addWidget(paldeaRaidGroupSettings);
 
-    // Row 0
-    QCheckBox* paldea_all_regions;
-    if(paldea == true && boss == "All"){
-        paldea_all_regions = new QCheckBox("Use Paldea Settings for all Regions", paldeaRaidGroupSettings);
-        row0->addWidget(paldea_all_regions);
-        // Connect for Setting the values
-        connect(paldea_all_regions, &QCheckBox::toggled, this, [this](bool checked) mutable{
+    // // Row 0
+    // QCheckBox* paldea_all_regions;
+    // if(paldea == true && boss == "All"){
+    //     paldea_all_regions = new QCheckBox("Use Paldea Settings for all Regions", paldeaRaidGroupSettings);
+    //     row0->addWidget(paldea_all_regions);
+    //     // Connect for Setting the values
+    //     connect(paldea_all_regions, &QCheckBox::toggled, this, [this](bool checked) mutable{
 
-        });
-    }
+    //     });
+    // }
 
-    QCheckBox* force_shiny = new QCheckBox("Force Shiny", paldeaRaidGroupSettings);
-    row0->addWidget(force_shiny);
-    // Connect for Setting the values
-    connect(force_shiny, &QCheckBox::toggled, this, [this](bool checked) mutable{
+    // QCheckBox* force_shiny = new QCheckBox("Force Shiny", paldeaRaidGroupSettings);
+    // row0->addWidget(force_shiny);
+    // // Connect for Setting the values
+    // connect(force_shiny, &QCheckBox::toggled, this, [this](bool checked) mutable{
 
-    });
+    // });
 
-    paldeaRaidSettingsLayout->addLayout(row0);
+    // paldeaRaidSettingsLayout->addLayout(row0);
 
-    setupAllowedPokemon(paldeaRaidSettingsLayout, limiter);
+    setupAllowedPokemon(bossSettingsLayout, limiter);
 
     // Connection for importing settings
     connect(this, &SVRandomizerWindow::importSettings, this, [this]() mutable{

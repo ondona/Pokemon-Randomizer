@@ -15,7 +15,7 @@ class svTrainers: public QObject, public SVShared{
         void noSoftlockeTerapagos();
         int getMaxNumberOfChanges(json trainerEntry, bool NULLS=false);
         void randomizeTrainers(trainerSettings trainer);
-        void randomize(bool paldea, bool kitakami, bool blueberry);
+        void randomize(bool paldea, bool kitakami, bool blueberry, bool boss = false);
 
         bool paldeaForAll = false;
 

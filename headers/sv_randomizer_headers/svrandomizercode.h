@@ -11,7 +11,7 @@
 #include "sv_personal.h"
 #include "sv_starters.h"
 #include "sv_fixed.h"
-// #include "sv_boss.h"
+#include "sv_boss.h"
 
 
 class SVRandomizerCode: public QObject, public SVShared
@@ -35,9 +35,7 @@ public:
     svFixed svRandomizerFixed;
     svRaids svRandomizerRaids;
     svTrainers svRandomizerTrainers;
-
-    //void setSeed
-
+    svBoss svRandomizerBosses;
 };
 
 #endif // SVRANDOMIZERCODE_H

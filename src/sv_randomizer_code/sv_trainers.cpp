@@ -295,7 +295,7 @@ void svTrainers::randomizeTrainers(trainerSettings trainer){
     }
 }
 
-void svTrainers::randomize(bool paldea, bool kitakami, bool blueberry){
+void svTrainers::randomize(bool paldea, bool kitakami, bool blueberry, bool boss){
     trainersData = readJsonQFile("SV_FLATBUFFERS/SV_TRAINERS/trdata_array_clean.json");
     for(unsigned long long i =0; i<trainersData["values"].size(); i++){
         int threadSeed = randNum.generate();
@@ -355,7 +355,7 @@ void svTrainers::randomize(bool paldea, bool kitakami, bool blueberry){
     closeFileAndDelete("SV_TRAINERS/trdata_array.json",
                        "SV_TRAINERS/trdata_array.bfbs",
                        "world/data/trainer/trdata/",
-                       trainersData, false);
+                       trainersData, !boss);
     qDebug()<<"Returning file";
 }
 

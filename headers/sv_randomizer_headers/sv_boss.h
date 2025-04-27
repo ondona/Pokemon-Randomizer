@@ -3,14 +3,17 @@
 
 #include "sv_shared_class.h"
 
-class svBoss: public SVShared, public QObject{
+class svBoss: public QObject, public SVShared{
     Q_OBJECT
 
     public:
+        json cleanBossData;
+        json trainerInfo;
+
         bool randomize_bosses = false;
         allowedPokemonLimiter BossLimiter;
         QMap<int, QList<int>> allowedPokemon;
-        void randomizeBosses(QDir dir);
+        void randomizeBosses();
         void randomizeFight(unsigned long long index);
         void randomizeStellarOgerpon(unsigned long long index);
         void copyFight(unsigned long long indexSet, unsigned long long indexCopy);
@@ -37,12 +40,6 @@ class svBoss: public SVShared, public QObject{
         void patchSnacksworths();
         void obtainPokemonScene(int &dev, int &form, int& gender, int &rare);
         void saveIndividualPokemon(int index, QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare);
-        void changeScene(QList<QPair<QString, QString>> filePairs,
-                         QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare,
-                         QString output, QString romAddress);
-        void changeSceneOne(QList<QPair<QString, QString>> filePairs,
-                            QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare,
-                            QString output, QString romAddress);
         void savePokemonFromTrainer(int id, QString& pokeKey,
                                     QVector<int> &dev, QVector<int> &form, QVector<int> &gender, QVector<bool> &rare);
 

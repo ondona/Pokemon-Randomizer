@@ -2249,7 +2249,7 @@ public:
     int generateJson(const std::string& schema, const std::string& inputFile, const std::string& path, bool debug = false);
     uint64_t fnv1a_64(const std::string& str, uint64_t basis = 0xCBF29CE484222645);
     void patchScenes(const QList<QPair<QString, QString>>& jsonFile, QList<QString> outputs, QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare);
-    void patchScenesOne(const QList<QPair<QString, QString>>& jsonFile, QList<QString> outputs, QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare);
+    void patchOneScene(const QList<QPair<QString, QString>>& jsonFile, QList<QString> outputs, QVector<int> devId, QVector<int> formId, QVector<int> gender, QVector<bool> rare, QString fileNum);
 
     bool getAllowedPokemon(allowedPokemonLimiter limiter, QMap<int, QList<int>>& allowedList, QString check) override;
     void randomizePokemon(QMap<int, QList<int>>& allowedPokemon, int& devid, int& form, int& gender, bool& rare, int shinyrate, json& changedFile) override;

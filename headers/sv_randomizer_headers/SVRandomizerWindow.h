@@ -82,9 +82,10 @@ protected:
     QWidget* createBlueberryBossWidget();
     QVBoxLayout* createBossSettings(QString boss, allowedPokemonLimiter limiter, bool paldea = false);
     SVRandomizerCode randomizer;
+    void showMessage(const QString &message, unsigned int id);
 private:
     unsigned int hash = 0;
-
+    const unsigned int ENDRANDOMIZER = 151;
     void createStarterPokemonSelection(QString starter, QStringList allowedPokemon,
                                                QStringList allowedPokeballs, QGroupBox* groupToAdd,
                                                 QHBoxLayout* rowToAdd, QVBoxLayout* layoutToAdd, int index);
