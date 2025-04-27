@@ -1,28 +1,32 @@
 #ifndef SV_ITEMS_H
 #define SV_ITEMS_H
 
-#include <headers/sv_randomizer_headers/sv_shared_class.h>
-#include <QVector>
-#include <QMap>
+#include "sv_shared_class.h"
 
-class SVItems: public SVShared{
+class svItems: public QObject, SVShared{
+    Q_OBJECT
+
     public:
-        SVItems();
-        ~SVItems();
+        svItems();
+        ~svItems();
 
-        //Items
-        // bool enable_items;
-        bool randomize_hidden_items = false; // Done
-        bool randomize_ball_items = false; // TBD
-        bool randomize_pickup_items = false;
-        bool randomize_pokemon_drops = false;
-        bool randomize_synchro_items = false;
+        json pokemonDrops;
+        json letsGoItems;
+        json pickUpItems;
+        json hiddenItems;
+        json itemDevs;
 
-        bool randomize_items();
-        void randomizeHiddenItems(std::string fileName, std::string saveFile);
-        void randomizePickUpItems();
-        void randomizeLetsGoItems();
-        void randomizePokemonDrops();
+        bool randomizeItems = false;
+        bool randomizeHiddenItems = false;
+        bool randomizePokemonDrops = false;
+        bool randomizePickUpItems = false;
+        bool randomizeLetsGoItems = false;
+        bool randomizeBallItem = false;
+
+        void randomize();
+        int selectItem();
+    private:
+        // void randomizeBallItems();
 };
 
 #endif // SV_ITEMS_H

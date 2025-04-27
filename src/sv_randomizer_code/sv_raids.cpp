@@ -1,153 +1,82 @@
-#include "headers/sv_randomizer_headers/sv_raids.h"
-#include <QString>
-#include <string>
-#include <QMap>
-#include <QDir>
-#include <QDebug>
-#include <fstream>
-#include "thirdparty/nlohmann/json.hpp"
+#include <headers/sv_randomizer_headers/sv_raids.h>
 
-// Look into QSharedData in the future
-using json = nlohmann::json;
-namespace fs = std::filesystem;
 
-int getBannedLength(QList<bool> generations){
-    int gen1bannedlength = 52;
-    int gen2bannedlength = 18;
-    int gen3bannedlength = 48;
-    int gen4bannedlength = 22;
-    int gen5bannedlength = 70;
-    int gen6bannedlength = 25;
-    int gen7bannedlength = 25;
-    int gen8bannedlength = 31;
-    int gen9bannedlength = 0;
+svRaids::svRaids(){
 
-    int totalGens = 0;
-    int totalBanned = 0;
-    for(int i=0; i<9; i++){
-        if(generations[i] == true){
-            // Logic
-            switch (i){
-            case 0:
-                totalBanned += gen1bannedlength;
-                break;
-            case 1:
-                totalBanned += gen2bannedlength;
-                break;
-            case 2:
-                totalBanned += gen3bannedlength;
-                break;
-            case 3:
-                totalBanned += gen4bannedlength;
-                break;
-            case 4:
-                totalBanned += gen5bannedlength;
-                break;
-            case 5:
-                totalBanned += gen6bannedlength;
-                break;
-            case 6:
-                totalBanned += gen7bannedlength;
-                break;
-            case 7:
-                totalBanned += gen8bannedlength;
-                break;
-            case 8:
-                totalBanned += gen9bannedlength;
-                break;
-            };
-            totalGens++;
-        }
-    };
-
-    if(totalGens == 0){
-        totalBanned += gen1bannedlength;
-        totalBanned += gen2bannedlength;
-        totalBanned += gen3bannedlength;
-        totalBanned += gen4bannedlength;
-        totalBanned += gen5bannedlength;
-        totalBanned += gen6bannedlength;
-        totalBanned += gen7bannedlength;
-        totalBanned += gen9bannedlength;
-    }
-
-    return totalBanned;
 }
 
-bool SVRaids::randomize_paldean_raids(std::string fileName){
-    json wildPokemonInfo;
-    json paldeaRaidJSON;
+svRaids::~svRaids(){
 
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
-    QString QBaseAddress = QString::fromStdString(filePath);
-    QDir qBaseDir(QBaseAddress);
-    std::ifstream file(qBaseDir.filePath("pokemon_mapping.json").toStdString());
-    // Load the JSON file
+}
 
-    if(!file.is_open()){
-        qDebug()<<"Error opening pokemon_mapping.json";
+void svRaids::randomize(QStringList paths, QStringList schema, QStringList folder, QString region){
+    allowedPokemonLimiter raidPokemon;
+    int rate = 10;
+    int forceShiny = false;
+
+    if(region == "Paldea" || paldeaForAll == true){
+        raidPokemon = paldeaPokemon;
+        rate = shinyRatePaldea;
+        forceShiny = forceShinyRaidsPaldea;
+    } else if(region == "Kitakami"){
+        raidPokemon = kitakamiPokemon;
+        rate = shinyRateKitakami;
+        forceShiny = forceShinyRaidsKitakami;
+    } else if(region == "Blueberry"){
+        raidPokemon = blueberryPokemon;
+        rate = shinyRateBlueberry;
+        forceShiny = forceShinyRaidsBlueberry;
     }
 
-    file >> wildPokemonInfo;
-    file.close();
+    bool sizeCheck = getAllowedPokemon(raidPokemon, allowedPokemon, region+"-Raids");
 
-    int banned = getBannedLength(praidsgeneratio);
-    std::string ogName = fileName;
+    if(sizeCheck == false){
+        qFatal()<<QString("Not Enough usable Pokemon for %1 Raids").arg(region);
+    }
 
-    for(int i = 1; i<=6; i++){
-        fileName = ogName;
-        fileName = fileName + std::to_string(i) + "_array_clean.json";
-        std::ifstream raidFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(fileName)).toStdString());
-
-        if(!raidFile.is_open()){
-            qDebug()<<"Issue in Opening: " + QString::fromStdString(fileName);
-        }
-
-        qDebug()<<"Checking: " + QString::fromStdString(fileName);
-
-        raidFile >> paldeaRaidJSON;
-        raidFile.close();
+    for(unsigned int i =0; i<paths.size(); i++){
+        json raids = readJsonQFile(paths[i]);
 
         json newRaids;
         newRaids["values"] = json::array();
-        unsigned long long counter = 0;
         QList<int> usedPokemon;
         QList<QMap<QString, int>> usedForms = {{{"id", 0}, {"form", 0}}};
-        RaidsPaldeaAllowed.removeOne(1024);
-        QSet<int> indexesChanged;
 
-        for(unsigned long long j =0; j<paldeaRaidJSON["values"].size(); j++){
-            if(usedPokemon.length() - RaidsPaldeaAllowed.length() == 0){
-                break;
-            }
-            else if(usedPokemon.length() - RaidsPaldeaAllowed.length() == banned){
-                break;
-            }
+        unsigned long long totalCount = allowedPokemon.size(); // Count of keys
+        for (QMap<int, QList<int>>::const_iterator it = allowedPokemon.cbegin(); it != allowedPokemon.cend(); ++it) {
+            totalCount += it.value().size(); // Accessing values without detaching
+        }
+
+        unsigned long long checkTotal = raids["values"].size();
+        if(totalCount < raids["values"].size())
+            checkTotal = totalCount;
+
+        for(unsigned long long j =0; j<checkTotal; j++){
             QMap<QString, int> checkDict;
-            int random;
-            int formRandom;
+
+            int random = 1;
+            int form = 0;
+            int gender = 0;
+            bool rare = false;
             bool check_loop = true;
             do{
-                random = 1+std::rand()%1025;
-                while(!RaidsPaldeaAllowed.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
-                    random = 1+std::rand()%1025;
-
-                formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
-                while(wildPokemonInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
-                    formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
-                }
-
-                checkDict = {{"id", int(random)}, {"form", int(formRandom)}};
+                randomizePokemon(allowedPokemon, random, form, gender, rare, rate, raids["values"][i]["raidEnemyInfo"]["bossPokePara"]);
+                checkDict = {{"id", int(random)}, {"form", int(form)}};
                 if(!usedForms.contains(checkDict)){
                     if(!exitAbilitiesPokemon.contains(checkDict)){
                         usedForms.append(checkDict);
                         check_loop = false;
                     }
                 }
-            } while (check_loop);
 
-            counter++;
+                // Get new pokemon if its Terapagos
+                if(int(pokemonMapping["pokemons_devid"][random]["natdex"])==1024){
+                    check_loop=true;
+                }
 
+            }while(check_loop == true);
+
+            // Check for pokemon Appending
             int check = 0;
             for(int k =0; k<usedForms.size(); k++){
                 if(usedForms[k]["id"] == checkDict["id"]){
@@ -156,8 +85,8 @@ bool SVRaids::randomize_paldean_raids(std::string fileName){
             }
 
             int formTotal = 0;
-            for(unsigned long long k =0; k < wildPokemonInfo["pokemons"][random]["forms"].size(); k++){
-                if(wildPokemonInfo["pokemons"][random]["forms"][k]["is_present"] == true){
+            for(unsigned long long k =0; k < pokemonMapping["pokemons_devid"][random]["forms"].size(); k++){
+                if(pokemonMapping["pokemons_devid"][random]["forms"][k]["is_present"] == true){
                     formTotal++;
                 }
             }
@@ -166,405 +95,64 @@ bool SVRaids::randomize_paldean_raids(std::string fileName){
                 usedPokemon.append(random);
             }
 
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["romVer"] = "BOTH";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["devId"] = wildPokemonInfo["pokemons"][random]["devName"];
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["formId"] = formRandom;
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["item"] = getItemForPokemon(random, formRandom);
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["wazaType"] = "DEFAULT";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza1"]["wazaId"] = "WAZA_NULL";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza2"]["wazaId"] = "WAZA_NULL";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza3"]["wazaId"] = "WAZA_NULL";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza4"]["wazaId"] = "WAZA_NULL";
-            if(random == 1017){
-                if(formRandom == 0){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "KUSA";
-                }
-                if(formRandom == 1){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "MIZU";
-                }
-                if(formRandom == 2){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "HONOO";
-                }
-                if(formRandom == 3){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "IWA";
-                }
+            // Data Changes
+            raids["values"][j]["raidEnemyInfo"]["romVer"] = "BOTH";
+            raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["item"] = getPokemonItemId(int(pokemonMapping["pokemons_devid"][random]["natdex"]), form);
+            raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["wazaType"] = "DEFAULT";
+            if(raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] == "NO_RARE"){
+                raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] = "DEFAULT";
             }
+            if(forceShiny == true){
+                raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] = "RARE";
+            }
+            raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza1"]["wazaId"] = "WAZA_NULL";
+            raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza2"]["wazaId"] = "WAZA_NULL";
+            raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza3"]["wazaId"] = "WAZA_NULL";
+            raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza4"]["wazaId"] = "WAZA_NULL";
 
-            if(praids_force_shiny == true){
-                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] = "RARE";
-            }else{
-                int shiny_num = 1+std::rand()%praids_shiny_chance;
-                if(shiny_num == 1){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] = "RARE";
-                }
-            }
-
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["timming"] = "HP";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["action"] = "WAZA";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["value"] = int(85);
-            if(random != 1024){
-                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERABAASUTO";
-            }else{
-                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERAKURASUTAA";
-            }
+            // Removing Timer Moves and changing with Terablast usage
+            raids["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["timming"] = "HP";
+            raids["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["action"] = "WAZA";
+            raids["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["value"] = int(85);
 
             for(int i = 2; i<=6; i++){
                 std::string key = "extraAction"+std::to_string(i);
 
-                if(paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"][key]["timming"] == "NONE"){
+                if(raids["values"][j]["raidEnemyInfo"]["bossDesc"][key]["timming"] == "NONE"){
                     continue;
                 }
 
 
-                if(paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"][key]["action"] == "WAZA"){
-                    if(random != 1024){
-                        paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"][key]["wazano"] = "WAZA_TERABAASUTO";
-                    }else{
-                        paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"][key]["wazano"] = "WAZA_TERAKURASUTAA";
-                    }
+                if(raids["values"][j]["raidEnemyInfo"]["bossDesc"][key]["action"] == "WAZA"){
+                    raids["values"][j]["raidEnemyInfo"]["bossDesc"][key]["wazano"] = "WAZA_TERABAASUTO";
                 }
 
             }
 
-            indexesChanged.insert(i);
+            // Ogerpon Hardset of TeraType
+            if(int(pokemonMapping["pokemons_devid"][random]["natdex"]) == 1017){
+                if(form == 0){
+                    raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "KUSA";
+                }
+                if(form == 1){
+                    raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "MIZU";
+                }
+                if(form == 2){
+                    raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "HONOO";
+                }
+                if(form == 3){
+                    raids["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "IWA";
+                }
+            }
+
+            newRaids["values"].push_back(raids["values"][j]);
+
         }
 
-        if(paldeaRaidJSON["values"].size() - counter > 0){
-            for(int j =0; j<indexesChanged.size(); j++){
-                newRaids["values"].push_back(paldeaRaidJSON["values"][i]);
-            }
-        }else if(paldeaRaidJSON["values"].size() - counter < 0){
-            for(int j =0; j<indexesChanged.size(); j++){
-                newRaids["values"].push_back(paldeaRaidJSON["values"][i]);
-            }
-        }else{
-            newRaids["values"] = paldeaRaidJSON["values"];
-        }
-
-        std::string outputName = ogName + std::to_string(i) +"_array.json";
-        std::ofstream fileSave(filePath+"/SV_RAIDS/"+outputName);
-        fileSave<<paldeaRaidJSON.dump(4);
-        fileSave.close();
+        closeFileAndDelete(paths[i],
+                           schema[i],
+                           folder[i],
+                           raids, false);
     }
 
-    // Loop through the file
-    return true;
-}
-
-bool SVRaids::randomize_kitakami_raids(std::string fileName){
-    json wildPokemonInfo;
-    json paldeaRaidJSON;
-
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
-    QString QBaseAddress = QString::fromStdString(filePath);
-    QDir qBaseDir(QBaseAddress);
-    std::ifstream file(qBaseDir.filePath("pokemon_mapping.json").toStdString());
-    // Load the JSON file
-
-    if(!file.is_open()){
-        qDebug()<<"Error opening pokemon_mapping.json";
-    }
-
-    file >> wildPokemonInfo;
-    file.close();
-
-    int banned = getBannedLength(kraidsgeneration);
-    std::string ogName = fileName;
-
-    for(int i = 1; i<=6; i++){
-        fileName = ogName;
-        fileName = fileName + std::to_string(i) + "_array_clean.json";
-        std::ifstream raidFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(fileName)).toStdString());
-
-        if(!raidFile.is_open()){
-            qDebug()<<"Issue in Opening: " + QString::fromStdString(fileName);
-        }
-
-        qDebug()<<"Checking: " + QString::fromStdString(fileName);
-
-        raidFile >> paldeaRaidJSON;
-        raidFile.close();
-
-        json newRaids;
-        newRaids["values"] = json::array();
-        unsigned long long counter = 0;
-        QList<int> usedPokemon;
-        QList<QMap<QString, int>> usedForms = {{{"id", 0}, {"form", 0}}};
-        RaidsKitakamiAllowed.removeOne(1024);
-        QSet<int> indexesChanged;
-
-        for(unsigned long long j =0; j<paldeaRaidJSON["values"].size(); j++){
-            if(usedPokemon.length() - RaidsKitakamiAllowed.length() == 0){
-                break;
-            }
-            else if(usedPokemon.length() - RaidsKitakamiAllowed.length() == banned){
-                break;
-            }
-            QMap<QString, int> checkDict;
-            int random;
-            int formRandom;
-            bool check_loop = true;
-            do{
-                random = 1+std::rand()%1025;
-                while(!RaidsKitakamiAllowed.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
-                    random = 1+std::rand()%1025;
-
-                formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
-                while(wildPokemonInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
-                    formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
-                }
-
-                checkDict = {{"id", int(random)}, {"form", int(formRandom)}};
-                if(!usedForms.contains(checkDict)){
-                    if(!exitAbilitiesPokemon.contains(checkDict)){
-                        usedForms.append(checkDict);
-                        check_loop = false;
-                    }
-                }
-            } while (check_loop);
-
-            counter++;
-
-            int check = 0;
-            for(int k =0; k<usedForms.size(); k++){
-                if(usedForms[k]["id"] == checkDict["id"]){
-                    check++;
-                }
-            }
-
-            int formTotal = 0;
-            for(unsigned long long k =0; k < wildPokemonInfo["pokemons"][random]["forms"].size(); k++){
-                if(wildPokemonInfo["pokemons"][random]["forms"][k]["is_present"] == true){
-                    formTotal++;
-                }
-            }
-
-            if(check == formTotal){
-                usedPokemon.append(random);
-            }
-
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["romVer"] = "BOTH";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["devId"] = wildPokemonInfo["pokemons"][random]["devName"];
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["formId"] = formRandom;
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["item"] = getItemForPokemon(random, formRandom);
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["wazaType"] = "DEFAULT";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza1"]["wazaId"] = "WAZA_NULL";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza2"]["wazaId"] = "WAZA_NULL";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza3"]["wazaId"] = "WAZA_NULL";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza4"]["wazaId"] = "WAZA_NULL";
-            if(random == 1017){
-                if(formRandom == 0){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "KUSA";
-                }
-                if(formRandom == 1){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "MIZU";
-                }
-                if(formRandom == 2){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "HONOO";
-                }
-                if(formRandom == 3){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "IWA";
-                }
-            }
-
-            if(kraids_force_shiny == true){
-                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] = "RARE";
-            }else{
-                int shiny_num = 1+std::rand()%kraids_shiny_chance;
-                if(shiny_num == 1){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] = "RARE";
-                }
-            }
-
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["timming"] = "HP";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["action"] = "WAZA";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["value"] = int(85);
-            if(random != 1024){
-                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERABAASUTO";
-            }else{
-                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERAKURASUTAA";
-            }
-
-            indexesChanged.insert(i);
-        }
-
-        if(paldeaRaidJSON["values"].size() - counter > 0){
-            for(int j =0; j<indexesChanged.size(); j++){
-                newRaids["values"].push_back(paldeaRaidJSON["values"][i]);
-            }
-        }else if(paldeaRaidJSON["values"].size() - counter < 0){
-            for(int j =0; j<indexesChanged.size(); j++){
-                newRaids["values"].push_back(paldeaRaidJSON["values"][i]);
-            }
-        }else{
-            newRaids["values"] = paldeaRaidJSON["values"];
-        }
-
-        std::string outputName = ogName + std::to_string(i) +"_array.json";
-        std::ofstream fileSave(filePath+"/SV_RAIDS/"+outputName);
-        fileSave<<paldeaRaidJSON.dump(4);
-        fileSave.close();
-    }
-
-    // Loop through the file
-    return true;
-}
-
-bool SVRaids::randomize_blueberry_raids(std::string fileName){
-    json wildPokemonInfo;
-    json paldeaRaidJSON;
-
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
-    QString QBaseAddress = QString::fromStdString(filePath);
-    QDir qBaseDir(QBaseAddress);
-    std::ifstream file(qBaseDir.filePath("pokemon_mapping.json").toStdString());
-    // Load the JSON file
-
-    if(!file.is_open()){
-        qDebug()<<"Error opening pokemon_mapping.json";
-    }
-
-    file >> wildPokemonInfo;
-    file.close();
-
-    int banned = getBannedLength(braidsgeneration);
-    std::string ogName = fileName;
-
-    for(int i = 1; i<=6; i++){
-        fileName = ogName;
-        fileName = fileName + std::to_string(i) + "_array_clean.json";
-        std::ifstream raidFile(qBaseDir.filePath("SV_RAIDS/"+QString::fromStdString(fileName)).toStdString());
-
-        if(!raidFile.is_open()){
-            qDebug()<<"Issue in Opening: " + QString::fromStdString(fileName);
-        }
-
-        qDebug()<<"Checking: " + QString::fromStdString(fileName);
-
-        raidFile >> paldeaRaidJSON;
-        raidFile.close();
-
-        json newRaids;
-        newRaids["values"] = json::array();
-        unsigned long long counter = 0;
-        QList<int> usedPokemon;
-        QList<QMap<QString, int>> usedForms = {{{"id", 0}, {"form", 0}}};
-        RaidsBlueberryAllowed.removeOne(1024);
-        QSet<int> indexesChanged;
-
-        for(unsigned long long j =0; j<paldeaRaidJSON["values"].size(); j++){
-            if(usedPokemon.length() - RaidsBlueberryAllowed.length() == 0){
-                break;
-            }
-            else if(usedPokemon.length() - RaidsBlueberryAllowed.length() == banned){
-                break;
-            }
-            QMap<QString, int> checkDict;
-            int random;
-            int formRandom;
-            bool check_loop = true;
-            do{
-                random = 1+std::rand()%1025;
-                while(!RaidsBlueberryAllowed.contains(wildPokemonInfo["pokemons"][random]["natdex"]))
-                    random = 1+std::rand()%1025;
-
-                formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
-                while(wildPokemonInfo["pokemons"][random]["forms"][formRandom]["is_present"] == false){
-                    formRandom = std::rand()%static_cast<int>(wildPokemonInfo["pokemons"][random]["forms"].size());
-                }
-
-                checkDict = {{"id", int(random)}, {"form", int(formRandom)}};
-                if(!usedForms.contains(checkDict)){
-                    if(!exitAbilitiesPokemon.contains(checkDict)){
-                        usedForms.append(checkDict);
-                        check_loop = false;
-                    }
-                }
-            } while (check_loop);
-
-            counter++;
-
-            int check = 0;
-            for(int k =0; k<usedForms.size(); k++){
-                if(usedForms[k]["id"] == checkDict["id"]){
-                    check++;
-                }
-            }
-
-            int formTotal = 0;
-            for(unsigned long long k =0; k < wildPokemonInfo["pokemons"][random]["forms"].size(); k++){
-                if(wildPokemonInfo["pokemons"][random]["forms"][k]["is_present"] == true){
-                    formTotal++;
-                }
-            }
-
-            if(check == formTotal){
-                usedPokemon.append(random);
-            }
-
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["romVer"] = "BOTH";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["devId"] = wildPokemonInfo["pokemons"][random]["devName"];
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["formId"] = formRandom;
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["item"] = getItemForPokemon(random, formRandom);
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["wazaType"] = "DEFAULT";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza1"]["wazaId"] = "WAZA_NULL";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza2"]["wazaId"] = "WAZA_NULL";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza3"]["wazaId"] = "WAZA_NULL";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["waza4"]["wazaId"] = "WAZA_NULL";
-            if(random == 1017){
-                if(formRandom == 0){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "KUSA";
-                }
-                if(formRandom == 1){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "MIZU";
-                }
-                if(formRandom == 2){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "HONOO";
-                }
-                if(formRandom == 3){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["gemType"] = "IWA";
-                }
-            }
-
-            if(braids_force_shiny == true){
-                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] = "RARE";
-            }else{
-                int shiny_num = 1+std::rand()%braids_shiny_chance;
-                if(shiny_num == 1){
-                    paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossPokePara"]["rareType"] = "RARE";
-                }
-            }
-
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["timming"] = "HP";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["action"] = "WAZA";
-            paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["value"] = int(85);
-            if(random != 1024){
-                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERABAASUTO";
-            }else{
-                paldeaRaidJSON["values"][j]["raidEnemyInfo"]["bossDesc"]["extraAction1"]["wazano"] = "WAZA_TERAKURASUTAA";
-            }
-
-            indexesChanged.insert(i);
-        }
-
-        if(paldeaRaidJSON["values"].size() - counter > 0){
-            for(int j =0; j<indexesChanged.size(); j++){
-                newRaids["values"].push_back(paldeaRaidJSON["values"][i]);
-            }
-        }else if(paldeaRaidJSON["values"].size() - counter < 0){
-            for(int j =0; j<indexesChanged.size(); j++){
-                newRaids["values"].push_back(paldeaRaidJSON["values"][i]);
-            }
-        }else{
-            newRaids["values"] = paldeaRaidJSON["values"];
-        }
-
-        std::string outputName = ogName + std::to_string(i) +"_array.json";
-        std::ofstream fileSave(filePath+"/SV_RAIDS/"+outputName);
-        fileSave<<paldeaRaidJSON.dump(4);
-        fileSave.close();
-    }
-
-    // Loop through the file
-    return true;
 }
