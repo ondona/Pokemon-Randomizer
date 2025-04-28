@@ -1,211 +1,135 @@
-#include "thirdparty/nlohmann/json.hpp"
 #include "headers/sv_randomizer_headers/sv_items.h"
-#include <QDebug>
-#include <ctime>
-#include <fstream>
-#include <QDir>
 
-using json = nlohmann::ordered_json;
-namespace fs = std::filesystem;
+svItems::svItems(){
+    itemDevs = readJsonQFile("SV_FLATBUFFERS/SV_ITEMS/pokemon_items_dev.json");
+}
 
-json itemsDev;
-
-SVItems::SVItems(){
+svItems::~svItems(){
 
 }
 
-SVItems::~SVItems(){
+void svItems::randomize(){
+    pokemonDrops = readJsonQFile("SV_FLATBUFFERS/SV_ITEMS/dropitemdata_array_clean.json");
+    letsGoItems = readJsonQFile("SV_FLATBUFFERS/SV_ITEMS/rummagingItemDataTable_array_clean.json");
+    pickUpItems = readJsonQFile("SV_FLATBUFFERS/SV_ITEMS/monohiroiItemData_array_clean.json");
 
-}
 
-void SVItems::randomizePokemonDrops(){
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
-    QString QBaseAddress = QString::fromStdString(filePath);
-    QDir qBaseDir(QBaseAddress);
-    std::ifstream file(qBaseDir.filePath("SV_ITEMS/dropitemdata_array_clean.json").toStdString());
-    // Load the JSON file
+    if(randomizeHiddenItems == true){
+        QList<QPair<QString, QString>> filesJson = {
+            {"SV_ITEMS/hiddenItemDataTable_array_clean.json", "SV_ITEMS/hiddenItemDataTable_array.json"},
+            {"SV_ITEMS/hiddenItemDataTable_su1_array_clean.json", "SV_ITEMS/hiddenItemDataTable_su1_array.json"},
+            {"SV_ITEMS/hiddenItemDataTable_su2_array_clean.json", "SV_ITEMS/hiddenItemDataTable_su2_array.json"},
+            {"SV_ITEMS/hiddenItemDataTable_lc_array_clean.json", "SV_ITEMS/hiddenItemDataTable_lc_array.json"},
+        };
 
-    if(!file.is_open()){
-        qDebug()<<"Error opening dropitemdata_array_clean.json";
-    }
+        QList<QPair<QString, QString>> filesSchema = {
+            {"SV_ITEMS/hiddenItemDataTable_array.bfbs", "world/data/item/hiddenItemDataTable/"},
+            {"SV_ITEMS/hiddenItemDataTable_su1_array.bfbs", "world/data/item/hiddenItemDataTable_su1/"},
+            {"SV_ITEMS/hiddenItemDataTable_su2_array.bfbs", "world/data/item/hiddenItemDataTable_su2/"},
+            {"SV_ITEMS/hiddenItemDataTable_lc_array.bfbs", "world/data/item/hiddenItemDataTable_lc/"},
+        };
 
-    json syncrhoItems;
-    file >> syncrhoItems;
-    file.close();
+        for(int i=0; i<filesJson.size(); i++){
+            qDebug()<<"Randomizing Hidden Items - "<<filesJson[i].first;
+            hiddenItems = readJsonQFile("SV_FLATBUFFERS/"+filesJson[i].first);
+            for(unsigned long long i =0; i<hiddenItems["values"].size(); i++){
+                for(int j = 1; j<=10; j++){
+                    int itemChoice = selectItem();
 
-    for(unsigned long long i =0; i<syncrhoItems["values"].size(); i++){
-        int itemChoice = 1+std::rand()%1090;
-        while(itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_MATERIAL" ||
-               itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_EVENT" ||
-               itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_BATTLE" ||
-               itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_POCKET" ||
-               bannedItems.contains(itemsDev["items"][itemChoice]["id"])){
-            itemChoice = 1+std::rand()%1090;
-        }
-
-        std::string itemName = itemsDev["items"][itemChoice]["devName"];
-        syncrhoItems["values"][i]["item1"]["itemid"] = itemName;
-    }
-    std::ofstream fileSave(filePath+"/SV_ITEMS/dropitemdata_array.json");
-    fileSave<<syncrhoItems.dump(4);
-    fileSave.close();
-}
-
-void SVItems::randomizeLetsGoItems(){
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
-    QString QBaseAddress = QString::fromStdString(filePath);
-    QDir qBaseDir(QBaseAddress);
-    std::ifstream file(qBaseDir.filePath("SV_ITEMS/rummagingItemDataTable_array_clean.json").toStdString());
-    // Load the JSON file
-
-    if(!file.is_open()){
-        qDebug()<<"Error opening rummagingItemDataTable_array_clean.json";
-    }
-
-    json pickUpItems;
-    file >> pickUpItems;
-    file.close();
-
-    for(unsigned long long i =0; i<pickUpItems["values"].size(); i++){
-        for(int j = 0; j<=4; j++){
-            int itemChoice = 1+std::rand()%1090;
-            while(itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_MATERIAL" ||
-                   itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_EVENT" ||
-                   itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_BATTLE" ||
-                   itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_POCKET" ||
-                   bannedItems.contains(itemsDev["items"][itemChoice]["id"])){
-                itemChoice = 1+std::rand()%1090;
+                    std::string itemName = itemDevs["items"][itemChoice]["devName"];
+                    std::string itemKey = "item_" + std::to_string(j);
+                    hiddenItems["values"][i][itemKey]["itemId"] = itemName;
+                    hiddenItems["values"][i][itemKey]["emergePercent"] = randNum.bounded(100, 901);
+                    hiddenItems["values"][i][itemKey]["dropCount"] = randNum.bounded(1, 21);
+                }
             }
 
-            std::string itemName = itemsDev["items"][itemChoice]["devName"];
-            std::string itemKey;
-            if(j < 10){
-                itemKey = "Item0" + std::to_string(j);
-            }else{
-                itemKey = "Item" + std::to_string(j);
-            }
-            pickUpItems["values"][i][itemKey] = itemName;
+            closeFileAndDelete(filesJson[i].second,
+                               filesSchema[i].first,
+                               filesSchema[i].second,
+                               hiddenItems, true);
         }
     }
 
-    std::ofstream fileSave(filePath+"/SV_ITEMS/rummagingItemDataTable_array.json");
-    fileSave<<pickUpItems.dump(4);
-    fileSave.close();
-}
+    if(randomizePokemonDrops == true){
+         qDebug()<<"Randomizing Pokemon Drops";
+        for(unsigned long long i =0; i<pokemonDrops["values"].size(); i++){
+            for(int j = 1; j<=10; j++){
+                int itemChoice = selectItem();
 
-void SVItems::randomizePickUpItems(){
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
-    QString QBaseAddress = QString::fromStdString(filePath);
-    QDir qBaseDir(QBaseAddress);
-    std::ifstream file(qBaseDir.filePath("SV_ITEMS/monohiroiItemData_array_clean.json").toStdString());
-    // Load the JSON file
-
-    if(!file.is_open()){
-        qDebug()<<"Error opening monohiroiItemData_array_clean.json";
-    }
-
-    json pickUpItems;
-    file >> pickUpItems;
-    file.close();
-
-    for(unsigned long long i =0; i<pickUpItems["values"].size(); i++){
-        for(int j = 1; j<=30; j++){
-            int itemChoice = 1+std::rand()%1090;
-            while(itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_MATERIAL" ||
-                   itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_EVENT" ||
-                   itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_BATTLE" ||
-                   itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_POCKET" ||
-                   bannedItems.contains(itemsDev["items"][itemChoice]["id"])){
-                itemChoice = 1+std::rand()%1090;
+                std::string itemName = itemDevs["items"][itemChoice]["devName"];
+                pokemonDrops["values"][i]["item1"]["itemid"] = itemName;
             }
-
-            std::string itemName = itemsDev["items"][itemChoice]["devName"];
-            std::string itemKey;
-            if(j < 10){
-                itemKey = "item_0" + std::to_string(j);
-            }else{
-                itemKey = "item_" + std::to_string(j);
-            }
-            pickUpItems["values"][i][itemKey]["itemId"] = itemName;
         }
+
+        closeFileAndDelete("SV_ITEMS/dropitemdata_array.json",
+                           "SV_ITEMS/dropitemdata_array.bfbs",
+                           "world/data/item/dropitemdata/",
+                           pokemonDrops, true);
     }
 
-    std::ofstream fileSave(filePath+"/SV_ITEMS/monohiroiItemData_array.json");
-    fileSave<<pickUpItems.dump(4);
-    fileSave.close();
-}
+    if(randomizePickUpItems == true){
+        qDebug()<<"Randomizing Pick Up Items";
 
-void SVItems::randomizeHiddenItems(std::string fileName, std::string saveFile){
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
-    QString QBaseAddress = QString::fromStdString(filePath);
-    QDir qBaseDir(QBaseAddress);
-    std::ifstream file(qBaseDir.filePath("SV_ITEMS/" + QString::fromStdString(fileName)).toStdString());
-    // Load the JSON file
+        for(unsigned long long i =0; i<pickUpItems["values"].size(); i++){
+            for(int j = 1; j<=30; j++){
+                int itemChoice = selectItem();
 
-    if(!file.is_open()){
-        qDebug()<<"Error opening " + QString::fromStdString(fileName);
-    }
-
-    json paldeaItems;
-    file >> paldeaItems;
-    file.close();
-
-    for(unsigned long long i =0; i<paldeaItems["values"].size(); i++){
-        for(int j = 1; j<=10; j++){
-            int itemChoice = 1+std::rand()%1090;
-            while(itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_MATERIAL" ||
-                   itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_EVENT" ||
-                   itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_BATTLE" ||
-                   itemsDev["items"][itemChoice]["ItemType"] == "ITEMTYPE_POCKET" ||
-                   bannedItems.contains(itemsDev["items"][itemChoice]["id"])){
-                itemChoice = 1+std::rand()%1090;
+                std::string itemName = itemDevs["items"][itemChoice]["devName"];
+                std::string itemKey;
+                if(j < 10){
+                    itemKey = "item_0" + std::to_string(j);
+                }else{
+                    itemKey = "item_" + std::to_string(j);
+                }
+                pickUpItems["values"][i][itemKey]["itemId"] = itemName;
             }
-
-            std::string itemName = itemsDev["items"][itemChoice]["devName"];
-            std::string itemKey = "item_" + std::to_string(j);
-            paldeaItems["values"][i][itemKey]["itemId"] = itemName;
-            paldeaItems["values"][i][itemKey]["emergePercent"] = 100 + std::rand()%901;
-            paldeaItems["values"][i][itemKey]["dropCount"] = 1 + std::rand()%20;
         }
+
+        closeFileAndDelete("SV_ITEMS/monohiroiItemData_array.json",
+                           "SV_ITEMS/monohiroiItemData_array.bfbs",
+                           "world/data/item/monohiroilItemData/",
+                           pickUpItems, true);
     }
 
-    std::ofstream fileSave(filePath+"/SV_ITEMS/"+saveFile);
-    fileSave<<paldeaItems.dump(4);
-    fileSave.close();
+    if(randomizeLetsGoItems == true){
+        qDebug()<<"Randomizing Synchro/Let's Go Items";
+        for(unsigned long long i =0; i<letsGoItems["values"].size(); i++){
+            for(int j = 0; j<=4; j++){
+                int itemChoice = selectItem();
+
+                std::string itemName = itemDevs["items"][itemChoice]["devName"];
+                std::string itemKey;
+                if(j < 10){
+                    itemKey = "Item0" + std::to_string(j);
+                }else{
+                    itemKey = "Item" + std::to_string(j);
+                }
+                letsGoItems["values"][i][itemKey] = itemName;
+            }
+        }
+
+        closeFileAndDelete("SV_ITEMS/rummagingItemDataTable_array.json",
+                           "SV_ITEMS/rummagingItemDataTable_array.bfbs",
+                           "world/data/item/rummagingItemDataTable/",
+                           letsGoItems, true);
+    }
+
+    if(randomizeBallItem == true){
+        qDebug()<<"Randomizing Poke Ball Items";
+    }
+
 }
 
-bool SVItems::randomize_items(){
-    std::string filePath = fs::absolute("SV_FLATBUFFERS").string();
-    QString QBaseAddress = QString::fromStdString(filePath);
-    QDir qBaseDir(QBaseAddress);
-    std::ifstream file(qBaseDir.filePath("SV_ITEMS/pokemon_items_dev.json").toStdString());
-    // Load the JSON file
-
-    if(!file.is_open()){
-        qDebug()<<"Error opening pokemon_items_dev.json";
+int svItems::selectItem(){
+    int itemChoice = randNum.bounded(1, 1091);
+    while(itemDevs["items"][itemChoice]["ItemType"] == "ITEMTYPE_MATERIAL" ||
+           itemDevs["items"][itemChoice]["ItemType"] == "ITEMTYPE_EVENT" ||
+           itemDevs["items"][itemChoice]["ItemType"] == "ITEMTYPE_BATTLE" ||
+           itemDevs["items"][itemChoice]["ItemType"] == "ITEMTYPE_POCKET" ||
+           bannedItems.contains(itemDevs["items"][itemChoice]["id"])){
+        itemChoice = randNum.bounded(1, 1091);
     }
 
-    file >> itemsDev;
-    file.close();
-
-    if(randomize_hidden_items == true){
-        randomizeHiddenItems("hiddenItemDataTable_lc_array_clean.json", "hiddenItemDataTable_lc_array.json");
-        randomizeHiddenItems("hiddenItemDataTable_su2_array_clean.json", "hiddenItemDataTable_su2_array.json");
-        randomizeHiddenItems("hiddenItemDataTable_su1_array_clean.json", "hiddenItemDataTable_su1_array.json");
-        randomizeHiddenItems("hiddenItemDataTable_array_clean.json", "hiddenItemDataTable_array.json");
-    }
-
-    if(randomize_pickup_items == true){
-        randomizePickUpItems();
-    }
-
-    if(randomize_synchro_items == true){
-        randomizeLetsGoItems();
-    }
-
-    if(randomize_pokemon_drops == true){
-        randomizePokemonDrops();
-    }
-
-    return true;
+    return itemChoice;
 }

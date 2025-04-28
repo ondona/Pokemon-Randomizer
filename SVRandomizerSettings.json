@@ -1,0 +1,905 @@
+{
+    "Auto-Patch": true,
+    "Batch": 1,
+    "Bosses": {
+        "Allowed Pokemon": {
+            "Generations": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Legends": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Paradox": true,
+            "Single Stage": true,
+            "Stage 1": true,
+            "Stage 2": true,
+            "Stage 3": true
+        },
+        "Randomize": false
+    },
+    "Gifts": {
+        "Allowed Pokemon": {
+            "Generations": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Legends": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Paradox": true,
+            "Single Stage": true,
+            "Stage 1": true,
+            "Stage 2": true,
+            "Stage 3": true
+        },
+        "Randomize": false,
+        "Shiny Rate": 10,
+        "Tera Types": false
+    },
+    "Items": {
+        "Randomize Hidden Items": false,
+        "Randomize PickUp Items": false,
+        "Randomize Pokemon Drops": false,
+        "Randomize Synchro Items": false
+    },
+    "Raids Blueberry": {
+        "Allowed Pokemon": {
+            "Generations": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Legends": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Paradox": true,
+            "Single Stage": true,
+            "Stage 1": true,
+            "Stage 2": true,
+            "Stage 3": true
+        },
+        "Force Shiny": false,
+        "Randomize": false,
+        "Shiny Rate": 10
+    },
+    "Raids Kitakami": {
+        "Allowed Pokemon": {
+            "Generations": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Legends": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Paradox": true,
+            "Single Stage": true,
+            "Stage 1": true,
+            "Stage 2": true,
+            "Stage 3": true
+        },
+        "Force Shiny": false,
+        "Randomize": false,
+        "Shiny Rate": 10
+    },
+    "Raids Paldea": {
+        "Allowed Pokemon": {
+            "Generations": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Legends": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Paradox": true,
+            "Single Stage": true,
+            "Stage 1": true,
+            "Stage 2": true,
+            "Stage 3": true
+        },
+        "Force Shiny": false,
+        "Raid Paldea settings for All": false,
+        "Randomize": false,
+        "Shiny Rate": 10
+    },
+    "Seed": "",
+    "Seed Numerical": "0",
+    "Starters": {
+        "All Shiny": false,
+        "Allowed Pokemon": {
+            "Generations": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Legends": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Paradox": true,
+            "Single Stage": true,
+            "Stage 1": true,
+            "Stage 2": true,
+            "Stage 3": true
+        },
+        "Fuecoco": {
+            "Form": 0,
+            "Gender": "MALE",
+            "Name": "",
+            "Poke Ball": "Poke Ball",
+            "Shiny": false
+        },
+        "One Shiny": false,
+        "Quaxly": {
+            "Form": 0,
+            "Gender": "MALE",
+            "Name": "",
+            "Poke Ball": "Poke Ball",
+            "Shiny": false
+        },
+        "Randomize": false,
+        "Shiny Rate": 10,
+        "Show Starters in Overworld": true,
+        "Sprigatito": {
+            "Form": 0,
+            "Gender": "MALE",
+            "Name": "",
+            "Poke Ball": "Poke Ball",
+            "Shiny": false
+        },
+        "Tera Types": false
+    },
+    "Stats": {
+        "Abilities": {
+            "Ban Wonder Guard": false,
+            "Randomize": false
+        },
+        "Base Stats": {
+            "Keep Same BST": false,
+            "Randomize": false
+        },
+        "Evolutions": {
+            "Evolve Every Level": false,
+            "Fix Regional Evolutions": false,
+            "Randomize": false
+        },
+        "Moves": {
+            "Match Moves to Types": false,
+            "Randomize": false
+        },
+        "TMs": {
+            "Allow Moves w/out Animation": false,
+            "Randomize": false
+        },
+        "Types": {
+            "Grand Extra Types": false,
+            "Randomize": false
+        }
+    },
+    "Trainers Blueberry": {
+        "BBClub": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Global": {
+            "Allow All to Tera": false,
+            "Allow Shinies": false,
+            "Doubles Only": false,
+            "Randomize": false,
+            "Rival Settings for All": false,
+            "Singles or Doubles": false,
+            "Tera Types": false
+        },
+        "Raids": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Rivals": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Routes": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        }
+    },
+    "Trainers Kitakami": {
+        "Global": {
+            "Allow All to Tera": false,
+            "Allow Shinies": false,
+            "Doubles Only": false,
+            "Randomize": false,
+            "Rival Settings for All": false,
+            "Singles or Doubles": false,
+            "Tera Types": false
+        },
+        "Ogre Clan": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Raids": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Rivals": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Routes": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        }
+    },
+    "Trainers Paldea": {
+        "Champion": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Elite 4": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Global": {
+            "Allow All to Tera": false,
+            "Allow Shinies": false,
+            "Doubles Only": false,
+            "Randomize": false,
+            "Rival Settings for All": false,
+            "Singles or Doubles": false,
+            "Tera Types": false
+        },
+        "Gym": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Raids": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Rivals": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Routes": {
+            "Allow Tera": false,
+            "Allowed Pokemon": {
+                "Generations": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Legends": {
+                    "1": true,
+                    "2": true,
+                    "3": true,
+                    "4": true,
+                    "5": true,
+                    "6": true,
+                    "7": true,
+                    "8": true,
+                    "9": true
+                },
+                "Paradox": true,
+                "Single Stage": true,
+                "Stage 1": true,
+                "Stage 2": true,
+                "Stage 3": true
+            },
+            "Force 6 IVs": false,
+            "Force 6 Pokemon": false,
+            "Give Extra Pokemon": false,
+            "Make AI Smart": false
+        },
+        "Trainer Paldea Settings for All": false
+    },
+    "Wild Blueberry": {
+        "Allowed Pokemon": {
+            "Generations": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Legends": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Paradox": true,
+            "Single Stage": true,
+            "Stage 1": true,
+            "Stage 2": true,
+            "Stage 3": true
+        },
+        "Exclude Legendary": false,
+        "Randomize": false
+    },
+    "Wild Kitakami": {
+        "Allowed Pokemon": {
+            "Generations": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Legends": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Paradox": true,
+            "Single Stage": true,
+            "Stage 1": true,
+            "Stage 2": true,
+            "Stage 3": true
+        },
+        "Exclude Legendary": false,
+        "Randomize": false
+    },
+    "Wild Paldea": {
+        "Allowed Pokemon": {
+            "Generations": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Legends": {
+                "1": true,
+                "2": true,
+                "3": true,
+                "4": true,
+                "5": true,
+                "6": true,
+                "7": true,
+                "8": true,
+                "9": true
+            },
+            "Paradox": true,
+            "Single Stage": true,
+            "Stage 1": true,
+            "Stage 2": true,
+            "Stage 3": true
+        },
+        "Exclude Legendary": false,
+        "Ogerpon/Terapos Spawn": false,
+        "Randomize": false,
+        "Wild Paldea settings for All": false
+    }
+}
